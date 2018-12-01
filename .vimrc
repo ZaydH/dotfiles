@@ -1,5 +1,3 @@
-set spelllang=en_us           " Use US English
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -47,6 +45,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set spelllang=en_us           " Use US English
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+" Use one space, not two, after punctuation.
+set nojoinspaces
 
 " Enable copy and paste in vim
 set clipboard=unnamed
@@ -60,8 +64,12 @@ set backspace=indent,eol,start
 
 " Show line numbers
 set number
+set numberwidth=4
 
-" Highlight when searching."
+set ruler           " Show the cursor position all the time
+set laststatus=2    " Always display the status line
+
+" Highlight when searching.
 set hlsearch
 
 " Configure tabls as spaces

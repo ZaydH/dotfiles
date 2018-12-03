@@ -26,6 +26,17 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " YouCompleteMe autocompletion support"
 Plugin 'Valloric/YouCompleteMe'
+
+" Install vim LaTeX suite
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -45,12 +56,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set spelllang=en_us           " Use US English
+set spell spelllang=en_us           " Use US English
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
+" Wrap text only on space
+:set linebreak " "
 
 " Enable copy and paste in vim
 set clipboard=unnamed
@@ -62,6 +75,13 @@ syntax on
 " Enables the backspace key to work
 set backspace=indent,eol,start
 
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
 " Show line numbers
 set number
 set numberwidth=4
@@ -72,14 +92,23 @@ set laststatus=2    " Always display the status line
 " Highlight when searching.
 set hlsearch
 
-" Configure tabls as spaces
+" Used for ctags
+set autochdir
+set tags+=./tags;
+
+" Configure tabs as spaces
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
 :retab
+" Create a specialized tab setting for C/C++/Tex
+autocmd Filetype c,cpp,h,tex setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
-" Python mode support. 
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Python mode support.
 " References the github repo: github.com/python-mode/python-mode
 call plug#begin('~/.vim/plugged')
 

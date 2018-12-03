@@ -112,8 +112,18 @@ clonezaydh() {
 # Allows for quick moving up the directory stack.
 up() { local p= i=${1:-1}; while (( i-- )); do p+=../; done; cd "$p$2" && pwd; }
 
+# Helper function used to always build Tex files with an output directory
+function btex() {
+    BUILD_DIR=build
+    if ! [[ -d ${BUILD_DIR} ]]; then
+        mkdir ${BUILD_DIR}
+    fi
+    # $@ means means pass all parameters into this function
+    pdflatex -output-directory ${BUILD_DIR} "$@"
+}
+
 # Helper function to swap two file names
-function swapfiles()         
+function swapfiles()
 {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE

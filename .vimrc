@@ -26,16 +26,16 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " YouCompleteMe autocompletion support"
 Plugin 'Valloric/YouCompleteMe'
-
+" Gutentags
+Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
-Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
-
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
+Plugin 'lervag/vimtex'
+" Enable folding of blocks in LaTeX files
+Plugin 'matze/vim-tex-fold'
+" Improved commenter
+Plugin 'scrooloose/nerdcommenter'
+" Python Mode
+Plugin 'python-mode/python-mode'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -56,7 +56,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set spell spelllang=en_us           " Use US English
+" Use for US English
+set spell spelllang=en_us
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -75,22 +76,17 @@ syntax on
 " Enables the backspace key to work
 set backspace=indent,eol,start
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
+" Uncomment the following to have Vim jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
 
-" Show line numbers
-set number
-set numberwidth=4
-
+set number          " Show line numbers
+set numberwidth=5   " Set the maximum width of the number column on the left
 set ruler           " Show the cursor position all the time
 set laststatus=2    " Always display the status line
-
-" Highlight when searching.
-set hlsearch
+set hlsearch        " Highlight when searching.
 
 " Used for ctags
 set autochdir
@@ -102,21 +98,19 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 :retab
+
 " Create a specialized tab setting for C/C++/Tex
-autocmd Filetype c,cpp,h,tex setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype c++ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Python mode support.
-" References the github repo: github.com/python-mode/python-mode
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdcommenter'
-" References the github repo: github.com/python-mode/python-mode
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
-
-call plug#end()
 
 "Use // for comments in C"
 let NERD_c_alt_style=1
@@ -129,3 +123,17 @@ let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
 
+
+"==========================================================================
+"==========================================================================
+if exists("g:loaded_fix_indentkeys")
+    finish
+endif
+
+let g:loaded_fix_indentkeys = 1
+
+" Set indentkeys option again on changed filetype option.
+" This fixes TeX \item indentation in combination with YouCompleteMe.
+" See https://github.com/Valloric/YouCompleteMe/issues/1244
+" You may add more filetypes if necessary.
+autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys

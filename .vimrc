@@ -10,6 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Supertab used for compatibility between YouCompleteMe and UltiSnips
+" Needs to be first due to issue in supertab
+Plugin 'ervandew/supertab'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -36,6 +39,10 @@ Plugin 'matze/vim-tex-fold'
 Plugin 'scrooloose/nerdcommenter'
 " Python Mode
 Plugin 'python-mode/python-mode'
+" Syntastic for syntax highlighting
+Plugin 'vim-syntastic/syntastic'
+" UltiSnips used for snippet expansion.
+Plugin 'SirVer/ultisnips'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -123,6 +130,45 @@ let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
 
+" Syntastic Default Settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" lacheck is for LaTeX
+let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
+
+" Disable YouCompleteMe in these files
+let g:ycm_filetype_blacklist = {
+      \ 'tex': 1,
+      \ 'bib': 1,
+      \ 'markdown': 1,
+      \}
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+" Have enter select in YouCompleteMe
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+" Define where UltiSnips loops for snippets
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" SuperTab Settings
+" Get back default behavior for tab to move the list down
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "==========================================================================
 "==========================================================================

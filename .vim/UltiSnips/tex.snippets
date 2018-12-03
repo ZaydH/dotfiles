@@ -1,0 +1,40 @@
+snippet lr "left and right parenthesis math mode" i
+\left($1\right)$2
+endsnippet
+
+snippet bf "Make bold font" i
+\textbf{$1}
+endsnippet
+snippet it "make italic font" i
+\textit{$1}
+endsnippet
+
+snippet en "Build enumerate block" b
+\begin{enumerate}
+  \item $1
+\end{enumerate}
+endsnippet
+snippet item "Build itemize block" b
+\begin{itemize}
+  \item $1
+\end{itemize}
+endsnippet
+
+snippet beg "Begin an environment"
+\begin{$1}
+
+\end{$1}
+endsnippet
+
+snippet " "Quotes" A
+\`\`${1}''${0}
+endsnippet
+
+snippet base "Base Latex Document"
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+$1
+\end{document}
+endsnippet

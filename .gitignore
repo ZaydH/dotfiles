@@ -1,0 +1,5 @@
+# Ignore vim bundles
+bundle/*
+
+# Ignore Gutentags file
+tags

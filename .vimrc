@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" =========================================================================
+"     Vundle Start
+" =========================================================================
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -35,6 +38,8 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'lervag/vimtex'
 " Enable folding of blocks in LaTeX files
 Plugin 'matze/vim-tex-fold'
+" Nerdtree project folder viewer
+Plugin 'scrooloose/nerdtree'
 " Improved commenter
 Plugin 'scrooloose/nerdcommenter'
 " Python Mode
@@ -62,9 +67,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" Use for US English
-set spell spelllang=en_us
+" =========================================================================
+"     Vundle END
+" =========================================================================
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -99,13 +104,20 @@ set hlsearch        " Highlight when searching.
 set autochdir
 set tags+=./tags;
 
+" Spell Check Settings ====================================================
+" Use for US English
+set spell spelllang=en_us
+syntax on
+" Disable spellcheck for vimrc
+autocmd! bufreadpost .vimrc set nospell
+
+" Tab Settings ============================================================
 " Configure tabs as spaces
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
 :retab
-
 " Create a specialized tab setting for C/C++/Tex
 autocmd Filetype c++ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
@@ -119,9 +131,6 @@ let g:tex_flavor='latex'
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-"Use // for comments in C"
-let NERD_c_alt_style=1
-
 " Pylint configuration file
 "let g:pymode_dlint_config = '$HOME/.pylintrc'
 
@@ -130,6 +139,7 @@ let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
 
+" Syntastic ===============================================================
 " Syntastic Default Settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -143,6 +153,11 @@ let g:syntastic_check_on_wq = 0
 " lacheck is for LaTeX
 let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 
+" NERDTree ================================================================
+" Toggle NerdTree with nt
+map nt :NERDTreeToggle<CR>
+
+" YouCompleteMe ===========================================================
 " Disable YouCompleteMe in these files
 let g:ycm_filetype_blacklist = {
       \ 'tex': 1,
@@ -157,6 +172,7 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
+" UltiSnips ===============================================================
 " Define where UltiSnips loops for snippets
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -166,11 +182,33 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" SuperTab Settings
+" SuperTab ================================================================
 " Get back default behavior for tab to move the list down
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" NERDCommenter ===========================================================
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+"Use // for comments in C"
+let NERD_c_alt_style=1
+
+" Leader Key is Backslash --
+" https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
+
+" -------------------  Command Overview -----------------------------
+" Source: https://github.com/scrooloose/nerdcommenter
+"
+" Comments the current line from the cursor to the end of line.
+" <leader>cA |NERDComAppendComment|
+" Comment out the current line or text selected in visual mode.
+" [count]<leader>cn |NERDComNestedComment|
+" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+" [count]<leader>cm |NERDComMinimalComment|
+
 "==========================================================================
+" vimtex Fix -- Must Be at the End of the File
 "==========================================================================
 if exists("g:loaded_fix_indentkeys")
     finish

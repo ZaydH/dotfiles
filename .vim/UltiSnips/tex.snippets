@@ -5,8 +5,11 @@ endsnippet
 snippet bf "Make bold font" i
 \textbf{$1}
 endsnippet
-snippet it "make italic font" i
+snippet it "Make italic font" i
 \textit{$1}
+endsnippet
+snippet tt "Make typewriter font" i
+\texttt{$2}
 endsnippet
 
 snippet en "Build enumerate block" b
@@ -24,6 +27,27 @@ snippet beg "Begin an environment"
 \begin{$1}
 
 \end{$1}
+endsnippet
+
+snippet fig
+\begin{figure}[$1]
+  \centering
+  $4
+  \caption{$2}
+  \label{fig:$3}
+\end{figure}
+
+endsnippet
+
+snippet listings
+\begin{figure}[$1]
+  \begin{lstlisting}[]
+    $4
+  \end{lstlisting}
+  \caption{$2}
+  \label{fig:$3}
+\end{figure}
+
 endsnippet
 
 snippet " "Quotes" A

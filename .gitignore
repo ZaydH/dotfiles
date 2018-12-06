@@ -1,6 +1,7 @@
 # Ignore vim bundles
 bundle/
 autoload/
+plugin/
 
 # Ignore Gutentags file
 tags

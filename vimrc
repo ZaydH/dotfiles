@@ -44,6 +44,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 " Python Mode
 Plugin 'python-mode/python-mode'
+" Python Docstring Generation
+Plugin 'heavenshell/vim-pydocstring'
+" Automatically import python modules
+Plugin 'mgedmin/python-imports.vim'
+" Integrate LLDB into vim
+" Requires lldb be preinstalled on the system
+Plugin 'gilligan/vim-lldb'
 " Syntastic for syntax highlighting
 Plugin 'vim-syntastic/syntastic'
 " UltiSnips used for snippet expansion.
@@ -111,6 +118,13 @@ syntax on
 " Disable spellcheck for vimrc
 autocmd! bufreadpost .vimrc set nospell
 
+
+" Basic vim and Shell Settings ============================================
+" Reload vimrc after saving it
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"" Use zsh as shell in vim so zshrc is available
+"set shell=zsh\ --login
+
 " Tab Settings ============================================================
 " Configure tabs as spaces
 set smartindent
@@ -131,6 +145,7 @@ let g:tex_flavor='latex'
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Python Plugins Information ==============================================
 " Pylint configuration file
 "let g:pymode_dlint_config = '$HOME/.pylintrc'
 
@@ -138,6 +153,13 @@ let g:pymode_python = 'python3'
 let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
+
+" Command to automatically add docstrings
+" Uses plugin: vim-pydocstring
+map """ <Plug>(pydocstring)
+" Command to automatically import Python modules
+" Uses plugin: python-imports.vim
+map <C-o> :ImportName<CR>
 
 " Syntastic ===============================================================
 " Syntastic Default Settings
@@ -156,6 +178,9 @@ let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 " NERDTree ================================================================
 " Toggle NerdTree with nt
 map nt :NERDTreeToggle<CR>
+" Open NerdTree by default if nothing specified in vim.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " YouCompleteMe ===========================================================
 " Disable YouCompleteMe in these files
@@ -194,9 +219,8 @@ let g:NERDCommentEmptyLines = 1
 "Use // for comments in C"
 let NERD_c_alt_style=1
 
-" Leader Key is Backslash --
-" https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
-
+" <leader> Key is Backslash
+" Source: https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
 " -------------------  Command Overview -----------------------------
 " Source: https://github.com/scrooloose/nerdcommenter
 "

@@ -55,6 +55,8 @@ Plugin 'gilligan/vim-lldb'
 Plugin 'vim-syntastic/syntastic'
 " UltiSnips used for snippet expansion.
 Plugin 'SirVer/ultisnips'
+" gitgutter show the lines imodified in the file under use
+Plugin 'airblade/vim-gitgutter'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -219,7 +221,7 @@ let g:NERDCommentEmptyLines = 1
 "Use // for comments in C"
 let NERD_c_alt_style=1
 
-" <leader> Key is Backslash
+" <leader> Key is Backslash \
 " Source: https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
 " -------------------  Command Overview -----------------------------
 " Source: https://github.com/scrooloose/nerdcommenter

@@ -57,6 +57,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'SirVer/ultisnips'
 " gitgutter show the lines imodified in the file under use
 Plugin 'airblade/vim-gitgutter'
+" airline improved status bar
+Plugin 'vim-airline/vim-airline'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.

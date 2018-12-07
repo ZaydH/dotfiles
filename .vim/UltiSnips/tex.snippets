@@ -2,6 +2,10 @@ snippet lr "left and right parenthesis math mode" i
 \left($1\right)$2
 endsnippet
 
+snippet co "New command with arguments"
+\newcommand{\\${1:commandName}}[${2:numberOfArguments}]{${3:command}}
+endsnippet
+
 snippet bf "Make bold font" i
 \textbf{$1}
 endsnippet

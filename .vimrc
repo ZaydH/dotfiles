@@ -16,20 +16,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Supertab used for compatibility between YouCompleteMe and UltiSnips
 " Needs to be first due to issue in supertab
 Plugin 'ervandew/supertab'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+" Fugitive vim git app
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'"
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " YouCompleteMe autocompletion support"
 Plugin 'Valloric/YouCompleteMe'
 " Gutentags
@@ -59,6 +47,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'airblade/vim-gitgutter'
 " airline improved status bar
 Plugin 'vim-airline/vim-airline'
+" Needed for adding a color scheme to airline
+Plugin 'vim-airline/vim-airline-themes'
+" GruvBox color scheme
+Plugin 'morhetz/gruvbox'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -234,6 +226,13 @@ let NERD_c_alt_style=1
 " [count]<leader>cn |NERDComNestedComment|
 " Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
 " [count]<leader>cm |NERDComMinimalComment|
+
+" GruvBox =================================================================
+" Find more information on settings here:
+" https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+colorscheme gruvbox
+set background=dark
+let g:airline_theme='gruvbox'
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

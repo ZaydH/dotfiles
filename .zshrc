@@ -103,7 +103,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Helpful git Aliases
 alias gitlast='git add $_'  # this adds to git the last parameter of the previous bash command.
-alias gitwd='git diff -w --word-diff'
+# moved to .gitconfig
+#alias gitwd='git diff -w --word-diff'
 # Shortcut to clone my github repository
 clonezaydh() {
     git clone --recurse-submodules -j8 https://ZaydH@github.com/ZaydH/$1
@@ -130,6 +131,9 @@ function swapfiles()
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
+
+# Load gruvbox color scheme
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
 
 # Update the path environment variable
 export BISON_ROOT="/usr/local/opt/bison/bin"

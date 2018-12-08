@@ -1,11 +1,9 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-#	name = Zayd Hammoudeh
-#	email = zayd@Zayds-MacBook-Pro.local
-[user]
 	name = Zayd Hammoudeh
-	email = zayd.hammoudeh@gmail.com 
+	email = zayd.hammoudeh@gmail.com
+[alias]
+    wd = diff -w --word-diff
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

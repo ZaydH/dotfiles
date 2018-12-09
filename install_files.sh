@@ -4,7 +4,7 @@
 function install_file() {
     SCRIPT=`realpath $0`
     SCRIPTPATH=`dirname $SCRIPT`
-    printf "Creating sylink for file: \"$1\"\n"
+    printf "Creating symlink for file: \"$1\"\n"
     ln -sf ${SCRIPTPATH}/$1 ~/$1
 }
 
@@ -21,3 +21,5 @@ install_file .vim/python-imports.cfg
 install_file .vim/ftplugin/tex.vim
 # Settings for latexmk Perl script
 install_file .latexmkrc
+# Settings for tmux
+install_file .tmux.conf

@@ -225,7 +225,13 @@ let NERD_c_alt_style=1
 " Comment out the current line or text selected in visual mode.
 " [count]<leader>cn |NERDComNestedComment|
 " Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+" [count]<leader>ci |NERDComInvertComment|
+" Toggles the comment state of the selected line(s) individually. NEEDED IN PYTHON SINCE NO MULTILINE DELIMETER
 " [count]<leader>cm |NERDComMinimalComment|
+" Comments the given lines using only one set of multipart delimiters.
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " GruvBox =================================================================
 " Find more information on settings here:

@@ -28,6 +28,8 @@ Plugin 'lervag/vimtex'
 Plugin 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
 Plugin 'scrooloose/nerdtree'
+" DevIcons provides Icons to Make NerdTree cleaner
+Plugin 'ryanoasis/vim-devicons'
 " Improved commenter
 Plugin 'scrooloose/nerdcommenter'
 " Python Mode
@@ -171,6 +173,9 @@ let g:syntastic_check_on_wq = 0
 " lacheck is for LaTeX
 let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 
+" Use python3 for pyflakes
+let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
+
 " NERDTree ================================================================
 " Toggle NerdTree with nt
 map nt :NERDTreeToggle<CR>
@@ -220,10 +225,11 @@ let NERD_c_alt_style=1
 " -------------------  Command Overview -----------------------------
 " Source: https://github.com/scrooloose/nerdcommenter
 "
-" Comments the current line from the cursor to the end of line.
 " <leader>cA |NERDComAppendComment|
-" Comment out the current line or text selected in visual mode.
+" Comments the current line from the cursor to the end of line.
 " [count]<leader>cn |NERDComNestedComment|
+" Same as <leader>cc but forces nesting.
+" [count]<leader>c<space> |NERDComToggleComment|
 " Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
 " [count]<leader>ci |NERDComInvertComment|
 " Toggles the comment state of the selected line(s) individually. NEEDED IN PYTHON SINCE NO MULTILINE DELIMETER

@@ -25,3 +25,5 @@ install_file .vim/ftplugin/tex.vim
 install_file .latexmkrc
 # Settings for tmux
 install_file .tmux.conf
+# Setup for flake8 syntax checker
+install_file .config/flake8

@@ -4,6 +4,8 @@
 function install_file() {
     SCRIPT=`realpath $0`
     SCRIPTPATH=`dirname $SCRIPT`
+    DEST_FOLDER=$( dirname $1 )
+    mkdir -p ~/${DEST_FOLDER} &> /dev/null
     printf "Creating symlink for file: \"$1\"\n"
     ln -sf ${SCRIPTPATH}/$1 ~/$1
 }

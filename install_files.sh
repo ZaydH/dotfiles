@@ -27,3 +27,5 @@ install_file .latexmkrc
 install_file .tmux.conf
 # Setup for flake8 syntax checker
 install_file .config/flake8
+# Setup vim key binds in Intelli-J IDEs
+install_file .ideavimrc

@@ -2,6 +2,10 @@ snippet lr "left and right parenthesis math mode" i
 \left($1\right)$2
 endsnippet
 
+snippet pac "Package" b
+\usepackage`!p snip.rv='[' if t[1] else ""`${1:options}`!p snip.rv = ']' if t[1] else ""`{${2:package}}$0
+endsnippet
+
 snippet co "New command with arguments"
 \newcommand{\\${1:commandName}}[${2:numberOfArguments}]{${3:command}}
 endsnippet
@@ -41,6 +45,17 @@ snippet fig
   \label{fig:$3}
 \end{figure}
 
+endsnippet
+
+snippet eqn "Begin an equation"
+\begin{equation}\label{eq:$1}
+  $2
+\end{equation}
+
+endsnippet
+
+snippet frac "Fraction in math mode"
+\frac{$1}{$2}
 endsnippet
 
 snippet listings

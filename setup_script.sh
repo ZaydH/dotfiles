@@ -62,16 +62,19 @@ function install_vim_package_manager() {
 function install_python_with_pyenv() {
     declare -a versions={"2.7.14" "3.6.5" "3.7.1"}
     for ver in ${versions[@]}; do
-        printf "Installing python version ${ver}...\n"
+        printf "Installing python version ${ver}..."
         pyenv install ${ver} &> /dev/null
+        printf "COMPLETED\n"
+        printf "Beginning pip install..."
+        pip install --upgrade pip &> /dev/null
         printf "COMPLETED\n"
         install_python_packages
     done
 }
 # Standard function for install packages using pip
 function install_python_packages() {
-    declare -a pip_pkgs=(torch torchtext torchvision torchnet tflearn sklearn numpy scipy pillow ipython
-                         git-wrapper quilt bedtools dill matplotlib )
+    declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
+                         scipy pillow ipython pandas git-wrapper quilt bedtools dill matplotlib )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install pkg &> /dev/null

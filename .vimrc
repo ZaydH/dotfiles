@@ -82,6 +82,27 @@ set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces
 " Wrap text only on space
 :set linebreak " "
+" Highlight the line when in insert mode
+:autocmd InsertEnter,InsertLeave * set cul!
+
+" Change the cursor shape in insert mode
+" Other options (replace the number after \e[):
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+" Edit mode setting
+"let &t_SI = "\e[6 q"
+" Command mode setting
+"let &t_EI = "\e[2 q"
+" optional reset cursor on start:
+"augroup myCmds
+"au!
+"autocmd VimEnter * silent !echo -ne "\e[2 q"
+"augroup END
 
 " Enable copy and paste in vim
 set clipboard=unnamed
@@ -179,6 +200,8 @@ let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
 " NERDTree ================================================================
 " Toggle NerdTree with nt
 map nt :NERDTreeToggle<CR>
+" Show hidden (e.g., dot files)
+let NERDTreeShowHidden=1
 " Open NerdTree by default if nothing specified in vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -203,8 +226,8 @@ let g:ycm_key_list_previous_completion=[]
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 

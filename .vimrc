@@ -85,6 +85,10 @@ set nojoinspaces
 " Highlight the line when in insert mode
 :autocmd InsertEnter,InsertLeave * set cul!
 
+" Remap home to go to the tabbed beginning of the line
+:map <Home> ^
+:imap <Home> <Esc>^i
+
 " Change the cursor shape in insert mode
 " Other options (replace the number after \e[):
 "   Ps = 0  -> blinking block.

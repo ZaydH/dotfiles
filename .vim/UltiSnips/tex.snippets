@@ -31,6 +31,18 @@ snippet item "Build itemize block" b
 \end{itemize}
 endsnippet
 
+snippet sec "Start a new section" b
+\section{$1}
+
+$2
+endsnippet
+
+snippet sub "Start a new subsection" b
+\subsection{$1}
+
+$2
+endsnippet
+
 snippet beg "Begin an environment"
 \begin{$1}
 
@@ -75,7 +87,11 @@ endsnippet
 
 snippet base "Base Latex Document"
 \documentclass[10pt]{article}
+
 \usepackage[margin=1in]{geometry}
+
+% Enable (uncolored) cross-reference hyperlinks
+\usepackage[colorlinks=false]{hyperref}
 
 \begin{document}
 $1

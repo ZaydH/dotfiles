@@ -90,8 +90,8 @@ set nojoinspaces
 :imap <Home> <Esc>^i
 
 " Improve undo granularity
-" Create new undo point after return, space, or tab key pressed in insert mode
-:inoremap <CR> <C-g>u<CR>
+" Create new undo point after return (CR), space, or tab key pressed in insert mode
+:inoremap <CR> <CR><C-g>
 :inoremap <Space> <Space><C-g>u
 :inoremap <Tab> <Tab><C-g>u
 

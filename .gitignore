@@ -5,3 +5,6 @@ plugin/
 
 # Ignore Gutentags file
 tags
+
+# Ignore command history
+.vim/.netrwhist

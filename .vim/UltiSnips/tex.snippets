@@ -85,7 +85,7 @@ snippet " "Quotes" A
 \`\`${1}''${0}
 endsnippet
 
-snippet base "Base Latex Document"
+snippet base "Base LaTeX Document"
 \documentclass[10pt]{article}
 
 \usepackage[margin=1in]{geometry}
@@ -95,5 +95,13 @@ snippet base "Base Latex Document"
 
 \begin{document}
 $1
+\end{document}
+endsnippet
+
+snippet subfile "Subfile LaTeX Document"
+\documentclass[$1]{subfiles}
+
+\begin{document}
+$2
 \end{document}
 endsnippet

@@ -89,6 +89,12 @@ set nojoinspaces
 :map <Home> ^
 :imap <Home> <Esc>^i
 
+" Improve undo granularity
+" Create new undo point after return, space, or tab key pressed in insert mode
+:inoremap <CR> <C-g>u<CR>
+:inoremap <Space> <Space><C-g>u
+:inoremap <Tab> <Tab><C-g>u
+
 " Change the cursor shape in insert mode
 " Other options (replace the number after \e[):
 "   Ps = 0  -> blinking block.
@@ -155,7 +161,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 :retab
-" Create a specialized tab setting for C/C++/Tex
+" Create a specialized tab setting for C++
 autocmd Filetype c++ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
@@ -182,7 +188,8 @@ let g:pymode_options_colorcolumn = 1
 map """ <Plug>(pydocstring)
 " Command to automatically import Python modules
 " Uses plugin: python-imports.vim
-map <C-o> :ImportName<CR>
+" "D" Represents the "command" key in Mac.
+map <C-g> :ImportName<CR>
 
 " Syntastic ===============================================================
 " Syntastic Default Settings

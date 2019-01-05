@@ -34,6 +34,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdcommenter'
 " Python Mode
 Plugin 'python-mode/python-mode'
+" Pyrope for vim
+Plugin 'python-rope/ropevim'
 " Python Docstring Generation
 Plugin 'heavenshell/vim-pydocstring'
 " Automatically import python modules
@@ -91,7 +93,7 @@ set nojoinspaces
 
 " Improve undo granularity
 " Create new undo point after return (CR), space, or tab key pressed in insert mode
-:inoremap <CR> <CR><C-g>
+:inoremap <CR> <CR><C-g>u
 :inoremap <Space> <Space><C-g>u
 :inoremap <Tab> <Tab><C-g>u
 
@@ -183,13 +185,21 @@ let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
 
+" Rope support
+" call pymode#default('g:pymode_rope', 0)
+call pymode#default('g:pymode_rope', 1)
+
 " Command to automatically add docstrings
 " Uses plugin: vim-pydocstring
 map """ <Plug>(pydocstring)
+
 " Command to automatically import Python modules
 " Uses plugin: python-imports.vim
-" "D" Represents the "command" key in Mac.
-map <C-g> :ImportName<CR>
+" map <C-g> :ImportName<CR>
+let g:pymode_rope_autoimport_bind = '<C-c>ra'
+
+" Refactor a variable/function/class/method
+let g:pymode_rope_rename_bind = '<F6>'
 
 " Syntastic ===============================================================
 " Syntastic Default Settings
@@ -209,10 +219,13 @@ let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
 
 " NERDTree ================================================================
+
 " Toggle NerdTree with nt
 map nt :NERDTreeToggle<CR>
+
 " Show hidden (e.g., dot files)
 let NERDTreeShowHidden=1
+
 " Open NerdTree by default if nothing specified in vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -246,10 +259,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Parameters used by UltiSnips when generating commands
 let g:ultisnips_python_quoting_style="double"
 let g:ultisnips_python_triple_quoting_style="double"
+let g:ultisnips_python_style='sphinx'
 
 " SuperTab ================================================================
 " Get back default behavior for tab to move the list down
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " NERDCommenter ===========================================================
 " Add spaces after comment delimiters by default

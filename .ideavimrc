@@ -1,1 +1,7 @@
 source ~/.vimrc
+
+" Restore the mapping of the return, space, and tab keys since PyCharm has
+" adequate undo granularity.
+:inoremap <CR> <CR>
+:inoremap <Space> <Space>
+:inoremap <Tab> <Tab>

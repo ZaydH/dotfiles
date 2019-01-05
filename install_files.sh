@@ -16,7 +16,7 @@ install_file .vimrc
 install_file .zshrc
 
 # UltiSnips Plugin - LaTeX snippets
-install_file .vim/UltiSnips/tex.snippets
+install_file .vim/UltiSnips
 # Python packages for Python Imports vim module
 install_file .vim/python-imports.cfg
 # LaTeX specific vim settings

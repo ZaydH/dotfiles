@@ -12,7 +12,7 @@ max-line-length=100
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=x,X,y,i,j,k,nd,md,pu,f,g,m,n,N,K,v,ff,w,c,q
+good-names=x,X,y,i,j,k,l,nd,md,pu,f,g,m,n,N,K,v,ff,w,c,q
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.

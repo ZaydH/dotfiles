@@ -225,9 +225,9 @@ let g:ycm_filetype_blacklist = {
       \ 'markdown': 1,
       \}
 " make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 " Have enter select in YouCompleteMe
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
@@ -235,12 +235,17 @@ let g:ycm_key_list_previous_completion=[]
 " UltiSnips ===============================================================
 " Define where UltiSnips loops for snippets
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Parameters used by UltiSnips when generating commands
+let g:ultisnips_python_quoting_style="double"
+let g:ultisnips_python_triple_quoting_style="double"
 
 " SuperTab ================================================================
 " Get back default behavior for tab to move the list down

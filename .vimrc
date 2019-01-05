@@ -195,8 +195,11 @@ map """ <Plug>(pydocstring)
 
 " Command to automatically import Python modules
 " Uses plugin: python-imports.vim
-" map <C-g> :ImportName<CR>
-let g:pymode_rope_autoimport_bind = '<C-c>ra'
+map <C-g> :ImportName<CR>
+" let g:pymode_rope_autoimport=1
+" let g:pymode_rope_autoimport_bind = '<C-c>ra'
+" add the name of modules you want to autoimport
+" let g:ropevim_autoimport_modules = ["os", "shutil", "sys", "datetime", "pickle", "math", "re", "warnings", "copy", "logging", "sklearn", "torch", "torchvision", "scipy"]
 
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'

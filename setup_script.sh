@@ -74,7 +74,8 @@ function install_python_with_pyenv() {
 # Standard function for install packages using pip
 function install_python_packages() {
     declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
-                         scipy pillow ipython pandas git-wrapper quilt bedtools dill matplotlib )
+                         scipy pillow ipython pandas git-wrapper quilt bedtools dill matplotlib
+                         exhale sphinx exhale sphinx_rtd_theme )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install pkg &> /dev/null

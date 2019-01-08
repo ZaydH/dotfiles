@@ -2,12 +2,16 @@
 
 # Function for installing a file from then repository to the filesystem
 function install_file() {
+    # Get to the path of the script
     SCRIPT=`realpath $0`
+    # Get the folder where the script is located
     SCRIPTPATH=`dirname $SCRIPT`
+    # Get the relative folder for the item of interest
     DEST_FOLDER=$( dirname $1 )
     mkdir -p ~/${DEST_FOLDER} &> /dev/null
     printf "Creating symlink for file: \"$1\"\n"
-    ln -sf ${SCRIPTPATH}/$1 ~/$1
+    # Create the symlink and delete item if it already exists
+    ln -sF ${SCRIPTPATH}/$1 ~/$1
 }
 
 install_file .gitconfig
@@ -20,7 +24,7 @@ install_file .vim/UltiSnips
 # Python packages for Python Imports vim module
 install_file .vim/python-imports.cfg
 # LaTeX specific vim settings
-install_file .vim/ftplugin/tex.vim
+install_file .vim/ftplugin
 # Settings for latexmk Perl script
 install_file .latexmkrc
 # Settings for tmux

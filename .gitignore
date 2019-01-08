@@ -1,10 +1,13 @@
-# Ignore vim bundles
+# vim bundles
 bundle/
 autoload/
 plugin/
 
-# Ignore Gutentags file
+# Gutentags file
 tags
 
-# Ignore command history
+# Command history
 .vim/.netrwhist
+
+# vim swp files
+*.swp

@@ -75,7 +75,8 @@ function install_python_with_pyenv() {
 function install_python_packages() {
     declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
                          scipy pillow ipython pandas git-wrapper quilt bedtools dill matplotlib
-                         exhale sphinx exhale sphinx_rtd_theme )
+                         exhale sphinx exhale sphinx_rtd_theme lightgbm dill seaborn jupyter
+                         fuzzywuzzy)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install pkg &> /dev/null
@@ -88,8 +89,8 @@ determine_os
 install_and_update_package_manager
 
 # Install package manager packages
-declare -a pkgs=(gmp git bison gzip gcc autoconf automake cmake cppcheck
-                 coreutils moreutils zsh vim tmux subversion wget)
+declare -a pkgs=(gmp git bison gzip gcc autoconf automake cmake cppcheck coreutils moreutils
+                 zsh vim tmux subversion wget jupyter libomp)
 for pkg in ${pkgs[@]}; do
     install_package pkg
 done

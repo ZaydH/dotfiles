@@ -1,11 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Zayd Hammoudeh
-	email = zayd.hammoudeh@gmail.com
+    name = Zayd Hammoudeh
+    email = zayd.hammoudeh@gmail.com
 [alias]
     wd = diff -w --word-diff
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

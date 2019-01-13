@@ -18,8 +18,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ervandew/supertab'
 " Fugitive vim git app
 Plugin 'tpope/vim-fugitive'
+" Vim Comment tool
+Plugin 'tpope/vim-commentary'
 " YouCompleteMe autocompletion support"
 Plugin 'Valloric/YouCompleteMe'
+" Enables quick traversal through a document
+Plugin 'easymotion/vim-easymotion'
 " Gutentags
 Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
@@ -30,8 +34,8 @@ Plugin 'matze/vim-tex-fold'
 Plugin 'scrooloose/nerdtree'
 " DevIcons provides Icons to Make NerdTree cleaner
 Plugin 'ryanoasis/vim-devicons'
-" Improved commenter
-Plugin 'scrooloose/nerdcommenter'
+" " Improved commenter
+"Plugin 'scrooloose/nerdcommenter'
 " Python Mode
 Plugin 'python-mode/python-mode'
 " Pyrope for vim
@@ -49,10 +53,12 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'SirVer/ultisnips'
 " gitgutter show the lines imodified in the file under use
 Plugin 'airblade/vim-gitgutter'
-" airline improved status bar
+" " airline improved status bar
 Plugin 'vim-airline/vim-airline'
-" Needed for adding a color scheme to airline
+" " Needed for adding a color scheme to airline
 Plugin 'vim-airline/vim-airline-themes'
+" " powerline improved status bar
+" Plugin 'powerline/powerline'
 " GruvBox color scheme
 Plugin 'morhetz/gruvbox'
 
@@ -268,32 +274,36 @@ let g:ultisnips_python_style='sphinx'
 " Get back default behavior for tab to move the list down
 let g:SuperTabDefaultCompletionType = "<C-n>"
 
-" NERDCommenter ===========================================================
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-"Use // for comments in C"
-let NERD_c_alt_style=1
+"" NERDCommenter ===========================================================
+"" Add spaces after comment delimiters by default
+"let g:NERDSpaceDelims = 1
+"" Allow commenting and inverting empty lines (useful when commenting a region)
+"let g:NERDCommentEmptyLines = 1
+""Use // for comments in C"
+"let NERD_c_alt_style=1
 
-" <leader> Key is Backslash \
-" Source: https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
-" -------------------  Command Overview -----------------------------
-" Source: https://github.com/scrooloose/nerdcommenter
-"
-" <leader>cA |NERDComAppendComment|
-" Comments the current line from the cursor to the end of line.
-" [count]<leader>cn |NERDComNestedComment|
-" Same as <leader>cc but forces nesting.
-" [count]<leader>c<space> |NERDComToggleComment|
-" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
-" [count]<leader>ci |NERDComInvertComment|
-" Toggles the comment state of the selected line(s) individually. NEEDED IN PYTHON SINCE NO MULTILINE DELIMETER
-" [count]<leader>cm |NERDComMinimalComment|
-" Comments the given lines using only one set of multipart delimiters.
+"" <leader> Key is Backslash \
+"" Source: https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
+"" -------------------  Command Overview -----------------------------
+"" Source: https://github.com/scrooloose/nerdcommenter
+""
+"" <leader>cA |NERDComAppendComment|
+"" Comments the current line from the cursor to the end of line.
+"" [count]<leader>cn |NERDComNestedComment|
+"" Same as <leader>cc but forces nesting.
+"" [count]<leader>c<space> |NERDComToggleComment|
+"" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
+"" [count]<leader>ci |NERDComInvertComment|
+"" Toggles the comment state of the selected line(s) individually. NEEDED IN PYTHON SINCE NO MULTILINE DELIMETER
+"" [count]<leader>cm |NERDComMinimalComment|
+"" Comments the given lines using only one set of multipart delimiters.
 
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+"" Remap home to go to the tabbed beginning of the line
+"map <C-.> <Plug>NerdComToggleComment
+"imap <C-.> <esc><Plug>NerdComToggleComment<esc>i
+
+"" Add spaces after comment delimiters by default
+"let g:NERDSpaceDelims = 1
 
 " GruvBox =================================================================
 " Find more information on settings here:

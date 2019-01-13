@@ -89,8 +89,8 @@ determine_os
 install_and_update_package_manager
 
 # Install package manager packages
-declare -a pkgs=(gmp git bison gzip gcc autoconf automake cmake cppcheck coreutils moreutils
-                 zsh vim tmux subversion wget jupyter libomp)
+declare -a pkgs=(gmp git git-lfs bison gzip gcc autoconf automake cmake cppcheck coreutils
+                 moreutils zsh vim tmux subversion wget jupyter libomp)
 for pkg in ${pkgs[@]}; do
     install_package pkg
 done

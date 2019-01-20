@@ -76,7 +76,7 @@ function install_python_packages() {
     declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
                          scipy pillow ipython pandas git-wrapper quilt bedtools dill matplotlib
                          exhale sphinx exhale sphinx_rtd_theme lightgbm dill seaborn jupyter
-                         fuzzywuzzy)
+                         fuzzywuzzy keras)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install pkg &> /dev/null

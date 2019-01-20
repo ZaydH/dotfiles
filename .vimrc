@@ -44,9 +44,9 @@ Plugin 'python-rope/ropevim'
 Plugin 'heavenshell/vim-pydocstring'
 " Automatically import python modules
 Plugin 'mgedmin/python-imports.vim'
-" Integrate LLDB into vim
-" Requires lldb be preinstalled on the system
-Plugin 'gilligan/vim-lldb'
+" " Integrate LLDB into vim
+" " Requires lldb be preinstalled on the system
+" Plugin 'gilligan/vim-lldb'
 " Syntastic for syntax highlighting
 Plugin 'vim-syntastic/syntastic'
 " UltiSnips used for snippet expansion.
@@ -57,8 +57,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 " " Needed for adding a color scheme to airline
 Plugin 'vim-airline/vim-airline-themes'
-" " powerline improved status bar
-" Plugin 'powerline/powerline'
 " GruvBox color scheme
 Plugin 'morhetz/gruvbox'
 
@@ -311,6 +309,28 @@ let g:SuperTabDefaultCompletionType = "<C-n>"
 colorscheme gruvbox
 set background=dark
 let g:airline_theme='gruvbox'
+
+" EasyMotion =================================================================
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

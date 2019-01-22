@@ -84,10 +84,10 @@ function install_vim_package_manager() {
     VIM_BUNDLE_FOLDER=~/.vim/bundle/
     printf "Installing vim package manager \"vundle\"..."
     rm -rf ${VIM_BUNDLE_FOLDER} &> /dev/null
-    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim &> /dev/null
     printf "COMPLETED\n"
     printf "Installing vim plugins..."
-    vim -c 'PluginInstall' -c 'qa!' &> /dev/null
+    vim -c 'PluginInstall' -c 'qa!' # &> /dev/null
     printf "COMPLETED\n"
 
     YCM=YouCompleteMe
@@ -111,6 +111,8 @@ function install_python_with_pyenv() {
     pyenv update &> /dev/null
     printf "COMPLETED\n"
 
+    # Needed to ensure configuration is valid
+    export PYTHON_CONFIGURE_OPTS="--enable-shared"
     declare -a versions=("2.7.15" "3.6.5" "3.7.1")
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."
@@ -162,11 +164,11 @@ function install_python_packages() {
 
 
 determine_os
-install_and_update_package_manager
 
-install_all_packages
+# install_and_update_package_manager
+# install_all_packages
 
-setup_dot_files
+# setup_dot_files
 
 install_python_with_pyenv
 

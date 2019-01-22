@@ -30,6 +30,7 @@ function determine_os() {
 
 function install_ohmyzsh() {
     printf "Installing Oh My ZSH..."
+    rm -rf ~/.oh-my-zsh &> /dev/null
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &> /dev/null
     printf "COMPLETED\n"
     setup_dot_files
@@ -64,7 +65,8 @@ function install_all_packages() {
     declare -a pkgs=(gmp libgmp3-dev git git-lfs bison gzip gcc g++ autoconf automake cmake
                      cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
                      zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
-                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev)
+                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev curl python python3
+                     python-dev python3-dev python-devel dkms build-essential)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
@@ -100,6 +102,7 @@ function install_vim_package_manager() {
 
 function install_python_with_pyenv() {
     printf "Installing PyEnv..."
+    source ~/.zshrc &> /dev/null
     if [ ${OS} == ${MAC} ]; then
         brew install pyenv > /dev/null
     else
@@ -120,7 +123,7 @@ function install_python_with_pyenv() {
         eval ${cmd} &> /dev/null
         printf "COMPLETED\n"
         pyenv global ${ver}
-        printf "Beginning pip install..."
+        printf "Upgrading pip..."
         pip install --upgrade pip &> /dev/null
         printf "COMPLETED\n"
         install_python_packages
@@ -153,15 +156,14 @@ function setup_dot_files() {
 function install_python_packages() {
     declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
                          scipy pillow ipython pandas git-wrapper quilt dill matplotlib
-                         exhale sphinx exhale sphinx_rtd_theme lightgbm dill seaborn jupyter
+                         exhale sphinx exhale sphinx_rtd_theme lightgbm seaborn jupyter
                          fuzzywuzzy keras)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install ${pkg} > /dev/null
         printf "COMPLETED\n"
-    done
+   done
 }
-
 
 determine_os
 

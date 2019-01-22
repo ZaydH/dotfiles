@@ -11,14 +11,21 @@ OS=ERROR # Define later
 PKG_MNGR_INSTALL=ERROR # Defined later
 
 function determine_os() {
+    UNKNOWN="Unknown"
     case "$OSTYPE" in
-      solaris*) echo "SOLARIS" ;;
+      # solaris*) echo "SOLARIS" ;;
       darwin*)  OS=${MAC} ;;
       linux*)   OS=${LINUX} ;;
-      bsd*)     echo "BSD" ;;
-      msys*)    echo "WINDOWS" ;;
-      *)        echo "unknown: $OSTYPE" ;;
+      # bsd*)     echo "BSD" ;;
+      # msys*)    echo "WINDOWS" ;;
+      *)        OS=${UNKNOWN} ;;
     esac
+
+    if [ $OS == $UNKNOWN ]; then
+        printf "Unknown/unsupported OS detected. Exiting...\n"
+        exit 1
+    fi
+    printf "OS Detected: ${OS}...\n"
 }
 
 function install_ohmyzsh() {
@@ -28,13 +35,19 @@ function install_ohmyzsh() {
 }
 
 function install_and_update_package_manager() {
-    if [[ ${OS} -eq ${MAC} ]]; then
+    if [ ${OS} == ${MAC} ]; then
         install_brew
-        PKG_MNGR_INSTALL=brew install
+        PKG_MNGR_INSTALL="brew install"
+    elif [ ${OS} == ${LINUX} ]; then
+	printf "Updating package manager..."
+	sudo apt-get update &> /dev/null
+	printf "COMPLETED\n"
+        PKG_MNGR_INSTALL="sudo apt-get install -y"
     else
         printf "No supported package manager. Exiting..."
         exit 1
     fi
+    printf "Install command: ${PKG_MNGR_INSTALL}\n"
 }
 
 # Used to install homebrew on a mac
@@ -47,7 +60,9 @@ function install_brew() {
 # Installs one package via the package manager
 function install_package() {
     printf "Installing package \"${1}\"..."
-    eval "${PKG_MNGR_INSTALL} ${1}"
+    cmd="${PKG_MNGR_INSTALL} ${1}"
+    # printf "i\n$cmd\n"
+    eval $cmd &> /dev/null
     printf "COMPLETED\n"
 }
 # Installing the vim package manager vundle
@@ -79,7 +94,7 @@ function install_python_packages() {
                          fuzzywuzzy keras)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
-        pip install pkg &> /dev/null
+        pip install ${pkg} &> /dev/null
         printf "COMPLETED\n"
     done
 }
@@ -92,7 +107,7 @@ install_and_update_package_manager
 declare -a pkgs=(gmp git git-lfs bison gzip gcc autoconf automake cmake cppcheck coreutils
                  moreutils zsh vim tmux subversion wget jupyter libomp)
 for pkg in ${pkgs[@]}; do
-    install_package pkg
+    install_package ${pkg}
 done
 
 install_ohmyzsh

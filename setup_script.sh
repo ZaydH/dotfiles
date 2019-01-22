@@ -25,7 +25,7 @@ function determine_os() {
         printf "Unknown/unsupported OS detected. Exiting...\n"
         exit 1
     fi
-    printf "OS Detected: ${OS}...\n"
+    printf "OS Detected: ${OS}\n"
 }
 
 function install_ohmyzsh() {
@@ -47,7 +47,7 @@ function install_and_update_package_manager() {
         printf "No supported package manager. Exiting..."
         exit 1
     fi
-    printf "Install command: ${PKG_MNGR_INSTALL}\n"
+    # printf "Install command: ${PKG_MNGR_INSTALL}\n"
 }
 
 # Used to install homebrew on a mac
@@ -57,29 +57,48 @@ function install_brew() {
     brew update &> /dev/null
     printf "COMPLETED\n"
 }
+function install_all_packages() {
+    # Install package manager packages
+    declare -a pkgs=(gmp libgmp3-dev git git-lfs bison gzip gcc g++ autoconf automake cmake
+                     cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp
+                     zlib1g-dev openssl libssl-dev bzip2 readline readine-devel libreadline7
+                     libreadline7-dev sqlite3 libsqlite3-dev)
+    for pkg in ${pkgs[@]}; do
+        install_single_package ${pkg}
+    done
+}
 # Installs one package via the package manager
-function install_package() {
+function install_single_package() {
     printf "Installing package \"${1}\"..."
     cmd="${PKG_MNGR_INSTALL} ${1}"
-    # printf "i\n$cmd\n"
-    eval $cmd &> /dev/null
+    # printf "\n$cmd\n"
+    eval $cmd > /dev/null
     printf "COMPLETED\n"
 }
 # Installing the vim package manager vundle
 function install_vim_package_manager() {
+    VIM_BUNDLE_FOLDER=~/.vim/bundle/
     printf "Installing vim package manager \"vundle\"..."
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    rm -rf ${VIM_BUNDLE_FOLDER} &> /dev/null
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim
     printf "COMPLETED\n"
     printf "Installing vim plugins..."
     vim -c 'PluginInstall' -c 'qa!' &> /dev/null
+    printf "COMPLETED\n"
+
+    YCM=YouCompleteMe
+    printf "Installing ${YCM}..."
+    cd ${VIM_BUNDLE_FOLDER}${YCM}
+    python install.py > /dev/null
+    cd -
     printf "COMPLETED\n"
 }
 function install_python_with_pyenv() {
     printf "Installing PyEnv..."
     if [ ${OS} == ${MAC} ]; then
-        brew install pyenv &> /dev/null
+        brew install pyenv > /dev/null
     else
-        curl https://pyenv.run | bash
+        curl -s https://pyenv.run 2> /dev/null | bash > /dev/null
     fi
     printf "COMPLETED\n"
 
@@ -87,10 +106,11 @@ function install_python_with_pyenv() {
     pyenv update &> /dev/null
     printf "COMPLETED\n"
 
-    declare -a versions={"2.7.14" "3.6.5" "3.7.1"}
+    declare -a versions=("2.7.15" "3.6.5" "3.7.1")
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."
-        pyenv install ${ver} &> /dev/null
+        cmd="pyenv install ${ver}"
+        eval ${cmd} &> /dev/null
         printf "COMPLETED\n"
         printf "Beginning pip install..."
         pip install --upgrade pip &> /dev/null
@@ -126,7 +146,7 @@ function install_python_packages() {
                          fuzzywuzzy keras)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
-        pip install ${pkg} &> /dev/null
+        pip install ${pkg} #&> /dev/null
         printf "COMPLETED\n"
     done
 }
@@ -135,20 +155,15 @@ function install_python_packages() {
 determine_os
 install_and_update_package_manager
 
-# Install package manager packages
-declare -a pkgs=(gmp git git-lfs bison gzip gcc autoconf automake cmake cppcheck coreutils
-                 moreutils zsh vim tmux subversion wget jupyter libomp)
-for pkg in ${pkgs[@]}; do
-    install_package ${pkg}
-done
+install_all_packages
 
 # setup_dot_files
 
 install_python_with_pyenv
 
-install_vim_package_manager
+# install_vim_package_manager
 
 #=====================================================
 # Do last to prevent conflicts between shells
 #=====================================================
-install_ohmyzsh
+# install_ohmyzsh

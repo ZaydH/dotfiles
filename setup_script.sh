@@ -58,8 +58,9 @@ function install_brew() {
     brew update &> /dev/null
     printf "COMPLETED\n"
 }
+
+# Install package manager packages
 function install_all_packages() {
-    # Install package manager packages
     declare -a pkgs=(gmp libgmp3-dev git git-lfs bison gzip gcc g++ autoconf automake cmake
                      cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
                      zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
@@ -68,6 +69,7 @@ function install_all_packages() {
         install_single_package ${pkg}
     done
 }
+
 # Installs one package via the package manager
 function install_single_package() {
     printf "Installing package \"${1}\"..."
@@ -76,6 +78,7 @@ function install_single_package() {
     eval $cmd > /dev/null
     printf "COMPLETED\n"
 }
+
 # Installing the vim package manager vundle
 function install_vim_package_manager() {
     VIM_BUNDLE_FOLDER=~/.vim/bundle/
@@ -94,6 +97,7 @@ function install_vim_package_manager() {
     cd -
     printf "COMPLETED\n"
 }
+
 function install_python_with_pyenv() {
     printf "Installing PyEnv..."
     if [ ${OS} == ${MAC} ]; then
@@ -120,17 +124,20 @@ function install_python_with_pyenv() {
         install_python_packages
     done
 }
+
 function setup_dot_files() {
     # Link dotfiles
     DOTFILES_REPO=dotfiles
     mkdir -p ${REPOS_DIR} &> /dev/null
     cd $REPOS_DIR
     printf "Cloning the ${DOTFILES_REPO} repo..."
-    # rm -rf ${DOTFILES_REPO} &> /dev/null
-    git clone ${GITHUB_BASE}${DOTFILES_REPO} &> /dev/null
+    rm -rf ${DOTFILES_REPO} > /dev/null
+    git clone ${GITHUB_BASE}${DOTFILES_REPO} > /dev/null
     printf "COMPLETED\n"
 
-    INSTALL_SCRIPT="${DOTFILES_REPO}install_files.sh"
+    cd - &> /dev/null
+    cd ${REPOS_DIR}${DOTFILES_REPO} > /dev/null
+    INSTALL_SCRIPT="./install_files.sh"
     chmod +x ${INSTALL_SCRIPT}
     printf "Installing the dot files..."
     eval ${INSTALL_SCRIPT} &> /dev/null
@@ -159,11 +166,11 @@ install_and_update_package_manager
 
 install_all_packages
 
-# setup_dot_files
+setup_dot_files
 
 install_python_with_pyenv
 
-# install_vim_package_manager
+install_vim_package_manager
 
 #=====================================================
 # Do last to prevent conflicts between shells

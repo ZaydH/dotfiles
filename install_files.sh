@@ -27,8 +27,8 @@ install_file .vim/UltiSnips
 install_file .vim/python-imports.cfg
 # LaTeX specific vim settings
 install_file .vim/ftplugin
-# Settings for latexmk Perl script
-install_file .latexmkrc
+# # Settings for latexmk Perl script
+# install_file .latexmkrc
 # Settings for tmux
 install_file .tmux.conf
 # Setup for flake8 syntax checker

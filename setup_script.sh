@@ -32,6 +32,7 @@ function install_ohmyzsh() {
     printf "Installing Oh My ZSH..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &> /dev/null
     printf "COMPLETED\n"
+    setup_dot_files
 }
 
 function install_and_update_package_manager() {

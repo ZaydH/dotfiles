@@ -75,6 +75,18 @@ function install_vim_package_manager() {
     printf "COMPLETED\n"
 }
 function install_python_with_pyenv() {
+    printf "Installing PyEnv..."
+    if [ ${OS} == ${MAC} ]; then
+        brew install pyenv &> /dev/null
+    else
+        curl https://pyenv.run | bash
+    fi
+    printf "COMPLETED\n"
+
+    printf "Updating PyEnv..."
+    pyenv update &> /dev/null
+    printf "COMPLETED\n"
+
     declare -a versions={"2.7.14" "3.6.5" "3.7.1"}
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."
@@ -85,6 +97,26 @@ function install_python_with_pyenv() {
         printf "COMPLETED\n"
         install_python_packages
     done
+}
+function setup_dot_files() {
+    # Link dotfiles
+    DOTFILES_REPO=dotfiles
+    mkdir -p ${REPOS_DIR} &> /dev/null
+    cd $REPOS_DIR
+    printf "Cloning the ${DOTFILES_REPO} repo..."
+    # rm -rf ${DOTFILES_REPO} &> /dev/null
+    git clone ${GITHUB_BASE}${DOTFILES_REPO} &> /dev/null
+    printf "COMPLETED\n"
+
+    INSTALL_SCRIPT="${DOTFILES_REPO}install_files.sh"
+    chmod +x ${INSTALL_SCRIPT}
+    printf "Installing the dot files..."
+    eval ${INSTALL_SCRIPT} &> /dev/null
+    printf "COMPLETED\n"
+    # Return to previous directory
+    cd -
+    # Load the zshrc file for better support
+    source ~/.zshrc
 }
 # Standard function for install packages using pip
 function install_python_packages() {
@@ -110,27 +142,13 @@ for pkg in ${pkgs[@]}; do
     install_package ${pkg}
 done
 
-install_ohmyzsh
+# setup_dot_files
 
-# Link dotfiles
-DOTFILES_REPO=dotfiles
-mkdir -p REPOS_DIR &> /dev/null
-cd $REPOS_DIR
-printf "Cloning the ${DOTFILES_REPO} repo..."
-rm -rf ${DOTFILES_REPO}i &> /dev/null
-git clone ${GITHUB_BASEi}${DOTFILES_REPO} &> /dev/null
-printf "COMPLETED\n"
-
-INSTALL_SCRIPT="${DOTFILES_REPO}install_files.sh"
-chmod +x ${INSTALL_SCRIPT}
-printf "Installing the dot files..."
-${INSTALL_SCRIPT} &> /dev/null
-printf "COMPLETED\n"
-# Return to previous directory
-cd -
-# Load the zshrc file for better support
-source ~/.zshrc
+install_python_with_pyenv
 
 install_vim_package_manager
 
-install_python_with_pyenv
+#=====================================================
+# Do last to prevent conflicts between shells
+#=====================================================
+install_ohmyzsh

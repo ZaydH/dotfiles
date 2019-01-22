@@ -10,8 +10,10 @@ function install_file() {
     DEST_FOLDER=$( dirname $1 )
     mkdir -p ~/${DEST_FOLDER} &> /dev/null
     printf "Creating symlink for file: \"$1\"\n"
+    # unlink ~/$1 &> /dev/null  # Unlink the symlink if it exists
+    rm ~/$1 &> /dev/null  # Remove an existing file if applicable
     # Create the symlink and delete item if it already exists
-    ln -sF ${SCRIPTPATH}/$1 ~/$1
+    ln -nsF ${SCRIPTPATH}/$1 ~/$1
 }
 
 install_file .gitconfig

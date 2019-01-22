@@ -60,9 +60,9 @@ function install_brew() {
 function install_all_packages() {
     # Install package manager packages
     declare -a pkgs=(gmp libgmp3-dev git git-lfs bison gzip gcc g++ autoconf automake cmake
-                     cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp
-                     zlib1g-dev openssl libssl-dev bzip2 readline readine-devel libreadline7
-                     libreadline7-dev sqlite3 libsqlite3-dev)
+                     cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
+                     zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
+                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
@@ -112,6 +112,7 @@ function install_python_with_pyenv() {
         cmd="pyenv install ${ver}"
         eval ${cmd} &> /dev/null
         printf "COMPLETED\n"
+        pyenv global ${ver}
         printf "Beginning pip install..."
         pip install --upgrade pip &> /dev/null
         printf "COMPLETED\n"
@@ -146,7 +147,7 @@ function install_python_packages() {
                          fuzzywuzzy keras)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
-        pip install ${pkg} #&> /dev/null
+        pip install ${pkg} > /dev/null
         printf "COMPLETED\n"
     done
 }

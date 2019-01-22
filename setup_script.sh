@@ -66,7 +66,7 @@ function install_all_packages() {
                      cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
                      zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
                      libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev curl python python3
-                     python-dev python3-dev python-devel dkms build-essential)
+                     python-dev python3-dev python-devel dkms build-essential ctags exuberant-ctags)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
@@ -167,14 +167,14 @@ function install_python_packages() {
 
 determine_os
 
-# install_and_update_package_manager
-# install_all_packages
+install_and_update_package_manager
+install_all_packages
 
 # setup_dot_files
 
-install_python_with_pyenv
+# install_python_with_pyenv
 
-install_vim_package_manager
+# install_vim_package_manager
 
 #=====================================================
 # Do last to prevent conflicts between shells

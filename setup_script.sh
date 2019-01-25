@@ -41,9 +41,9 @@ function install_and_update_package_manager() {
         install_brew
         PKG_MNGR_INSTALL="brew install"
     elif [ ${OS} == ${LINUX} ]; then
-	printf "Updating package manager..."
-	sudo apt-get update &> /dev/null
-	printf "COMPLETED\n"
+        printf "Updating package manager..."
+        sudo apt-get update &> /dev/null
+        printf "COMPLETED\n"
         PKG_MNGR_INSTALL="sudo apt-get install -y"
     else
         printf "No supported package manager. Exiting..."
@@ -59,6 +59,13 @@ function install_brew() {
     brew update &> /dev/null
     printf "COMPLETED\n"
 }
+# Install mactex - TeX distribution for MacOS
+function installing_mactex() {
+    printf "Installing mactex - this may take a while..."
+    brew tap caskroom/cask > /dev/null
+    brew cask install mactex > /dev/null
+    printf "COMPLETED"
+}
 
 # Install package manager packages
 function install_all_packages() {
@@ -70,6 +77,9 @@ function install_all_packages() {
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
+    if [ ${OS} == ${MAC} ]; then
+        installing_mactex
+    fi
 }
 
 # Installs one package via the package manager

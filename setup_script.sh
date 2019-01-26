@@ -73,7 +73,8 @@ function install_all_packages() {
                      cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
                      zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
                      libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev curl python python3
-                     python-dev python3-dev python-devel dkms build-essential ctags exuberant-ctags)
+                     python-dev python3-dev python-devel dkms build-essential ctags exuberant-ctags
+                     doxygen flex ipython)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done

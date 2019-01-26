@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=${HOME}/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=${HOME}/.oh-my-zsh
@@ -133,7 +133,7 @@ function swapfiles()
 }
 
 # Load gruvbox color scheme
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+source "${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
 
 # Update the path environment variable
 export BISON_ROOT="/usr/local/opt/bison/bin"
@@ -151,3 +151,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 eval "$(pyenv init -)"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '${HOME}/google-cloud-sdk/path.zsh.inc' ]; then . '${HOME}/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '${HOME}/google-cloud-sdk/completion.zsh.inc'; fi

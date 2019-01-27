@@ -35,3 +35,5 @@ install_file .tmux.conf
 install_file .config/flake8
 # Setup vim key binds in Intelli-J IDEs
 install_file .ideavimrc
+# Configuration for google cloud
+install_file .config/gcloud/configurations/config_default

@@ -37,3 +37,5 @@ install_file .config/flake8
 install_file .ideavimrc
 # Configuration for google cloud
 install_file .config/gcloud/configurations/config_default
+# Adding jupyter notebook configuration
+install_file .jupyter/jupyter_notebook_config.py

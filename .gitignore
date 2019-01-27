@@ -11,3 +11,6 @@ tags
 
 # vim swp files
 *.swp
+
+# PyRope
+.ropeproject/

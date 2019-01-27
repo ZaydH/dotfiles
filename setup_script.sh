@@ -188,7 +188,7 @@ function setup_dot_files() {
 function install_python_packages() {
     declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
                          scipy pillow ipython pandas git-wrapper quilt dill matplotlib
-                         exhale sphinx exhale sphinx_rtd_theme lightgbm seaborn jupyter
+                         exhale sphinx exhale sphinx_rtd_theme lightgbm seaborn jupyter jupytext
                          fuzzywuzzy keras fastai pylint)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."

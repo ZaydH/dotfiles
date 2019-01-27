@@ -74,7 +74,7 @@ function install_all_packages() {
                      zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
                      libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev curl python python3
                      python-dev python3-dev python-devel dkms build-essential ctags exuberant-ctags
-                     doxygen flex ipython)
+                     doxygen flex ipython hub)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
@@ -197,6 +197,11 @@ function install_python_packages() {
    done
 }
 
+# Enable Jupyter Extensions
+function install_jupyter_extensions() {
+    ./install_jupyter_extensions.sh
+}
+
 determine_os
 
 install_and_update_package_manager
@@ -207,6 +212,8 @@ install_all_packages
 # install_python_with_pyenv
 
 # install_vim_package_manager
+
+# install_jupyter_extensions
 
 #=====================================================
 # Do last to prevent conflicts between shells

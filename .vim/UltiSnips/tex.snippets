@@ -105,3 +105,65 @@ snippet subfile "Subfile LaTeX Document"
 $2
 \end{document}
 endsnippet
+
+
+snippet beamer "Beamer Presentation"
+\documentclass[10pt,dvipsnames,usenames]{beamer}
+
+
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{%
+  \usetheme{${1:CambridgeUS}}    % or try default, Darmstadt, Warsaw, ...
+  \usecolortheme{${2:whale}}     % or try albatross, beaver, crane, ...
+  %\usefonttheme{serif}          % or try default, structurebold, ...
+  \usefonttheme[onlymath]{serif}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamercolor{block title}{bg=NavyBlue!30,fg=black}
+}
+
+
+\usepackage{hyperref}       % Used for the \href command
+\usepackage{pgfplots}       % Used to generate embedded plots
+\pgfplotsset{compat=1.13}
+
+
+% Here's where the presentation starts, with the info for the title slide
+\title[$3]{$4}
+\author[${5:Hammoudeh}]{%
+  \href{mailto:zayd@cs.uoregon.edu}{\textbf{Zayd Hammoudeh}}\inst{1}  % \textsuperscript{(\Letter)}
+  % \and
+  % \href{mailto:lowd@cs.uoregon.edu}{Daniel Lowd}\inst{1}
+}
+
+\institute[Univ.\ Oregon]{%
+  \textsuperscript{1}\textbf{University of Oregon}\\
+  Eugene, OR, USA\\
+  \texttt{\href{mailto:zayd@cs.uoregon.edu}{zayd@cs.uoregon.edu}}
+  % \texttt{\{zayd, lowd\}@ucsc.edu}
+}
+\date{${6:\today}}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{$7}
+  $8
+\end{frame}
+
+\end{document}
+endsnippet
+
+
+snippet frame "New Beamer frame"
+\begin{frame}{${1:}}
+  $2
+\end{frame}
+endsnippet

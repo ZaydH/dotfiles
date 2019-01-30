@@ -148,7 +148,7 @@ function install_python_with_pyenv() {
 
     # Needed to ensure configuration is valid
     export PYTHON_CONFIGURE_OPTS="--enable-shared"
-    declare -a versions=("2.7.15" "3.6.5" "3.7.1")
+    declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."
         cmd="pyenv install ${ver}"
@@ -156,9 +156,8 @@ function install_python_with_pyenv() {
         printf "COMPLETED\n"
         pyenv global ${ver}
         printf "Upgrading pip..."
-        pip install --upgrade pip &> /dev/null
         printf "COMPLETED\n"
-        install_python_packages
+        ./install_pip_packages.sh
     done
 }
 
@@ -183,18 +182,6 @@ function setup_dot_files() {
     cd -
     # Load the zshrc file for better support
     source ~/.zshrc
-}
-# Standard function for install packages using pip
-function install_python_packages() {
-    declare -a pip_pkgs=(torch torchtext torchvision torchnet tensorflow tflearn sklearn numpy
-                         scipy pillow ipython pandas git-wrapper quilt dill matplotlib
-                         exhale sphinx exhale sphinx_rtd_theme lightgbm seaborn jupyter jupytext
-                         fuzzywuzzy keras fastai pylint)
-    for pkg in ${pip_pkgs[@]}; do
-        printf "Installing python package \"${pkg}\"..."
-        pip install ${pkg} --upgrade > /dev/null
-        printf "COMPLETED\n"
-   done
 }
 
 # Enable Jupyter Extensions

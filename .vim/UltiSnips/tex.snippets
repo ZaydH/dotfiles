@@ -108,32 +108,62 @@ endsnippet
 
 
 snippet beamer "Beamer Presentation"
-\documentclass[10pt,dvipsnames,usenames]{beamer}
-
+\documentclass[11pt,dvipsnames,usenames,aspectratio=169]{beamer}
 
 % For more themes, color themes and font themes, see:
 % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
 %
 \mode<presentation>
 {%
-  \usetheme{${1:CambridgeUS}}    % or try default, Darmstadt, Warsaw, ...
-  \usecolortheme{${2:whale}}     % or try albatross, beaver, crane, ...
-  %\usefonttheme{serif}          % or try default, structurebold, ...
-  \usefonttheme[onlymath]{serif}
-  \setbeamertemplate{navigation symbols}{}
-  \setbeamertemplate{caption}[numbered]
-  \setbeamercolor{block title}{bg=NavyBlue!30,fg=black}
+  \usetheme{CambridgeUS}    % or try default, Darmstadt, Warsaw, ...
+  \usecolortheme{whale}     % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}          % or try default, structurebold, ...
+  % \usefonttheme[onlymath]{serif}
+  % \setbeamertemplate{navigation symbols}{}
+  % \setbeamercovered{transparent}
+
+  \setbeamercolor{title}{fg=white}
+  \setbeamerfont{title}{series=\bfseries}
+  \setbeamercolor{frametitle}{fg=black}
+  \setbeamerfont{frametitle}{series=\bfseries}
+
+  \setbeamercolor{section in head/foot}{fg=white}
+  \setbeamerfont{section in head/foot}{series=\bfseries}
+  \setbeamercolor{subsection in head/foot}{fg=white}
+  \setbeamerfont{subsection in head/foot}{series=\bfseries}
+  \setbeamercolor{author in head/foot}{fg=white}
+  \setbeamerfont{author in head/foot}{series=\bfseries}
+  \setbeamercolor{title in head/foot}{fg=white}
+  \setbeamerfont{title in head/foot}{series=\bfseries}
+
+  \setbeamercolor{block title}{use=structure,fg=white,bg=title in head/foot.bg}
+  \setbeamerfont{block title}{series=\bfseries}
+  \setbeamercolor{block body}{use=structure,fg=black,bg=black!1!white}
 }
 
+% Support graying out frame elements
+\newcommand{\FrameOpague}{\setbeamercovered{again covered={\opaqueness<1->{40}}}}
+% Transition slide
+\newcommand{\transitionFrame}[1]{%
+{%
+  \begin{frame}[plain,noframenumbering]{}{} % the plain option removes the sidebar and header from the title page
+    \setbeamertemplate{final page}[text]{\Large \textbf{#1}}
+    \usebeamertemplate{final page}
+  \end{frame}}
+}
 
-\usepackage{hyperref}       % Used for the \href command
+% \usepackage{hyperref}     % Loaded automatically by beamer
 \usepackage{pgfplots}       % Used to generate embedded plots
 \pgfplotsset{compat=1.13}
 
+\usepackage{color}
+\newcommand{\blue}[1]{{\color{Blue} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\green}[1]{{\color{ForestGreen} #1}}
 
 % Here's where the presentation starts, with the info for the title slide
 \title[$3]{$4}
-\author[${5:Hammoudeh}]{%
+\author[${5:Zayd Hammoudeh}]{%
   \href{mailto:zayd@cs.uoregon.edu}{\textbf{Zayd Hammoudeh}}\inst{1}  % \textsuperscript{(\Letter)}
   % \and
   % \href{mailto:lowd@cs.uoregon.edu}{Daniel Lowd}\inst{1}

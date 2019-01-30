@@ -11,8 +11,21 @@ max-line-length=100
 # Regexp for a line that is allowed to be longer than the limit.
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
 
+# Regular expression which should only match correct argument names
+argument-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct variable names
+variable-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct argument names
+argument-rgx=([A-Za-z]|[a-z_][a-z0-9_]{2,30})$
+
+# Regular expression which should only match correct attribute names in class
+# bodies
+class-attribute-rgx=_?([A-Za-z0-9_]{2,30}|[A-Z]|(__.*__))$
+
 # Good variable names which should always be accepted, separated by a comma
-good-names=x,X,y,i,j,k,l,nd,md,pu,ds,f,g,m,n,N,K,v,ff,w,c,q,df
+good-names=c,f,g,i,j,k,K,l,m,M,n,N,o,p,q,v,w,x,X,y,z,Z
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.

@@ -49,6 +49,8 @@ Plugin 'mgedmin/python-imports.vim'
 " Plugin 'gilligan/vim-lldb'
 " Syntastic for syntax highlighting
 Plugin 'vim-syntastic/syntastic'
+" Improved syntax checking using Vim's asynchronous protocol
+Plugin 'w0rp/ale'
 " UltiSnips used for snippet expansion.
 Plugin 'SirVer/ultisnips'
 " gitgutter show the lines imodified in the file under use
@@ -217,13 +219,16 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 
 " lacheck is for LaTeX
 let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 
 " Use python3 for pyflakes
-let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
+" let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
+let g:syntastic_python_pyflakes_exe = ''
+
+" ALE Settings ============================================================
 
 " NERDTree ================================================================
 
@@ -271,37 +276,6 @@ let g:ultisnips_python_style='sphinx'
 " SuperTab ================================================================
 " Get back default behavior for tab to move the list down
 let g:SuperTabDefaultCompletionType = "<C-n>"
-
-"" NERDCommenter ===========================================================
-"" Add spaces after comment delimiters by default
-"let g:NERDSpaceDelims = 1
-"" Allow commenting and inverting empty lines (useful when commenting a region)
-"let g:NERDCommentEmptyLines = 1
-""Use // for comments in C"
-"let NERD_c_alt_style=1
-
-"" <leader> Key is Backslash \
-"" Source: https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file
-"" -------------------  Command Overview -----------------------------
-"" Source: https://github.com/scrooloose/nerdcommenter
-""
-"" <leader>cA |NERDComAppendComment|
-"" Comments the current line from the cursor to the end of line.
-"" [count]<leader>cn |NERDComNestedComment|
-"" Same as <leader>cc but forces nesting.
-"" [count]<leader>c<space> |NERDComToggleComment|
-"" Toggles the comment state of the selected line(s). If the topmost selected line is commented, all selected lines are uncommented and vice versa.
-"" [count]<leader>ci |NERDComInvertComment|
-"" Toggles the comment state of the selected line(s) individually. NEEDED IN PYTHON SINCE NO MULTILINE DELIMETER
-"" [count]<leader>cm |NERDComMinimalComment|
-"" Comments the given lines using only one set of multipart delimiters.
-
-"" Remap home to go to the tabbed beginning of the line
-"map <C-.> <Plug>NerdComToggleComment
-"imap <C-.> <esc><Plug>NerdComToggleComment<esc>i
-
-"" Add spaces after comment delimiters by default
-"let g:NERDSpaceDelims = 1
 
 " GruvBox =================================================================
 " Find more information on settings here:

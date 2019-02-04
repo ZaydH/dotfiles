@@ -47,8 +47,8 @@ Plugin 'mgedmin/python-imports.vim'
 " " Integrate LLDB into vim
 " " Requires lldb be preinstalled on the system
 " Plugin 'gilligan/vim-lldb'
-" Syntastic for syntax highlighting
-Plugin 'vim-syntastic/syntastic'
+" " Syntastic for syntax highlighting
+" Plugin 'vim-syntastic/syntastic'
 " Improved syntax checking using Vim's asynchronous protocol
 Plugin 'w0rp/ale'
 " UltiSnips used for snippet expansion.
@@ -229,6 +229,15 @@ let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 let g:syntastic_python_pyflakes_exe = ''
 
 " ALE Settings ============================================================
+
+" Keep the ALE gutter open at all times
+let g:ale_sign_column_always = 1
+
+" Fix Python files with autopep8 and yapf.
+let b:ale_fixers = ['autopep8', 'yapf']
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 " NERDTree ================================================================
 

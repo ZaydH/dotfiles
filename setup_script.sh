@@ -147,7 +147,7 @@ function install_python_with_pyenv() {
     printf "COMPLETED\n"
 
     # Needed to ensure configuration is valid
-    export PYTHON_CONFIGURE_OPTS="--enable-shared"
+    export PYTHON_CONFIGURE_OPTS="--enable-framework"
     declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."

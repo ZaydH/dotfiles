@@ -110,6 +110,9 @@ clonezaydh() {
     git clone --recurse-submodules -j8 https://ZaydH@github.com/ZaydH/$1
 }
 
+# Simplify checking my running jobs
+alias mysqueue='squeue -u $(whoami)'
+
 # Allows for quick moving up the directory stack.
 up() { local p= i=${1:-1}; while (( i-- )); do p+=../; done; cd "$p$2" && pwd; }
 

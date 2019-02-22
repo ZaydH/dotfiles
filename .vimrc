@@ -94,6 +94,10 @@ set nojoinspaces
 " Highlight the line when in insert mode
 :autocmd InsertEnter,InsertLeave * set cul!
 
+" turn hybrid (relative & absolute) line numbers on
+:set number relativenumber
+:set nu rnu
+
 " Remap home to go to the tabbed beginning of the line
 :map <Home> ^
 :imap <Home> <Esc>^i

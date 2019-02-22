@@ -20,6 +20,12 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 " Vim Comment tool
 Plugin 'tpope/vim-commentary'
+" Support basic Unix commands in vim
+Plugin 'tpope/vim-eunuch'
+" Surround selected text with paired brackets
+Plugin 'tpope/vim-surround'
+" Multiple cursors tool
+Plugin 'terryma/vim-multiple-cursors'
 " YouCompleteMe autocompletion support"
 Plugin 'Valloric/YouCompleteMe'
 " Enables quick traversal through a document
@@ -34,8 +40,6 @@ Plugin 'matze/vim-tex-fold'
 Plugin 'scrooloose/nerdtree'
 " DevIcons provides Icons to Make NerdTree cleaner
 Plugin 'ryanoasis/vim-devicons'
-" " Improved commenter
-"Plugin 'scrooloose/nerdcommenter'
 " Python Mode
 Plugin 'python-mode/python-mode'
 " Pyrope for vim
@@ -44,9 +48,6 @@ Plugin 'python-rope/ropevim'
 Plugin 'heavenshell/vim-pydocstring'
 " Automatically import python modules
 Plugin 'mgedmin/python-imports.vim'
-" " Integrate LLDB into vim
-" " Requires lldb be preinstalled on the system
-" Plugin 'gilligan/vim-lldb'
 " " Syntastic for syntax highlighting
 " Plugin 'vim-syntastic/syntastic'
 " Improved syntax checking using Vim's asynchronous protocol

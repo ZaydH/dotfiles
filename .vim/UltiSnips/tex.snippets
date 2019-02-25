@@ -45,7 +45,7 @@ endsnippet
 
 snippet beg "Begin an environment"
 \begin{$1}
-
+  $2
 \end{$1}
 endsnippet
 
@@ -196,4 +196,18 @@ snippet frame "New Beamer frame"
 \begin{frame}{${1:}}
   $2
 \end{frame}
+endsnippet
+
+snippet tikzpic "New tikzpicture image"
+\begin{tikzpicture}[
+    $1
+  ]
+  $2
+\end{tikzpicture}
+endsnippet
+
+snippet tikzstyle "New tikz style"
+$1/.style={%
+  $2
+},$3
 endsnippet

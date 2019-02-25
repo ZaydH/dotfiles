@@ -39,3 +39,5 @@ install_file .ideavimrc
 install_file .config/gcloud/configurations/config_default
 # Adding jupyter notebook configuration
 install_file .jupyter/jupyter_notebook_config.py
+# Add the spelling file
+install_file .vim/spell/en.utf-8.add

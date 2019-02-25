@@ -108,6 +108,14 @@ set nojoinspaces
 :inoremap <Space> <Space><C-g>u
 :inoremap <Tab> <Tab><C-g>u
 
+" Regenerate the spelling file if out of date
+for d in glob('~/.vim/spell/*.add', 1, 1)
+    if filereadable(d) && (!filereadable(d . '.spl') || getftime(d) > getftime(d . '.spl'))
+        silent exec 'mkspell! ' . fnameescape(d)
+    endif
+endfor
+
+
 " Change the cursor shape in insert mode
 " Other options (replace the number after \e[):
 "   Ps = 0  -> blinking block.

@@ -99,8 +99,8 @@ function load_dotfile() {
         source $1
     fi
 }
-load_dotfile .aliases
-load_dotfile .functions
+load_dotfile ~/.aliases
+load_dotfile ~/.functions
 
 # Reorganize the $PATH variable so homebrew installs have higher priority
 # over system software.  Examples where this has the most relevance

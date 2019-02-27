@@ -7,8 +7,6 @@ function swapfiles()
     mv $TMPFILE "$2"
 }
 
-# moved to .gitconfig
-#alias gitwd='git diff -w --word-diff'
 # Shortcut to clone my github repository
 function clonezaydh() {
     git clone --recurse-submodules -j8 https://ZaydH@github.com/ZaydH/$1

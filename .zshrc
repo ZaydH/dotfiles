@@ -93,8 +93,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-
+# Loads the specified dotfile if it exists
+function load_dotfile() {
+    if [ -r $1 ]; then
+        source $1
+    fi
+}
+load_dotfile .aliases
+load_dotfile .functions
 
 # Reorganize the $PATH variable so homebrew installs have higher priority
 # over system software.  Examples where this has the most relevance
@@ -103,37 +109,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Helpful git Aliases
 alias gitlast='git add $_'  # this adds to git the last parameter of the previous bash command.
-# moved to .gitconfig
-#alias gitwd='git diff -w --word-diff'
-# Shortcut to clone my github repository
-clonezaydh() {
-    git clone --recurse-submodules -j8 https://ZaydH@github.com/ZaydH/$1
-}
 
 # Simplify checking my running jobs
 alias mysqueue='squeue -u $(whoami)'
-
-# Allows for quick moving up the directory stack.
-up() { local p= i=${1:-1}; while (( i-- )); do p+=../; done; cd "$p$2" && pwd; }
-
-# Helper function used to always build Tex files with an output directory
-function btex() {
-    BUILD_DIR=build
-    if ! [[ -d ${BUILD_DIR} ]]; then
-        mkdir ${BUILD_DIR}
-    fi
-    # $@ means means pass all parameters into this function
-    pdflatex -output-directory ${BUILD_DIR} "$@"
-}
-
-# Helper function to swap two file names
-function swapfiles()
-{
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
-}
 
 # Load gruvbox color scheme
 source "${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"

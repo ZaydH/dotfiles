@@ -69,17 +69,24 @@ function installing_mactex() {
 
 # Install package manager packages
 function install_all_packages() {
-    declare -a pkgs=(gmp libgmp3-dev git git-lfs bison gzip gcc g++ autoconf automake cmake
-                     cppcheck coreutils moreutils zsh vim tmux subversion wget jupyter libomp libomp-dev
-                     zlib1g-dev openssl libssl-dev bzip2 readline readline-devel libreadline7
-                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev curl python python3
-                     python-dev python3-dev python-devel dkms build-essential ctags exuberant-ctags
-                     doxygen flex ipython hub)
+    declare -a pkgs=(git git-lfs subversion hub
+                     curl wget
+                     gcc g++ autoconf automake cmake bison doxygen flex cppcheck
+                     vim ctags exuberant-ctags
+                     gmp libgmp3-dev
+                     gzip bzip2 p7zip zlib1g-dev
+                     python python3 python-dev python3-dev python-devel ipython jupyter
+                     coreutils moreutils zsh tmux libomp libomp-dev
+                     openssl libssl-dev readline readline-devel libreadline7
+                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
+                     dkms build-essential)
     for pkg in ${pkgs[@]}; do
         install_single_package ${pkg}
     done
     if [ ${OS} == ${MAC} ]; then
         installing_mactex
+        # Remove outdated versions from the cellar.
+        brew cleanup &> /dev/null
     fi
 }
 
@@ -152,7 +159,7 @@ function install_python_with_pyenv() {
     for ver in ${versions[@]}; do
         printf "Installing python version ${ver}..."
         cmd="pyenv install ${ver}"
-        eval ${cmd} &> /dev/null
+        eval ${cmd} > /dev/null
         printf "COMPLETED\n"
         pyenv global ${ver}
         printf "Upgrading pip..."
@@ -171,12 +178,12 @@ function setup_dot_files() {
     git clone ${GITHUB_BASE}${DOTFILES_REPO} > /dev/null
     printf "COMPLETED\n"
 
-    cd - &> /dev/null
+    cd - > /dev/null
     cd ${REPOS_DIR}${DOTFILES_REPO} > /dev/null
     INSTALL_SCRIPT="./install_files.sh"
     chmod +x ${INSTALL_SCRIPT}
     printf "Installing the dot files..."
-    eval ${INSTALL_SCRIPT} &> /dev/null
+    eval ${INSTALL_SCRIPT} > /dev/null
     printf "COMPLETED\n"
     # Return to previous directory
     cd -

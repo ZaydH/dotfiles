@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+
 
 " =========================================================================
 "     Vundle Start
@@ -34,14 +34,12 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
-" Fast Fold rather than automatic folding
-Plugin 'Konfekt/FastFold'
+" " Fast Fold rather than automatic folding
+" Plugin 'Konfekt/FastFold'
 " Enable folding of blocks in LaTeX files
 Plugin 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
 Plugin 'scrooloose/nerdtree'
-" DevIcons provides Icons to Make NerdTree cleaner
-Plugin 'ryanoasis/vim-devicons'
 " Python Mode
 Plugin 'python-mode/python-mode'
 " Pyrope for vim
@@ -95,6 +93,10 @@ set nojoinspaces
 :set linebreak " "
 " Highlight the line when in insert mode
 :autocmd InsertEnter,InsertLeave * set cul!
+
+" Make search case insensitive by default.
+:set ignorecase
+:set smartcase
 
 " turn hybrid (relative & absolute) line numbers on
 :set number relativenumber
@@ -342,6 +344,7 @@ let g:tex_fold_enabled = 1
 " VimTex ==================================================================
 
 let g:vimtex_fold_manual = 1
+
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File
 "==========================================================================

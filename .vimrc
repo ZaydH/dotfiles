@@ -34,6 +34,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
+" Fast Fold rather than automatic folding
+Plugin 'Konfekt/FastFold'
 " Enable folding of blocks in LaTeX files
 Plugin 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
@@ -223,23 +225,23 @@ map <C-g> :ImportName<CR>
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'
 
-" Syntastic ===============================================================
-" Syntastic Default Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " Syntastic ===============================================================
+" " Syntastic Default Settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
 
-" lacheck is for LaTeX
-let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
+" " lacheck is for LaTeX
+" let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 
-" Use python3 for pyflakes
-" let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
-let g:syntastic_python_pyflakes_exe = ''
+" " Use python3 for pyflakes
+" " let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
+" let g:syntastic_python_pyflakes_exe = ''
 
 " ALE Settings ============================================================
 
@@ -328,6 +330,18 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+" FastFold ================================================================
+
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
+let g:tex_fold_enabled = 1
+
+" VimTex ==================================================================
+
+let g:vimtex_fold_manual = 1
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File
 "==========================================================================

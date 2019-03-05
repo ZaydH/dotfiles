@@ -77,3 +77,18 @@ function targz() {
 
 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
 }
+
+# Backup an existing file
+function backup() {
+    if [ $# != 1 ]; then
+        printf "Invalid arguments. Expected: backup <filename>\n"
+        return 1
+    fi
+    BAK=$1.bak
+    if [ -f ${BAK} ]; then
+        printf "Unable to backup file \"${1}\". Backup already exists...\n"
+        return 1
+    fi
+    cp $1 ${BAK}
+    return 0
+}

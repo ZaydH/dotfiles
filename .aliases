@@ -3,3 +3,6 @@ alias gitlast='git add $_'  # this adds to git the last parameter of the previou
 
 # Simplify checking my running jobs
 alias mysqueue='squeue -u $(whoami)'
+
+# Clear vim swp files
+alias clrswp="rm .*.swp"

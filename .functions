@@ -80,15 +80,66 @@ function targz() {
 
 # Backup an existing file
 function backup() {
-    if [ $# != 1 ]; then
-        printf "Invalid arguments. Expected: backup <filename>\n"
+    if [[ $# < 1 || $# > 2 ]]; then
+        printf "Invalid arguments. Expected: backup [-r] <filename>\n"
         return 1
     fi
-    BAK=$1.bak
-    if [ -f ${BAK} ]; then
-        printf "Unable to backup file \"${1}\". Backup already exists...\n"
+    RESTORE=""
+    FILE=""
+    # Parse the input arguments
+    while [ "$1" != "" ]; do
+        PARAM=`echo $1 | awk -F= '{print $1}'`
+        VALUE=`echo $1 | awk -F= '{print $2}'`
+        case ${PARAM} in
+            -r)
+                if ! [ -z ${RESTORE} ]; then
+                    printf "Duplicate restore \"-r\" flags.\n"
+                    return 1
+                fi
+                RESTORE=True
+                shift
+                ;;
+            --) # end argument parsing
+                shift
+                break
+                ;;
+            *) # preserve positional arguments
+                if ! [ -z ${FILE} ]; then
+                    printf "Multiple backup files specified.  Only one can be specified at a time.\n"
+                    return 1
+                fi
+                FILE=${PARAM}
+                shift
+                ;;
+        esac
+    done
+    # Check the back up file was actually specified.
+    if [ -z ${FILE} ]; then
+        printf "No backup file specified.\n"
         return 1
     fi
-    cp $1 ${BAK}
+    BAK=${FILE}.bak
+    # Parse whether restore selected
+    if ! [ -z ${RESTORE} ]; then
+        if ! [ -f ${BAK} ]; then
+            printf "Backup file \"${BAK}\" does not exist so it cannot be restored.\n"
+            return 1
+        fi
+        if [ -f ${FILE} ]; then
+            printf "Target file \"${FILE}\" already exists.  Cannot restore.\n"
+            return 1
+        fi
+        cp ${BAK} ${FILE}
+    else
+        if ! [ -f ${FILE} ]; then
+            printf "File to be backed up \"${FILE}\" does not exist.\n"
+            return 1
+        fi
+        if [ -f ${BAK} ]; then
+            printf "Unable to backup file \"${FILE}\". Backup already exists...\n"
+            return 1
+        fi
+        cp ${FILE} ${BAK}
+    fi
     return 0
 }

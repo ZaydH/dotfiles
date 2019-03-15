@@ -85,7 +85,7 @@ filetype plugin indent on    " required
 "     Vundle END
 " =========================================================================
 
-" Display extra whitespace
+" Display non-space whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -310,6 +310,11 @@ colorscheme gruvbox
 set background=dark
 let g:airline_theme='gruvbox'
 
+" Change the color scheme for match parentheses to make it easier to view in
+" latex
+" hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+hi MatchParen cterm=bold ctermbg=gray
+
 " EasyMotion =================================================================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -331,15 +336,6 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-" FastFold ================================================================
-
-nmap zuz <Plug>(FastFoldUpdate)
-let g:fastfold_savehook = 1
-" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-
-let g:tex_fold_enabled = 1
 
 " VimTex ==================================================================
 

@@ -198,6 +198,12 @@ snippet frame "New Beamer frame"
 \end{frame}
 endsnippet
 
+snippet tikzpack "Tikz package import"
+% Imported via UltiSnips
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings,shadows,positioning,calc,backgrounds,shapes}
+endsnippet
+
 snippet tikzpic "New tikzpicture image"
 \begin{tikzpicture}[
     $1
@@ -210,4 +216,20 @@ snippet tikzstyle "New tikz style"
 $1/.style={%
   $2
 },$3
+endsnippet
+
+snippet mathpack "Math package import"
+% Imported via UltiSnips
+\usepackage{amsmath}
+\usepackage{amsfonts}  % Used for \mathbb and \mathcal
+\usepackage{amssymb}
+endsnippet
+
+snippet mathtools "mathtools delimiter definitions"
+% Imported via UltiSnips
+\usepackage{mathtools} % for "\DeclarePairedDelimiter" macro
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 endsnippet

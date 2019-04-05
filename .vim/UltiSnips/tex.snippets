@@ -17,7 +17,7 @@ snippet it "Make italic font" i
 \textit{$1}
 endsnippet
 snippet tt "Make typewriter font" i
-\texttt{$2}
+\texttt{$1}
 endsnippet
 
 snippet en "Build enumerate block" b
@@ -49,13 +49,34 @@ snippet beg "Begin an environment"
 \end{$1}
 endsnippet
 
-snippet fig
+snippet fig "Begin a figure" b
 \begin{figure}[$1]
   \centering
   $4
   \caption{$2}
   \label{fig:$3}
 \end{figure}
+
+endsnippet
+
+snippet tab "Begin a table" b
+\begin{table}[$1]
+  \centering
+  \caption{$2}\label{tab:$3}
+  \begin{tabular}{$4}
+    $5
+  \end{tabular}
+\end{table}
+
+endsnippet
+
+snippet alg "Begin an algorithm" b
+\begin{algorithm}
+  \caption{$1}\label{alg:$2}
+  \Function{$3}{$4}
+    $5
+  \EndFunction
+\end{algorithm}
 
 endsnippet
 
@@ -218,14 +239,22 @@ $1/.style={%
 },$3
 endsnippet
 
-snippet mathpack "Math package import"
+snippet algpack "Algorithm package import" b
+% Imported via UltiSnips
+\usepackage[noend]{algpseudocode}
+\usepackage[Algorithm,ruled]{algorithm}
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+endsnippet
+
+snippet mathpack "Math package import" b
 % Imported via UltiSnips
 \usepackage{amsmath}
 \usepackage{amsfonts}  % Used for \mathbb and \mathcal
 \usepackage{amssymb}
 endsnippet
 
-snippet mathtools "mathtools delimiter definitions"
+snippet mathtools "mathtools delimiter definitions" b
 % Imported via UltiSnips
 \usepackage{mathtools} % for "\DeclarePairedDelimiter" macro
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}

@@ -4,6 +4,7 @@
 function install_python_packages() {
     declare -a pip_pkgs=(pip  # Always upgrade pip first
                          fastai torch torchtext torchvision tensorboardX torchnet tensorflow keras chainer # Neural network packages
+                         cplex gurobi # Linear system solvers
                          tflearn sklearn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing

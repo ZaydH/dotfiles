@@ -10,7 +10,7 @@
     process = git-lfs filter-process
     required = true
 [push]
-	default = simple
+    default = simple
 [color]
     diff = auto
     status = auto
@@ -18,3 +18,5 @@
     interactive = auto
     ui = true
     pager = true
+[core]
+    excludesfile = ~/.gitignore_global

@@ -16,7 +16,11 @@ function install_file() {
     ln -nsF ${SCRIPTPATH}/$1 ~/$1
 }
 
+# Git settings
 install_file .gitconfig
+# Set of files git will always ignore
+install_file .gitignore_global
+
 install_file .pylintrc
 install_file .vimrc
 install_file .zshrc

@@ -45,3 +45,5 @@ install_file .vim/spell/en.utf-8.add
 install_file .functions
 # Add the file containing shell aliases
 install_file .aliases
+# Add the file containing ssh/scp configuration
+install_file .ssh

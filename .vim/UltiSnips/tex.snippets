@@ -71,16 +71,18 @@ snippet tab "Begin a table" b
 endsnippet
 
 snippet alg "Begin an algorithm" b
-\begin{algorithm}
-  \caption{$1}\label{alg:$2}
-  \Function{$3}{$4}
-    $5
-  \EndFunction
+\begin{algorithm}[$1]
+  \caption{$2}\label{alg:$3}
+  \begin{algorithmic}[1]
+    \Function{$4}{$5}
+      $6
+    \EndFunction
+  \end{algorithmic}
 \end{algorithm}
 
 endsnippet
 
-snippet eqn "Begin an equation"
+snippet eqn "Begin an equation" b
 \begin{equation}\label{eq:$1}
   $2
 \end{equation}

@@ -50,4 +50,5 @@ install_file .functions
 # Add the file containing shell aliases
 install_file .aliases
 # Add the file containing ssh/scp configuration
-install_file .ssh
+install_file .ssh/config
+install_file .ssh/id_rsa.pub

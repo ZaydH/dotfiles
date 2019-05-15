@@ -249,6 +249,15 @@ snippet algpack "Algorithm package import" b
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
 endsnippet
 
+snippet colorpack "Color package and command import" b
+% Imported via UltiSnips
+\usepackage{color}
+\newcommand{\colortext}[2]{{\color{#1} #2}}
+\newcommand{\red}[1]{\colortext{red}{#1}}
+\newcommand{\blue}[1]{\colortext{red}{#1}}
+\newcommand{\green}[1]{\colortext{green}{#1}}
+endsnippet
+
 snippet mathpack "Math package import" b
 % Imported via UltiSnips
 \usepackage{amsmath}

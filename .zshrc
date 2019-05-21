@@ -62,7 +62,9 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
+if [ -d "${ZSH}" ]; then
+    source $ZSH/oh-my-zsh.sh
+fi
 
 # User configuration
 
@@ -95,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Loads the specified dotfile if it exists
 function load_dotfile() {
-    if [ -r $1 ]; then
+    if [ -r "$1" ]; then
         source $1
     fi
 }
@@ -114,7 +116,10 @@ alias gitlast='git add $_'  # this adds to git the last parameter of the previou
 alias mysqueue='squeue -u $(whoami)'
 
 # Load gruvbox color scheme
-source "${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
+if [ -f "${GRUV_BOX}" ]; then
+    source "${GRUV_BOX}"
+fi
 
 # Update the path environment variable
 export BISON_ROOT="/usr/local/opt/bison/bin"
@@ -126,11 +131,13 @@ export PATH="$REFLEX_ROOT:$PATH"
 
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+if [ -d ${PYENV_ROOT} ]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if command -v pyenv 1>/dev/null 2>&1; then
+      eval "$(pyenv init -)"
+    fi
+    eval "$(pyenv init -)"
 fi
-eval "$(pyenv init -)"
 
 
 # The next line updates PATH for the Google Cloud SDK.

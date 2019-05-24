@@ -109,12 +109,6 @@ load_dotfile ~/.functions
 # is python and ruby.
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-# Helpful git Aliases
-alias gitlast='git add $_'  # this adds to git the last parameter of the previous bash command.
-
-# Simplify checking my running jobs
-alias mysqueue='squeue -u $(whoami)'
-
 # Load gruvbox color scheme
 GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
 if [ -f "${GRUV_BOX}" ]; then

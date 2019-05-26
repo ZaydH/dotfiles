@@ -95,26 +95,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Loads the specified dotfile if it exists
-function load_dotfile() {
-    if [ -r "$1" ]; then
-        source $1
-    fi
-}
-load_dotfile ~/.aliases
-load_dotfile ~/.functions
-
-# Reorganize the $PATH variable so homebrew installs have higher priority
-# over system software.  Examples where this has the most relevance
-# is python and ruby.
-#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# Load gruvbox color scheme
-GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
-if [ -f "${GRUV_BOX}" ]; then
-    source "${GRUV_BOX}"
-fi
-
 # Update the path environment variable
 export BISON_ROOT="/usr/local/opt/bison/bin"
 export PATH="$BISON_ROOT:$PATH"
@@ -139,3 +119,34 @@ if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/google-cloud-
 
 # The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/google-cloud-sdk/completion.zsh.inc"; fi
+
+# test if the prompt var is not set
+if [ -z "$PS1" ]; then
+    # prompt var is not set, so this is *not* an interactive shell
+    return
+fi
+
+# If we reach this line of code, then the prompt var is set, so
+# this is an interactive shell.
+# Source commands only valid in interactive shells: https://unix.stackexchange.com/questions/154395/running-scp-when-bashrc-of-remote-machine-includes-source-command
+
+# Loads the specified dotfile if it exists
+function load_dotfile() {
+    if [ -r "$1" ]; then
+        source $1
+    fi
+}
+load_dotfile ~/.aliases
+load_dotfile ~/.functions
+
+# Reorganize the $PATH variable so homebrew installs have higher priority
+# over system software.  Examples where this has the most relevance
+# is python and ruby.
+#export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# Load gruvbox color scheme
+GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
+if [ -f "${GRUV_BOX}" ]; then
+    source "${GRUV_BOX}"
+fi
+

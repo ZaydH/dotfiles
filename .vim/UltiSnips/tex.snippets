@@ -214,14 +214,21 @@ snippet beamer "Beamer Presentation"
 \end{document}
 endsnippet
 
+snippet beamerbib "Bibliopgrahy for Beamer" b
+\begin{frame}[allowframebreaks]
+  \frametitle{References}
+  \bibliographystyle{$1}
+  \bibliography{$2}
+\end{frame}
+endsnippet
 
-snippet frame "New Beamer frame"
+snippet frame "New Beamer frame" b
 \begin{frame}{${1:}}
   $2
 \end{frame}
 endsnippet
 
-snippet tikzpack "Tikz package import"
+snippet tikzpack "Tikz package import" b
 % Imported via UltiSnips
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,decorations.markings,shadows,positioning,calc,backgrounds,shapes}

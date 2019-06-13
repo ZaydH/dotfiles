@@ -34,8 +34,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
-" " Fast Fold rather than automatic folding
-" Plugin 'Konfekt/FastFold'
+" Fast Fold rather than automatic folding
+Plugin 'Konfekt/FastFold'
 " " Enable folding of blocks in LaTeX files
 " Plugin 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
@@ -345,10 +345,17 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+" FastFold ================================================================
+
+let g:markdown_folding = 1
+let g:tex_fold_enabled = 1
+" Folds are updated whenever you close or open folds by a standard keystroke such as zx,zo or zc
+let g:fastfold_fold_command_suffixes = []
+
 " VimTex ==================================================================
 
-let g:vimtex_fold_enabled = 1
-let g:vimtex_fold_manual = 1
+" let g:vimtex_fold_manual = 1
+" let g:vimtex_fold_enabled = 1
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

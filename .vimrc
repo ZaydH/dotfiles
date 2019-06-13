@@ -36,8 +36,8 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'lervag/vimtex'
 " " Fast Fold rather than automatic folding
 " Plugin 'Konfekt/FastFold'
-" Enable folding of blocks in LaTeX files
-Plugin 'matze/vim-tex-fold'
+" " Enable folding of blocks in LaTeX files
+" Plugin 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
 Plugin 'scrooloose/nerdtree'
 " Python Mode
@@ -118,6 +118,13 @@ for d in glob('~/.vim/spell/*.add', 1, 1)
         silent exec 'mkspell! ' . fnameescape(d)
     endif
 endfor
+
+" Helper function to profile vim
+function StartProfiling()
+    profile start profile.log
+    profile func *
+    profile file *
+endfunction
 
 
 " Change the cursor shape in insert mode
@@ -340,6 +347,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " VimTex ==================================================================
 
+let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
 
 "==========================================================================

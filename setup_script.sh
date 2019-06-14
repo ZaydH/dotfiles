@@ -75,6 +75,7 @@ function install_all_packages() {
                      vim ctags exuberant-ctags
                      gmp libgmp3-dev
                      gzip bzip2 p7zip zlib1g-dev
+                     fzf
                      python python3 python-dev python3-dev python-devel ipython jupyter
                      coreutils moreutils zsh tmux libomp libomp-dev
                      openssl libssl-dev readline readline-devel libreadline7

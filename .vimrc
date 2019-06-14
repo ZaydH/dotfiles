@@ -34,6 +34,9 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ludovicchabant/vim-gutentags'
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
+" Command Line Fuzzy Finder for use with vimtex
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " Fast Fold rather than automatic folding
 Plugin 'Konfekt/FastFold'
 " " Enable folding of blocks in LaTeX files
@@ -354,6 +357,16 @@ let g:fastfold_fold_command_suffixes = []
 
 " VimTex ==================================================================
 
+" fzf used for navigation of table of contents
+" \lt brings up navigation window
+nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+
+" Matching may become computationally intensive for complex LaTeX documents.
+" If you experience slowdowns while moving the cursor, the following option
+" is recommended to delay highlighting slightly while navigating: >
+let g:matchup_matchparen_deferred = 1
+
+let g:vimtex_fold_enabled = 0
 " let g:vimtex_fold_manual = 1
 " let g:vimtex_fold_enabled = 1
 

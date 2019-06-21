@@ -6,6 +6,7 @@ function install_python_packages() {
                          fastai torch torchtext torchvision tensorboardX torchnet tensorflow keras chainer # Neural network packages
                          cplex gurobi # Linear system solvers
                          tflearn sklearn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
+                         pywsl  # Python for Weakly Supervised Learning
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
                          requests ipython jupyter jupytext pylint # Generic python tools

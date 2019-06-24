@@ -181,10 +181,10 @@ function setup_dot_files() {
 
     cd - > /dev/null
     cd ${REPOS_DIR}${DOTFILES_REPO} > /dev/null
-    INSTALL_SCRIPT="./install_files.sh"
-    chmod +x ${INSTALL_SCRIPT}
-    printf "Installing the dot files..."
-    eval ${INSTALL_SCRIPT} > /dev/null
+    LINK_FILES_SCRIPT="./line_files.sh"
+    chmod +x ${LINK_FILES_SCRIPT}
+    printf "Linking the dot files..."
+    eval ${LINK_FILES_SCRIPT} > /dev/null
     printf "COMPLETED\n"
     # Return to previous directory
     cd -

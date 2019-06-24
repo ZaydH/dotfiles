@@ -2,18 +2,27 @@
 
 # Function for installing a file from then repository to the filesystem
 function install_file() {
+    if [ $# == 1 ]; then
+        DEST_FILE=$1
+    elif [ $# == 2 ]; then
+        DEST_FILE=$2
+    else
+        printf "Unsupported number of input arguments\n"
+        exit
+    fi
+    SRC_FILE=$1
     # Get to the path of the script
     SCRIPT=`realpath $0`
     # Get the folder where the script is located
     SCRIPTPATH=`dirname $SCRIPT`
     # Get the relative folder for the item of interest
-    DEST_FOLDER=$( dirname $1 )
+    DEST_FOLDER=$( dirname ${SRC_FILE} )
     mkdir -p ~/${DEST_FOLDER} &> /dev/null
-    printf "Creating symlink for file: \"$1\"\n"
-    # unlink ~/$1 &> /dev/null  # Unlink the symlink if it exists
-    rm ~/$1 &> /dev/null  # Remove an existing file if applicable
+    printf "Creating symlink for file: \"${SRC_FILE}\"\n"
+    # unlink ~/${SRC_FILE} &> /dev/null  # Unlink the symlink if it exists
+    rm ~/${SRC_FILE} &> /dev/null  # Remove an existing file if applicable
     # Create the symlink and delete item if it already exists
-    ln -nsF ${SCRIPTPATH}/$1 ~/$1
+    ln -nsF ${SCRIPTPATH}/${SRC_FILE} ~/${SRC_FILE}
 }
 
 # Git settings
@@ -24,6 +33,9 @@ install_file .gitignore_global
 install_file .pylintrc
 install_file .vimrc
 install_file .zshrc
+if [[ $(hostname) == *"talapas"* ]]; then
+    install_file .bashrc_talapas .bashrc
+fi
 
 # UltiSnips Plugin - LaTeX snippets
 install_file .vim/UltiSnips

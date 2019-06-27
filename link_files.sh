@@ -20,9 +20,9 @@ function install_file() {
     mkdir -p ~/${DEST_FOLDER} &> /dev/null
     printf "Creating symlink for file: \"${SRC_FILE}\"\n"
     # unlink ~/${SRC_FILE} &> /dev/null  # Unlink the symlink if it exists
-    rm ~/${SRC_FILE} &> /dev/null  # Remove an existing file if applicable
+    rm ~/${DEST_FILE} &> /dev/null  # Remove an existing file if applicable
     # Create the symlink and delete item if it already exists
-    ln -nsF ${SCRIPTPATH}/${SRC_FILE} ~/${SRC_FILE}
+    ln -nsF ${SCRIPTPATH}/${SRC_FILE} ~/${DEST_FILE}
 }
 
 # Git settings

@@ -6,3 +6,6 @@ alias mysqueue='squeue -u $(whoami)'
 
 # Clear vim swp files
 alias clrswp="rm .*.swp"
+
+# Alias clonez for original name
+alias clonezaydh=clonez

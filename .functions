@@ -9,17 +9,37 @@ function swapfiles()
 }
 
 # Shortcut to clone my github repository
-function clonezaydh() {
-    BASE_ADDR=https://ZaydH@github.com/ZaydH/$1
-    if [ $(version $(git --version)) -ge $(version "2.13") ]; then
-        git clone --recurse-submodules -j8 ${BASE_ADDR}
-    elif [ $(version $(git --version)) -ge $(version "1.9") ]; then
-        git clone --recursive -j8 ${BASE_ADDR}
-    else
-        git clone --recursive ${BASE_ADDR}
+function clonez() {
+    if [ $# -eq 0 ] || [ $# -gt 2 ]; then
+        if [[ -n $BASH_VERSION ]]; then
+            FUNC_NAME="${FUNCNAME[1]}"
+        else  # zsh
+            FUNC_NAME="${(%):-%N}"
+        fi
+        printf "${FUNC_NAME} <repo_name> [<folder_name>]\n"
+        printf "Invalid number of arguments...\n"
+        return
     fi
+    REPO_NAME=$1
+    if [ $# -eq 2 ]; then
+        FOLDER_NAME=$2
+    fi
+    BASE_ADDR=https://ZaydH@github.com/ZaydH/${REPO_NAME}
+    if [ $(version $(git --version)) -ge $(version "2.13") ]; then
+        git clone --recurse-submodules -j8 ${BASE_ADDR} ${FOLDER_NAME}
+    elif [ $(version $(git --version)) -ge $(version "1.9") ]; then
+        git clone --recursive -j8 ${BASE_ADDR} ${FOLDER_NAME}
+    else
+        git clone --recursive ${BASE_ADDR} ${FOLDER_NAME}
+    fi
+    # Automatically enter cloned folder
     if [ $? -eq 0 ]; then
-        cd $1
+        # Determine the folder to jump into depending on whether a folder name is specified
+        if [ -z ${FOLDER_NAME} ]; then
+            cd ${REPO_NAME}
+        else
+            cd ${FOLDER_NAME}
+        fi
     fi
 }
 # Helper function for checking version numbers

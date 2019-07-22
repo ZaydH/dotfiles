@@ -12,6 +12,7 @@ function install_python_packages() {
                          pytest tox   # Continuous integration and testing
                          requests ipython jupyter jupytext pylint # Generic python tools
                          exhale sphinx sphinx_rtd_theme seaborn git-wrapper quilt dill lief tqdm yapf futures autopep8
+                         fire  # Google Package for a simple command line interface
                          fuzzywuzzy)
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."

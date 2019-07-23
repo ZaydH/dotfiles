@@ -370,6 +370,9 @@ let g:vimtex_fold_enabled = 0
 " let g:vimtex_fold_manual = 1
 " let g:vimtex_fold_enabled = 1
 
+" Disable vimtex autocomplete in included lib files
+let g:vimtex_include_search_enabled = 0
+
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File
 "==========================================================================

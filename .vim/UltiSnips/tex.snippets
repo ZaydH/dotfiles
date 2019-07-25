@@ -285,6 +285,16 @@ snippet mathtools "mathtools delimiter definitions" b
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 endsnippet
 
+snippet thmpack "Theorem style definition" b
+% Imported via UltiSnips
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]  % Corollary number derives from theorem
+\newtheorem{lemma}[theorem]{Lemma}  % Lemma and theorem share same counter
+\theoremstyle{definition}
+\newtheorem{definition}{Def.}[section]
+endsnippet
+
 snippet tabpack "Packages for tables" b
 % Imported via UltiSnips
 \usepackage{multirow}

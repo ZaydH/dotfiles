@@ -150,3 +150,6 @@ if [ -f "${GRUV_BOX}" ]; then
     source "${GRUV_BOX}"
 fi
 
+# File extensions to ignore when autocompleting in zsh
+## With vim, ignore .(aux|fdb*|fls|pdf|gz) files
+zstyle ':completion:*:*:vim:*' file-patterns '^*.(aux|fdb*|fls|pdf|gz):source-files' '*:all-files'

@@ -291,6 +291,16 @@ snippet thmpack "Theorem style definition" b
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]  % Corollary number derives from theorem
 \newtheorem{lemma}[theorem]{Lemma}  % Lemma and theorem share same counter
+\newtheoremstyle{definition}  % <name>
+{3pt}   % <Space above>
+{3pt}   % <Space below>
+% {\itshape}     % <Body font>
+{\normalfont}   % <Body font>
+{}      % <Indent amount>
+{\bfseries} % <Theorem head font>
+{:}     % <Punctuation after theorem head>
+{.5em}  % <Space after theorem head>
+{}      % <Theorem head spec (can be left empty, meaning `normal')>
 \theoremstyle{definition}
 \newtheorem{definition}{Def.}[section]
 endsnippet

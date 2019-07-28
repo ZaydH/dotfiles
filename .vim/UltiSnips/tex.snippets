@@ -100,7 +100,7 @@ snippet pwise "Piecewise in math mode"
 \end{cases}
 endsnippet
 
-snippet listings
+snippet listings "Listing source code" b
 \begin{figure}[$1]
   \begin{lstlisting}[]
     $4
@@ -109,6 +109,12 @@ snippet listings
   \label{fig:$3}
 \end{figure}
 
+endsnippet
+
+snippet thm "Theorem implemenation" b
+${1/(.+)|.*/(?1:\\)/}${1/(.+)|.*/(?1:theoremstyle{)/}${1:definition}${1/(.+)|.*/(?1:}\\n)/}\begin{${2:$1}}
+  $3
+\end{$2}
 endsnippet
 
 snippet " "Quotes" A

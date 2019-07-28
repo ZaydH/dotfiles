@@ -275,6 +275,9 @@ map nt :NERDTreeToggle<CR>
 " Show hidden (e.g., dot files)
 let NERDTreeShowHidden=1
 
+" File extensions to exclude from displaying in NerdTree
+let NERDTreeIgnore = [ '\.aux$', '\.bbl$', '\.fdb_latexmk$', '\.fls$', '\.gz$', '\.log$', '\.out$', '\.pdf$', '\.pyc$', '\.swp$', '\.toc$' ]
+
 " Open NerdTree by default if nothing specified in vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif

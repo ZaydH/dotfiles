@@ -1,6 +1,9 @@
 # Helpful git Aliases
 alias gitlast='git add $_'  # this adds to git the last parameter of the previous bash command.
 
+# Go right to dotfiles folder
+alias gotodot="cd ~/repos/dotfiles"
+
 # Simplify checking my running jobs
 alias mysqueue='squeue -u $(whoami)'
 

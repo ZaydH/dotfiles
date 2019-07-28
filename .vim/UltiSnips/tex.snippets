@@ -283,6 +283,9 @@ snippet mathtools "mathtools delimiter definitions" b
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\usepackage{bm}
+\DeclarePairedDelimiterX\set[2]\lbrace\rbrace{#1 \bm: #2}
+\newcommand{\func}[3]{{#1:#2\rightarrow#3}}
 endsnippet
 
 snippet thmpack "Theorem style definition" b

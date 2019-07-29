@@ -152,5 +152,5 @@ fi
 
 # File extensions to ignore when autocompleting in zsh
 ## With vim, ignore .(*******) files
-VIM_IGNORE_EXT="log|out|bbl|aux|toc|fdb*|fls|pdf|gz|pyc|pyo"
+VIM_IGNORE_EXT="log|out|aux|bbl|blg|toc|fdb*|fls|pdf|gz|pyc|pyo"
 zstyle ':completion:*:*:vim:*' file-patterns '^*.(${VIM_IGNORE_EXT}):source-files' '*:all-files'

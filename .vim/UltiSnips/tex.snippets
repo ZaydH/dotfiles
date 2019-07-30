@@ -306,6 +306,7 @@ snippet mathtools "mathtools delimiter definitions" b
 \MHInternalSyntaxOff
 \makeatother
 % Place after swap to ensure swap star
+\DeclarePairedDelimiter{\sbrack}{\lbrack}{\rbrack}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
@@ -313,6 +314,7 @@ snippet mathtools "mathtools delimiter definitions" b
 \usepackage{bm}
 \DeclarePairedDelimiterX\set[1]\lbrace\rbrace{#1}
 \DeclarePairedDelimiterX\setbuild[2]\lbrace\rbrace{#1 \bm: #2}
+\newcommand{\ints}[1]{{\sbrack{#1}}}
 \newcommand{\func}[3]{{#1:#2\rightarrow#3}}
 endsnippet
 
@@ -322,6 +324,8 @@ snippet thmpack "Theorem style definition" b
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]  % Corollary number derives from theorem
 \newtheorem{lemma}[theorem]{Lemma}  % Lemma and theorem share same counter
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
 \newtheoremstyle{definition}  % <name>
 {3pt}   % <Space above>
 {3pt}   % <Space below>

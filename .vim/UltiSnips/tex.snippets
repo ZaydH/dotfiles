@@ -90,7 +90,6 @@ snippet eqn "Begin an equation" b
 \begin{equation}\label{eq:$1}
   $2
 \end{equation}
-
 endsnippet
 
 snippet frac "Fraction in math mode"
@@ -99,7 +98,7 @@ endsnippet
 
 snippet pwise "Piecewise in math mode"
 \begin{cases}
-    $1 & $2 \\
+    $1 & $2 \\\\
     $3 & $4
 \end{cases}
 endsnippet
@@ -332,6 +331,7 @@ snippet mathtools "mathtools delimiter definitions" b
 \DeclarePairedDelimiterX\setbuild[2]\lbrace\rbrace{#1 \bm: #2}
 \newcommand{\ints}[1]{{\sbrack{#1}}}
 \newcommand{\func}[3]{{#1:#2\rightarrow#3}}
+\newcommand{\defeq}{\stackrel{\mathclap{\mbox{\tiny def}}}{=}}
 endsnippet
 
 snippet thmpack "Theorem style definition" b

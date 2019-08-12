@@ -11,7 +11,8 @@ function install_python_packages() {
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
                          requests ipython jupyter jupytext pylint # Generic python tools
-                         exhale sphinx sphinx_rtd_theme seaborn git-wrapper quilt dill lief tqdm yapf futures autopep8
+                         exhale sphinx sphinx_rtd_theme yapf autopep8 rope
+                         seaborn git-wrapper quilt dill lief tqdm futures
                          fire  # Google Package for a simple command line interface
                          fuzzywuzzy)
     for pkg in ${pip_pkgs[@]}; do

@@ -1,8 +1,14 @@
 # Files to ignore regardless of repository
 
+## MacOS Files
+.DS_Store
+
 ## Vim Files
 *.swp
 tags
 
 ## Jetbrains Files
 .idea/
+
+## VSCode files
+.vscode/

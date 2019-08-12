@@ -21,5 +21,6 @@
     pager = true
 [core]
     excludesfile = ~/.gitignore_global
+    editor = "vim"
 [credential]
 	helper = cache --timeout=7200

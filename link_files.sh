@@ -64,3 +64,5 @@ install_file .aliases
 # Add the file containing ssh/scp configuration
 install_file .ssh/config
 install_file .ssh/id_rsa.pub
+# oh-my-zsh auto-completions
+install_file .oh-my-zsh/completions

@@ -1,0 +1,16 @@
+#compdef kill_job
+
+_kill_job() {
+  local state
+
+  _arguments \
+    '1: :->job_num'
+
+  FILE_LIST=$( ls -al | tail -n+4 | awk '{print $9}' | tr '\n' ' ' )
+
+  case $state in
+      (job_num) _arguments "1: :($FILE_LIST)" ;;
+  esac
+}
+
+_kill_job "$@"

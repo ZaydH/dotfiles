@@ -60,10 +60,15 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  tmux
+  python
 )
 
 if [ -d "${ZSH}" ]; then
     source $ZSH/oh-my-zsh.sh
+    # Load oh-my-zsh autocompletion
+    autoload -U compinit
+    compinit
 fi
 
 # User configuration

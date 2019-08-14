@@ -12,7 +12,7 @@ max-line-length=100
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
 
 # Regular expression which should only match correct variable names
-variable-rgx=([a-z_]|[a-z_][a-z0-9_]{2,30})$
+variable-rgx=(_|_*[a-z][a-z0-9_]{0,30})$
 
 # Regular expression which should only match correct argument names
 argument-rgx=([A-Za-z]|[a-z_][a-z0-9_]{1,30})$

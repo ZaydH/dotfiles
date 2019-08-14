@@ -6,7 +6,7 @@ _kill_job() {
   _arguments \
     '1: :->job_num'
 
-  FILE_LIST=$( ls -al | tail -n+4 | awk '{print $9}' | tr '\n' ' ' )
+  FILE_LIST=$( squeue -u $(whoami) | tail -n+2 | awk '{print $1}' | tr '\n' ' ' )
 
   case $state in
       (job_num) _arguments "1: :($FILE_LIST)" ;;

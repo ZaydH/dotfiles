@@ -69,31 +69,6 @@ function installing_mactex() {
     printf "COMPLETED"
 }
 
-# Install package manager packages
-function install_all_packages() {
-    declare -a pkgs=(git git-lfs subversion hub
-                     curl wget
-                     gcc g++ autoconf automake cmake bison doxygen flex cppcheck
-                     vim ctags exuberant-ctags
-                     gmp libgmp3-dev
-                     gzip bzip2 p7zip zlib1g-dev
-                     fzf
-                     python python3 python-dev python3-dev python-devel ipython jupyter
-                     pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
-                     coreutils moreutils zsh tmux libomp libomp-dev
-                     openssl libssl-dev readline readline-devel libreadline7
-                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
-                     dkms build-essential)
-    for pkg in ${pkgs[@]}; do
-        install_single_package ${pkg}
-    done
-    if [ ${OS} == ${MAC} ]; then
-        installing_mactex
-        # Remove outdated versions from the cellar.
-        brew cleanup &> /dev/null
-    fi
-}
-
 function install_google_sdk() {
     if [ ${OS} == ${MAC} ]; then
         curl https://sdk.cloud.google.com | bash
@@ -203,6 +178,7 @@ function install_jupyter_extensions() {
 determine_os
 
 install_and_update_package_manager
+source install_packages.sh
 install_all_packages
 
 # setup_dot_files

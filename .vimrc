@@ -26,8 +26,8 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 " Multiple cursors tool
 Plugin 'terryma/vim-multiple-cursors'
-" YouCompleteMe autocompletion support"
-Plugin 'Valloric/YouCompleteMe'
+" " YouCompleteMe autocompletion support
+" Plugin 'Valloric/YouCompleteMe'
 " Enables quick traversal through a document
 Plugin 'easymotion/vim-easymotion'
 " Gutentags
@@ -45,12 +45,14 @@ Plugin 'Konfekt/FastFold'
 Plugin 'scrooloose/nerdtree'
 " Python Mode
 Plugin 'python-mode/python-mode'
+" TabNine autocomplete
+Plugin 'zxqfl/tabnine-vim'
 " Pyrope for vim
 Plugin 'python-rope/ropevim'
 " Python Docstring Generation
 Plugin 'heavenshell/vim-pydocstring'
-" Automatically import python modules
-Plugin 'mgedmin/python-imports.vim'
+" " Automatically import python modules
+" Plugin 'mgedmin/python-imports.vim'
 " " Syntastic for syntax highlighting
 " Plugin 'vim-syntastic/syntastic'
 " Improved syntax checking using Vim's asynchronous protocol

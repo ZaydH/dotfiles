@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# Installs one package via the package manager
+function install_single_package() {
+    printf "Installing package \"${1}\"..."
+    cmd="${PKG_MNGR_INSTALL} ${1}"
+    # printf "\n$cmd\n"
+    eval $cmd > /dev/null
+    printf "COMPLETED\n"
+}
+
 # Install package manager packages
 function install_all_packages() {
     declare -a pkgs=(git git-lfs subversion hub tig

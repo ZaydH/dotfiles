@@ -2,7 +2,7 @@
 
 # Install package manager packages
 function install_all_packages() {
-    declare -a pkgs=(git git-lfs subversion hub
+    declare -a pkgs=(git git-lfs subversion hub tig
                      curl wget
                      gcc g++ autoconf automake cmake bison doxygen flex cppcheck
                      vim ctags exuberant-ctags

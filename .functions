@@ -184,3 +184,8 @@ function backup() {
     fi
     return 0
 }
+
+# Installs the vim Vundle plugin
+function install_vundle() {
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}

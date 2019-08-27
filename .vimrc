@@ -26,12 +26,16 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 " Multiple cursors tool
 Plugin 'terryma/vim-multiple-cursors'
-" " YouCompleteMe autocompletion support
+" " YouCompleteMe autocompletion support"
 " Plugin 'Valloric/YouCompleteMe'
 " Enables quick traversal through a document
 Plugin 'easymotion/vim-easymotion'
-" Gutentags
-Plugin 'ludovicchabant/vim-gutentags'
+if v:version >= 800
+    " Gutentags
+    Plugin 'ludovicchabant/vim-gutentags'
+    " TabNine autocomplete
+    Plugin 'zxqfl/tabnine-vim'
+endif
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
 " Command Line Fuzzy Finder for use with vimtex
@@ -45,8 +49,6 @@ Plugin 'Konfekt/FastFold'
 Plugin 'scrooloose/nerdtree'
 " Python Mode
 Plugin 'python-mode/python-mode'
-" TabNine autocomplete
-Plugin 'zxqfl/tabnine-vim'
 " Pyrope for vim
 Plugin 'python-rope/ropevim'
 " Python Docstring Generation
@@ -67,10 +69,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " GruvBox color scheme
 Plugin 'morhetz/gruvbox'
-
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -215,7 +213,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Pylint configuration file
 "let g:pymode_dlint_config = '$HOME/.pylintrc'
 
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python'
 let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1

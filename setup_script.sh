@@ -90,15 +90,6 @@ function install_google_sdk() {
     fi
 }
 
-# Installs one package via the package manager
-function install_single_package() {
-    printf "Installing package \"${1}\"..."
-    cmd="${PKG_MNGR_INSTALL} ${1}"
-    # printf "\n$cmd\n"
-    eval $cmd > /dev/null
-    printf "COMPLETED\n"
-}
-
 # Installing the vim package manager vundle
 function install_vim_package_manager() {
     VIM_BUNDLE_FOLDER=~/.vim/bundle/

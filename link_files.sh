@@ -30,39 +30,47 @@ install_file .gitconfig
 # Set of files git will always ignore
 install_file .gitignore_global
 
-install_file .pylintrc
-install_file .vimrc
+# Command line zsh related settings
 install_file .zshrc
+# Add the file containing shell functions
+install_file .functions
+# Add the file containing shell aliases
+install_file .aliases
+# oh-my-zsh auto-completions
+install_file .oh-my-zsh/completions
+# Special bash file used to load zsh on Talapas
 if [[ $(hostname) == *"talapas"* ]]; then
     install_file .bashrc_talapas .bashrc
 fi
 
+# Vim related files
+install_file .vimrc
 # UltiSnips Plugin - LaTeX snippets
 install_file .vim/UltiSnips
 # Python packages for Python Imports vim module
 install_file .vim/python-imports.cfg
 # LaTeX specific vim settings
 install_file .vim/ftplugin
+# Add the dictionary file
+install_file .vim/spell/en.utf-8.add
+# Setup vim key binds in Intelli-J IDEs
+install_file .ideavimrc
+# ctags settings file
+install_file .ctags
+
+# Pylint settings
+install_file .pylintrc
+# Setup for flake8 syntax checker
+install_file .config/flake8
+# Adding jupyter notebook configuration
+install_file .jupyter/jupyter_notebook_config.py
+
 # # Settings for latexmk Perl script
 # install_file .latexmkrc
 # Settings for tmux
 install_file .tmux.conf
-# Setup for flake8 syntax checker
-install_file .config/flake8
-# Setup vim key binds in Intelli-J IDEs
-install_file .ideavimrc
 # Configuration for google cloud
 install_file .config/gcloud/configurations/config_default
-# Adding jupyter notebook configuration
-install_file .jupyter/jupyter_notebook_config.py
-# Add the dictionary file
-install_file .vim/spell/en.utf-8.add
-# Add the file containing shell functions
-install_file .functions
-# Add the file containing shell aliases
-install_file .aliases
 # Add the file containing ssh/scp configuration
 install_file .ssh/config
 install_file .ssh/id_rsa.pub
-# oh-my-zsh auto-completions
-install_file .oh-my-zsh/completions

@@ -33,6 +33,7 @@ Plugin 'easymotion/vim-easymotion'
 if v:version >= 800
     " Gutentags
     Plugin 'ludovicchabant/vim-gutentags'
+    Plugin 'skywind3000/gutentags_plus'
     " TabNine autocomplete
     Plugin 'zxqfl/tabnine-vim'
 endif
@@ -239,6 +240,12 @@ map <C-g> :ImportName<CR>
 " let g:pymode_rope_autoimport_bind = '<C-c>ra'
 " add the name of modules you want to autoimport
 " let g:ropevim_autoimport_modules = ["os", "shutil", "sys", "datetime", "pickle", "math", "re", "warnings", "copy", "logging", "sklearn", "torch", "torchvision", "scipy"]
+
+let g:pymode_rope_goto_definition_bind = '<C-c>g'
+" Command for open window when definition has been found
+" Values are (`e`, `new`, `vnew`)
+let g:pymode_rope_goto_definition_cmd = 'new'
+
 
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'

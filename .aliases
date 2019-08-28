@@ -5,7 +5,11 @@ alias gitlast='git add $_'  # this adds to git the last parameter of the previou
 alias gotodot="cd ~/repos/dotfiles"
 
 # Simplify checking my running jobs
-alias mysqueue='squeue -u $(whoami)'
+##  Default format: "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
+##  Long Format: "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %R"
+### For more info, see: https://slurm.schedmd.com/squeue.html
+### Changes Versus Long: Widened job name (%j) and time limit (%l)
+alias mysqueue='squeue -u $(whoami) --format="%.18i %.9P %.14j %.8u %.8T %.10M %.15l %.6D %R"'
 
 # Clear vim swp files
 alias clrswp="rm .*.swp"

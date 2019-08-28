@@ -1,0 +1,17 @@
+## Include an entry for the base file name of every source file (e.g. "example.c"), which addresses the first line of the file.
+--extra=+f
+
+## Recurse into directories encountered in the list of supplied files
+--recurse=yes
+
+## Folders/files to exclude
+--exclude=.git
+--exclude=db/*
+--exclude=log/*
+--exclude=build
+--exclude=dist
+
+## Python Settings
+--python-kinds=-iv
+--exclude=*.pyc
+--exclude=*.pyo

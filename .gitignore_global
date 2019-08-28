@@ -6,9 +6,15 @@
 ## Vim Files
 *.swp
 tags
+.ropeproject/
 
 ## Jetbrains Files
 .idea/
 
 ## VSCode files
 .vscode/
+
+## Python Files
+__pycache__/
+*.pyc
+*.pyo

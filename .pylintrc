@@ -1,3 +1,14 @@
+[MASTER]
+# Add <file or directory> to the black list. It should be a base name, not a
+# path. You may set this option multiple times.
+ignore=CVS,
+    .svn,
+    .git,
+    .idea,
+    .vscode,
+    .hg,
+    .ropeproject,
+
 # Complete Example pylintrc file from the Python Code Quality Assurance group
 # https://github.com/PyCQA/pylint/blob/master/pylintrc
 
@@ -9,7 +20,7 @@ max-line-length=100
 [BASIC]
 
 # Regexp for a line that is allowed to be longer than the limit.
-ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$|^\s*\w+\s?=\s?'https?://\S+'$|^\s*\w+\s?=\s?"https?://\S+"$,
 
 # Regular expression which should only match correct variable names
 variable-rgx=(_|_*[a-z][a-z0-9_]{0,30})$

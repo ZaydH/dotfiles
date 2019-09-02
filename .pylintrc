@@ -16,6 +16,14 @@ ignore=CVS,
 
 # Maximum number of characters on a single line.
 max-line-length=100
+# PEP8 says docstrings should be 72 characters long maximum. Exact quote:
+#
+# For flowing long blocks of text with fewer structural restrictions
+# (docstrings or comments), the line length should be limited to 72 characters.
+max-doc-length=72
+
+# Allow the body of an if to be on the same line as the test if there is no else.
+single-line-if-stmt=yes
 
 [BASIC]
 
@@ -33,7 +41,7 @@ argument-rgx=([A-Za-z]|[a-z_][a-z0-9_]{1,30})$
 class-attribute-rgx=_?([A-Za-z0-9_]{2,30}|[A-Z]|(__.*__))$
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=c,f,F,g,i,j,k,K,l,m,M,n,N,o,p,q,v,w,x,X,y,z,Z
+good-names=c,f,F,f1,g,i,j,k,K,l,m,M,n,N,o,p,pu,q,v,w,x,X,y,z,Z
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.
@@ -92,3 +100,17 @@ generated-members=torch.*,torch.cuda.*
 # it should appear only once).
 # C0321 -- Multiple statements same line
 disable=C0321
+
+[SIMILARITIES]
+
+# # Minimum lines number of a similarity.
+# min-similarity-lines=4
+
+# # Ignore comments when computing similarities.
+# ignore-comments=yes
+
+# Ignore docstrings when computing similarities.
+ignore-docstrings=yes
+
+# Ignore imports when computing similarities.
+ignore-imports=no

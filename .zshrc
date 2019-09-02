@@ -151,7 +151,7 @@ load_dotfile ~/.functions
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # Load gruvbox color scheme
-GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
+GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette.sh
 if [ -f "${GRUV_BOX}" ]; then
     source "${GRUV_BOX}"
 fi

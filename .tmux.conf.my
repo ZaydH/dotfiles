@@ -1,0 +1,37 @@
+# Ensure zsh loads correctly
+set-option -g default-shell /usr/local/bin/zsh
+# Allow tmux resize with mouse drag
+set -g mouse on
+# Required to ensure the coloring of vim is right in tmux
+set -g default-terminal "screen-256color"
+
+# Automatically restore tmux session
+set -g @continuum-restore 'on'
+
+## Automatically opens url on screen. For more info see:
+### https://github.com/tmux-plugins/tmux-urlview
+set -g @urlview-key 'x'
+
+
+### ======================================================================= ###
+###           tmux Packages Should Be at the End of the File                ###
+### ======================================================================= ###
+
+# tmux package manager documentation: see documentation
+# https://github.com/tmux-plugins/tpm
+
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+## Needed for enabling copying in tmux
+set -g @plugin 'tmux-plugins/tmux-yank'
+## copycat allows for regex searches within tmux.  For command information, see:
+### https://github.com/tmux-plugins/tmux-copycat
+set -g @plugin 'tmux-plugins/tmux-copycat'
+## resurrect and continuum automatically save and restore tmux sessions
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'

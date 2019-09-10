@@ -31,7 +31,7 @@ single-line-if-stmt=yes
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$|^\s*\w+\s?=\s?'https?://\S+'$|^\s*\w+\s?=\s?"https?://\S+"$,
 
 # Regular expression which should only match correct variable names
-variable-rgx=(_|_*[a-z][a-z0-9_]{0,30})$
+variable-rgx=(_?[a-z][a-z0-9_]{0,30})$
 
 # Regular expression which should only match correct argument names
 argument-rgx=([A-Za-z]|[a-z_][a-z0-9_]{1,30})$
@@ -41,7 +41,7 @@ argument-rgx=([A-Za-z]|[a-z_][a-z0-9_]{1,30})$
 class-attribute-rgx=_?([A-Za-z0-9_]{2,30}|[A-Z]|(__.*__))$
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=c,f,F,f1,g,i,j,k,K,l,m,M,n,N,o,p,pu,q,v,w,x,X,y,z,Z
+good-names=_,c,f,F,f1,g,i,j,k,K,l,m,M,n,N,o,p,pu,q,v,w,x,X,y,z,Z
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.

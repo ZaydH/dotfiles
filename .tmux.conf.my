@@ -8,11 +8,6 @@ set -g default-terminal "screen-256color"
 # Automatically restore tmux session
 set -g @continuum-restore 'on'
 
-## Automatically opens url on screen. For more info see:
-### https://github.com/tmux-plugins/tmux-urlview
-set -g @urlview-key 'x'
-
-
 ### ======================================================================= ###
 ###           tmux Packages Should Be at the End of the File                ###
 ### ======================================================================= ###
@@ -20,18 +15,25 @@ set -g @urlview-key 'x'
 # tmux package manager documentation: see documentation
 # https://github.com/tmux-plugins/tpm
 
-
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-## Needed for enabling copying in tmux
-set -g @plugin 'tmux-plugins/tmux-yank'
-## copycat allows for regex searches within tmux.  For command information, see:
-### https://github.com/tmux-plugins/tmux-copycat
-set -g @plugin 'tmux-plugins/tmux-copycat'
-## resurrect and continuum automatically save and restore tmux sessions
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-continuum'
+#    tpm: Needed for enabling copying in tmux
+#
+#    copycat: Allows for regex searches within tmux.
+#    For command information, see:
+#    https://github.com/tmux-plugins/tmux-copycat
+#
+#    resurrect & continuum: Automatically save and restore tmux sessions
+#
+#    urlview: Enables quick searching and open of urls in a pane:
+#    https://github.com/tmux-plugins/tmux-urlview
+set -g @tpm_plugins '           \
+    tmux-plugins/tpm            \
+    tmux-plugins/tmux-sensible  \
+    tmux-plugins/tmux-yank      \
+    tmux-plugins/tmux-copycat   \
+    tmux-plugins/tmux-continuum \
+    tmux-plugins/tmux-resurrect \
+    tmux-plugins/tmux-urlview   \
+'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'

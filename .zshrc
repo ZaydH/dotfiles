@@ -146,6 +146,8 @@ function load_dotfile() {
 load_dotfile ~/.aliases
 load_dotfile ~/.functions
 
+export EDITOR=$( which vim )
+
 # Reorganize the $PATH variable so homebrew installs have higher priority
 # over system software.  Examples where this has the most relevance
 # is python and ruby.

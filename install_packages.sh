@@ -37,3 +37,7 @@ function install_all_packages() {
     fi
 }
 
+## tmux plugin manager must be manually installed
+function install_tmux_plugin_manager() {
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}

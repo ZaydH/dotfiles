@@ -171,6 +171,7 @@ determine_os
 install_and_update_package_manager
 source install_packages.sh
 install_all_packages
+install_tmux_plugin_manager
 
 # setup_dot_files
 

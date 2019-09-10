@@ -68,7 +68,9 @@ install_file .jupyter/jupyter_notebook_config.py
 # # Settings for latexmk Perl script
 # install_file .latexmkrc
 # Settings for tmux
-install_file .tmux.conf
+source install_tmux.sh
+install_file "${OH_MY_TMUX_REPO_NAME}/.tmux.conf" .tmux.conf
+install_file ${TMUX_CONF_LOCAL}
 # Configuration for google cloud
 install_file .config/gcloud/configurations/config_default
 # Add the file containing ssh/scp configuration

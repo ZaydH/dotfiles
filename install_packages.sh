@@ -37,8 +37,3 @@ function install_all_packages() {
         brew cleanup &> /dev/null
     fi
 }
-
-## tmux plugin manager must be manually installed
-function install_tmux_plugin_manager() {
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-}

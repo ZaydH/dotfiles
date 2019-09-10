@@ -18,4 +18,7 @@ alias clrswp="rm .*.swp"
 alias clonezaydh=clonez
 
 # Simplify calling tensorboard
-alias tb='tensorboard --logdir '
+alias tb="tensorboard --logdir"
+
+# List all
+alias lal="ls -alh"

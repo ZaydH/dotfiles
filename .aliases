@@ -1,5 +1,6 @@
 # Helpful git Aliases
-alias gitlast='git add $_'  # this adds to git the last parameter of the previous bash command.
+alias gal='git add $_'  # Adds the last parameter of the previous bash command.
+alias gwd='git wd'      # Performs word diff
 
 # Go right to dotfiles folder
 alias gotodot="cd ~/repos/dotfiles"
@@ -20,5 +21,5 @@ alias clonezaydh=clonez
 # Simplify calling tensorboard
 alias tb="tensorboard --logdir"
 
-# List all
-alias lal="ls -alh"
+# # List all
+# alias la="ls -Alh"

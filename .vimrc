@@ -54,6 +54,8 @@ Plugin 'python-mode/python-mode'
 Plugin 'python-rope/ropevim'
 " Python Docstring Generation
 Plugin 'heavenshell/vim-pydocstring'
+" Enables proper highlighting and documentation linking for .tmux.conf in vim
+Plugin 'tmux-plugins/vim-tmux'
 " " Automatically import python modules
 " Plugin 'mgedmin/python-imports.vim'
 " " Syntastic for syntax highlighting

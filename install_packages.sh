@@ -22,6 +22,7 @@ function install_all_packages() {
                      gzip bzip2 p7zip zlib1g-dev
                      fzf
                      reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
+                     urlview  # Needed for tmux's urlview plugin
                      python python3 python-dev python3-dev python-devel ipython jupyter
                      pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
                      coreutils moreutils zsh tmux libomp libomp-dev

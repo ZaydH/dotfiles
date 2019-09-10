@@ -5,7 +5,7 @@ TMUX_CONF_LOCAL=".tmux.conf.local"
 ## tmux plugin manager must be manually installed
 function install_tmux_plugin_manager() {
     printf "Installing tmux plugin manager..."
-    PLUGIN_MANAGER_DIR="~/.tmux/plugins/tpm"
+    PLUGIN_MANAGER_DIR="${HOME}/.tmux/plugins/tpm"
     if [ ! -d ${PLUGIN_MANAGER_DIR} ]; then
         git clone https://github.com/tmux-plugins/tpm ${PLUGIN_MANAGER_DIR} &> /dev/null
     fi

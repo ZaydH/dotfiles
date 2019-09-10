@@ -28,16 +28,6 @@ function determine_os() {
     printf "OS Detected: ${OS}\n"
 }
 
-function install_ohmyzsh() {
-    printf "Installing Oh My ZSH..."
-    rm -rf ~/.oh-my-zsh &> /dev/null
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &> /dev/null
-    printf "COMPLETED\n"
-    setup_dot_files
-    # Install zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-}
-
 function install_and_update_package_manager() {
     if [ ${OS} == ${MAC} ]; then
         install_brew
@@ -186,4 +176,7 @@ install_all_packages
 #=====================================================
 # Do last to prevent conflicts between shells
 #=====================================================
-# install_ohmyzsh
+# source install_zsh.sh
+# install_oh_my_zsh
+# install_all_zsh_plugins
+# setup_dot_files

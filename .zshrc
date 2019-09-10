@@ -63,6 +63,7 @@ plugins=(
   python
   tmux
   zsh-autosuggestions
+  zsh-syntax-highlighting  # Must be the LAST plugin per github README
 )
 
 if [ -d "${ZSH}" ]; then

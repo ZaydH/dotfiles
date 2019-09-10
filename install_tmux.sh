@@ -7,7 +7,7 @@ function install_tmux_plugin_manager() {
     printf "Installing tmux plugin manager..."
     PLUGIN_MANAGER_DIR="~/.tmux/plugins/tpm"
     if [ ! -d ${PLUGIN_MANAGER_DIR} ]; then
-        git clone https://github.com/tmux-plugins/tpm ${PLUGIN_MANAGER_DIR}
+        git clone https://github.com/tmux-plugins/tpm ${PLUGIN_MANAGER_DIR} &> /dev/null
     fi
     # Pull directory to ensure plugin manager up to date
     git -C ${PLUGIN_MANAGER_DIR} pull &> /dev/null
@@ -20,7 +20,7 @@ function install_oh_my_tmux() {
     printf "Installing oh-my-tmux..."
     # Clone repo if does not exist
     if [ ! -d ${OH_MY_TMUX_REPO_NAME} ]; then
-        git clone ${OH_MY_TMUX_URL}
+        git clone ${OH_MY_TMUX_URL} &> /dev/null
     fi
     # -C changes directory before pull
     git -C ${OH_MY_TMUX_REPO_NAME} pull &> /dev/null

@@ -168,12 +168,12 @@ function install_jupyter_extensions() {
 
 determine_os
 
-# install_and_update_package_manager
-# source install_packages.sh
-# install_all_packages
+install_and_update_package_manager
+source install_packages.sh
+install_all_packages
 
-source install_tmux.sh
-install_oh_my_tmux
+# source install_tmux.sh
+# install_oh_my_tmux
 
 # setup_dot_files
 

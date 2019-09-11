@@ -15,6 +15,9 @@ alias sq=squeue
 alias mysqueue='squeue -u $(whoami)'
 alias msq=mysqueue
 
+# MacOS print notification from the terminal to the notification pane
+alias terminal-notifier="terminal-notifier -message"
+
 # Clear vim swp files
 alias clrswp="rm .*.swp"
 

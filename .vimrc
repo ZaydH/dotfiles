@@ -34,8 +34,8 @@ if v:version >= 800
     " Gutentags
     Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'skywind3000/gutentags_plus'
-    " TabNine autocomplete
-    Plugin 'zxqfl/tabnine-vim'
+    " " TabNine autocomplete
+    " Plugin 'zxqfl/tabnine-vim'
 endif
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'

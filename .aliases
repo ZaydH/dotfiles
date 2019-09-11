@@ -18,6 +18,10 @@ alias msq=mysqueue
 # MacOS print notification from the terminal to the notification pane
 alias terminal-notifier="terminal-notifier -message"
 
+# tmux aliases
+## New tmux session with a user specified name like: tn <name>
+alias tn="tmux new -s"
+
 # Clear vim swp files
 alias clrswp="rm .*.swp"
 

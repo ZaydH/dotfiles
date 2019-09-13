@@ -369,6 +369,16 @@ snippet tabpack "Packages for tables" b
 % Imported via UltiSnips
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{array}  % Provides a way add a \centering command to a p-column
+endsnippet
+
+snippet pdfpack "Package(s) for importing PDFs" b
+% Imported via UltiSnips
+\usepackage{pdfpages}
+endsnippet
+
+snippet incpdf "Include PDF document" b
+\includepdf[pages=-]{$1}
 endsnippet
 
 snippet titleinfo "Title page information" b

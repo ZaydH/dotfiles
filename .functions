@@ -189,3 +189,40 @@ function backup() {
 function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
+
+MAC=Mac
+LINUX=Linux
+BSD=BSD
+WINDOWS=WINDOWS
+UNKNOWN_OS=UNKNOWN_OS
+
+# Helper function that store in variable OS the operating system
+#
+function determine_os() {
+    case "$OSTYPE" in
+      # solaris*) echo "SOLARIS" ;;
+      darwin*)  OS=${MAC} ;;
+      linux*)   OS=${LINUX} ;;
+      # bsd*)   OS=${BSD} ;;
+      # msys*)  OS=${WINDOWS} ;;
+      *)        OS=${UNKNOWN_OS} ;;
+    esac
+
+    if [ ${OS} == ${UNKNOWN_OS} ]; then
+        printf "Unknown/unsupported OS detected. Exiting...\n"
+        exit 1
+    fi
+    printf "OS Detected: ${OS}\n"
+}
+
+# Returns true (0, i.e., SUCCESS) if current is a Mac
+function is_mac() {
+    determine_os
+    return [ ${OS} == ${MAC} ]
+}
+
+# Returns true (0, i.e., SUCCESS) if current is Linux
+function is_linux() {
+    determine_os
+    return [ ${OS} == ${LINUX} ]
+}

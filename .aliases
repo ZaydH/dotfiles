@@ -40,5 +40,8 @@ alias clonezaydh=clonez
 # Simplify calling tensorboard
 alias tb="tensorboard --logdir"
 
+# Simplify ssh to talapas
+alias ssht="ssh talapas"
+
 # # List all
 # alias la="ls -Alh"

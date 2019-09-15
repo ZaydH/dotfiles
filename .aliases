@@ -1,4 +1,4 @@
-source .functions
+source ${HOME}/.functions
 
 # Helpful git Aliases
 alias gal='git add $_'  # Adds the last parameter of the previous bash command.

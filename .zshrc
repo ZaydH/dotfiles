@@ -159,6 +159,11 @@ if [ -f "${GRUV_BOX}" ]; then
     source "${GRUV_BOX}"
 fi
 
+# If  a  command is issued that can't be executed as a normal command,
+# and the command is the name of a directory, perform the cd command
+# to that directory.
+shopt -s autocd
+
 # File extensions to ignore when autocompleting in zsh
 ## With vim, ignore .(*******) files
 VIM_IGNORE_EXT="log|out|aux|bbl|blg|toc|fdb*|fls|pdf|gz|pyc|pyo"

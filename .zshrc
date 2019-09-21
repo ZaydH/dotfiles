@@ -62,6 +62,7 @@ plugins=(
   git
   python
   tmux
+  osx
   zsh-autosuggestions
   zsh-syntax-highlighting  # Must be the LAST plugin per github README
 )
@@ -162,7 +163,7 @@ fi
 # If  a  command is issued that can't be executed as a normal command,
 # and the command is the name of a directory, perform the cd command
 # to that directory.
-shopt -s autocd
+setopt autocd
 
 # File extensions to ignore when autocompleting in zsh
 ## With vim, ignore .(*******) files

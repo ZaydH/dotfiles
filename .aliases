@@ -2,8 +2,9 @@ source ${HOME}/.functions
 
 # Helpful git Aliases
 alias gal='git add $_'  # Adds the last parameter of the previous bash command.
+alias gco!='git checkout $_'  # Adds the last parameter of the previous bash command.
 alias gwd='git wd'      # Performs word diff
-alias gupnb='$(git push |& tail -n 2)'   # Push new branch
+# alias gupnb='$(git push |& tail -n 2)'   # Push new branch
 
 # Go right to dotfiles folder
 alias gotodot="cd ~/repos/dotfiles"

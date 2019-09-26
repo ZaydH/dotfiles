@@ -190,6 +190,20 @@ function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
+# Freeze python package requirements
+function freeze() {
+    if [[ $# == 0 ]]; then
+        PY_DIR="."
+    elif [[ $# == 1 ]]; then
+        PY_DIR=$1
+    else
+        printf "A maximum of a single argument can be passed to $0\n"
+        exit 1
+    fi
+    # Build the requirements file
+    pipreqs --force ${PY_DIR}
+}
+
 MAC=Mac
 LINUX=Linux
 BSD=BSD

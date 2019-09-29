@@ -16,6 +16,7 @@ alias dot="${HOME}/repos/dotfiles"
 # alias gotodot="cd dot"
 if [ is_mac ]; then
     alias uo="${HOME}/repos/uo"
+    alias uo_docs="${HOME}/repos/uo_docs"
 fi
 
 # Simplify checking my running jobs

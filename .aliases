@@ -9,7 +9,7 @@ alias gwd='git wd'      # Performs word diff
 # alias gupnb='$(git push |& tail -n 2)'   # Push new branch
 
 # vim aliases
-alias v!="vim $_"
+alias v!='vim $_'
 
 # Go right to dotfiles folder
 alias dot="${HOME}/repos/dotfiles"
@@ -40,9 +40,9 @@ else
     alias top="top -o %CPU"
 fi
 
-# tmux aliases
-## New tmux session with a user specified name like: tn <name>
-alias tn="tmux new -s"
+# # tmux aliases
+# ## New tmux session with a user specified name like: tn <name>
+# alias tn="tmux new -s"
 
 # Clear vim swp files
 alias clrswp="rm .*.swp"

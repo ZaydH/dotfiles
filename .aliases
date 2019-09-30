@@ -15,6 +15,7 @@ alias v!='vim $_'
 alias dot="${HOME}/repos/dotfiles"
 # alias gotodot="cd dot"
 if [ is_mac ]; then
+    alias repos="${HOME}/repos"
     alias uo="${HOME}/repos/uo"
     alias uo_docs="${HOME}/repos/uo_docs"
 fi

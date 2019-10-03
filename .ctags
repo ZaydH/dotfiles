@@ -1,17 +1,18 @@
-## Include an entry for the base file name of every source file (e.g. "example.c"), which addresses the first line of the file.
+--regex-C=/$x/x/x/e/ COMMENT HEADER SINCE NOT SUPPORTED IN .ctags format
+--regex-C=/$x/x/x/e/  Include an entry for the base file name of every source file (e.g. "example.c"), which addresses the first line of the file.
 --extra=+f
 
-## Recurse into directories encountered in the list of supplied files
+--regex-C=/$x/x/x/e/  Recurse into directories encountered in the list of supplied files
 --recurse=yes
 
-## Folders/files to exclude
+--regex-C=/$x/x/x/e/  Folders/files to exclude
 --exclude=.git
 --exclude=db/*
 --exclude=log/*
 --exclude=build
 --exclude=dist
 
-## Python Settings
+--regex-C=/$x/x/x/e/  Python Settings
 --python-kinds=-iv
 --exclude=*.pyc
 --exclude=*.pyo

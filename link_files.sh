@@ -71,8 +71,8 @@ install_file .jupyter/jupyter_notebook_config.py
 source install_tmux.sh
 install_file "${OH_MY_TMUX_REPO_NAME}/.tmux.conf" .tmux.conf
 install_file ${TMUX_CONF_LOCAL}
-# Configuration for google cloud
-install_file .config/gcloud/configurations/config_default
+# # Configuration for google cloud
+# install_file .config/gcloud/configurations/config_default
 # Add the file containing ssh/scp configuration
 install_file .ssh/config
 install_file .ssh/id_rsa.pub

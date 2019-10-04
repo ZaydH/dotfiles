@@ -17,10 +17,10 @@ function install_file() {
     SCRIPTPATH=`dirname $SCRIPT`
     # Get the relative folder for the item of interest
     DEST_FOLDER=$( dirname ${SRC_FILE} )
-    mkdir -p ~/${DEST_FOLDER} &> /dev/null
+    mkdir -p ~/${DEST_FOLDER} > /dev/null
     printf "Creating symlink for file: \"${SRC_FILE}\"\n"
-    # unlink ~/${SRC_FILE} &> /dev/null  # Unlink the symlink if it exists
-    rm ~/${DEST_FILE} &> /dev/null  # Remove an existing file if applicable
+    # unlink ~/${SRC_FILE} > /dev/null  # Unlink the symlink if it exists
+    rm -rf ~/${DEST_FILE} > /dev/null  # Remove an existing file if applicable
     # Create the symlink and delete item if it already exists
     ln -nsF ${SCRIPTPATH}/${SRC_FILE} ~/${DEST_FILE}
 }
@@ -71,6 +71,7 @@ install_file .jupyter/jupyter_notebook_config.py
 source install_tmux.sh
 install_file "${OH_MY_TMUX_REPO_NAME}/.tmux.conf" .tmux.conf
 install_file ${TMUX_CONF_LOCAL}
+install_file .tmux
 # # Configuration for google cloud
 # install_file .config/gcloud/configurations/config_default
 # Add the file containing ssh/scp configuration

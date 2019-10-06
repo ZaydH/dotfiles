@@ -34,7 +34,7 @@ function install_and_update_package_manager() {
         PKG_MNGR_INSTALL="brew install"
     elif [ ${OS} == ${LINUX} ]; then
         printf "Updating package manager..."
-        sudo apt-get update &> /dev/null
+        sudo apt-get update > /dev/null
         printf "COMPLETED\n"
         PKG_MNGR_INSTALL="sudo apt-get install -y"
     else
@@ -48,7 +48,7 @@ function install_and_update_package_manager() {
 function install_brew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     printf "Updating brew..."
-    brew update &> /dev/null
+    brew update > /dev/null
     printf "COMPLETED\n"
 }
 # Install mactex - TeX distribution for MacOS
@@ -84,11 +84,11 @@ function install_google_sdk() {
 function install_vim_package_manager() {
     VIM_BUNDLE_FOLDER=~/.vim/bundle/
     printf "Installing vim package manager \"vundle\"..."
-    rm -rf ${VIM_BUNDLE_FOLDER} &> /dev/null
-    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim &> /dev/null
+    rm -rf ${VIM_BUNDLE_FOLDER} > /dev/null
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim > /dev/null
     printf "COMPLETED\n"
     printf "Installing vim plugins..."
-    vim -c 'PluginInstall' -c 'qa!' # &> /dev/null
+    vim -c 'PluginInstall' -c 'qa!' # > /dev/null
     printf "COMPLETED\n"
 
     YCM=YouCompleteMe
@@ -101,7 +101,7 @@ function install_vim_package_manager() {
 
 function install_python_with_pyenv() {
     printf "Installing PyEnv..."
-    source ~/.zshrc &> /dev/null
+    source ~/.zshrc > /dev/null
     if [ ${OS} == ${MAC} ]; then
         brew install pyenv > /dev/null
     else
@@ -110,7 +110,7 @@ function install_python_with_pyenv() {
     printf "COMPLETED\n"
 
     printf "Updating PyEnv..."
-    pyenv update &> /dev/null
+    pyenv update > /dev/null
     printf "COMPLETED\n"
 
     # Needed to ensure configuration is valid
@@ -131,7 +131,7 @@ function install_python_with_pyenv() {
 function setup_dot_files() {
     # Link dotfiles
     DOTFILES_REPO=dotfiles
-    mkdir -p ${REPOS_DIR} &> /dev/null
+    mkdir -p ${REPOS_DIR} > /dev/null
     cd $REPOS_DIR
     printf "Cloning the ${DOTFILES_REPO} repo..."
     rm -rf ${DOTFILES_REPO} > /dev/null

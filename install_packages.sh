@@ -39,6 +39,6 @@ function install_all_packages() {
     if [ ${OS} == ${MAC} ]; then
         installing_mactex
         # Remove outdated versions from the cellar.
-        brew cleanup &> /dev/null
+        brew cleanup > /dev/null
     fi
 }

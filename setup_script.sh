@@ -157,13 +157,15 @@ function install_jupyter_extensions() {
 }
 
 determine_os
-
-install_and_update_package_manager
 source install_packages.sh
-install_all_packages
+source install_tmux.sh
+source install_zsh.sh
 
-# source install_tmux.sh
+# install_and_update_package_manager
+# install_all_packages
+
 # install_oh_my_tmux
+# install_tmux_packages
 
 # setup_dot_files
 
@@ -176,7 +178,6 @@ install_all_packages
 #=====================================================
 # Do last to prevent conflicts between shells
 #=====================================================
-# source install_zsh.sh
 # install_oh_my_zsh
 # install_all_zsh_plugins
 # setup_dot_files

@@ -18,6 +18,7 @@ if [ is_mac ]; then
     alias repos="${HOME}/repos"
     alias uo="${HOME}/repos/uo"
     alias uo_docs="${HOME}/repos/uo_docs"
+    alias desktop="${HOME}/Desktop"
 fi
 
 # Simplify checking my running jobs

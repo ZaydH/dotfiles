@@ -65,8 +65,9 @@ install_file .config/flake8
 # Adding jupyter notebook configuration
 install_file .jupyter/jupyter_notebook_config.py
 
-# # Settings for latexmk Perl script
-# install_file .latexmkrc
+# Settings for latexmk Perl script
+install_file .latexmkrc
+
 # Settings for tmux
 source install_tmux.sh
 install_file "${OH_MY_TMUX_REPO_NAME}/.tmux.conf" .tmux.conf

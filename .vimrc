@@ -290,7 +290,7 @@ map nt :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " File extensions to exclude from displaying in NerdTree
-let NERDTreeIgnore = [ '\.\(aux\|bbl\|blg\|fdb_latexmk\|fls\|gz\|log\|out\|pdf\|pyc\|swp\|toc\)$', ]
+let NERDTreeIgnore = [ '\.\(aux\|bbl\|blg\|fdb_latexmk\|fls\|gz\|log\|nav\|out\|pdf\|pyc\|snm\|swp\|toc\)$', ]
 
 " Open NerdTree by default if nothing specified in vim.
 autocmd StdinReadPre * let s:std_in=1

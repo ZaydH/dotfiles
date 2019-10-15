@@ -8,6 +8,7 @@ function install_python_packages() {
                          tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages
                          cplex gurobi # Linear system solvers
                          tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
+                         gensim nltk fuzzywuzzy  # NLP packages
                          pywsl  # Python for Weakly Supervised Learning
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
@@ -16,7 +17,7 @@ function install_python_packages() {
                          seaborn git-wrapper quilt dill lief tqdm futures
                          fire  # Google Package for a simple command line interface
                          pydot gmpy2  # Packages for WAPS
-                         fuzzywuzzy)
+                         )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."
         pip install --upgrade ${pkg} > /dev/null

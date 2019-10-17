@@ -8,6 +8,7 @@ function install_python_packages() {
                          tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages
                          cplex gurobi # Linear system solvers
                          tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
+                         tsnecuda MulticoreTSNE  # t-SNE packages
                          gensim nltk fuzzywuzzy  # NLP packages
                          pywsl  # Python for Weakly Supervised Learning
                          virtualenv pipenv pipreqs  # Portability requirements

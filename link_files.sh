@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ~/.functions
+
 # Function for installing a file from then repository to the filesystem
 function install_file() {
     if [ $# == 1 ]; then
@@ -39,7 +41,7 @@ install_file .aliases
 # oh-my-zsh auto-completions
 install_file .oh-my-zsh/completions
 # Special bash file used to load zsh on Talapas
-if [[ $(hostname) == *"talapas"* ]]; then
+if [[ is_talapas ]]; then
     install_file .bashrc_talapas .bashrc
 fi
 

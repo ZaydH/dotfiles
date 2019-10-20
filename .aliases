@@ -2,9 +2,10 @@ source ${HOME}/.functions
 
 # Helpful git Aliases
 alias ga!='git add $_'  # Adds the last parameter of the previous bash command.
-alias gap='git checkout -p'  # Adds the last parameter of the previous bash command.
+alias gbh='git branch-sort' # Sorts branches by last commit
+alias gap='git checkout -p'
 alias gco!='git checkout $_'  # Adds the last parameter of the previous bash command.
-alias gcop='git checkout -p'  # Adds the last parameter of the previous bash command.
+alias gcop='git checkout -p'
 alias gwd='git wd'      # Performs word diff
 # alias gupnb='$(git push |& tail -n 2)'   # Push new branch
 

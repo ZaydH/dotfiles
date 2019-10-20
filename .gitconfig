@@ -5,6 +5,7 @@
 [alias]
     wd = diff -w --word-diff
     pull-ff = !"for b in $(git for-each-ref refs/heads --format='%(refname)') ; do git checkout ${b#refs/heads/} ; git pull --ff-only ; done"
+    branch-sort = !"for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format=\"%ci %cr\" $branch | head -n 1` \\t$branch; done | sort -r" ; credit https://gist.github.com/jasonrudolph/1810768
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f

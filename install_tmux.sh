@@ -24,12 +24,20 @@ function install_oh_my_tmux() {
     fi
     # -C changes directory before pull
     git -C ${OH_MY_TMUX_REPO_NAME} pull > /dev/null
+    printf "COMPLETED\n"
 
+    update_tmux_conf
+}
+
+
+function update_tmux_conf() {
+    printf "Creating oh-my-tmux conf..."
     MY_TMUX_CONF=".tmux.my.conf"
     OH_MY_TMUX_LOCAL="${OH_MY_TMUX_REPO_NAME}/.tmux.conf.local"
 
     # Make a new .tmux.conf local file
     cat ${OH_MY_TMUX_LOCAL} ${MY_TMUX_CONF} > ${TMUX_CONF_LOCAL}
+
     printf "COMPLETED\n"
 }
 

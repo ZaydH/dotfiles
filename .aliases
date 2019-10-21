@@ -43,6 +43,10 @@ else
     alias top="top -o %CPU"
 fi
 
+if [ is_linux ]; then
+    alias open='xdg-open'
+fi
+
 # # tmux aliases
 # ## New tmux session with a user specified name like: tn <name>
 # alias tn="tmux new -s"

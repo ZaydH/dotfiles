@@ -204,6 +204,7 @@ function freeze() {
     pipreqs --force ${PY_DIR}
 }
 
+OS=UNDEFINED
 MAC=Mac
 LINUX=Linux
 BSD=BSD
@@ -211,7 +212,6 @@ WINDOWS=WINDOWS
 UNKNOWN_OS=UNKNOWN_OS
 
 # Helper function that store in variable OS the operating system
-#
 function determine_os() {
     case "$OSTYPE" in
       # solaris*) echo "SOLARIS" ;;
@@ -222,28 +222,31 @@ function determine_os() {
       *)        OS=${UNKNOWN_OS} ;;
     esac
 
-    if [ ${OS} == ${UNKNOWN_OS} ]; then
+    if [[ ${OS} == ${UNKNOWN_OS} ]]; then
         printf "Unknown/unsupported OS detected. Exiting...\n"
         return 1
     fi
-    printf "OS Detected: ${OS}\n"
+    # printf "OS Detected: ${OS}\n"
 }
 
 # Returns true (0, i.e., SUCCESS) if current is a Mac
 function is_mac() {
     determine_os
-    return [ ${OS} == ${MAC} ]
+    [[ "${OS}" == "${MAC}" ]]
+    # return implicit and not needed
 }
 
 # Returns true (0, i.e., SUCCESS) if current is Linux
 function is_linux() {
     determine_os
-    return [ ${OS} == ${LINUX} ]
+    [[ "${OS}" == "${LINUX}" ]]
+    # return implicit and not needed
 }
 
 # Returns true if current host is UO server talapas
 function is_talapas() {
-    return $(hostname) == *"talapas"*
+    [[ $(hostname) == *"talapas"* ]]
+    # return implicit and not needed
 }
 
 

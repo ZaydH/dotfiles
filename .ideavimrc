@@ -6,12 +6,13 @@ source ~/.vimrc
 :inoremap <Space> <Space>
 :inoremap <Tab> <Tab>
 
+set nonumber          " Show line numbers
+set norelativenumber
+
 " PyCharm's IdeaVim has support for emulating some vim plugins.
 " For more information see:
 " https://github.com/JetBrains/ideavim#emulated-vim-plugins
 set surround
-" Set commentary currently needs Early Access Program (EAP). See:
-" https://github.com/JetBrains/ideavim#get-an-early-access
 set commentary
 
 " Emulate vim nerdtree

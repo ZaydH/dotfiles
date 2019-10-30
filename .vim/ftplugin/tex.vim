@@ -16,3 +16,14 @@ inoremap <buffer> <silent> <Up>   <C-o>gk
 inoremap <buffer> <silent> <Down> <C-o>gj
 inoremap <buffer> <silent> <Home> <C-o>g<Home>
 inoremap <buffer> <silent> <End>  <C-o>g<End>
+
+" Based on comment:
+" https://github.com/lervag/vimtex/issues/168#issuecomment-108019496
+let g:tex_fast = "bMpr"
+let g:tex_conceal = ""
+
+" Settings needed to speed up latex
+set nocursorline
+set nornu
+set number
+let g:loaded_matchparen=1

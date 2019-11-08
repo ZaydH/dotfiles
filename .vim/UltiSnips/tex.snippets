@@ -295,6 +295,8 @@ snippet algpack "Algorithm package import" b
 \usepackage[Algorithm,ruled]{algorithm}
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+\newcommand{\algin}[1]{\hspace*{\algorithmicindent} \textbf{Input} #1\\\\}
+\newcommand{\algout}[1]{\hspace*{\algorithmicindent} \textbf{Output} #1\\\\}
 endsnippet
 
 snippet colorpack "Color package and command import" b

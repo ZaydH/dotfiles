@@ -36,7 +36,7 @@ alias kj="kill_job"
 # MacOS print notification from the terminal to the notification pane
 alias terminal-notifier="terminal-notifier -message"
 
-# Sort top automatically by
+# Sort top automatically by cpu usage
 if [ is_mac ]; then
     alias top="top -o cpu"
 else
@@ -45,6 +45,11 @@ fi
 
 if is_linux ; then
     alias open='xdg-open'
+fi
+
+# Use GNU cut since it has more features than the BSD cut
+if [ is_mac ]; then
+    alias cut="gcut"
 fi
 
 # # tmux aliases

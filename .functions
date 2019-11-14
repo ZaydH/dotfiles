@@ -250,7 +250,7 @@ function is_talapas() {
 }
 
 
-if [ is_talapas ]; then
+if is_talapas; then
     # Runs a command line function call automatically in a slurm job
     function run_cli_slurm() {
         if [ $# -ne 3 ]; then

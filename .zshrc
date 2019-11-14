@@ -155,9 +155,11 @@ export EDITOR=$( which vim )
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # Load gruvbox color scheme
-GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette.sh
-if [ -f "${GRUV_BOX}" ]; then
-    source "${GRUV_BOX}"
+if is_talapas; then
+    GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette.sh
+    if [ -f "${GRUV_BOX}" ]; then
+        source "${GRUV_BOX}"
+    fi
 fi
 
 # If  a  command is issued that can't be executed as a normal command,

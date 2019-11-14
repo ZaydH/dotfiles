@@ -15,7 +15,7 @@ alias v!='vim $_'
 # Go right to dotfiles folder
 alias dot="${HOME}/repos/dotfiles"
 alias repos="${HOME}/repos"
-if [ is_mac ]; then
+if is_mac; then
     alias uo="${HOME}/repos/uo"
     alias uo_docs="${HOME}/repos/uo_docs"
     alias desktop="${HOME}/Desktop"
@@ -37,7 +37,7 @@ alias kj="kill_job"
 alias terminal-notifier="terminal-notifier -message"
 
 # Sort top automatically by cpu usage
-if [ is_mac ]; then
+if is_mac; then
     alias top="top -o cpu"
 else
     alias top="top -o %CPU"
@@ -48,7 +48,7 @@ if is_linux ; then
 fi
 
 # Use GNU cut since it has more features than the BSD cut
-if [ is_mac ]; then
+if is_mac; then
     alias cut="gcut"
 fi
 

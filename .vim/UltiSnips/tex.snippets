@@ -92,10 +92,16 @@ snippet eqi "Create in inline equation" i
 \$\{$1\}\$
 endsnippet
 
-snippet eqn "Begin an equation" b
+snippet eqn "Begin a numbered equation" b
 \begin{equation}\label{eq:$1}
   $2
 \end{equation}
+endsnippet
+
+snippet eqn* "Begin an unnumbered equation" b
+\begin{equation*}
+  $1
+\end{equation*}
 endsnippet
 
 snippet frac "Fraction in math mode"

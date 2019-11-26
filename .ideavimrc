@@ -14,6 +14,7 @@ set norelativenumber
 " https://github.com/JetBrains/ideavim#emulated-vim-plugins
 set surround
 set commentary
+set easymotion
 
 " Emulate vim nerdtree
 nnoremap nt :action ActivateProjectToolWindow<CR>

@@ -1,3 +1,6 @@
+" TeX only plugins
+Plugin 'reedes/vim-wordy'
+
 " this is mostly a matter of taste. but LaTeX looks good with just a bit
 " of indentation.  Use only two spaces instead of default of four.
 set tabstop=2

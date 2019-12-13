@@ -39,6 +39,8 @@ if v:version >= 800
 endif
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
+" Wordy detects poor uses of language
+Plugin 'reedes/vim-wordy'
 " Command Line Fuzzy Finder for use with vimtex
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'

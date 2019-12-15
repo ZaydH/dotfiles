@@ -17,6 +17,7 @@ function install_python_packages() {
                          exhale sphinx sphinx_rtd_theme yapf autopep8 rope
                          seaborn git-wrapper quilt dill lief tqdm futures
                          fire  # Google Package for a simple command line interface
+                         ruamel.yaml  # Improved yaml parser
                          pydot gmpy2  # Packages for WAPS
                          )
     for pkg in ${pip_pkgs[@]}; do

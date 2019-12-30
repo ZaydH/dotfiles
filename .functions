@@ -245,7 +245,7 @@ function is_linux() {
 
 # Returns true if current host is UO server talapas
 function is_talapas() {
-    [[ $(hostname) == *"talapas"* ]]
+    [[ $(hostname) == *"talapas"* || $(hostname) =~ "^n[0-9]{1,3}$" ]]
     # return implicit and not needed
 }
 

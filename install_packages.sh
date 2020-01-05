@@ -29,7 +29,7 @@ function install_all_packages() {
                      notify-send        # linux only
                      python python3 python-dev python3-dev python-devel ipython jupyter
                      pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
-                     coreutils moreutils zsh tmux libomp libomp-dev
+                     gnu-sed coreutils moreutils zsh tmux libomp libomp-dev
                      openssl libssl-dev readline readline-devel libreadline7
                      libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                      dkms build-essential)

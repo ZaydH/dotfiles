@@ -21,6 +21,11 @@ if is_mac; then
     alias desktop="${HOME}/Desktop"
 fi
 
+# ToDo temporary only
+if is_mac; then
+    alias icml="${HOME}/repos/icml2020"
+fi
+
 # Simplify checking my running jobs
 ##  Default format: "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
 ##  Long Format: "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %R"

@@ -31,7 +31,11 @@ fi
 ##  Long Format: "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %R"
 ### For more info, see: https://slurm.schedmd.com/squeue.html
 ### Changes Versus Long: Widened job name (%j) and time limit (%l)
-alias squeue='squeue --format="%.18i %.9P %.14j %.8u %.8T %.10M %.15l %.6D %R"'
+# Sorting jobs:
+### Highest Priority: Partition
+###                   Job State
+### Lowest Priority:  Job Number
+alias squeue='squeue --format="%.18i %.9P %.14j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
 alias sq=squeue
 alias mysqueue='squeue -u $(whoami)'
 alias msq=mysqueue

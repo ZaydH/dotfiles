@@ -50,6 +50,28 @@ function kill_job {
     scancel ${JOB_NUM}
 }
 
+# Function that kills all jobs whose ID is larger than the specified parameter
+function kill_jobs_larger {
+    declare -a jobs=()
+
+    if [ -z "$1" ] ; then
+        echo "Minimum Job Number argument is required.  Run as '$0 jobnum'"
+        exit 1
+    fi
+
+    minjobnum="$1"
+
+    myself="$(id -u -n)"
+
+    for j in $(squeue --user="$myself" --noheader --format='%i') ; do
+      if [ "$j" -gt "$minjobnum" ] ; then
+        jobs+=($j)
+      fi
+    done
+
+    scancel "${jobs[@]}"
+}
+
 # Helper function for checking version numbers
 function version { echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; }
 

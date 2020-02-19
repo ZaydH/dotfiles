@@ -74,6 +74,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " GruvBox color scheme
 Plugin 'morhetz/gruvbox'
+" Markdown preview
+" Use command: Ctrl-p to run generate the preview
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -391,6 +394,10 @@ let g:vimtex_fold_enabled = 0
 
 " Disable vimtex autocomplete in included lib files
 let g:vimtex_include_search_enabled = 0
+
+" vim-markdown-preview ====================================================
+
+let vim_markdown_preview_github=1
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

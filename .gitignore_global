@@ -6,6 +6,7 @@
 ## Vim Files
 *.swp
 tags
+tags.lock
 .ropeproject/
 
 ## Jetbrains Files

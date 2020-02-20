@@ -19,6 +19,7 @@ function install_python_packages() {
                          fire  # Google Package for a simple command line interface
                          ruamel.yaml  # Improved yaml parser
                          pydot gmpy2  # Packages for WAPS
+                         arxiv-collector # Used to prepare a tex document for Arxiv
                          )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."

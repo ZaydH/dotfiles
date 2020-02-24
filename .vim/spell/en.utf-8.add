@@ -151,3 +151,11 @@ decompositions
 GloVe
 MLP
 GCN
+subadditive
+Lipschitz
+Lipschitzness
+Rademacher
+supremum
+infimum
+additivity
+Subadditivity

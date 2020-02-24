@@ -19,6 +19,7 @@ alias uo="${HOME}/repos/uo"
 if is_mac; then
     alias uo_docs="${HOME}/repos/uo_docs"
     alias desktop="${HOME}/Desktop"
+    alias textbooks="${HOME}/repos/textbooks"
 fi
 
 # ToDo temporary only

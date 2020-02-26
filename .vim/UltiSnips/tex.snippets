@@ -374,10 +374,12 @@ endsnippet
 snippet tabpack "Packages for tables" b
 % Imported via UltiSnips
 \usepackage{array}  % Provides a way add a \centering command to a p-column
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}   % H in table definition hide column values
 \usepackage{arydshln}  % Introduces hdashline & cdashline
 \usepackage{bigdelim}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{makecell}  % Needed for multirowcell
 endsnippet
 
 snippet pdfpack "Package(s) for importing PDFs" b

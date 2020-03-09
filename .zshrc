@@ -104,12 +104,12 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Update the path environment variable
-export BISON_ROOT="/usr/local/opt/bison/bin"
-export PATH="$BISON_ROOT:$PATH"
+# export BISON_ROOT="/usr/local/opt/bison/bin"
+# export PATH="$BISON_ROOT:$PATH"
 #export FLEX_ROOT="/usr/local/opt/flex/bin"
 #export PATH="$FLEX_ROOT:$PATH"
-export REFLEX_ROOT="${HOME}/reflex/bin"
-export PATH="$REFLEX_ROOT:$PATH"
+# export REFLEX_ROOT="${HOME}/reflex/bin"
+# export PATH="$REFLEX_ROOT:$PATH"
 
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"

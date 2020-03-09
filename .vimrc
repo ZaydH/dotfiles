@@ -28,6 +28,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 " " YouCompleteMe autocompletion support"
 " Plugin 'Valloric/YouCompleteMe'
+" Any jump to definition extension
+Plugin 'pechorin/any-jump.vim'
 " Enables quick traversal through a document
 Plugin 'easymotion/vim-easymotion'
 if v:version >= 800

@@ -13,9 +13,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Supertab used for compatibility between YouCompleteMe and UltiSnips
-" Needs to be first due to issue in supertab
-Plugin 'ervandew/supertab'
+" " Supertab used for compatibility between YouCompleteMe and UltiSnips
+" " Needs to be first due to issue in supertab
+" Plugin 'ervandew/supertab'
 " Fugitive vim git app
 Plugin 'tpope/vim-fugitive'
 " Vim Comment tool
@@ -56,8 +56,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 " Pyrope for vim
 Plugin 'python-rope/ropevim'
-" Python Docstring Generation
-Plugin 'heavenshell/vim-pydocstring'
+" " Python Docstring Generation
+" Plugin 'heavenshell/vim-pydocstring'
 " Enables proper highlighting and documentation linking for .tmux.conf in vim
 Plugin 'tmux-plugins/vim-tmux'
 " " Automatically import python modules
@@ -70,10 +70,10 @@ Plugin 'w0rp/ale'
 Plugin 'SirVer/ultisnips'
 " gitgutter show the lines imodified in the file under use
 Plugin 'airblade/vim-gitgutter'
-" " airline improved status bar
+" airline improved status bar
 Plugin 'vim-airline/vim-airline'
-" " Needed for adding a color scheme to airline
-Plugin 'vim-airline/vim-airline-themes'
+" " " Needed for adding a color scheme to airline
+" Plugin 'vim-airline/vim-airline-themes'
 " " GruvBox color scheme
 " Plugin 'morhetz/gruvbox'
 " Afterglow color scheme
@@ -194,7 +194,6 @@ syntax on
 " Disable spellcheck for vimrc
 autocmd! bufreadpost .vimrc set nospell
 
-
 " Basic vim and Shell Settings ============================================
 " Reload vimrc after saving it
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -226,11 +225,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 "let g:pymode_dlint_config = '$HOME/.pylintrc'
 
 " Detect the python version automatically to prevent issues on Talapas
-if has("python3")
-    let g:pymode_python = 'python3'
-else
-    let g:pymode_python = 'python'
-endif
+" if has("python3")
+"     let g:pymode_python = 'python3'
+" else
+"     let g:pymode_python = 'python'
+" endif
+let g:pymode_python = 'python3'
 let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
@@ -240,9 +240,9 @@ let g:pymode_lint_ignore = "E701,E704"
 " call pymode#default('g:pymode_rope', 0)
 call pymode#default('g:pymode_rope', 1)
 
-" Command to automatically add docstrings
-" Uses plugin: vim-pydocstring
-map """ <Plug>(pydocstring)
+" " Command to automatically add docstrings
+" " Uses plugin: vim-pydocstring
+" map """ <Plug>(pydocstring)
 
 " Command to automatically import Python modules
 " Uses plugin: python-imports.vim
@@ -256,7 +256,6 @@ let g:pymode_rope_goto_definition_bind = '<C-c>g'
 " Command for open window when definition has been found
 " Values are (`e`, `new`, `vnew`)
 let g:pymode_rope_goto_definition_cmd = 'new'
-
 
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'
@@ -305,20 +304,20 @@ let NERDTreeIgnore = [ '\.\(aux\|bbl\|blg\|fdb_latexmk\|fls\|gz\|log\|nav\|out\|
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-" YouCompleteMe ===========================================================
-" Disable YouCompleteMe in these files
-let g:ycm_filetype_blacklist = {
-      \ 'tex': 1,
-      \ 'bib': 1,
-      \ 'markdown': 1,
-      \}
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" Have enter select in YouCompleteMe
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+" " YouCompleteMe ===========================================================
+" " Disable YouCompleteMe in these files
+" let g:ycm_filetype_blacklist = {
+"       \ 'tex': 1,
+"       \ 'bib': 1,
+"       \ 'markdown': 1,
+"       \}
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+" " Have enter select in YouCompleteMe
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
 
 " UltiSnips ===============================================================
 " Define where UltiSnips loops for snippets
@@ -336,9 +335,9 @@ let g:ultisnips_python_quoting_style="double"
 let g:ultisnips_python_triple_quoting_style="double"
 let g:ultisnips_python_style='sphinx'
 
-" SuperTab ================================================================
-" Get back default behavior for tab to move the list down
-let g:SuperTabDefaultCompletionType = "<C-n>"
+" " SuperTab ================================================================
+" " Get back default behavior for tab to move the list down
+" let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " " GruvBox =================================================================
 " " Find more information on settings here:
@@ -415,8 +414,8 @@ endif
 
 let g:loaded_fix_indentkeys = 1
 
-" Set indentkeys option again on changed filetype option.
-" This fixes TeX \item indentation in combination with YouCompleteMe.
-" See https://github.com/Valloric/YouCompleteMe/issues/1244
-" You may add more filetypes if necessary.
-autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys
+" " Set indentkeys option again on changed filetype option.
+" " This fixes TeX \item indentation in combination with YouCompleteMe.
+" " See https://github.com/Valloric/YouCompleteMe/issues/1244
+" " You may add more filetypes if necessary.
+" autocmd FileType tex,plaintex execute "setlocal indentkeys=" . &indentkeys

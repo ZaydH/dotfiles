@@ -41,7 +41,7 @@ install_file .aliases
 # oh-my-zsh auto-completions
 install_file .oh-my-zsh/completions
 # Special bash file used to load zsh on Talapas
-if [[ is_talapas ]]; then
+if is_talapas; then
     install_file .bashrc_talapas .bashrc
 fi
 

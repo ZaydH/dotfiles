@@ -74,8 +74,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 " " Needed for adding a color scheme to airline
 Plugin 'vim-airline/vim-airline-themes'
-" GruvBox color scheme
-Plugin 'morhetz/gruvbox'
+" " GruvBox color scheme
+" Plugin 'morhetz/gruvbox'
+" Afterglow color scheme
+Plugin 'danilo-augusto/vim-afterglow'
 " Markdown preview
 " Use command: Ctrl-p to run generate the preview
 Plugin 'JamshedVesuna/vim-markdown-preview'
@@ -338,12 +340,15 @@ let g:ultisnips_python_style='sphinx'
 " Get back default behavior for tab to move the list down
 let g:SuperTabDefaultCompletionType = "<C-n>"
 
-" GruvBox =================================================================
-" Find more information on settings here:
-" https://github.com/morhetz/gruvbox/wiki/Terminal-specific
-colorscheme gruvbox
-set background=dark
-let g:airline_theme='gruvbox'
+" " GruvBox =================================================================
+" " Find more information on settings here:
+" " https://github.com/morhetz/gruvbox/wiki/Terminal-specific
+" colorscheme gruvbox
+" set background=dark
+" let g:airline_theme='gruvbox'
+
+colorscheme afterglow
+let g:airline_theme='afterglow'
 
 " Change the color scheme for match parentheses to make it easier to view in
 " latex

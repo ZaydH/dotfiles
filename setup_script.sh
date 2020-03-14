@@ -179,5 +179,4 @@ source install_zsh.sh
 # Do last to prevent conflicts between shells
 #=====================================================
 # install_oh_my_zsh
-# install_all_zsh_plugins
 # setup_dot_files

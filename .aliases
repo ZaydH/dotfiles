@@ -75,6 +75,9 @@ alias clonezaydh=clonez
 # Simplify calling tensorboard
 alias tb="tensorboard --logdir"
 
+# Enable xterm in ssh
+# See: https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+alias ssh='TERM=xterm-256color ssh'
 # Simplify ssh to talapas
 alias ssht="ssh talapas"
 

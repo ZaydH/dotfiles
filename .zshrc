@@ -1,13 +1,28 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=${HOME}/bin:/usr/local/bin:$PATH
+source ${HOME}/antigen.zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.oh-my-zsh
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+# antigen bundle pip
+antigen bundle command-not-found
+antigen bundle python
+antigen bundle tmux
+antigen bundle osx
+
+# Load the theme.
+# antigen theme robbyrussell
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting  # Must be the LAST plugin per github README
+
+# Tell Antigen that you're done.
+antigen apply
+
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -21,13 +36,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -54,25 +63,25 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  python
-  tmux
-  osx
-  zsh-autosuggestions
-  zsh-syntax-highlighting  # Must be the LAST plugin per github README
-)
+# # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# # Example format: plugins=(rails git textmate ruby lighthouse)
+# # Add wisely, as too many plugins slow down shell startup.
+# plugins=(
+#   git
+#   python
+#   tmux
+#   osx
+#   zsh-autosuggestions
+#   zsh-syntax-highlighting
+# )
 
-if [ -d "${ZSH}" ]; then
-    source $ZSH/oh-my-zsh.sh
-    # Load oh-my-zsh autocompletion
-    autoload -U compinit
-    compinit
-fi
+# if [ -d "${ZSH}" ]; then
+#     source $ZSH/oh-my-zsh.sh
+#     # Load oh-my-zsh autocompletion
+#     autoload -U compinit
+#     compinit
+# fi
 
 # User configuration
 
@@ -94,15 +103,6 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Update the path environment variable
 # export BISON_ROOT="/usr/local/opt/bison/bin"
 # export PATH="$BISON_ROOT:$PATH"
@@ -110,6 +110,16 @@ fi
 #export PATH="$FLEX_ROOT:$PATH"
 # export REFLEX_ROOT="${HOME}/reflex/bin"
 # export PATH="$REFLEX_ROOT:$PATH"
+
+# Print execution time if time exceeds below
+PURE_CMD_MAX_EXEC_TIME=10 # s
+# change the path color
+# zstyle :prompt:pure:path color white
+# # change the color for both `prompt:success` and `prompt:error`
+# zstyle ':prompt:pure:prompt:*' color cyan
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+# prompt pure
 
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"

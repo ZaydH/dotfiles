@@ -74,10 +74,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 " " " Needed for adding a color scheme to airline
 " Plugin 'vim-airline/vim-airline-themes'
-" " GruvBox color scheme
-" Plugin 'morhetz/gruvbox'
-" Afterglow color scheme
-Plugin 'danilo-augusto/vim-afterglow'
+" GruvBox color scheme
+Plugin 'morhetz/gruvbox'
+" " Afterglow color scheme
+" Plugin 'danilo-augusto/vim-afterglow'
 " Markdown preview
 " Use command: Ctrl-p to run generate the preview
 Plugin 'JamshedVesuna/vim-markdown-preview'
@@ -140,7 +140,6 @@ function StartProfiling()
     profile func *
     profile file *
 endfunction
-
 
 " Change the cursor shape in insert mode
 " Other options (replace the number after \e[):
@@ -210,8 +209,8 @@ set expandtab
 " Create a specialized tab setting for C++
 autocmd Filetype c++ setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+" " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+" filetype plugin on
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
@@ -342,12 +341,12 @@ let g:ultisnips_python_style='sphinx'
 " " GruvBox =================================================================
 " " Find more information on settings here:
 " " https://github.com/morhetz/gruvbox/wiki/Terminal-specific
-" colorscheme gruvbox
-" set background=dark
+colorscheme gruvbox
+set background=dark
 " let g:airline_theme='gruvbox'
 
-colorscheme afterglow
-let g:airline_theme='afterglow'
+" colorscheme afterglow
+" let g:airline_theme='afterglow'
 
 " Change the color scheme for match parentheses to make it easier to view in
 " latex

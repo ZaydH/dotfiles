@@ -154,13 +154,13 @@ export EDITOR=$( which vim )
 # is python and ruby.
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-# Load gruvbox color scheme
-if is_talapas; then
-    GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette.sh
-    if [ -f "${GRUV_BOX}" ]; then
-        source "${GRUV_BOX}"
-    fi
-fi
+# # Load gruvbox color scheme
+# if is_talapas; then
+#     GRUV_BOX=${HOME}/.vim/bundle/gruvbox/gruvbox_256palette.sh
+#     if [ -f "${GRUV_BOX}" ]; then
+#         source "${GRUV_BOX}"
+#     fi
+# fi
 
 # If  a  command is issued that can't be executed as a normal command,
 # and the command is the name of a directory, perform the cd command

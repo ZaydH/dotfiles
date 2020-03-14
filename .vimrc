@@ -224,12 +224,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 "let g:pymode_dlint_config = '$HOME/.pylintrc'
 
 " Detect the python version automatically to prevent issues on Talapas
-" if has("python3")
-"     let g:pymode_python = 'python3'
-" else
-"     let g:pymode_python = 'python'
-" endif
-let g:pymode_python = 'python3'
+if has("python3")
+    let g:pymode_python = 'python3'
+else
+    let g:pymode_python = 'python'
+endif
+" let g:pymode_python = 'python3'
 let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1

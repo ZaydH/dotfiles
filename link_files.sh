@@ -78,5 +78,7 @@ install_file .tmux
 # # Configuration for google cloud
 # install_file .config/gcloud/configurations/config_default
 # Add the file containing ssh/scp configuration
-install_file .ssh/config
+if is_mac; then
+    install_file .ssh/config
+fi
 install_file .ssh/id_rsa.pub

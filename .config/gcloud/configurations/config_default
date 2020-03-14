@@ -1,8 +1,0 @@
-[core]
-account = hammoudeh@gmail.com
-project = uo-deep-learning
-
-[compute]
-zone = us-west1-b
-region = us-west1
-

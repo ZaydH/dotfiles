@@ -21,4 +21,4 @@ $pdflatex = 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';
 $pdf_previewer = 'open';
 
 # Also remove pdfsync files on clean
-$clean_ext = 'bbl nav pdfsync synctex.gz synctex\(busy\)';
+$clean_ext = 'bbl nav pdfsync snm synctex.gz synctex\(busy\) upa';

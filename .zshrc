@@ -1,4 +1,12 @@
 source ${HOME}/antigen.zsh
+
+# Loads the specified dotfile if it exists
+function load_dotfile() {
+    DOT_PATH="${HOME}/$1"
+    if [ -r "${DOT_PATH}" ]; then
+        source "${DOT_PATH}"
+    fi
+}
 load_dotfile .functions
 
 # Load the oh-my-zsh's library.

@@ -1,5 +1,34 @@
 #!/usr/bin/env bash
 
+function install_python_with_pyenv() {
+    source .zshrc > /dev/null
+    install_cli_package pyenv
+
+    printf "Updating PyEnv..."
+    pyenv update > /dev/null
+    printf "COMPLETED\n"
+
+    # Needed to ensure configuration is valid
+    if is_mac; then
+        export PYTHON_CONFIGURE_OPTS="--enable-framework"
+    else
+        # Needed to prevent error "python-build: framework installation is not supported."
+        export PYTHON_CONFIGURE_OPTS=""
+    fi
+    # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
+    # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
+    declare -a versions=("3.6.5" "3.7.1")
+    for ver in ${versions[@]}; do
+        printf "Installing python version ${ver}..."
+        pyenv install "${ver}" > /dev/null
+        printf "COMPLETED\n"
+        pyenv global ${ver} > /dev/null
+        printf "Upgrading pip..."
+        printf "COMPLETED\n"
+        install_python_packages
+    done
+}
+
 # Standard function for install packages using pip
 function install_python_packages() {
     declare -a pip_pkgs=(pip  # Always upgrade pip first
@@ -27,6 +56,3 @@ function install_python_packages() {
         printf "COMPLETED\n"
    done
 }
-
-# pip install --upgrade pip &> /dev/null
-install_python_packages

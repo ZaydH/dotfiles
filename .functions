@@ -183,7 +183,7 @@ function targz() {
         fi;
     fi;
 
-    echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
+    echo "Compressing .tar ($((size / 1000)) kB) using '${cmd}'…";
     "${cmd}" -v "${tmpFile}" || return 1;
     [ -f "${tmpFile}" ] && rm "${tmpFile}";
 
@@ -283,25 +283,60 @@ function freeze() {
 OS=UNDEFINED
 MAC=Mac
 LINUX=Linux
+DEBIAN="Debian Linux"
 BSD=BSD
 WINDOWS=WINDOWS
 UNKNOWN_OS=UNKNOWN_OS
 
 # Helper function that store in variable OS the operating system
 function determine_os() {
-    case "$OSTYPE" in
-      # solaris*) echo "SOLARIS" ;;
-      darwin*)  OS=${MAC} ;;
-      linux*)   OS=${LINUX} ;;
-      # bsd*)   OS=${BSD} ;;
-      # msys*)  OS=${WINDOWS} ;;
-      *)        OS=${UNKNOWN_OS} ;;
-    esac
-
-    if [[ ${OS} == ${UNKNOWN_OS} ]]; then
+    if [[ "${OSTYPE}" =~ darwin.* ]]; then
+        OS=${MAC}
+    elif [ -f /etc/os-release ]; then
+        # freedesktop.org and systemd
+        . /etc/os-release
+        OS=$NAME
+        VER=$VERSION_ID
+    elif type lsb_release >/dev/null 2>&1; then
+        # linuxbase.org
+        OS=$(lsb_release -si)
+        VER=$(lsb_release -sr)
+    elif [ -f /etc/lsb-release ]; then
+        # For some versions of Debian/Ubuntu without lsb_release command
+        . /etc/lsb-release
+        OS=$DISTRIB_ID
+        VER=$DISTRIB_RELEASE
+    elif [ -f /etc/debian_version ]; then
+        # Older Debian/Ubuntu/etc.
+        OS=${DEBIAN}
+        VER=$(cat /etc/debian_version)
+    elif [ -f /etc/SuSe-release ]; then
+        # Older SuSE/etc.
+        # ...
+        printf "SuSe not supported...Exiting\n"
+        exit 1
+    elif [ -f /etc/redhat-release ]; then
+        # Older Red Hat, CentOS, etc.
+        OS=${LINUX}
+    # else
+    #     # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+    #     OS=$(uname -s)
+    #     VER=$(uname -r)
+    # if [[ ${OS} == ${UNKNOWN_OS} ]]; then
+    else
         printf "Unknown/unsupported OS detected. Exiting...\n"
         return 1
     fi
+
+    # case "$OSTYPE" in
+    #   # solaris*) echo "SOLARIS" ;;
+    #   darwin*)  OS=${MAC} ;;
+    #   linux*)   OS=${LINUX} ;;
+    #   # bsd*)   OS=${BSD} ;;
+    #   # msys*)  OS=${WINDOWS} ;;
+    #   *)        OS=${UNKNOWN_OS} ;;
+    # esac
+
     # printf "OS Detected: ${OS}\n"
 }
 
@@ -312,11 +347,46 @@ function is_mac() {
     # return implicit and not needed
 }
 
+# Returns true (0, i.e., SUCCESS) if current is Debian-based Linux (e.g., Ubuntu)
+function is_debian() {
+    determine_os
+    [[ "${OS}" =~ ".*Debian.*" ]]
+    # return implicit and not needed
+}
+
+# Returns true (0, i.e., SUCCESS) if current is Manjaro Linux
+function is_manjaro() {
+    determine_os
+    [[ "${OS}" =~ ".*Manjaro.*" ]]
+    # return implicit and not needed
+}
+
 # Returns true (0, i.e., SUCCESS) if current is Linux
 function is_linux() {
     determine_os
-    [[ "${OS}" == "${LINUX}" ]]
+    [[ "${OS}" =~ ".*Linux.*" ]]
     # return implicit and not needed
+}
+
+function install_cli_package() {
+    PKG_NAME=$1
+    printf "Installing package ${PKG_NAME}..."
+    if is_mac; then
+        brew install ${PKG_NAME} > /dev/null
+    elif is_linux; then
+        if is_debian; then
+            sudo apt-get install -y ${PKG_NAME} > /dev/null
+        elif is_manjaro; then
+            sudo pacman -Sy --noconfirm ${PKG_NAME} > /dev/null
+        else
+            printf "Unknown Linux build...Exiting\n"
+            exit 1
+        fi
+    else
+        printf "Unknown package manager...Exiting\n"
+        exit 1
+    fi
+    printf "COMPLETED\n"
 }
 
 # Returns true if current host is UO server talapas
@@ -375,3 +445,12 @@ if is_talapas; then
         echo ${SBATCH_TEXT} | sbatch /dev/stdin
     }
 fi
+
+# Loads the specified dotfile if it exists
+function load_dotfile() {
+    DOT_PATH="${HOME}/$1"
+    if [ -r "${DOT_PATH}" ]; then
+        source "${DOT_PATH}"
+    fi
+}
+

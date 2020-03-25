@@ -1,4 +1,5 @@
 source ${HOME}/antigen.zsh
+load_dotfile .functions
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -9,7 +10,9 @@ antigen bundle git
 antigen bundle command-not-found
 antigen bundle python
 antigen bundle tmux
-antigen bundle osx
+if is_mac; then
+    antigen bundle osx
+fi
 
 # Load the theme.
 # antigen theme robbyrussell
@@ -148,14 +151,7 @@ fi
 # this is an interactive shell.
 # Source commands only valid in interactive shells: https://unix.stackexchange.com/questions/154395/running-scp-when-bashrc-of-remote-machine-includes-source-command
 
-# Loads the specified dotfile if it exists
-function load_dotfile() {
-    if [ -r "$1" ]; then
-        source $1
-    fi
-}
-load_dotfile ~/.aliases
-load_dotfile ~/.functions
+load_dotfile .aliases
 
 export EDITOR=$( which vim )
 

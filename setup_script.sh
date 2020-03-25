@@ -3,14 +3,6 @@
 GITHUB_BASE=https://github.com/ZaydH/
 REPOS_DIR=~/repos/
 
-# Used to install homebrew on a mac
-function install_brew() {
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    printf "Updating brew..."
-    brew update > /dev/null
-    printf "COMPLETED\n"
-}
-
 # function install_google_sdk() {
 #     if is_mac; then
 #         curl https://sdk.cloud.google.com | bash
@@ -86,7 +78,7 @@ function setup_dot_files() {
 
     cd - > /dev/null
     cd ${REPOS_DIR}${DOTFILES_REPO} > /dev/null
-    LINK_FILES_SCRIPT="./line_files.sh"
+    LINK_FILES_SCRIPT="./link_files.sh"
     chmod +x ${LINK_FILES_SCRIPT}
     printf "Linking the dot files..."
     eval ${LINK_FILES_SCRIPT} > /dev/null

@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 source .functions
 
+# Used to install homebrew on a mac
+function install_brew() {
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    printf "Updating brew..."
+    brew update > /dev/null
+    printf "COMPLETED\n"
+}
+
 # OS Related constants for comparison
 function install_and_update_package_manager() {
     if is_mac; then
         install_brew
-        PKG_MNGR_INSTALL="brew install"
     elif is_linux; then
         if is_debian; then
             sudo apt-get update > /dev/null

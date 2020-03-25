@@ -3,14 +3,13 @@ source .functions
 
 # Used to install homebrew on a mac
 function install_brew() {
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    printf "Updating brew..."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
     brew update > /dev/null
-    printf "COMPLETED\n"
 }
 
 # OS Related constants for comparison
 function install_and_update_package_manager() {
+    printf "Installing and updating package manager..."
     if is_mac; then
         install_brew
     elif is_linux; then
@@ -22,13 +21,25 @@ function install_and_update_package_manager() {
             printf "ERROR: Unknown Linux to update package manager. Exiting...\n" >&2
             return 1
         fi
-        printf "COMPLETED\n"
-        # PKG_MNGR_INSTALL="sudo apt-get install -y"
     else
         printf "ERROR: No supported package manager. Exiting...\n" >&2
         return 1
     fi
-    # printf "Install command: ${PKG_MNGR_INSTALL}\n"
+    printf "COMPLETED\n"
+}
+
+function cleanup_package_manager() {
+    printf "Cleaning up unneeded packages..."
+    if is_mac; then
+        # Remove outdated versions from the cellar.
+        brew cleanup > /dev/null
+    elif is_debian; then
+        sudo apt-get autoremove > /dev/null
+        sudo apt-get clean > /dev/null
+    elif is_manjaro; then
+        sudo pacman -Qet > /dev/null
+    fi
+    printf "COMPLETED\n"
 }
 
 # Install package manager packages
@@ -61,8 +72,6 @@ function install_all_packages() {
     for pkg in ${pkgs[@]}; do
         install_cli_package ${pkg}
     done
-    if is_mac; then
-        # Remove outdated versions from the cellar.
-        brew cleanup > /dev/null
-    fi
+
+    cleanup_package_manager
 }

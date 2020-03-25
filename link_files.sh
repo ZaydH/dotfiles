@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-source ~/.functions
+if [ -f .functions ]; then
+    source .functions
+elif [ -f ${HOME}/.functions ]; then
+    source ${HOME}/.functions
+else
+    printf "Unable to load the functions file...Exiting"
+    exit 1
+fi
 
 # Function for installing a file from then repository to the filesystem
 function install_file() {

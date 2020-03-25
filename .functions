@@ -357,14 +357,14 @@ function is_debian() {
 # Returns true (0, i.e., SUCCESS) if current is Manjaro Linux
 function is_manjaro() {
     determine_os
-    [[ "${OS}" =~ ".*Manjaro.*" ]]
+    [[ "${OS}" =~ .*Manjaro.* ]]
     # return implicit and not needed
 }
 
 # Returns true (0, i.e., SUCCESS) if current is Linux
 function is_linux() {
     determine_os
-    [[ "${OS}" =~ ".*Linux.*" || is_debian || is_manjaro ]]
+    [[ "${OS}" =~ .*Linux.* ]] || is_debian || is_manjaro
     # return implicit and not needed
 }
 

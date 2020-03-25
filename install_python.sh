@@ -3,6 +3,7 @@
 function install_python_with_pyenv() {
     source .zshrc > /dev/null
     install_cli_package pyenv
+    source .zshrc > /dev/null
 
     printf "Updating PyEnv..."
     pyenv update > /dev/null

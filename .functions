@@ -283,7 +283,7 @@ function freeze() {
 OS=UNDEFINED
 MAC=Mac
 LINUX=Linux
-DEBIAN="Debian Linux"
+DEBIAN="Debian"
 BSD=BSD
 WINDOWS=WINDOWS
 UNKNOWN_OS=UNKNOWN_OS
@@ -313,8 +313,8 @@ function determine_os() {
     elif [ -f /etc/SuSe-release ]; then
         # Older SuSE/etc.
         # ...
-        printf "SuSe not supported...Exiting\n"
-        exit 1
+        printf "ERROR: SuSe not supported. Exiting...\n" >&2
+        return 1
     elif [ -f /etc/redhat-release ]; then
         # Older Red Hat, CentOS, etc.
         OS=${LINUX}
@@ -324,7 +324,7 @@ function determine_os() {
     #     VER=$(uname -r)
     # if [[ ${OS} == ${UNKNOWN_OS} ]]; then
     else
-        printf "Unknown/unsupported OS detected. Exiting...\n"
+        printf "ERROR: Unknown/unsupported OS detected. Exiting...\n" >&2
         return 1
     fi
 
@@ -350,7 +350,7 @@ function is_mac() {
 # Returns true (0, i.e., SUCCESS) if current is Debian-based Linux (e.g., Ubuntu)
 function is_debian() {
     determine_os
-    [[ "${OS}" =~ ".*Debian.*" ]]
+    [[ "${OS}" =~ .*Debian.* || "${OS}" =~ .*Ubuntu.* ]]
     # return implicit and not needed
 }
 
@@ -364,7 +364,7 @@ function is_manjaro() {
 # Returns true (0, i.e., SUCCESS) if current is Linux
 function is_linux() {
     determine_os
-    [[ "${OS}" =~ ".*Linux.*" ]]
+    [[ "${OS}" =~ ".*Linux.*" || is_debian || is_manjaro ]]
     # return implicit and not needed
 }
 
@@ -379,12 +379,12 @@ function install_cli_package() {
         elif is_manjaro; then
             sudo pacman -Sy --noconfirm ${PKG_NAME} > /dev/null
         else
-            printf "Unknown Linux build...Exiting\n"
-            exit 1
+            printf "ERROR: Unknown Linux build. Exiting...\n" >&2
+            return 1
         fi
     else
-        printf "Unknown package manager...Exiting\n"
-        exit 1
+        printf "ERROR: Unknown package manager. Exiting...\n" >&2
+        return 1
     fi
     printf "COMPLETED\n"
 }

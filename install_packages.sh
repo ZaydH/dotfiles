@@ -19,14 +19,14 @@ function install_and_update_package_manager() {
         elif is_manjaro; then
             sudo pacman -Syu > /dev/null
         else
-            printf "Unknown Linux to update package manager...Exiting\n"
-            exit 1
+            printf "ERROR: Unknown Linux to update package manager. Exiting...\n" >&2
+            return 1
         fi
         printf "COMPLETED\n"
         # PKG_MNGR_INSTALL="sudo apt-get install -y"
     else
-        printf "No supported package manager. Exiting..."
-        exit 1
+        printf "ERROR: No supported package manager. Exiting...\n" >&2
+        return 1
     fi
     # printf "Install command: ${PKG_MNGR_INSTALL}\n"
 }

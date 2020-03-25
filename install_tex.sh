@@ -14,8 +14,8 @@ function install_tex_linux() {
     elif is_manjaro; then
         PKG_NAME="texlive-core"
     else
-        printf "Unknown platform for installing tex...Exiting\n"
-        exit 1
+        printf "Unknown platform for installing tex...Exiting\n" >&2
+        return 1
     fi
     install_cli_package ${PKG_NAME}
 }

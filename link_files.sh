@@ -5,8 +5,8 @@ if [ -f .functions ]; then
 elif [ -f ${HOME}/.functions ]; then
     source ${HOME}/.functions
 else
-    printf "Unable to load the functions file...Exiting"
-    exit 1
+    printf "ERROR: Unable to load the functions file. Exiting...\n" >&2
+    return 1
 fi
 
 # Function for installing a file from then repository to the filesystem
@@ -16,8 +16,8 @@ function install_file() {
     elif [ $# == 2 ]; then
         DEST_FILE=$2
     else
-        printf "Unsupported number of input arguments\n"
-        exit
+        printf "ERROR: Unsupported number of input arguments. Exiting...\n" >&2
+        return 1
     fi
     SRC_FILE=$1
     # Get to the path of the script

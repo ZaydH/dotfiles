@@ -42,36 +42,55 @@ function cleanup_package_manager() {
     printf "COMPLETED\n"
 }
 
+# Single argument is a list of packages.  This function installs all of those packages.
+function install_package_array() {
+    pkgs=$1
+    for pkg in ${pkgs[@]}; do
+        install_cli_package ${pkg}
+    done
+}
+
 # Install package manager packages
 function install_all_packages() {
     install_and_update_package_manager
 
-    declare -a pkgs=(git git-lfs subversion hub tig
-                     curl wget
-                     gcc g++ autoconf automake cmake bison doxygen flex cppcheck
-                     vim ctags exuberant-ctags
-                     graphviz
-                     gmp libgmp3-dev libgmp-dev
-                     mpfr libmpfr-dev
-                     mpc libmpc-dev
-                     gzip bzip2 p7zip zlib1g-dev
-                     fzf
-                     reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
-                     urlview  # Needed for tmux's urlview plugin
-                     zsh-syntax-highlighting  # Needed for zsh plugin
-                     fpp  # FaceBook path picker for tmux plugin
-                     terminal-notifier  # MacOS only for setting notification
-                     notify-send        # linux only
-                     python python3 python-dev python3-dev python-devel ipython jupyter
-                     pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
-                     gnu-sed coreutils moreutils zsh tmux libomp libomp-dev
-                     opendetex  # Tool for removing tex tags from a document
-                     openssl libssl-dev readline readline-devel libreadline7
-                     libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
-                     dkms build-essential)
-    for pkg in ${pkgs[@]}; do
-        install_cli_package ${pkg}
-    done
+    declare -a GENERAL_PKGS=(git git-lfs subversion hub tig
+                             curl wget
+                             zsh tmux  # Shell packages
+                             gcc g++ autoconf automake cmake bison doxygen flex cppcheck
+                             vim ctags exuberant-ctags  # vim specific packages
+                             graphviz
+                             gmp libgmp3-dev libgmp-dev
+                             mpfr libmpfr-dev
+                             mpc libmpc-dev
+                             gzip bzip2 p7zip zlib1g-dev  # Compressed file tools
+                             fzf
+                             urlview  # Needed for tmux's urlview plugin
+                             zsh-syntax-highlighting  # Needed for zsh plugin
+                             fpp  # FaceBook path picker for tmux plugin
+                             python python3 python-dev python3-dev python-devel ipython jupyter
+                             pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
+                             coreutils moreutils libomp libomp-dev
+                             opendetex  # Tool for removing tex tags from a document
+                             openssl libssl-dev readline readline-devel libreadline7
+                             libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
+                             dkms build-essential
+                            )
+    declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
+                                notify-send        # linux only
+                               )
+    declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
+                              terminal-notifier  # MacOS only for setting notification
+                              reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
+                             )
+
+    install_package_array ${GENERAL_PKGS}
+    if is_mac; then
+        install_package_array ${MAC_ONLY_PKGS}
+    do
+    if is_linux; then
+        install_package_array ${LINUX_ONLY_PKGS}
+    do
 
     cleanup_package_manager
 }

@@ -2,21 +2,23 @@
 
 # Installing the vim package manager vundle
 function install_vim_package_manager() {
-    VIM_BUNDLE_FOLDER=~/.vim/bundle/
+    VIM_BUNDLE_FOLDER="${HOME}/.vim/bundle"
     printf "Installing vim package manager \"vundle\"..."
-    rm -rf ${VIM_BUNDLE_FOLDER} > /dev/null
-    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_BUNDLE_FOLDER}Vundle.vim > /dev/null
+    rm -rf "${VIM_BUNDLE_FOLDER}" > /dev/null
+
+    VUNDLE_REPO=https://github.com/VundleVim/Vundle.vim.git
+    git clone "${VUNDLE_REPO}" "${VIM_BUNDLE_FOLDER}/Vundle.vim" > /dev/null
     printf "COMPLETED\n"
     printf "Installing vim plugins..."
     vim -c 'PluginInstall' -c 'qa!' # > /dev/null
     printf "COMPLETED\n"
 
-    YCM=YouCompleteMe
-    printf "Installing ${YCM}..."
-    cd ${VIM_BUNDLE_FOLDER}${YCM}
-    python install.py > /dev/null
-    cd -
-    printf "COMPLETED\n"
+    # YCM=YouCompleteMe
+    # printf "Installing ${YCM}..."
+    # cd ${VIM_BUNDLE_FOLDER}${YCM}
+    # python install.py > /dev/null
+    # cd -
+    # printf "COMPLETED\n"
 }
 
 function setup_dot_files() {
@@ -25,7 +27,7 @@ function setup_dot_files() {
     eval ${LINK_FILES_SCRIPT} > /dev/null
     printf "COMPLETED\n"
     # Load the zshrc file for better support
-    source ~/.zshrc
+    source "${HOME}/.zshrc"
 }
 
 # Enable Jupyter Extensions

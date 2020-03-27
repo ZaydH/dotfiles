@@ -82,6 +82,8 @@ alias tb="tensorboard --logdir"
 alias ssh='TERM=xterm-256color ssh'
 # Simplify ssh to talapas
 alias ssht="ssh talapas"
+# Simplify ssh to home
+alias sshme="ssh home"
 
 # # List all
 # alias la="ls -Alh"

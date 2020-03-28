@@ -16,6 +16,11 @@ function install_python_with_pyenv() {
         # Needed to prevent error "python-build: framework installation is not supported."
         export PYTHON_CONFIGURE_OPTS=""
     fi
+    SYSTEM_INTERPRETER="system"
+    printf "Processing ${SYSTEM_INTERPRETER} first...\n"
+    pyenv global "${SYSTEM_INTERPRETER}" > /dev/null
+    install_python_packages
+
     # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
     declare -a versions=("3.6.5" "3.7.1")
@@ -24,8 +29,6 @@ function install_python_with_pyenv() {
         # pyenv install "${ver}" > /dev/null
         printf "COMPLETED\n"
         pyenv global ${ver} > /dev/null
-        printf "Upgrading pip..."
-        printf "COMPLETED\n"
         install_python_packages
     done
 }

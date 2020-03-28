@@ -15,6 +15,8 @@ function install_and_update_package_manager() {
     elif is_linux; then
         if is_debian; then
             sudo apt-get update > /dev/null
+        elif is_fedora; then
+            sudo yum update > /dev/null
         elif is_manjaro; then
             sudo pacman -Syu > /dev/null
         else
@@ -36,6 +38,9 @@ function cleanup_package_manager() {
     elif is_debian; then
         sudo apt-get autoremove > /dev/null
         sudo apt-get clean > /dev/null
+    elif is_fedora; then
+        sudo yum autoremove > /dev/null
+        sudo yum clean > /dev/null
     elif is_manjaro; then
         sudo pacman -Qet > /dev/null
     fi
@@ -79,17 +84,22 @@ function install_all_packages() {
     declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
                                 notify-send        # linux only
                                )
+    declare -a MANJARO_ONLY_PKGS=(atom
+                                 )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                              )
 
     install_package_array ${GENERAL_PKGS}
-    if is_mac; then
-        install_package_array ${MAC_ONLY_PKGS}
-    do
     if is_linux; then
         install_package_array ${LINUX_ONLY_PKGS}
+    do
+    if is_manjaro; then
+        install_package_array ${MANJARO_ONLY_PKGS}
+    do
+    if is_mac; then
+        install_package_array ${MAC_ONLY_PKGS}
     do
 
     cleanup_package_manager

@@ -347,12 +347,13 @@ function is_mac() {
     # return implicit and not needed
 }
 
-# Returns true (0, i.e., SUCCESS) if current is Debian-based Linux (e.g., Ubuntu)
-function is_debian() {
+# Returns true (0, i.e., SUCCESS) if current is Fedor-based Linux (e.g., Ubuntu)
+function is_fedora() {
     determine_os
-    [[ "${OS}" =~ .*Debian.* || "${OS}" =~ .*Ubuntu.* ]]
+    [[ "${OS}" =~ .*Red\ Hat.* ]]  # Need to add other checks
     # return implicit and not needed
 }
+
 
 # Returns true (0, i.e., SUCCESS) if current is Manjaro Linux
 function is_manjaro() {
@@ -376,6 +377,8 @@ function install_cli_package() {
     elif is_linux; then
         if is_debian; then
             sudo apt-get install -y ${PKG_NAME} > /dev/null
+        elif is_fedora; then
+            sudo yum install -y ${PKG_NAME} > /dev/null
         elif is_manjaro; then
             sudo pacman -Sy --noconfirm ${PKG_NAME} > /dev/null
         else

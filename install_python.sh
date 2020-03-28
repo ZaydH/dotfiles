@@ -36,6 +36,7 @@ function install_python_with_pyenv() {
 # Standard function for install packages using pip
 function install_python_packages() {
     declare -a pip_pkgs=(pip  # Always upgrade pip first
+                         cython  # Speeds up the debugger
                          torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages

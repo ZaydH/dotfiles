@@ -44,7 +44,8 @@ function install_python_packages() {
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
                          requests ipython jupyter jupytext pylint # Generic python tools
-                         exhale sphinx sphinx_rtd_theme yapf autopep8 rope
+                         exhale sphinx sphinx_rtd_theme yapf autopep8
+                         rope ropevim ropemode  # Rope for Python primarily
                          seaborn git-wrapper quilt dill lief tqdm futures
                          fire  # Google Package for a simple command line interface
                          ruamel.yaml  # Improved yaml parser

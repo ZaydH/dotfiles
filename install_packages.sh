@@ -86,6 +86,7 @@ function install_all_packages() {
                                 xsel   # Needed by tmux-yank package
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
+                                  gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
                                  )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification

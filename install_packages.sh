@@ -82,7 +82,8 @@ function install_all_packages() {
                              dkms build-essential
                             )
     declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
-                                notify-send        # linux only
+                                notify-send  # Notification generator
+                                xsel   # Needed by tmux-yank package
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                  )

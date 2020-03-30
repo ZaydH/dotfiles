@@ -64,6 +64,7 @@ function install_all_packages() {
                              zsh tmux  # Shell packages
                              gcc g++ autoconf automake cmake bison doxygen flex cppcheck
                              vim ctags exuberant-ctags  # vim specific packages
+                             htop  # Process manager
                              graphviz
                              gmp libgmp3-dev libgmp-dev
                              mpfr libmpfr-dev

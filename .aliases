@@ -49,11 +49,7 @@ alias kj="kill_job"
 alias terminal-notifier="terminal-notifier -message"
 
 # Sort top automatically by cpu usage
-if is_mac; then
-    alias top="top -o cpu"
-else
-    alias top="top -o %CPU"
-fi
+alias top="htop"
 
 if is_linux ; then
     alias open='xdg-open'

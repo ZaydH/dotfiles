@@ -12,7 +12,7 @@ function install_tex_linux() {
     if is_debian; then
         PKG_NAME="texlive-complete"
     elif is_manjaro; then
-        PKG_NAME="texlive-core"
+        PKG_NAME="texlive-most"
     else
         printf "Unknown platform for installing tex...Exiting\n" >&2
         return 1

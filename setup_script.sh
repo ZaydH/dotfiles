@@ -43,7 +43,6 @@ source install_tex.sh
 source install_tmux.sh
 source install_zsh.sh
 
-# install_and_update_package_manager
 # install_all_packages
 
 # install_tex

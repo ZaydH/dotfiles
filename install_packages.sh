@@ -49,7 +49,7 @@ function cleanup_package_manager() {
 
 # Single argument is a list of packages.  This function installs all of those packages.
 function install_package_array() {
-    pkgs=$1
+    pkgs=("$@")
     for pkg in ${pkgs[@]}; do
         install_cli_package ${pkg}
     done
@@ -71,7 +71,7 @@ function install_all_packages() {
                              mpc libmpc-dev
                              gzip bzip2 p7zip zlib1g-dev  # Compressed file tools
                              fzf
-                             urlview  # Needed for tmux's urlview plugin
+                             urlview  # Needed for tmux s urlview plugin
                              zsh-syntax-highlighting  # Needed for zsh plugin
                              fpp  # FaceBook path picker for tmux plugin
                              python python3 python-dev python3-dev python-devel ipython jupyter
@@ -94,16 +94,16 @@ function install_all_packages() {
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                              )
 
-    install_package_array ${GENERAL_PKGS}
+    install_package_array "${GENERAL_PKGS[@]}"
     if is_linux; then
-        install_package_array ${LINUX_ONLY_PKGS}
-    do
+        install_package_array "${LINUX_ONLY_PKGS[@]}"
+    fi
     if is_manjaro; then
-        install_package_array ${MANJARO_ONLY_PKGS}
-    do
+        install_package_array "${MANJARO_ONLY_PKGS[@]}"
+    fi
     if is_mac; then
-        install_package_array ${MAC_ONLY_PKGS}
-    do
+        install_package_array "${MAC_ONLY_PKGS[@]}"
+    fi
 
     cleanup_package_manager
 }

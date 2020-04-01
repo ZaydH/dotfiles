@@ -347,13 +347,19 @@ function is_mac() {
     # return implicit and not needed
 }
 
-# Returns true (0, i.e., SUCCESS) if current is Fedor-based Linux (e.g., Ubuntu)
+# Returns true (0, i.e., SUCCESS) if current is Fedora-based Linux (e.g., Red Hat)
 function is_fedora() {
     determine_os
     [[ "${OS}" =~ .*Red\ Hat.* ]]  # Need to add other checks
     # return implicit and not needed
 }
 
+# Returns true (0, i.e., SUCCESS) if current is Debian-based Linux (e.g., Ubuntu)
+function is_debian() {
+    determine_os
+    [[ "${OS}" =~ .*Ubuntu.* ]]  # Need to add other checks
+    # return implicit and not needed
+}
 
 # Returns true (0, i.e., SUCCESS) if current is Manjaro Linux
 function is_manjaro() {

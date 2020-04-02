@@ -51,6 +51,7 @@ function install_python_packages() {
     python -m pip install --upgrade --force-reinstall pip
 
     declare -a pip_pkgs=(cython  # Speeds up the debugger
+                         setuptools  # Some packages rely on setup tools so update early
                          torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages

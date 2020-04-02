@@ -1,4 +1,4 @@
-function add_swap() {
+function _add_swap() {
     SWAP_SIZE=8G
     printf "Adding swap of size ${SWAP_SIZE}..."
     sudo fallocate -l ${SWAP_SIZE} /swapfile > /dev/null
@@ -12,4 +12,8 @@ function add_swap() {
 
     sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
     printf "COMPLETED\n"
+}
+
+function run_manjaro_only_setup() {
+    _add_swap
 }

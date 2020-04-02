@@ -12,7 +12,7 @@ function _install_debian_conf() {
     install_cli_package dconf-editor
 }
 
-function setup_debian_only() {
+function run_debian_only_setup() {
     _install_latest_vim
     _install_debian_conf
 }

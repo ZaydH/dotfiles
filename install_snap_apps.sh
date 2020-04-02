@@ -24,7 +24,7 @@ function _install_snap_app_list() {
                          )
     for app_name in "${SNAP_APPS[@]}"; do
         printf "Install Snap app \"${app_name}\"..."
-        sudo snap install --classic "${app_name}"
+        sudo snap install --classic "${app_name}" > /dev/null
         printf "COMPLETED\n"
     done
 }
@@ -36,6 +36,10 @@ function _install_snap_apps() {
     _install_snap
 
     _install_snap_app_list
+
+    printf "If installing on zsh, may need to modify zprofile to see snap apps.\n" >&2
+    printf "For more information, see: https://askubuntu.com/questions/910821/programs-installed-via-snap-not-showing-up-in-launcher\n" >&2
+    printf "Must log out for changes to take effect\n" >&2
 }
 
 _install_snap_apps

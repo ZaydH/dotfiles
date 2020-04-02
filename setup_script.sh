@@ -56,4 +56,20 @@ source install_zsh.sh
 
 # install_oh_my_tmux
 
+# # Only run snap installer as a bash script
+# ./install_snap_apps.sh
+
 # install_jupyter_extensions
+
+if is_mac; then
+    # source setup_mac_only.sh
+    # run_mac_only_setup
+fi
+if is_manjaro; then
+    # source setup_manjaro_only.sh
+    # run_manjaro_only_setup
+fi
+if is_debian; then
+    # source setup_debian_only.sh
+    # run_debian_only_setup
+fi

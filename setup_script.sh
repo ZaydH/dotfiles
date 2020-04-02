@@ -44,17 +44,16 @@ source install_tmux.sh
 source install_zsh.sh
 
 # install_all_packages
-
-# install_tex
-
-# install_oh_my_tmux
-
-# install_oh_my_zsh
-
-# install_python_with_pyenv
+# setup_dot_files
 
 # install_vim_package_manager
 
-# install_jupyter_extensions
+# install_tex
 
-# setup_dot_files
+# install_zsh_antigen
+
+# install_python_with_pyenv
+
+# install_oh_my_tmux
+
+# install_jupyter_extensions

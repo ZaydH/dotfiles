@@ -2,7 +2,7 @@
 
 TARGET_ANTIGEN=${HOME}/antigen.zsh
 
-function install_oh_my_zsh() {
+function install_zsh_antigen() {
     chsh -s $(which zsh)
     printf "Changed default terminal to zsh...May require a restart before setting applied.\n"
 

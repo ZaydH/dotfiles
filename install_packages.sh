@@ -89,6 +89,9 @@ function install_all_packages() {
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
                                  )
+    declare -a DEBIAN_ONLY_PKGS=(python-pip
+                                 python3-pip
+                                )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
@@ -100,6 +103,9 @@ function install_all_packages() {
     fi
     if is_manjaro; then
         install_package_array "${MANJARO_ONLY_PKGS[@]}"
+    fi
+    if is_debian; then
+        install_package_array "${DEBIAN_ONLY_PKGS[@]}"
     fi
     if is_mac; then
         install_package_array "${MAC_ONLY_PKGS[@]}"

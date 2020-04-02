@@ -10,7 +10,7 @@ function installing_mactex() {
 
 function install_tex_linux() {
     if is_debian; then
-        PKG_NAME="texlive-complete"
+        PKG_NAME="texlive-full"
     elif is_manjaro; then
         PKG_NAME="texlive-most"
     else

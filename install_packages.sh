@@ -91,6 +91,7 @@ function install_all_packages() {
                                  )
     declare -a DEBIAN_ONLY_PKGS=(python-pip
                                  python3-pip
+                                 blueman
                                 )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification

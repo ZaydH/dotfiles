@@ -62,14 +62,17 @@ source install_zsh.sh
 # install_jupyter_extensions
 
 if is_mac; then
+    : # Noop to prevent error due to empty if
     # source setup_mac_only.sh
     # run_mac_only_setup
 fi
 if is_manjaro; then
+    : # Noop to prevent error due to empty if
     # source setup_manjaro_only.sh
     # run_manjaro_only_setup
 fi
 if is_debian; then
+    : # Noop to prevent error due to empty if
     # source setup_debian_only.sh
     # run_debian_only_setup
 fi

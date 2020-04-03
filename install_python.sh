@@ -31,11 +31,11 @@ function install_python_with_pyenv() {
     # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
     declare -a versions=("3.6.5" "3.7.1")
-    for ver in ${versions[@]}; do
+    for ver in "${versions[@]}"; do
         printf "Installing python version ${ver}..."
         pyenv install "${ver}" > /dev/null
         printf "COMPLETED\n"
-        pyenv global ${ver} > /dev/null
+        pyenv global "${ver}" > /dev/null
         install_python_packages
     done
 
@@ -62,7 +62,9 @@ function install_python_packages() {
                          pywsl  # Python for Weakly Supervised Learning
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
-                         requests ipython jupyter jupytext pylint # Generic python tools
+                         requests ipython
+                         jupyter jupytext jupyter_contrib_nbextensions  # Jupyter notebook packages
+                         pylint # Generic python tools
                          exhale sphinx sphinx_rtd_theme yapf autopep8
                          rope ropevim ropemode  # Rope for Python primarily
                          seaborn git-wrapper quilt dill lief tqdm futures

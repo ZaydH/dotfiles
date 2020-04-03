@@ -13,12 +13,26 @@ function install_pyenv() {
     source .zshrc > /dev/null
 }
 
+# Installs linting tools
+function install_python_linters() {
+    source .functions
+    task_msg="Installing python linting tools"
+    printf "Starting: ${task_msg}...\n"
+    install_cli_package "pylint"
+    install_cli_package "flake8"
+    install_cli_package "pep8"
+    install_cli_package "pylama"
+    printf "COMPLETED: ${task_msg}"
+}
+
 function install_python_with_pyenv() {
     install_pyenv
 
     printf "Updating PyEnv..."
     pyenv update > /dev/null
     printf "COMPLETED\n"
+
+    install_python_linters()
 
     # Needed to ensure configuration is valid
     if is_mac; then
@@ -43,6 +57,10 @@ function install_python_with_pyenv() {
     printf "Processing ${SYSTEM_INTERPRETER} last...\n"
     pyenv global "${SYSTEM_INTERPRETER}" > /dev/null
     install_python_packages
+
+    printf "Enabling latest installed python version..."
+    pyenv global "${versions[-1]}" > /dev/null
+    printf "COMPLETED\n"
 }
 
 # Standard function for install packages using pip
@@ -64,7 +82,7 @@ function install_python_packages() {
                          pytest tox   # Continuous integration and testing
                          requests ipython
                          jupyter jupytext jupyter_contrib_nbextensions  # Jupyter notebook packages
-                         pylint # Generic python tools
+                         pylint flake8 pep8 pylama  # Generic python tools
                          exhale sphinx sphinx_rtd_theme yapf autopep8
                          rope ropevim ropemode  # Rope for Python primarily
                          seaborn git-wrapper quilt dill lief tqdm futures

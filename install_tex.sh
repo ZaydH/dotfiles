@@ -1,7 +1,7 @@
 source .functions
 
 # Install mactex - TeX distribution for MacOS
-function installing_mactex() {
+function install_mactex() {
     printf "Installing mactex - this may take a while..."
     brew tap caskroom/cask > /dev/null
     brew cask install mactex > /dev/null

@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
 function _install_snap() {
-    printf "Installing Snap App Store..."
     if is_debian; then
+        printf "Installing Snap App Store..."
         sudo apt update &> /dev/null
         sudo apt install -y snapd &> /dev/null
+        printf "COMPLETED\n"
+    elif is_mac; then
+        install_cli_package snapcraft
     else
-        printf "Unknown platform to install snap...Exiting" &>2
+        printf "Unknown platform to install snap...Exiting" >&2
         return 1
     fi
-    printf "COMPLETED\n"
 }
 
 

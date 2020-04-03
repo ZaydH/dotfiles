@@ -93,11 +93,14 @@ function install_all_packages() {
     declare -a DEBIAN_ONLY_PKGS=(python-pip
                                  python3-pip
                                  blueman
+                                 libbz2-dev
                                 )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                              )
+    declare -a FEDORA_ONLY_PKGS=(bzip2-devel
+                                )
 
     install_package_array "${GENERAL_PKGS[@]}"
     if is_linux; then
@@ -108,6 +111,9 @@ function install_all_packages() {
     fi
     if is_debian; then
         install_package_array "${DEBIAN_ONLY_PKGS[@]}"
+    fi
+    if is_fedora; then
+        install_package_array "${FEDORA_ONLY_PKGS[@]}"
     fi
     if is_mac; then
         install_package_array "${MAC_ONLY_PKGS[@]}"

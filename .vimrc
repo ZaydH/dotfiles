@@ -348,10 +348,15 @@ set background=dark
 " colorscheme afterglow
 " let g:airline_theme='afterglow'
 
-" Change the color scheme for match parentheses to make it easier to view in
-" latex
+" Change the color scheme for match parentheses to make it easier to view in latex
 " hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 hi MatchParen cterm=bold ctermbg=gray
+
+" Underline misspelled words
+hi clear SpellBad
+hi SpellBad cterm=underline
+" Set style for gVim
+hi SpellBad gui=undercurl
 
 " EasyMotion =================================================================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings

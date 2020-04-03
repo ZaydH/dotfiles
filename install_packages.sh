@@ -100,6 +100,7 @@ function install_all_packages() {
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                               xz
+                              steam
                              )
     declare -a FEDORA_ONLY_PKGS=(bzip2-devel
                                  xz-devel

@@ -19,4 +19,7 @@ function run_mac_only_setup(){
     install_iterm2
 
     install_mac_fonts
+
+    source config_term_italics.sh
+    configure_term_info
 }

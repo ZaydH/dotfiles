@@ -3,12 +3,15 @@ source .functions
 
 # Installs homebrew on a mac
 function install_brew() {
-    printf "Installing brew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" > /dev/null
-    printf "COMPLETED\n"
-    printf "Updating brew..."
-    brew update > /dev/null
-    printf "COMPLETED\n"
+    task_msg="Installing brew"
+    printf "Starting: ${task_msg}...\n"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"  # Do not disable output as my be messages user must accept
+    printf "COMPLETED: ${task_msg}...\n"
+
+    task_msg="Updating brew"
+    printf "Starting: ${task_msg}...\n"
+    brew update
+    printf "COMPLETED: ${task_msg}...\n"
 }
 
 # OS Related constants for comparison
@@ -107,7 +110,6 @@ function install_all_packages() {
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                               xz
-                              steam
                              )
     declare -a FEDORA_ONLY_PKGS=(bzip2-devel
                                  xz-devel

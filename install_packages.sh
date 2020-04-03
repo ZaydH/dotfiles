@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
 source .functions
 
-# Used to install homebrew on a mac
+# Installs homebrew on a mac
 function install_brew() {
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
+    printf "Installing brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" > /dev/null
+    printf "COMPLETED\n"
+    printf "Updating brew..."
     brew update > /dev/null
+    printf "COMPLETED\n"
 }
 
 # OS Related constants for comparison
 function install_and_update_package_manager() {
-    printf "Installing and updating package manager..."
+    task_msg="Installing and updating package manager..."
+    printf "Starting: ${task_msg}...\n"
     if is_mac; then
         install_brew
     elif is_linux; then
+        printf "Updating package manager..."
         if is_debian; then
             sudo apt-get update > /dev/null
         elif is_fedora; then
@@ -23,11 +29,12 @@ function install_and_update_package_manager() {
             printf "ERROR: Unknown Linux to update package manager. Exiting...\n" >&2
             return 1
         fi
+        printf "COMPLETED\n"
     else
         printf "ERROR: No supported package manager. Exiting...\n" >&2
         return 1
     fi
-    printf "COMPLETED\n"
+    printf "COMPLETED: ${task_msg}...\n"
 }
 
 function cleanup_package_manager() {

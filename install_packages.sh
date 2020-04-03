@@ -69,6 +69,7 @@ function install_all_packages() {
                              gmp libgmp3-dev libgmp-dev
                              mpfr libmpfr-dev
                              mpc libmpc-dev
+                             libffi libffi-dev libffi-devel  # Installs _ctypes package needed by some Python versions
                              gzip bzip2 p7zip zlib1g-dev  # Compressed file tools
                              fzf
                              urlview  # Needed for tmux s urlview plugin

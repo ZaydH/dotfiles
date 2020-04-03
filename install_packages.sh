@@ -94,12 +94,15 @@ function install_all_packages() {
                                  python3-pip
                                  blueman
                                  libbz2-dev
+                                 liblzma-dev
                                 )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
+                              xz
                              )
     declare -a FEDORA_ONLY_PKGS=(bzip2-devel
+                                 xz-devel
                                 )
 
     install_package_array "${GENERAL_PKGS[@]}"

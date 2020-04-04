@@ -195,6 +195,21 @@ function targz() {
     echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
 }
 
+# Polling based approach to waiting for an existing project to finish before going to the next process.
+# This can be used instead of the standard wait method since wait requires the process be a child of
+# the same cell
+function wait_poll() {
+    if [ "$#" -ne 1 ]; then
+        printf "Invalid argument count.  Correct format of the call is \"wait_poll PID\"...Exiting\n" >&2 /dev/null
+        return 1
+    fi
+    pid=$i
+    while [ -d /proc/${pid} ]; do
+        sleep 1
+    done
+}
+
+
 # Backup an existing file
 function backup() {
     if [[ $# < 1 || $# > 2 ]]; then

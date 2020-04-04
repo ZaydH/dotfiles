@@ -203,7 +203,7 @@ function wait_poll() {
         printf "Invalid argument count.  Correct format of the call is \"wait_poll PID\"...Exiting\n" >&2 /dev/null
         return 1
     fi
-    pid=$i
+    pid=$1
     while [ -d /proc/${pid} ]; do
         sleep 1
     done

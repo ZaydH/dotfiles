@@ -105,6 +105,7 @@ function install_all_packages() {
                                  blueman
                                  libbz2-dev
                                  liblzma-dev
+                                 default-jdk
                                 )
     declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification

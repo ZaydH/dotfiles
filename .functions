@@ -397,7 +397,7 @@ function install_cli_package() {
         brew install ${PKG_NAME} > /dev/null
     elif is_linux; then
         if is_debian; then
-            sudo apt-get install -y ${PKG_NAME} > /dev/null
+            sudo apt install -y ${PKG_NAME} > /dev/null
         elif is_fedora; then
             sudo yum install -y ${PKG_NAME} > /dev/null
         elif is_manjaro; then

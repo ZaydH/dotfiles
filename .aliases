@@ -18,7 +18,7 @@ alias v!='vim $_'
 alias dot="${HOME}/repos/dotfiles"
 alias repos="${HOME}/repos"
 alias uo="${HOME}/repos/uo"
-if is_mac; then
+if is_mac || is_popos; then
     alias uo_docs="${HOME}/repos/uo_docs"
     alias desktop="${HOME}/Desktop"
     alias textbooks="${HOME}/repos/textbooks"

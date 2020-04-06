@@ -369,10 +369,15 @@ function is_fedora() {
     # return implicit and not needed
 }
 
+# Returns True (0, i.e., SUCCESS) if current is Pop! OS linux
+function is_popos() {
+    [[ "${OS}" =~ .*Pop._OS.* ]]
+}
+
 # Returns true (0, i.e., SUCCESS) if current is Debian-based Linux (e.g., Ubuntu)
 function is_debian() {
     determine_os
-    [[ "${OS}" =~ .*Ubuntu.* ]] || [[ "${OS}" =~ .*Pop._OS.* ]]  # Need to add other checks
+    [[ "${OS}" =~ .*Ubuntu.* ]] || is_popos  # Need to add other checks
     # return implicit and not needed
 }
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 source ${HOME}/.functions
 
 alias cd!="cd $_"
@@ -25,23 +26,25 @@ if is_mac || is_popos; then
 fi
 
 # ToDo temporary only
-if is_mac; then
+if is_mac || is_popos; then
     alias icml="${HOME}/repos/icml2020"
 fi
 
-# Simplify checking my running jobs
-##  Default format: "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
-##  Long Format: "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %R"
-### For more info, see: https://slurm.schedmd.com/squeue.html
-### Changes Versus Long: Widened job name (%j) and time limit (%l)
-# Sorting jobs:
-### Highest Priority: Partition
-###                   Job State
-### Lowest Priority:  Job Number
-alias squeue='squeue --format="%.18i %.9P %.14j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
-alias sq=squeue
-alias mysqueue='squeue -u $(whoami)'
-alias msq=mysqueue
+if is_talapas; then
+    # Simplify checking my running jobs
+    ##  Default format: "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
+    ##  Long Format: "%.18i %.9P %.8j %.8u %.8T %.10M %.9l %.6D %R"
+    ### For more info, see: https://slurm.schedmd.com/squeue.html
+    ### Changes Versus Long: Widened job name (%j) and time limit (%l)
+    # Sorting jobs:
+    ### Highest Priority: Partition
+    ###                   Job State
+    ### Lowest Priority:  Job Number
+    alias squeue='squeue --format="%.18i %.9P %.14j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
+    alias sq=squeue
+    alias mysqueue='squeue -u $(whoami)'
+    alias msq=mysqueue
+fi
 
 alias kj="kill_job"
 
@@ -59,10 +62,6 @@ fi
 if is_mac; then
     alias cut="gcut"
 fi
-
-# # tmux aliases
-# ## New tmux session with a user specified name like: tn <name>
-# alias tn="tmux new -s"
 
 # Clear vim swp files
 alias clrswp="rm .*.swp"

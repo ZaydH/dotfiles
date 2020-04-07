@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ${HOME}/.functions
 
-alias cd!="cd $_"
+alias cd!='cd $_'
 
 # Helpful git Aliases
 alias ga!='git add $_'  # Adds the last parameter of the previous bash command.
@@ -44,9 +44,9 @@ if is_talapas; then
     alias sq=squeue
     alias mysqueue='squeue -u $(whoami)'
     alias msq=mysqueue
-fi
 
-alias kj="kill_job"
+    alias kj="kill_job"
+fi
 
 # MacOS print notification from the terminal to the notification pane
 alias terminal-notifier="terminal-notifier -message"

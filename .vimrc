@@ -36,8 +36,6 @@ if v:version >= 800
     " Gutentags
     Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'skywind3000/gutentags_plus'
-    " " TabNine autocomplete
-    " Plugin 'zxqfl/tabnine-vim'
 endif
 " Install vim LaTeX suite
 Plugin 'lervag/vimtex'
@@ -56,14 +54,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 " Pyrope for vim
 Plugin 'python-rope/ropevim'
+" Jupyter Notebook support in vim
+Plugin 'szymonmaszke/vimpyter'
 " " Python Docstring Generation
 " Plugin 'heavenshell/vim-pydocstring'
 " Enables proper highlighting and documentation linking for .tmux.conf in vim
 Plugin 'tmux-plugins/vim-tmux'
-" " Automatically import python modules
-" Plugin 'mgedmin/python-imports.vim'
-" " Syntastic for syntax highlighting
-" Plugin 'vim-syntastic/syntastic'
 " Improved syntax checking using Vim's asynchronous protocol
 Plugin 'w0rp/ale'
 " UltiSnips used for snippet expansion.
@@ -72,8 +68,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'airblade/vim-gitgutter'
 " airline improved status bar
 Plugin 'vim-airline/vim-airline'
-" " " Needed for adding a color scheme to airline
-" Plugin 'vim-airline/vim-airline-themes'
 " GruvBox color scheme
 Plugin 'morhetz/gruvbox'
 " " Afterglow color scheme

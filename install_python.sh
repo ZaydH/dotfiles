@@ -83,7 +83,7 @@ function install_python_packages() {
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
                          requests ipython
-                         jupyter jupytext jupyter_contrib_nbextensions  # Jupyter notebook packages
+                         jupyter jupytext jupyter_contrib_nbextensions notedown  # Jupyter notebook related packages
                          pylint flake8 pep8 pylama  # Generic python tools
                          exhale sphinx sphinx_rtd_theme yapf autopep8
                          rope ropevim ropemode  # Rope for Python primarily

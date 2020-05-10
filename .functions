@@ -43,89 +43,6 @@ function clonez() {
     fi
 }
 
-# Kills a slurm job
-function kill_job {
-    JOB_NUM=$1
-    # First command line argument is the job number (e.g., 184932)..
-    scancel ${JOB_NUM}
-}
-
-# Returns true if the input argument is a (positive) integer
-function is_number {
-    if [ -z "$1" ]; then
-        printf "No input string specified\n"
-        return 1
-    elif (( $# > 1 )); then
-        printf "Invalid argument count\n"
-        return 1
-    fi
-    re='^[0-9]+$'
-    [[ "$1" =~ "${re}" ]]
-}
-
-# Function that kills all jobs whose ID is greater than or equal to the specified parameter
-function kill_jobs_larger {
-    local -a jobs
-    if [ -z "$1" ]; then
-        printf "Minimum Job Number argument is required. Run as '$0 minjobnum'\n"
-        return 1
-    elif ! $(is_number "$1"); then
-        printf "Input argument 'minjobnum' is not an integer\n"
-        return 1
-    fi
-
-    minjobnum="$1"
-    myself="$(id -u -n)"
-
-    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
-      j="$( cut -d ';' -f 1 <<< "$job_info" )"
-      name="$( cut -d ';' -f 2 <<< "$job_info" )"
-      if [ "$j" -ge "$minjobnum" ] ; then
-        jobs+=($j)
-        printf "Canceling Job: $j (${name})\n"
-      fi
-    done
-
-    scancel "${jobs[@]}"
-}
-
-# Function that kills all jobs whose ID within the specified range (inclusive)
-function kill_jobs_range {
-    local -a jobs
-    if [ -z "$1" ]; then
-        printf "Minimum Job Number argument is required. Run as '$0 minjobnum maxjobnum'\n"
-        return 1
-    elif ! $(is_number "$1"); then
-        printf "Input argument 'minjobnum' is not an integer\n"
-        return 1
-    elif [ -z "$2" ] ; then
-        printf "Maximum Job Number argument is required. Run as '$0 $1 maxjobnum'\n"
-        return 1
-    elif ! $(is_number "$2"); then
-        printf "Input argument 'maxjobnum' is not an integer\n"
-        return 1
-    elif (( $# >= 3 )); then
-        printf "Too many input arguments. Run as '$0 minjobnum maxjobnum'\n"
-        return 1
-    fi
-
-    minjobnum="$1"
-    maxjobnum="$2"
-
-    myself="$(id -u -n)"
-
-    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
-      j="$( cut -d ';' -f 1 <<< "$job_info" )"
-      name="$( cut -d ';' -f 2 <<< "$job_info" )"
-      if [ "$j" -ge "${minjobnum}" -a "$j" -le "${maxjobnum}" ] ; then
-        jobs+=($j)
-        printf "Canceling Job: $j (${name})\n"
-      fi
-    done
-
-    scancel "${jobs[@]}"
-}
-
 # Helper function for checking version numbers
 function version { echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; }
 
@@ -457,7 +374,7 @@ if is_talapas; then
                            "\n#SBATCH --account=uoml" \
                            "\n#SBATCH --partition=${PARTITION}" \
                            "\n#SBATCH --time=${TIME_LIMIT}" \
-                           "\n#SBATCH --mem-per-cpu=24G" \
+                           "\n#SBATCH --mem-per-cpu=32G" \
                            "\n#SBATCH --nodes=1"\
                            "\n#SBATCH --cpus-per-task=2" \
                            "\n#SBATCH --ntasks-per-node=1" \

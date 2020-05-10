@@ -8,6 +8,9 @@ function load_dotfile() {
     fi
 }
 load_dotfile .functions
+if is_talapas; then
+    load_dotfile .functions_talapas
+fi
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -87,12 +90,12 @@ HYPHEN_INSENSITIVE="true"
 #   zsh-syntax-highlighting
 # )
 
-# if [ -d "${ZSH}" ]; then
-#     source $ZSH/oh-my-zsh.sh
-#     # Load oh-my-zsh autocompletion
-#     autoload -U compinit
-#     compinit
-# fi
+if [ -d "${ZSH}" ]; then
+    source $ZSH/oh-my-zsh.sh
+    # Load oh-my-zsh autocompletion
+    autoload -U compinit
+    compinit
+fi
 
 # User configuration
 

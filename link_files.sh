@@ -43,6 +43,9 @@ install_file .gitignore_global
 install_file .zshrc
 # Add the file containing shell functions
 install_file .functions
+if is_talapas; then
+    install_file .functions_talapas
+fi
 # Add the file containing shell aliases
 install_file .aliases
 # oh-my-zsh auto-completions

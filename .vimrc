@@ -69,7 +69,7 @@ Plug 'vim-airline/vim-airline'
 " GruvBox color scheme
 Plug 'morhetz/gruvbox'
 " " Afterglow color scheme
-" Plug 'danilo-augusto/vim-afterglow'
+Plug 'danilo-augusto/vim-afterglow'
 " Markdown preview
 " Use command: Ctrl-p to run generate the preview
 Plug 'JamshedVesuna/vim-markdown-preview'
@@ -333,11 +333,11 @@ let g:ultisnips_python_style='sphinx'
 " " GruvBox =================================================================
 " " Find more information on settings here:
 " " https://github.com/morhetz/gruvbox/wiki/Terminal-specific
-colorscheme gruvbox
-set background=dark
+" colorscheme gruvbox
+" set background=dark
 " let g:airline_theme='gruvbox'
 
-" colorscheme afterglow
+colorscheme afterglow
 " let g:airline_theme='afterglow'
 
 " Change the color scheme for match parentheses to make it easier to view in latex

@@ -57,6 +57,8 @@ fi
 
 # Vim related files
 install_file .vimrc
+# Neovim file
+install_file .config/nvim
 # UltiSnips Plugin - LaTeX snippets
 install_file .vim/UltiSnips
 # Python packages for Python Imports vim module

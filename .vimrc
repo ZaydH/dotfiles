@@ -2,82 +2,80 @@ set nocompatible              " be iMproved, required
 
 
 " =========================================================================
-"     Vundle Start
+"     Plug Start
 " =========================================================================
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
+" Autoinstall plug if it doesnet exist
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
 " " Supertab used for compatibility between YouCompleteMe and UltiSnips
 " " Needs to be first due to issue in supertab
 " Plugin 'ervandew/supertab'
 " Fugitive vim git app
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Vim Comment tool
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " Support basic Unix commands in vim
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 " Surround selected text with paired brackets
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Multiple cursors tool
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 " " YouCompleteMe autocompletion support"
-" Plugin 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Any jump to definition extension
-Plugin 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim'
 " Enables quick traversal through a document
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 if v:version >= 800
     " Gutentags
-    Plugin 'ludovicchabant/vim-gutentags'
-    Plugin 'skywind3000/gutentags_plus'
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'skywind3000/gutentags_plus'
 endif
 " Install vim LaTeX suite
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Wordy detects poor uses of language
-Plugin 'reedes/vim-wordy'
+Plug 'reedes/vim-wordy'
 " Command Line Fuzzy Finder for use with vimtex
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " Fast Fold rather than automatic folding
-Plugin 'Konfekt/FastFold'
+Plug 'Konfekt/FastFold'
 " " Enable folding of blocks in LaTeX files
-" Plugin 'matze/vim-tex-fold'
+" Plug 'matze/vim-tex-fold'
 " Nerdtree project folder viewer
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Python Mode
-Plugin 'python-mode/python-mode'
+Plug 'python-mode/python-mode'
 " Pyrope for vim
-Plugin 'python-rope/ropevim'
+Plug 'python-rope/ropevim'
 " Jupyter Notebook support in vim
-Plugin 'szymonmaszke/vimpyter'
+Plug 'szymonmaszke/vimpyter'
 " " Python Docstring Generation
-" Plugin 'heavenshell/vim-pydocstring'
+" Plug 'heavenshell/vim-pydocstring'
 " Enables proper highlighting and documentation linking for .tmux.conf in vim
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 " Improved syntax checking using Vim's asynchronous protocol
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 " UltiSnips used for snippet expansion.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " gitgutter show the lines imodified in the file under use
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " airline improved status bar
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " GruvBox color scheme
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " " Afterglow color scheme
-" Plugin 'danilo-augusto/vim-afterglow'
+" Plug 'danilo-augusto/vim-afterglow'
 " Markdown preview
 " Use command: Ctrl-p to run generate the preview
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on

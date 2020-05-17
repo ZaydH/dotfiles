@@ -15,3 +15,5 @@ function install_jupyter_vim_binding() {
 jupyter nbextensions_configurator enable --user
 
 install_jupyter_vim_binding
+
+jupyter labextension install @krassowski/jupyterlab_go_to_definition

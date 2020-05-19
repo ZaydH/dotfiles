@@ -86,6 +86,7 @@ function install_python_packages() {
                          jupyter jupytext jupyter_contrib_nbextensions notedown  # Jupyter notebook related packages
                          pylint flake8 pep8 pylama  # Generic python tools
                          exhale sphinx sphinx_rtd_theme yapf autopep8
+                         pynvim  # Support for python and neovim
                          rope ropevim ropemode  # Rope for Python primarily
                          seaborn git-wrapper quilt dill lief tqdm futures
                          fire  # Google Package for a simple command line interface

@@ -13,7 +13,7 @@ endif
 call plug#begin()
 " " Supertab used for compatibility between YouCompleteMe and UltiSnips
 " " Needs to be first due to issue in supertab
-" Plugin 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 " Fugitive vim git app
 Plug 'tpope/vim-fugitive'
 " Vim Comment tool
@@ -395,7 +395,7 @@ let g:vimtex_fold_enabled = 0
 " let g:vimtex_fold_enabled = 1
 
 " Disable vimtex autocomplete in included lib files
-let g:vimtex_include_search_enabled = 0
+let g:vimtex_include_search_enabled=1
 
 " vim-markdown-preview ====================================================
 

@@ -32,6 +32,7 @@ antigen bundle sindresorhus/pure
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle MichaelAquilina/zsh-you-should-use  # Reminds you of aliases you should be using
 antigen bundle zsh-users/zsh-syntax-highlighting  # Must be the LAST plugin per github README
 
 # Tell Antigen that you're done.

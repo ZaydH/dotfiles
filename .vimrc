@@ -350,6 +350,10 @@ hi SpellBad cterm=underline
 " Set style for gVim
 hi SpellBad gui=undercurl
 
+" Fixes strange cyan highlighting of non-local terms.
+" More details, see: https://vi.stackexchange.com/questions/14686/what-is-the-difference-between-red-and-cyan-in-spell-check-highlighting/14687
+hi SpellLocal cterm=underline ctermbg=8 gui=undercurl guisp=DarkGray
+
 " EasyMotion =================================================================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 

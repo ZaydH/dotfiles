@@ -1,0 +1,16 @@
+#compdef ta
+
+_ta() {
+  local state
+
+  _arguments \
+    '1: :->session_name'
+
+  SESSION_LIST=$( tmux ls | cut -d ":" -f1 | tr '\n' ' ' )
+
+  case $state in
+      (session_name) _arguments "1: :($SESSION_LIST)" ;;
+  esac
+}
+
+_ta "$@"

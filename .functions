@@ -391,3 +391,14 @@ if is_talapas; then
         echo ${SBATCH_TEXT} | sbatch /dev/stdin
     }
 fi
+
+
+unalias ta &> /dev/null  # Ignore errors if no ta alias (yet)
+function ta() {
+    if [[ $# -ne 1 ]]; then
+        printf "Error: Incorrect input parameter count. Correct invocation: ta <SessionName>\n"
+        return 1
+    fi
+    SESSION_NAME="${1}"
+    tmux attach -t "${SESSION_NAME}"
+}

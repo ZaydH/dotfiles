@@ -34,6 +34,19 @@ function install_file() {
     ln -nsF ${SCRIPTPATH}/${SRC_FILE} ~/${DEST_FILE}
 }
 
+function install_absolute() {
+    SRC=$1
+    DEST=$2
+
+    SCRIPT=`realpath $0`
+    SCRIPTPATH=`dirname $SCRIPT`
+    FULL_SRC="${SCRIPTPATH}/${SRC}"
+
+    printf "Creating symlink for file: \"${FULL_SRC}\" as \"${DEST}\"\n"
+    rm -rf "${DEST}"
+    ln -nsF "${FULL_SRC}" "${DEST}"
+}
+
 # Git settings
 install_file .gitconfig
 # Set of files git will always ignore
@@ -48,8 +61,10 @@ if is_talapas; then
 fi
 # Add the file containing shell aliases
 install_file .aliases
+
 # oh-my-zsh auto-completions
-install_file .oh-my-zsh/completions
+install_absolute ".oh-my-zsh/completions" "${MY_ZSH}/completions"
+
 # Special bash file used to load zsh on Talapas
 if is_talapas; then
     install_file .bashrc_talapas .bashrc

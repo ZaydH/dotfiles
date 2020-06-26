@@ -38,7 +38,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting  # Must be the LAST plugin per 
 # Tell Antigen that you're done.
 antigen apply
 
-
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -83,6 +82,10 @@ if [ -d "${ZSH}" ]; then
     # Load oh-my-zsh autocompletion
     autoload -U compinit
     compinit
+
+    # Make ZSH known
+    MY_ZSH="${ZSH}"
+    export MY_ZSH
 fi
 
 # User configuration

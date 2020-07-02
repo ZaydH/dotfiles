@@ -29,6 +29,7 @@ fi
 # ToDo temporary only
 if is_mac || is_popos; then
     alias icml="${HOME}/repos/icml2020"
+    alias udl="${HOME}/repos/udl2020"
 fi
 
 if is_talapas; then

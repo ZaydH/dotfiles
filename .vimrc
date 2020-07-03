@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 
 
 " =========================================================================
-"     Plug Start
+"     vim-plug Start
 " =========================================================================
 " Autoinstall plug if it doesnet exist
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -49,7 +49,7 @@ Plug 'Konfekt/FastFold'
 " Nerdtree project folder viewer
 Plug 'scrooloose/nerdtree'
 " Python Mode
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Pyrope for vim
 Plug 'python-rope/ropevim'
 " Jupyter Notebook support in vim
@@ -77,19 +77,8 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 " All of your Plugins must be added before the following line
 call plug#end()
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 " =========================================================================
-"     Vundle END
+"     vim-plug END
 " =========================================================================
 
 " Display non-space whitespace
@@ -213,7 +202,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Python Plugins Information ==============================================
 " Pylint configuration file
-"let g:pymode_dlint_config = '$HOME/.pylintrc'
+" pymode_dlint_config = '$HOME/.pylintrc'
 
 " Detect the python version automatically to prevent issues on Talapas
 if has("python3")
@@ -221,7 +210,6 @@ if has("python3")
 else
     let g:pymode_python = 'python'
 endif
-" let g:pymode_python = 'python3'
 let g:pymode_options_max_line_length = 100
 let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
 let g:pymode_options_colorcolumn = 1
@@ -229,7 +217,7 @@ let g:pymode_lint_ignore = "E701,E704"
 
 " Rope support
 " call pymode#default('g:pymode_rope', 0)
-call pymode#default('g:pymode_rope', 1)
+" call pymode#default('g:pymode_rope', 1)
 
 " " Command to automatically add docstrings
 " " Uses plugin: vim-pydocstring

@@ -17,19 +17,22 @@ alias v!='vim $_'
 alias nv!='nvim $_'
 
 # Go right to dotfiles folder
-alias dot="${HOME}/repos/dotfiles"
-alias repos="${HOME}/repos"
-alias uo="${HOME}/repos/uo"
+REPOS_DIR="${HOME}/repos"
+alias repos="${REPOS_DIR}"
+
+alias dot="${REPOS_DIR}/dotfiles"
+alias uo="${REPOS_DIR}/uo"
 if is_mac || is_popos; then
-    alias uo_docs="${HOME}/repos/uo_docs"
+    alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"
-    alias textbooks="${HOME}/repos/textbooks"
+    alias textbooks="${REPOS_DIR}/textbooks"
 fi
 
 # ToDo temporary only
 if is_mac || is_popos; then
-    alias icml="${HOME}/repos/icml2020"
-    alias udl="${HOME}/repos/udl2020"
+    alias icml="${REPOS_DIR}/icml2020"
+    alias udl="${REPOS_DIR}/udl2020"
+    alias leetcode="${REPOS_DIR}/leetcode"
 fi
 
 if is_talapas; then

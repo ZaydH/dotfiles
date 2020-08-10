@@ -82,6 +82,7 @@ function install_all_packages() {
                              libffi libffi-dev libffi-devel  # Installs _ctypes package needed by some Python versions
                              gzip bzip2 p7zip zlib1g-dev  # Compressed file tools
                              fzf
+                             dos2unix  # Easy tool to convert dos formatted text docs to unix format
                              urlview  # Needed for tmux s urlview plugin
                              zsh-syntax-highlighting  # Needed for zsh plugin
                              fpp  # FaceBook path picker for tmux plugin

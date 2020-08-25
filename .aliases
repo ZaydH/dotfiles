@@ -22,6 +22,7 @@ alias repos="${REPOS_DIR}"
 
 alias dot="${REPOS_DIR}/dotfiles"
 alias uo="${REPOS_DIR}/uo"
+alias purpl="${REPOS_DIR}/uo/purpl/src"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"
@@ -31,7 +32,7 @@ fi
 # ToDo temporary only
 if is_mac || is_popos; then
     alias icml="${REPOS_DIR}/icml2020"
-    alias udl="${REPOS_DIR}/udl2020"
+    # alias udl="${REPOS_DIR}/udl2020"
     alias leetcode="${REPOS_DIR}/leetcode"
 fi
 

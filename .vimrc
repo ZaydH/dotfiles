@@ -162,6 +162,7 @@ set numberwidth=5   " Set the maximum width of the number column on the left
 set ruler           " Show the cursor position all the time
 set laststatus=2    " Always display the status line
 set hlsearch        " Highlight when searching.
+set incsearch       " Moves highlight as types
 
 " Used for ctags
 set autochdir

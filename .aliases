@@ -48,6 +48,7 @@ if is_talapas; then
     ### Lowest Priority:  Job Number
     alias squeue='squeue --format="%.18i %.9P %.18j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
     alias sq=squeue
+    alias gpsq='sq | grep -ni "gpu"'
     alias mysqueue='squeue -u $(whoami)'
     alias msq=mysqueue
 

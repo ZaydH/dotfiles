@@ -390,6 +390,20 @@ if is_talapas; then
         SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}"
         echo ${SBATCH_TEXT} | sbatch /dev/stdin
     }
+
+    function run_talapas_bash() {
+        if [[ $# -eq 0 ]]; then
+            PARTITION="testgpu"
+            printf "No partition specified. Using partition \"${PARTITION}\"\n"
+        elif [[ $# -eq 1 ]]; then
+            PARTITION=$1
+            printf "Specified partition: \"${PARTITION}\"\n"
+        else
+            printf "Invalid command input. Valid call \"run_talapas_bash [PARTITION]\"...\n"
+            return 1
+        fi
+        srun --account=uoml --partition="${PARTITION}" --pty bash
+    }
 fi
 
 

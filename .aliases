@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 source ${HOME}/.functions
 
+alias sz="source ${HOME}/.zshrc"
+
 alias cd!='cd $_'
 
 # Helpful git Aliases
@@ -14,7 +16,8 @@ alias gwd='git wd'      # Performs word diff
 
 # vim aliases
 alias v!='vim $_'
-alias nv!='nvim $_'
+alias nv='nvim'
+alias nv!='nv $_'
 
 # Go right to dotfiles folder
 REPOS_DIR="${HOME}/repos"
@@ -31,8 +34,7 @@ fi
 
 # ToDo temporary only
 if is_mac || is_popos; then
-    alias icml="${REPOS_DIR}/icml2020"
-    # alias udl="${REPOS_DIR}/udl2020"
+    alias icml="${REPOS_DIR}/icml2020/tex"
     alias leetcode="${REPOS_DIR}/leetcode"
 fi
 

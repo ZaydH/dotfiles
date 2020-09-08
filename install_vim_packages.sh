@@ -30,10 +30,10 @@ function install_vim_plug() {
     printf "COMPLETED\n"
 }
 
-function install_vim_coc_dependencies() {
-    printf "Installing NodeJS for vim's coc package...\n"
-    curl -sL install-node.now.sh/lts | bash
-}
+# function install_vim_coc_dependencies() {
+#     printf "Installing NodeJS for vim's coc package...\n"
+#     curl -sL install-node.now.sh/lts | bash
+# }
 
 function install_vim_package_manager() {
     install_vundle

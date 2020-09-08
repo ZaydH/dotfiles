@@ -82,6 +82,8 @@ install_file .vim/python-imports.cfg
 install_file .vim/ftplugin
 # Add the dictionary file
 install_file .vim/spell/en.utf-8.add
+# Add the COC settings for vim (neovim in .config/nvim so installed above)
+install_file .vim/coc-settings.json
 # Setup vim key binds in Intelli-J IDEs
 install_file .ideavimrc
 # ctags settings file

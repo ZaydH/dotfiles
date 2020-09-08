@@ -1,78 +1,71 @@
 set nocompatible              " be iMproved, required
 
-
 " =========================================================================
 "     vim-plug Start
 " =========================================================================
-" Autoinstall plug if it doesnet exist
+" Autoinstall vim-plug if it doesn't exist
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-" " Supertab used for compatibility between YouCompleteMe and UltiSnips
-" " Needs to be first due to issue in supertab
-" Plug 'ervandew/supertab'
-" Fugitive vim git app
-Plug 'tpope/vim-fugitive'
-" Vim Comment tool
-Plug 'tpope/vim-commentary'
-" Support basic Unix commands in vim
-Plug 'tpope/vim-eunuch'
-" Surround selected text with paired brackets
+" Supertab used for compatibility between YouCompleteMe and UltiSnips
+" Needs to be first due to issue in supertab
+Plug 'ervandew/supertab'
+" " Improved syntax checking using Vim's asynchronous protocol
+" Plug 'w0rp/ale'
+
+" Visual {{{
+Plug 'pechorin/any-jump.vim'         | " Fast Fold rather than automatic folding
+Plug 'easymotion/vim-easymotion'     | " Enables quick traversal through a document
+" }}} Visual
+
+" Visual {{{
+Plug 'Konfekt/FastFold'              | " Fast Fold rather than automatic folding
+Plug 'scrooloose/nerdtree'           | " File explorer
+Plug 'vim-airline/vim-airline'       | " Bottom bar
+" }}} Visual
+
+" Autocomplete and Snippets {{{
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neoinclude.vim'
+Plug 'neoclide/coc-neco'
+Plug 'jsfaint/coc-neoinclude'
+Plug 'SirVer/ultisnips'
+" }}} Autocomplete and Snippets
+
+" Tex {{{
+Plug 'lervag/vimtex'
+Plug 'junegunn/fzf'                  | " Command Line Fuzzy Finder for use with vimtex
+Plug 'junegunn/fzf.vim'
+Plug 'reedes/vim-wordy'              | " Wordy detects poor uses of language
+" }}} Tex
+
+" Tools {{{
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
+Plug 'szymonmaszke/vimpyter'                                               | " Jupyter Notebook support in vim
+Plug 'tpope/vim-commentary'                                                | " Commenting tools
+Plug 'tpope/vim-eunuch'                                                    | " Support basic Unix commands in vim
+Plug 'tpope/vim-fugitive'                                                  | " Git tools
+Plug 'airblade/vim-gitgutter'                                              | " Show git status in right margin
+Plug 'JamshedVesuna/vim-markdown-preview'                                  | " Markdown support, use command: Ctrl-p to run generate the preview
+Plug 'terryma/vim-multiple-cursors'                                        | " Multiple cursors tool
+Plug 'python-rope/ropevim'                                                 | " Pyrope for vim
+Plug 'tpope/vim-speeddating'                                               | " Tools for working with dates
 Plug 'tpope/vim-surround'
-" Multiple cursors tool
-Plug 'terryma/vim-multiple-cursors'
-" " YouCompleteMe autocompletion support"
-" Plug 'Valloric/YouCompleteMe'
-" Any jump to definition extension
-Plug 'pechorin/any-jump.vim'
-" Enables quick traversal through a document
-Plug 'easymotion/vim-easymotion'
-if v:version >= 800
-    " Gutentags
+Plug 'tmux-plugins/vim-tmux'                                               | " Enables proper highlighting and documentation linking for .tmux.conf in vim
+if v:version >= 800                                                        | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
 endif
-" Install vim LaTeX suite
-Plug 'lervag/vimtex'
-" Wordy detects poor uses of language
-Plug 'reedes/vim-wordy'
-" Command Line Fuzzy Finder for use with vimtex
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-" Fast Fold rather than automatic folding
-Plug 'Konfekt/FastFold'
-" " Enable folding of blocks in LaTeX files
-" Plug 'matze/vim-tex-fold'
-" Nerdtree project folder viewer
-Plug 'scrooloose/nerdtree'
-" Python Mode
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" Pyrope for vim
-Plug 'python-rope/ropevim'
-" Jupyter Notebook support in vim
-Plug 'szymonmaszke/vimpyter'
-" " Python Docstring Generation
-" Plug 'heavenshell/vim-pydocstring'
-" Enables proper highlighting and documentation linking for .tmux.conf in vim
-Plug 'tmux-plugins/vim-tmux'
-" Improved syntax checking using Vim's asynchronous protocol
-Plug 'w0rp/ale'
-" UltiSnips used for snippet expansion.
-Plug 'SirVer/ultisnips'
-" gitgutter show the lines imodified in the file under use
-Plug 'airblade/vim-gitgutter'
-" airline improved status bar
-Plug 'vim-airline/vim-airline'
-" GruvBox color scheme
-Plug 'morhetz/gruvbox'
-" " Afterglow color scheme
-Plug 'danilo-augusto/vim-afterglow'
-" Markdown preview
-" Use command: Ctrl-p to run generate the preview
-Plug 'JamshedVesuna/vim-markdown-preview'
+" }}} Tools
+
+" Color Schemes {{{
+Plug 'morhetz/gruvbox'               | " GruvBox
+Plug 'danilo-augusto/vim-afterglow'  | " Afterglow
+" }}} Color Schemes
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -372,6 +365,39 @@ let g:tex_fold_enabled = 1
 " Folds are updated whenever you close or open folds by a standard keystroke such as zx,zo or zc
 let g:fastfold_fold_command_suffixes = []
 
+" COC ==================================================================
+
+" See also: coc-settings.json
+
+let g:coc_global_extensions = [
+      \ 'coc-git',
+      \ 'coc-json',
+      \ 'coc-omni',
+      \ 'coc-python',
+      \ 'coc-snippets',
+      \ 'coc-vimlsp',
+      \ 'coc-vimtex',
+      \ 'coc-yaml',
+      \]
+
+" Make CoC work with tab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+inoremap <expr><cr>    pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+
+imap <silent> <c-u>      <plug>(coc-snippets-expand)
+
+nmap <silent> <leader>ld <plug>(coc-definition)zv
+nmap <silent> <leader>lr <plug>(coc-references)
+nmap <silent> <leader>lt <plug>(coc-type-definition)
+nmap <silent> <leader>li <plug>(coc-implementation)
+
+nmap <silent> <leader>lp <plug>(coc-diagnostic-prev)
+nmap <silent> <leader>ln <plug>(coc-diagnostic-next)
+nmap <silent> <leader>lk :<c-u>call CocAction('doHover')<cr>
+
 " VimTex ==================================================================
 
 " fzf used for navigation of table of contents
@@ -389,6 +415,14 @@ let g:vimtex_fold_enabled = 0
 
 " Disable vimtex autocomplete in included lib files
 let g:vimtex_include_search_enabled=1
+
+let g:vimtex_complete_enabled=0
+" let g:vimtex_complete_img_use_tail = 1
+" let g:vimtex_complete_bib = {
+"       \ 'simple' : 1,
+"       \ 'menu_fmt' : '@year, @author_short, @title',
+"       \}
+let g:vimtex_echo_verbose_input = 0
 
 " vim-markdown-preview ====================================================
 

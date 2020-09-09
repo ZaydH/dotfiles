@@ -3,6 +3,7 @@ set nocompatible              " be iMproved, required
 " =========================================================================
 "     vim-plug Start
 " =========================================================================
+
 " Autoinstall vim-plug if it doesn't exist
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -10,69 +11,84 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-" Supertab used for compatibility between YouCompleteMe and UltiSnips
+
+" Supertab used for compatibility between CoC and UltiSnips
 " Needs to be first due to issue in supertab
 Plug 'ervandew/supertab'
 " " Improved syntax checking using Vim's asynchronous protocol
 " Plug 'w0rp/ale'
 
-" Visual {{{
-Plug 'pechorin/any-jump.vim'         | " Fast Fold rather than automatic folding
-Plug 'easymotion/vim-easymotion'     | " Enables quick traversal through a document
-" }}} Visual
+" UI {{{
+Plug 'wellle/context.vim'                   | " Display context (e.g., class, function, if, loop, etc.)
+Plug 'Konfekt/FastFold'                     | " Fast Fold rather than automatic folding
+Plug 'scrooloose/nerdtree'                  | " File explorer
+Plug 'vim-airline/vim-airline'              | " Bottom bar
+" }}} UI
 
-" Visual {{{
-Plug 'Konfekt/FastFold'              | " Fast Fold rather than automatic folding
-Plug 'scrooloose/nerdtree'           | " File explorer
-Plug 'vim-airline/vim-airline'       | " Bottom bar
-" }}} Visual
+" Motion {{{
+Plug 'pechorin/any-jump.vim'                | " Fast Fold rather than automatic folding
+Plug 'easymotion/vim-easymotion'            | " Enables quick traversal through a document
+" }}} Motion
 
-" Autocomplete and Snippets {{{
+" Git {{{
+Plug 'tpope/vim-fugitive'                   | " Git tools
+Plug 'rbong/vim-flog'                       | " Commit graph viewer.  Use command :Flog
+Plug 'airblade/vim-gitgutter'               | " Show git status in right margin
+Plug 'rhysd/git-messenger.vim'              | " Show git message on line. Use either :GitMessenger or <Leader>gm
+" }}} Git
+
+" Auto-complete and Snippets {{{
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'neoclide/coc-neco'
 Plug 'jsfaint/coc-neoinclude'
 Plug 'SirVer/ultisnips'
-" }}} Autocomplete and Snippets
+" }}} Auto-complete and Snippets
 
 " Tex {{{
 Plug 'lervag/vimtex'
-Plug 'junegunn/fzf'                  | " Command Line Fuzzy Finder for use with vimtex
+Plug 'junegunn/fzf'                         | " Command Line Fuzzy Finder for use with vimtex
 Plug 'junegunn/fzf.vim'
-Plug 'reedes/vim-wordy'              | " Wordy detects poor uses of language
+Plug 'reedes/vim-wordy'                     | " Wordy detects poor uses of language
 " }}} Tex
+
+" Color Schemes {{{
+Plug 'morhetz/gruvbox'                      | " GruvBox
+Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
+" }}} Color Schemes
 
 " Tools {{{
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
-Plug 'luochen1990/rainbow'                                                 | " Rainbow parentheses - not compatible with vimtex
-Plug 'python-rope/ropevim'                                                 | " Pyrope for vim
-Plug 'szymonmaszke/vimpyter'                                               | " Jupyter Notebook support in vim
-Plug 'tpope/vim-commentary'                                                | " Commenting tools
-Plug 'tpope/vim-eunuch'                                                    | " Support basic Unix commands in vim
-Plug 'tpope/vim-fugitive'                                                  | " Git tools
-Plug 'airblade/vim-gitgutter'                                              | " Show git status in right margin
-Plug 'RRethy/vim-illuminate'                                               | " Highlight other uses of the word
-Plug 'kevinoid/vim-jsonc'                                                  | " Syntatx highlighting for jsonc -- JSON with comments
-Plug 'JamshedVesuna/vim-markdown-preview'                                  | " Markdown support, use command: Ctrl-p to run generate the preview
-Plug 'terryma/vim-multiple-cursors'                                        | " Multiple cursors tool
-Plug 'tpope/vim-speeddating'                                               | " Tools for working with dates
+Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
+Plug 'python-rope/ropevim'                  | " Pyrope for vim
+Plug 'szymonmaszke/vimpyter'                | " Jupyter Notebook support in vim
+Plug 'tpope/vim-commentary'                 | " Commenting tools
+Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
+Plug 'RRethy/vim-illuminate'                | " Highlight other uses of the word
+Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
+Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
+Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
+Plug 'tpope/vim-speeddating'                | " Tools for working with dates
 Plug 'tpope/vim-surround'
-Plug 'tmux-plugins/vim-tmux'                                               | " Enables proper highlighting and documentation linking for .tmux.conf in vim
-if v:version >= 800                                                        | " Gutentags
+Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
+if v:version >= 800                         | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'
 endif
 " }}} Tools
 
-" Color Schemes {{{
-Plug 'morhetz/gruvbox'               | " GruvBox
-Plug 'danilo-augusto/vim-afterglow'  | " Afterglow
-" }}} Color Schemes
+" Miscellaneous {{{
+Plug 'itchyny/calendar.vim'                 | " Simple calendar. Access via :Calendar
+Plug 'mbbill/undotree'                      | " See vim undo tree.  Access via :UndotreeToggle
+" Colorize RGB values, e.g, #FF0000 and rgb(0, 255, 0)
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" }}} Miscellaneous
 
 " All of your Plugins must be added before the following line
 call plug#end()
 filetype plugin indent on    " required
+
 " =========================================================================
 "     vim-plug END
 " =========================================================================
@@ -173,7 +189,8 @@ autocmd! bufreadpost .vimrc set nospell
 
 " Basic vim and Shell Settings ============================================
 " Reload vimrc after saving it
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+map <leader>vimrc :tabe $MYVIMRC<cr>
+autocmd bufwritepost .vimrc source $MYVIMRC
 "" Use zsh as shell in vim so zshrc is available
 "set shell=zsh\ --login
 
@@ -238,12 +255,29 @@ let g:pymode_rope_rename_bind = '<F6>'
 
 " rainbow ===============================================================
 
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 " set to 0 if you want to enable it later via :RainbowToggle
+
+" vim-hexokinase ===============================================================
+
+let g:Hexokinase_highlighters = ['foreground']
+
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+
+" Filetype specific patterns to match
+" entry value must be comma separated list
+let g:Hexokinase_ftOptInPatterns = {
+\     'tex': 'RGB'
+\ }
 
 " vim-illuminate  ===============================================================
 
 " Time in milliseconds (default 250)
 let g:Illuminate_delay = 500
+
+let g:Illuminate_ftblacklist = [
+      \ 'markdown',
+      \ 'wiki',
+      \]
 
 " NERDTree ================================================================
 
@@ -260,22 +294,8 @@ let NERDTreeIgnore = [ '\.\(aux\|bbl\|blg\|fdb_latexmk\|fls\|gz\|log\|nav\|out\|
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-" " YouCompleteMe ===========================================================
-" " Disable YouCompleteMe in these files
-" let g:ycm_filetype_blacklist = {
-"       \ 'tex': 1,
-"       \ 'bib': 1,
-"       \ 'markdown': 1,
-"       \}
-" " make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-" " Have enter select in YouCompleteMe
-" let g:ycm_key_list_select_completion=[]
-" let g:ycm_key_list_previous_completion=[]
-
 " UltiSnips ===============================================================
+
 " Define where UltiSnips loops for snippets
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " better key bindings for UltiSnipsExpandTrigger
@@ -291,18 +311,27 @@ let g:ultisnips_python_quoting_style="double"
 let g:ultisnips_python_triple_quoting_style="double"
 let g:ultisnips_python_style='sphinx'
 
-" " SuperTab ================================================================
-" " Get back default behavior for tab to move the list down
-" let g:SuperTabDefaultCompletionType = "<C-n>"
+" Color Scheme =================================================================
 
-" " GruvBox =================================================================
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" fixes glitch? in colors when using vim with tmux
+set background=dark
+set t_Co=256
+
+if has('termguicolors')
+  set termguicolors  " Needed by Hexokinase
+endif
+
 " " Find more information on settings here:
 " " https://github.com/morhetz/gruvbox/wiki/Terminal-specific
 " colorscheme gruvbox
 " set background=dark
 " let g:airline_theme='gruvbox'
 
-colorscheme afterglow
+silent! colorscheme afterglow
 " let g:airline_theme='afterglow'
 
 " Change the color scheme for match parentheses to make it easier to view in latex
@@ -357,7 +386,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-omni',
       \ 'coc-python',
-      \ 'coc-snippets',
+      \ 'coc-ultisnips',
       \ 'coc-vimlsp',
       \ 'coc-vimtex',
       \ 'coc-yaml',

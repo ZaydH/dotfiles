@@ -45,14 +45,17 @@ Plug 'reedes/vim-wordy'              | " Wordy detects poor uses of language
 
 " Tools {{{
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
+Plug 'luochen1990/rainbow'                                                 | " Rainbow parentheses - not compatible with vimtex
+Plug 'python-rope/ropevim'                                                 | " Pyrope for vim
 Plug 'szymonmaszke/vimpyter'                                               | " Jupyter Notebook support in vim
 Plug 'tpope/vim-commentary'                                                | " Commenting tools
 Plug 'tpope/vim-eunuch'                                                    | " Support basic Unix commands in vim
 Plug 'tpope/vim-fugitive'                                                  | " Git tools
 Plug 'airblade/vim-gitgutter'                                              | " Show git status in right margin
+Plug 'RRethy/vim-illuminate'                                               | " Highlight other uses of the word
+Plug 'kevinoid/vim-jsonc'                                                  | " Syntatx highlighting for jsonc -- JSON with comments
 Plug 'JamshedVesuna/vim-markdown-preview'                                  | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'terryma/vim-multiple-cursors'                                        | " Multiple cursors tool
-Plug 'python-rope/ropevim'                                                 | " Pyrope for vim
 Plug 'tpope/vim-speeddating'                                               | " Tools for working with dates
 Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux'                                               | " Enables proper highlighting and documentation linking for .tmux.conf in vim
@@ -233,34 +236,14 @@ let g:pymode_rope_goto_definition_cmd = 'new'
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'
 
-" " Syntastic ===============================================================
-" " Syntastic Default Settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" rainbow ===============================================================
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
-" " lacheck is for LaTeX
-" let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
+" vim-illuminate  ===============================================================
 
-" " Use python3 for pyflakes
-" " let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
-" let g:syntastic_python_pyflakes_exe = ''
-
-" ALE Settings ============================================================
-
-" Keep the ALE gutter open at all times
-let g:ale_sign_column_always = 1
-
-" Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
-
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
+" Time in milliseconds (default 250)
+let g:Illuminate_delay = 500
 
 " NERDTree ================================================================
 
@@ -414,7 +397,7 @@ let g:vimtex_fold_enabled = 0
 " let g:vimtex_fold_enabled = 1
 
 " Disable vimtex autocomplete in included lib files
-let g:vimtex_include_search_enabled=1
+let g:vimtex_include_search_enabled=0
 
 let g:vimtex_complete_enabled=0
 " let g:vimtex_complete_img_use_tail = 1

@@ -256,7 +256,12 @@ snippet beamer "Beamer Presentation"
 \end{document}
 endsnippet
 
-snippet beamerbib "Bibliopgrahy for Beamer" b
+snippet bibliography "Standard text document bibliography" b
+\bibliography{${1:bib/ref.bib}}
+\bibliographystyle{${2:unsrtnat}}
+endsnippet
+
+snippet beamerbib "Bibliography for Beamer" b
 \begin{frame}[allowframebreaks]
   {\tiny
     \frametitle{References}

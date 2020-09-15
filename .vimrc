@@ -81,8 +81,6 @@ endif
 " Miscellaneous {{{
 Plug 'itchyny/calendar.vim'                 | " Simple calendar. Access via :Calendar
 Plug 'mbbill/undotree'                      | " See vim undo tree.  Access via :UndotreeToggle
-" Colorize RGB values, e.g, #FF0000 and rgb(0, 255, 0)
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " }}} Miscellaneous
 
 " All of your Plugins must be added before the following line
@@ -257,18 +255,6 @@ let g:pymode_rope_rename_bind = '<F6>'
 
 let g:rainbow_active = 1 " set to 0 if you want to enable it later via :RainbowToggle
 
-" vim-hexokinase ===============================================================
-
-let g:Hexokinase_highlighters = ['foreground']
-
-let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
-
-" Filetype specific patterns to match
-" entry value must be comma separated list
-let g:Hexokinase_ftOptInPatterns = {
-\     'tex': 'RGB'
-\ }
-
 " vim-illuminate  ===============================================================
 
 " Time in milliseconds (default 250)
@@ -312,18 +298,6 @@ let g:ultisnips_python_triple_quoting_style="double"
 let g:ultisnips_python_style='sphinx'
 
 " Color Scheme =================================================================
-
-" This is only necessary if you use "set termguicolors".
-" Based on the vim issue: https://github.com/vim/vim/issues/3608
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" fixes glitch? in colors when using vim with tmux
-set background=dark
-set t_Co=256
-
-if has('termguicolors')
-  set termguicolors  " Needed by Hexokinase
-endif
 
 " " Find more information on settings here:
 " " https://github.com/morhetz/gruvbox/wiki/Terminal-specific
@@ -386,6 +360,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-omni',
       \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-ultisnips',
       \ 'coc-vimlsp',
       \ 'coc-vimtex',

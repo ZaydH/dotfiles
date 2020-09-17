@@ -277,12 +277,6 @@ snippet frame "New Beamer frame" b
 \end{frame}
 endsnippet
 
-snippet tikzpack "Tikz package import" b
-% Imported via UltiSnips
-\usepackage{tikz}
-\usetikzlibrary{arrows,decorations.markings,shadows,positioning,calc,backgrounds,shapes}
-endsnippet
-
 snippet tikzpic "New tikzpicture image"
 \begin{tikzpicture}[
     $1
@@ -332,6 +326,18 @@ snippet colorpack "Color package and command import" b
 \newcommand{\green}[1]{\colortext{ForestGreen}{#1}}
 endsnippet
 
+snippet graphicspack "" b
+% Imported via UltiSnips
+\usepackage{graphicx} % Loading the package
+\graphicspath{{${1:img/}}} % Setting the default folder containing the graphics
+endsnippet
+
+snippet macropack "Macro files import" b
+% Imported via UltiSnips
+\input{${1:global_macros}}
+\input{${2:macros}}
+endsnippet
+
 snippet mathpack "Math package import" b
 % Imported via UltiSnips
 \usepackage{amsmath}
@@ -341,12 +347,6 @@ snippet mathpack "Math package import" b
 \usepackage{amssymb}
 \usepackage{bbm}       % Used for \mathbbm
 \usepackage{mathrsfs}  % Used for \mathscr
-endsnippet
-
-snippet graphicspack "" b
-% Imported via UltiSnips
-\usepackage{graphicx} % Loading the package
-\graphicspath{{${1:img/}}} % Setting the default folder containing the graphics
 endsnippet
 
 snippet mathtools "mathtools delimiter definitions" b
@@ -375,6 +375,22 @@ snippet mathtools "mathtools delimiter definitions" b
 \newcommand{\defeq}{\stackrel{\mathclap{\mbox{\tiny def}}}{=}}
 endsnippet
 
+snippet pdfpack "Package(s) for importing PDFs" b
+% Imported via UltiSnips
+\usepackage{pdfpages}
+endsnippet
+
+snippet tabpack "Packages for tables" b
+% Imported via UltiSnips
+\usepackage{array}  % Provides a way add a \centering command to a p-column
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}   % H in table definition hide column values
+\usepackage{arydshln}  % Introduces hdashline & cdashline
+\usepackage{bigdelim}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}  % Needed for multirowcell
+endsnippet
+
 snippet thmpack "Theorem style definition" b
 % Imported via UltiSnips
 \usepackage{amsthm}
@@ -397,20 +413,10 @@ snippet thmpack "Theorem style definition" b
 \newtheorem{definition}{Def.}[section]
 endsnippet
 
-snippet tabpack "Packages for tables" b
+snippet tikzpack "Tikz package import" b
 % Imported via UltiSnips
-\usepackage{array}  % Provides a way add a \centering command to a p-column
-\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}   % H in table definition hide column values
-\usepackage{arydshln}  % Introduces hdashline & cdashline
-\usepackage{bigdelim}
-\usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{makecell}  % Needed for multirowcell
-endsnippet
-
-snippet pdfpack "Package(s) for importing PDFs" b
-% Imported via UltiSnips
-\usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings,shadows,positioning,calc,backgrounds,shapes}
 endsnippet
 
 snippet incpdf "Include PDF document" b

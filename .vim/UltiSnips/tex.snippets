@@ -120,9 +120,17 @@ endsnippet
 
 snippet pwise "Piecewise in math mode"
 \begin{cases}
-    $1 & $2 \\\\
-    $3 & $4
+  $1 & $2 \\\\
+  $3 & $4
 \end{cases}
+endsnippet
+
+snippet conopt "Constrained optimization in math mode" n
+\begin{align}
+  ${1:\\min}_{$2} \quad & $3 \\\\
+  \textrm{s.t.} \quad & $4 \\\\ % Basic Constraint
+    & $5  % Inequality Constraints
+\end{align}
 endsnippet
 
 snippet listings "Listing source code" b
@@ -347,6 +355,7 @@ snippet mathpack "Math package import" b
 \usepackage{amssymb}
 \usepackage{bbm}       % Used for \mathbbm
 \usepackage{mathrsfs}  % Used for \mathscr
+\usepackage{relsize}   % Used for \mathsmaller and \mathlarger
 endsnippet
 
 snippet mathtools "mathtools delimiter definitions" b

@@ -98,7 +98,6 @@ multiclass
 learnable
 ropeproject
 tensorboard
-CUDA
 AUROC
 AUPRC
 expressivity
@@ -136,7 +135,6 @@ unmanipulated
 AdamW
 AMSGrad
 underperformed
-foundational
 misspecified
 DenseNet
 subfigure
@@ -220,3 +218,6 @@ interpretable
 cardinality
 discretization
 memetic
+summarization
+promotional
+subsequence

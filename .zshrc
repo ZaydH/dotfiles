@@ -113,6 +113,7 @@ fi
 # export REFLEX_ROOT="${HOME}/reflex/bin"
 # export PATH="$REFLEX_ROOT:$PATH"
 
+autoload -U promptinit; promptinit
 # Print execution time if time exceeds below
 PURE_CMD_MAX_EXEC_TIME=10 # s
 # change the path color
@@ -121,7 +122,7 @@ PURE_CMD_MAX_EXEC_TIME=10 # s
 # zstyle ':prompt:pure:prompt:*' color cyan
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
-# prompt pure
+prompt pure
 
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"

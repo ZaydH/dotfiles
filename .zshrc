@@ -21,6 +21,7 @@ antigen bundle git
 antigen bundle command-not-found
 antigen bundle python
 antigen bundle tmux
+antigen bundle z
 if is_mac; then
     antigen bundle osx
 fi
@@ -44,6 +45,7 @@ antigen apply
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME=""  # Using pure below
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

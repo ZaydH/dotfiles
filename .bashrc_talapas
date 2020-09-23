@@ -5,6 +5,7 @@ if [ -z "$PS1" ]; then
 fi
 module load python3
 module load git  # Upgrades git to 2.12.X
+module load cuda/10.2
 # module load racs-eb
 # module load cuDNN/7.0.5-CUDA-9.1.85
 /usr/bin/zsh

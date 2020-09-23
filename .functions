@@ -402,7 +402,7 @@ if is_talapas; then
             printf "Invalid command input. Valid call \"run_talapas_bash [PARTITION]\"...\n"
             return 1
         fi
-        srun --account=uoml --partition="${PARTITION}" --pty bash
+        srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --pty bash
     }
 fi
 

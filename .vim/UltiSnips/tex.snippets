@@ -126,11 +126,14 @@ snippet pwise "Piecewise in math mode"
 endsnippet
 
 snippet conopt "Constrained optimization in math mode" n
-\begin{align}
-  ${1:\\min}_{$2} \quad & $3 \\\\
-  \textrm{s.t.} \quad & $4 \\\\ % Basic Constraint
-    & $5  % Inequality Constraints
-\end{align}
+% Valid Environments: mini, maxi, argmini, argmaxi
+%   Environment Suffix: None (Single number whole environment), * (No numbering), ! (Number each equation)
+% |SizeFormat|: s (short), l (long)
+% [OutputFormat]: 2 (Align constraints left)
+\begin{${1:min}i!}|s|[2]
+  {$2}{$3}{\label{eq:$4}}{}
+  \addConstraint{${5:LHS}}{${6:Op+RHS} \label{eq:$7}}  % Constraint. Alignment between the brackets
+\end{${1:min}i!}
 endsnippet
 
 snippet listings "Listing source code" b
@@ -351,11 +354,14 @@ snippet mathpack "Math package import" b
 \usepackage{amsmath}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\sgnp}[1]{{\sign \left( #1 \right) }}
 \usepackage{amsfonts}  % Used for \mathbb and \mathcal
 \usepackage{amssymb}
 \usepackage{bbm}       % Used for \mathbbm
 \usepackage{mathrsfs}  % Used for \mathscr
 \usepackage{relsize}   % Used for \mathsmaller and \mathlarger
+\usepackage{optidef}   % Used for mini! constrained optimization
 endsnippet
 
 snippet mathtools "mathtools delimiter definitions" b

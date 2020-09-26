@@ -26,7 +26,7 @@ Plug 'vim-airline/vim-airline'              | " Bottom bar
 " }}} UI
 
 " Motion {{{
-Plug 'pechorin/any-jump.vim'                | " Fast Fold rather than automatic folding
+Plug 'pechorin/any-jump.vim'                | " IDE like navigation
 Plug 'easymotion/vim-easymotion'            | " Enables quick traversal through a document
 " }}} Motion
 

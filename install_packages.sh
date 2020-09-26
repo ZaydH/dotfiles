@@ -85,6 +85,7 @@ function install_all_packages() {
                              dos2unix  # Easy tool to convert dos formatted text docs to unix format
                              urlview  # Needed for tmux s urlview plugin
                              zsh-syntax-highlighting  # Needed for zsh plugin
+                             the_silver_searcher silversearcher-ag  # Enables "ag" command for vim any-jump
                              fpp  # FaceBook path picker for tmux plugin
                              python python3 python-dev python3-dev python-devel ipython jupyter
                              pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific

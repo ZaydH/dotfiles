@@ -61,7 +61,7 @@ Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
 " Tools {{{
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
 Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
-Plug 'python-rope/ropevim'                  | " Pyrope for vim
+" Plug 'python-rope/ropevim'                  | " Pyrope for vim
 Plug 'szymonmaszke/vimpyter'                | " Jupyter Notebook support in vim
 Plug 'tpope/vim-commentary'                 | " Commenting tools
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
@@ -344,12 +344,33 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-" FastFold ================================================================
+" FastFold =============================================================
 
 let g:markdown_folding = 1
 let g:tex_fold_enabled = 1
 " Folds are updated whenever you close or open folds by a standard keystroke such as zx,zo or zc
 let g:fastfold_fold_command_suffixes = []
+
+" any-jump =============================================================
+
+" Background color
+hi Pmenu guibg=#1b1b1b ctermbg=Black
+
+let g:any_jump_colors = {
+      \"plain_text":         "Comment",
+      \"preview":            "Comment",
+      \"preview_keyword":    "Operator",
+      \"heading_text":       "Function",
+      \"heading_keyword":    "Identifier",
+      \"group_text":         "Comment",
+      \"group_name":         "Function",
+      \"more_button":        "Operator",
+      \"more_explain":       "Comment",
+      \"result_line_number": "Comment",
+      \"result_text":        "Statement",
+      \"result_path":        "String",
+      \"help":               "Comment"
+      \}
 
 " COC ==================================================================
 

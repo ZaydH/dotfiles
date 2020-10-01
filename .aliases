@@ -15,6 +15,11 @@ alias gwd='git wd'      # Performs word diff
 # alias gupnb='$(git push |& tail -n 2)'   # Push new branch
 
 # vim aliases
+if is_talapas; then
+    alias nvim="${HOME}/nvim.appimage"
+    unalias vim &> /dev/null
+    alias vim="nvim"
+fi
 alias v!='vim $_'
 alias nv='nvim'
 alias nv!='nv $_'

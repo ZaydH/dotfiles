@@ -41,3 +41,9 @@ function install_vim_package_manager() {
 
     install_vim_coc_dependencies
 }
+
+function install_neovim_without_root() {
+    # Downloads neovim manually
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+}

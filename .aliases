@@ -6,13 +6,18 @@ alias sz="source ${HOME}/.zshrc"
 alias cd!='cd $_'
 
 # Helpful git Aliases
-alias ga!='git add $_'  # Adds the last parameter of the previous bash command.
+alias ga!='ga $_'  # Adds the last parameter of the previous bash command.
+alias gap='ga -p'
+alias gap!='gap $_'
 alias gbh='git branch-sort' # Sorts branches by last commit
-alias gap='git checkout -p'
-alias gco!='git checkout $_'  # Adds the last parameter of the previous bash command.
-alias gcop='git checkout -p'
+alias gco!='gco $_'  # Adds the last parameter of the previous bash command.
+alias gcop='gco -p'
+alias gcop!='gcop $_'
 alias gwd='git wd'      # Performs word diff
+alias gwd!='gwd $_'      # Performs word diff
 # alias gupnb='$(git push |& tail -n 2)'   # Push new branch
+# Alias clonez for original name
+alias clonezaydh=clonez
 
 # vim aliases
 if is_talapas; then
@@ -72,16 +77,14 @@ if is_linux ; then
     alias open='xdg-open'
 fi
 
-# Use GNU cut since it has more features than the BSD cut
+# Use GNU utilities which have more features than the BSD versions
 if is_mac; then
     alias cut="gcut"
+    alias sed="gsed"
 fi
 
 # Clear vim swp files
 alias clrswp="rm .*.swp"
-
-# Alias clonez for original name
-alias clonezaydh=clonez
 
 # Simplify calling tensorboard
 alias tb="tensorboard --logdir"
@@ -93,6 +96,3 @@ alias ssh='TERM=xterm-256color ssh'
 alias ssht="ssh talapas"
 # Simplify ssh to home
 alias sshme="ssh home"
-
-# # List all
-# alias la="ls -Alh"

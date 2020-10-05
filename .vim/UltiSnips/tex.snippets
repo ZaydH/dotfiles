@@ -170,7 +170,7 @@ snippet base "Base LaTeX Document"
 \usepackage[margin=1in]{geometry}
 \usepackage[shortcuts]{extdash}
 
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 
 % Enable (uncolored) cross-reference hyperlinks
 % Should always be last package loaded.
@@ -235,6 +235,7 @@ snippet beamer "Beamer Presentation"
   \end{frame}}
 }
 
+\usepackage[numbers]{natbib}
 \usepackage{appendixnumberbeamer}
 
 % Here's where the presentation starts, with the info for the title slide
@@ -276,8 +277,8 @@ snippet beamerbib "Bibliography for Beamer" b
 \begin{frame}[allowframebreaks]
   {\tiny
     \frametitle{References}
-    \bibliographystyle{$1}
-    \bibliography{$2}
+    \bibliography{${1:bib/ref.bib}}
+    \bibliographystyle{${2:unsrtnat}}
   }
 \end{frame}
 endsnippet

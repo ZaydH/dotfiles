@@ -65,6 +65,7 @@ Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compat
 Plug 'szymonmaszke/vimpyter'                | " Jupyter Notebook support in vim
 Plug 'tpope/vim-commentary'                 | " Commenting tools
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
+Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region
 Plug 'RRethy/vim-illuminate'                | " Highlight other uses of the word
 Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
 Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview

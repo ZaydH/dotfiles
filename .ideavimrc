@@ -31,4 +31,7 @@ nnoremap nt :action ActivateProjectToolWindow<CR>
 " See: https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples
 set ideajoin
 
+" Enable vim-highlightedyank plugin
+set vim-highlightedyank
+
 set clipboard+=ideaput

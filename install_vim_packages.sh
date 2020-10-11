@@ -47,3 +47,31 @@ function install_neovim_without_root() {
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
 }
+
+
+function install_node_without_root() {
+    CUR_DIR=$(pwd)
+    source "${HOME}/.zshrc"
+
+    # create a directory where you want to install node js
+    rm -rf "${NODE_HOME}" > /dev/null
+    mkdir "${NODE_HOME}"
+    cd "${NODE_HOME}"
+
+    # download and extract nodejs binaries into the created directory
+    printf "Downloading nodejs's latest binaries to ${NODE_HOME}...\n"
+    wget https://nodejs.org/dist/node-latest.tar.gz
+    tar -xzf node-latest.tar.gz
+    mv node-v*/* .
+
+    printf "Building nodejs...\n"
+    ./configure --prefix=~/local
+    make install # ok, fine, this step probably takes more than 30 seconds...
+    printf "Downloading npm...\n"
+    curl https://www.npmjs.org/install.sh | sh
+
+    # refresh environment variables
+    source "${HOME}/.zshrc"
+
+    cd "${CUR_DIR}"
+}

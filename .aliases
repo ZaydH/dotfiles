@@ -37,6 +37,7 @@ alias repos="${REPOS_DIR}"
 alias dot="${REPOS_DIR}/dotfiles"
 alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
+alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"

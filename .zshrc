@@ -136,6 +136,14 @@ if [ -d ${PYENV_ROOT} ]; then
     eval "$(pyenv init -)"
 fi
 
+# Variables for external nodejs
+if is_talapas; then
+    export NODEJS_HOME="${HOME}/node-install"
+    if [ -d "${NODEJS_HOME}" ]; then
+        export PATH="${PATH}:${NODEJS_HOME}/bin"
+        export PATH="${HOME}/.yarn/bin:${HOME}/.config/yarn/global/node_modules/.bin:${PATH}"
+    fi
+fi
 
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi

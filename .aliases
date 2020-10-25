@@ -45,7 +45,7 @@ if is_mac || is_popos; then
 fi
 
 # ToDo temporary only
-if is_mac || is_popos; then
+if is_mac || is_popos || is_talapas; then
     alias icml="${REPOS_DIR}/icml2020/tex"
     alias cs631g="${REPOS_DIR}/cis631_group"
     alias cs631p="${REPOS_DIR}/cis631_personal"

@@ -93,6 +93,7 @@ function install_all_packages() {
                              golang  # Installs Go.  Used by vim-hexokinase
                              coreutils moreutils libomp libomp-dev
                              opendetex  # Tool for removing tex tags from a document
+                             clinfo  # OpenCL info tool
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential

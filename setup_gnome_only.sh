@@ -6,6 +6,7 @@ function make_gnome_look_like_mac() {
     install_cli_package gnome-tweak-tool
     install_cli_package gtk2-engines-murrine
     install_cli_package gtk2-engines-pixbuf
+    install_cli_package libglib2.0-dev
 }
 
 function configure_gnome_terminal_colorscheme() {
@@ -25,12 +26,16 @@ function configure_gnome_terminal_colorscheme() {
 
 # Enables the gnome keyring to save the git credentials
 function configure_git_for_gnome_keyring() {
-    install_cli_package libgnome-keyring-dev
-    GIT_KEYRING_DIR="/usr/share/doc/git/contrib/credential/gnome-keyring"
-    sudo make --directory="${GIT_KEYRING_DIR}"
+    # install_cli_package libgnome-keyring-dev
+    # GIT_KEYRING_DIR="/usr/share/doc/git/contrib/credential/gnome-keyring"
+    # sudo make --directory="${GIT_KEYRING_DIR}"
 
-    CREDENTIAL_FILE="${GIT_KEYRING_DIR}/git-credential-gnome-keyring"
-    git config --global credential.helper "${CREDENTIAL_FILE}"
+    # CREDENTIAL_FILE="${GIT_KEYRING_DIR}/git-credential-gnome-keyring"
+    # git config --global credential.helper "${CREDENTIAL_FILE}"
+
+    install_cli_package seahorse -y
+    install_cli_package git-credential-libsecret -y
+    git config — global credential.helper /usr/libexec/git-core/git-credential-libsecret
 }
 
 function configure_libreoffice_packages() {
@@ -39,6 +44,10 @@ function configure_libreoffice_packages() {
 
 function configure_appmenu_packages() {
     install_cli_package appmenu-gtk3-module
+}
+
+function change_titlebar_button_order() {
+    gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 }
 
 

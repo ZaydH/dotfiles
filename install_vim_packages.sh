@@ -35,7 +35,18 @@ function install_vim_plug() {
 #     curl -sL install-node.now.sh/lts | bash
 # }
 
+function install_system_packages_for_neovim() {
+    printf "Installing system packages for neovim..."
+    sudo npm install -g neovim > /dev/null
+    yarn global add neovim > /dev/null
+    sudo gem install neovim > /dev/null
+    gem environment > /dev/null
+    printf "COMPLETED\n"
+}
+
 function install_vim_package_manager() {
+    install_system_packages_for_neovim
+
     install_vundle
     install_vim_plug
 

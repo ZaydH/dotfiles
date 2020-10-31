@@ -89,11 +89,12 @@ function install_all_packages() {
                              fpp  # FaceBook path picker for tmux plugin
                              python python3 python-dev python3-dev python-devel ipython jupyter
                              pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
-                             node nodejs  # Installs Node.js. Used by coc
+                             node nodejs yarnpkg yarn  # Installs Node.js. Used by coc
                              golang  # Installs Go.  Used by vim-hexokinase
                              coreutils moreutils libomp libomp-dev
                              opendetex  # Tool for removing tex tags from a document
                              clinfo  # OpenCL info tool
+                             nvidia-cuda-toolkit  # CUDA tools
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential

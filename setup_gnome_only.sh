@@ -43,7 +43,7 @@ function configure_appmenu_packages() {
 
 
 # Encapsulates all the individual operations into a single function
-function run_mac_only_setup(){
+function run_gnome_only_setup(){
     make_gnome_look_like_mac
 
     configure_gnome_terminal_colorscheme

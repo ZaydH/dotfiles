@@ -46,8 +46,9 @@ function configure_appmenu_packages() {
     install_cli_package appmenu-gtk3-module
 }
 
-function change_titlebar_button_order() {
+function set_gsettings_values() {
     gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+    gsettings set org.gnome.desktop.sound event-sounds false
 }
 
 
@@ -60,6 +61,8 @@ function run_gnome_only_setup(){
     configure_git_for_gnome_keyring
 
     configure_appmenu_packages
+
+    set_gsettings_values
 
     configure_libreoffice_packages
 }

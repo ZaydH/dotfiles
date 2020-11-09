@@ -99,10 +99,13 @@ function install_all_packages() {
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential
+                             ocl-icd-opencl-dev
                             )
     declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
                                 notify-send  # Notification generator
                                 xsel   # Needed by tmux-yank package
+                                os-prober  # used in conjunction with grub
+                                gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim

@@ -24,6 +24,10 @@ function configure_gnome_terminal_colorscheme() {
     bash -c  "$(wget -qO- https://git.io/vQgMr)"
 }
 
+function setup_ssh_server() {
+    install_cli_package openssh-server
+}
+
 # Enables the gnome keyring to save the git credentials
 function configure_git_for_gnome_keyring() {
     # install_cli_package libgnome-keyring-dev

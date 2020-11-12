@@ -109,6 +109,7 @@ function install_all_packages() {
                                 xsel   # Needed by tmux-yank package
                                 os-prober  # used in conjunction with grub
                                 gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP
+                                latexmk
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim

@@ -100,6 +100,9 @@ function install_all_packages() {
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential
                              ocl-icd-opencl-dev
+                             ocl-icd-libopencl1
+                             opencl-headers
+                             clinfo
                             )
     declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
                                 notify-send  # Notification generator

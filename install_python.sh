@@ -80,6 +80,7 @@ function install_python_packages() {
                          tsnecuda MulticoreTSNE  # t-SNE packages
                          gensim nltk fuzzywuzzy  # NLP packages
                          pywsl  # Python for Weakly Supervised Learning
+                         densratio  # Used for density ratio estimation
                          virtualenv pipenv pipreqs  # Portability requirements
                          pytest tox   # Continuous integration and testing
                          requests ipython

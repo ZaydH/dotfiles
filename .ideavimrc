@@ -9,15 +9,6 @@ source ~/.vimrc
 set nonumber          " Show line numbers
 set norelativenumber
 
-" PyCharm's IdeaVim has support for emulating some vim plugins.
-" For more information see:
-" https://github.com/JetBrains/ideavim#emulated-vim-plugins
-set surround
-set commentary
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" s{char}{char} to move to {char}{char}
-set easymotion
 " overwin not support in PyCharm so use non-overwin equivalent
 nmap <Leader>f <Plug>(easymotion-bd-f)
 nmap s <Plug>(easymotion-bd-f2)
@@ -30,8 +21,5 @@ nnoremap nt :action ActivateProjectToolWindow<CR>
 " Enable ideajoin.
 " See: https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples
 set ideajoin
-
-" Enable vim-highlightedyank plugin
-set vim-highlightedyank
 
 set clipboard+=ideaput

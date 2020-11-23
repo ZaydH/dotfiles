@@ -72,6 +72,7 @@ Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: C
 Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
 Plug 'tpope/vim-speeddating'                | " Tools for working with dates
 Plug 'tpope/vim-surround'
+Plug 'preservim/tagbar'                     | " View the tags in the program
 Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
 if v:version >= 800                         | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
@@ -153,7 +154,11 @@ endfunction
 "augroup END
 
 " Enable copy and paste in vim
-set clipboard=unnamed
+if has("unix")
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 " Enables text highlighting
 filetype plugin on
@@ -436,6 +441,10 @@ let g:vimtex_echo_verbose_input = 0
 " vim-markdown-preview ====================================================
 
 let vim_markdown_preview_github=1
+
+" tagbar ++++++++++++++====================================================
+
+nmap <F8> :TagbarToggle<CR>
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

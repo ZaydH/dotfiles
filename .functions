@@ -402,7 +402,14 @@ if is_talapas; then
             printf "Invalid command input. Valid call \"run_talapas_bash [PARTITION]\"...\n"
             return 1
         fi
-        srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --pty bash
+        if [[ "${PARTITION}" == "testgpu" ]]; then
+            NUM_CPU=4
+        else
+            NUM_CPU=6
+        fi
+        printf "Number of CPUs Allocated: ${NUM_CPU}\n"
+
+        srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --cpus-per-task=${NUM_CPU} --pty bash
     }
 fi
 

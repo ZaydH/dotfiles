@@ -75,7 +75,9 @@ fi
 alias terminal-notifier="terminal-notifier -message"
 
 # Sort top automatically by cpu usage
-alias top="htop"
+if ! is_talapas; then
+    alias top="htop"
+fi
 
 if is_linux ; then
     alias open='xdg-open'

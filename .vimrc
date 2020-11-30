@@ -53,13 +53,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'reedes/vim-wordy'                     | " Wordy detects poor uses of language
 " }}} Tex
 
+" Langauge Support {{{
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
+Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
+Plug 'vhdirk/vim-cmake'                     | " Integrate CMake
+Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
+" }}} Langauge Support
+
 " Color Schemes {{{
 Plug 'morhetz/gruvbox'                      | " GruvBox
 Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
 " }}} Color Schemes
 
 " Tools {{{
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
 Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
 " Plug 'python-rope/ropevim'                  | " Pyrope for vim
 Plug 'szymonmaszke/vimpyter'                | " Jupyter Notebook support in vim
@@ -67,8 +73,6 @@ Plug 'tpope/vim-commentary'                 | " Commenting tools
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
 Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region
 Plug 'RRethy/vim-illuminate'                | " Highlight other uses of the word
-Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
-Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
 Plug 'tpope/vim-speeddating'                | " Tools for working with dates
 Plug 'tpope/vim-surround'

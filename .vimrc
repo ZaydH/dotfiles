@@ -57,6 +57,7 @@ Plug 'reedes/vim-wordy'                     | " Wordy detects poor uses of langu
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
 Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'vhdirk/vim-cmake'                     | " Integrate CMake
+Plug 'pboettch/vim-cmake-syntax'            | " Better highlighting of cmake files
 Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
 " }}} Langauge Support
 
@@ -117,6 +118,9 @@ set nojoinspaces
 " Remap home to go to the tabbed beginning of the line
 :map <Home> ^
 :imap <Home> <Esc>^i
+
+" Map F12 to disable highlighting
+:map <F12> :noh<CR>
 
 " Improve undo granularity
 " Create new undo point after return (CR), space, or tab key pressed in insert mode

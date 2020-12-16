@@ -23,7 +23,7 @@ function install_and_update_package_manager() {
     elif is_linux; then
         printf "Updating package manager..."
         if is_debian; then
-            sudo apt-get update > /dev/null
+            sudo apt update > /dev/null
         elif is_fedora; then
             sudo yum update > /dev/null
         elif is_manjaro; then
@@ -46,8 +46,8 @@ function cleanup_package_manager() {
         # Remove outdated versions from the cellar.
         brew cleanup > /dev/null
     elif is_debian; then
-        sudo apt-get autoremove > /dev/null
-        sudo apt-get clean > /dev/null
+        sudo apt autoremove > /dev/null
+        sudo apt-get clean > /dev/null  # apt does not have a clean command
     elif is_fedora; then
         sudo yum autoremove > /dev/null
         sudo yum clean > /dev/null

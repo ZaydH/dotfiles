@@ -23,11 +23,12 @@ alias clonezaydh=clonez
 if is_talapas; then
     alias nvim="${HOME}/nvim.appimage"
     unalias vim &> /dev/null
-    alias vim="nvim"
 fi
-alias nv='nvim'
-alias nv!='nv $_'
-alias vim='nv'
+if ! is_ix; then
+    alias nv='nvim'
+    alias nv!='nv $_'
+    alias vim='nv'
+fi
 alias v!='vim $_'
 
 # Go right to dotfiles folder

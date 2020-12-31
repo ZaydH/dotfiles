@@ -78,6 +78,7 @@ Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
 Plug 'tpope/vim-speeddating'                | " Tools for working with dates
 Plug 'tpope/vim-surround'
 Plug 'preservim/tagbar'                     | " View the tags in the program
+Plug 'romainl/vim-cool'                     | " Automatically disable highlighting after search
 Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
 if v:version >= 800                         | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
@@ -450,9 +451,13 @@ let g:vimtex_echo_verbose_input = 0
 
 let vim_markdown_preview_github=1
 
-" tagbar ++++++++++++++====================================================
+" tagbar ==================================================================
 
 nmap <F8> :TagbarToggle<CR>
+
+" vim-cool ================================================================
+
+let g:CoolTotalMatches = 1
 
 "==========================================================================
 " vimtex Fix -- Must Be at the End of the File

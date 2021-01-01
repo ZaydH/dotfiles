@@ -59,6 +59,28 @@ function btex() {
     pdflatex -output-directory ${BUILD_DIR} "$@"
 }
 
+function charm() {
+    # Parse the project path
+    if [[ $# == 0 ]]; then
+        PROJ_PATH="."
+    elif [[ $# == 1 ]]; then
+        PROJ_PATH="${1}"
+    else
+        printf "Invalid argument count.  Command supports up to 1 argument for the folder path. Default is current directory.\n"
+        return
+    fi
+    # Invoke pycharm
+    if is_mac; then
+        open -na "PyCharm.app" --args "${PROJ_PATH}"
+    elif is_popos; then
+        printf "PopOS support not yet added" >&2
+        return 1
+    else
+        printf "Opening PyCharm from the command line does not appear to be supported on this system.\n"
+        return
+    fi
+}
+
 # Determine size of a file or total size of a directory
 function fs() {
     if du -b /dev/null > /dev/null 2>&1; then

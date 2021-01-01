@@ -69,7 +69,7 @@ function install_package_array() {
 function install_all_packages() {
     install_and_update_package_manager
 
-    declare -a GENERAL_PKGS=(git git-lfs subversion hub tig bfg  # bfg is for removing files from git history
+    declare -a GENERAL_PKGS=(git git-lfs subversion hub tig bfg git-flow git-flow-avh  # bfg is for removing files from git history
                              curl wget
                              zsh tmux  # Shell packages
                              gcc g++ autoconf automake cmake bison doxygen flex cppcheck

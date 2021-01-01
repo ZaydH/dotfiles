@@ -73,7 +73,7 @@ function charm() {
     if is_mac; then
         open -na "PyCharm.app" --args "${PROJ_PATH}"
     elif is_popos; then
-        /snap/pycharm-professional/current/bin/pycharm.sh "${PROJ_PATH}" &> /dev/null &
+        /snap/pycharm-professional/current/bin/pycharm.sh "${PROJ_PATH}" < /dev/null &> /dev/null &
         # printf "PopOS support not yet added" >&2
         # return 1
     else

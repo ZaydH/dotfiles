@@ -126,10 +126,15 @@ PURE_CMD_MAX_EXEC_TIME=10 # s
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
+CONDA_ROOT="${HOME}/anaconda3"
+if [ -d ]; then
+    export PATH="${CONDA_ROOT}/bin:${PATH}"
+fi
+
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d ${PYENV_ROOT} ]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
     if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
     fi

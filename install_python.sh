@@ -75,6 +75,7 @@ function install_python_packages() {
                          torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages
+                         comet_ml
                          pycm  # Confusion matrix package
                          cplex gurobi # Linear system solvers
                          tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
@@ -96,6 +97,7 @@ function install_python_packages() {
                          ruamel.yaml  # Improved yaml parser
                          pydot gmpy2  # Packages for WAPS
                          arxiv-collector # Used to prepare a tex document for Arxiv
+                         mpi4py  # MPI package
                          )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."

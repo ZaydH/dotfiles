@@ -19,6 +19,7 @@ function _install_snap_app_list() {
     declare -a SNAP_APPS=(
                           clion
                           code  # VSCode
+                          flameshot  # Alternative to Lightshot
                           pycharm-professional
                           signal-desktop
                           skype

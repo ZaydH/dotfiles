@@ -74,7 +74,8 @@ function install_python_packages() {
                          setuptools  # Some packages rely on setup tools so update early
                          torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
-                         tensorboardX tensorflow keras chainer  # Non-PyTorch neural net packages
+                         tensorflow tensorflow_probability
+                         tensorboardX keras chainer  # Non-PyTorch neural net packages
                          comet_ml
                          pycm  # Confusion matrix package
                          cplex gurobi # Linear system solvers

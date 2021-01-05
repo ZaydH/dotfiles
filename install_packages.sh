@@ -92,7 +92,9 @@ function install_all_packages() {
                              node nodejs npm yarnpkg yarn  # Installs Node.js. Used by coc
                              ruby gem ruby-dev ruby-devel
                              golang  # Installs Go.  Used by vim-hexokinase
-                             coreutils moreutils libomp libomp-dev
+                             coreutils moreutils
+                             libomp libomp-dev
+                             mpich
                              opendetex  # Tool for removing tex tags from a document
                              clinfo  # OpenCL info tool
                              nvidia-cuda-toolkit  # CUDA tools

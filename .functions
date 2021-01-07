@@ -398,6 +398,11 @@ if is_talapas; then
             TIME_LIMIT="14-00:00:00"  # 14 day
         fi
 
+        N_CPU=4
+        if [[ ${PARTITION} == *"testgpu"* ]]; then
+            N_CPU=3
+        fi
+
         SBATCH_TEXT=$(echo "#!/bin/bash" \
                            "\n#SBATCH --job-name=${JOB_NAME}" \
                            "\n#SBATCH --account=uoml" \
@@ -405,12 +410,13 @@ if is_talapas; then
                            "\n#SBATCH --time=${TIME_LIMIT}" \
                            "\n#SBATCH --mem-per-cpu=28G" \
                            "\n#SBATCH --nodes=1"\
-                           "\n#SBATCH --cpus-per-task=2" \
+                           "\n#SBATCH --cpus-per-task=${N_CPU}" \
                            "\n#SBATCH --ntasks-per-node=1" \
                            "\n#SBATCH --mail-type=ALL" \
                            "\n#SBATCH --mail-user=zhammoud@uoregon.edu" \
                            "\n#SBATCH --output=${OUT_DIR}/${JOB_NAME}_%j.out"
                      )
+
         # Select to use GPU
         if [[ ${PARTITION} == *"gpu"* ]]; then
             SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"

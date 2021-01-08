@@ -127,8 +127,10 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 CONDA_ROOT="${HOME}/anaconda3"
-if [ -d ]; then
+if [ -d "${CONDA_ROOT}" ]; then
     export PATH="${CONDA_ROOT}/bin:${PATH}"
+    # disable init of env "base"
+    conda config --set auto_activate_base false
 fi
 
 # Variables specifically for PyEnv

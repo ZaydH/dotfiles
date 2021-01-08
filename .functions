@@ -21,6 +21,7 @@ function clonez() {
         return
     fi
     REPO_NAME=$1
+    FOLDER_NAME=""
     if [ $# -eq 2 ]; then
         FOLDER_NAME=$2
     fi

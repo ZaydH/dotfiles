@@ -16,8 +16,6 @@ alias gcop!='gcop $_'
 alias gwd='git wd'      # Performs word diff
 alias gwd!='gwd $_'     # Performs word diff
 alias gpnb='$(git push |& tail -n 2)'      # Push new branch
-# Alias clonez for original name
-alias clonezaydh=clonez
 
 # vim aliases
 if is_talapas; then

@@ -69,7 +69,10 @@ Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
 " Tools {{{
 Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
 " Plug 'python-rope/ropevim'                  | " Pyrope for vim
-Plug 'szymonmaszke/vimpyter'                | " Jupyter Notebook support in vim
+" if $HOSTNAME !~ "talapas-[a-z0-9]\*" && $HOSTNAME !~ "n[0-9]\+"
+if $HOSTNAME !~ '\(talapas-ln[1-2]*\|n[0-9]\+\)'
+    Plug 'szymonmaszke/vimpyter'            | " Jupyter Notebook support in vim
+endif
 Plug 'tpope/vim-commentary'                 | " Commenting tools
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
 Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region

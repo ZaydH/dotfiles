@@ -25,7 +25,7 @@ function clonez() {
     if [ $# -eq 2 ]; then
         FOLDER_NAME=$2
     fi
-    BASE_ADDR=https://ZaydH@github.com/ZaydH/${REPO_NAME}
+    BASE_ADDR=ssh://git@github.com/ZaydH/${REPO_NAME}
     if [ $(version $(git --version)) -ge $(version "2.13") ]; then
         git clone --recurse-submodules -j8 ${BASE_ADDR} ${FOLDER_NAME}
     elif [ $(version $(git --version)) -ge $(version "1.9") ]; then

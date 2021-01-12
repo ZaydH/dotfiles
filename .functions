@@ -439,9 +439,9 @@ if is_talapas; then
             return 1
         fi
         if [[ "${PARTITION}" == "testgpu" ]]; then
-            NUM_CPU=4
+            NUM_CPU=3
         else
-            NUM_CPU=6
+            NUM_CPU=4
         fi
         printf "Number of CPUs Allocated: ${NUM_CPU}\n"
 

@@ -217,11 +217,6 @@ function backup() {
     return 0
 }
 
-# Installs the vim Vundle plugin
-function install_vundle() {
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-}
-
 # Freeze python package requirements
 function freeze() {
     if [[ $# == 0 ]]; then
@@ -458,4 +453,13 @@ function ta() {
     fi
     SESSION_NAME="${1}"
     tmux attach -t "${SESSION_NAME}"
+}
+
+
+function enable_ssh() {
+    if ! is_talapas; then
+        return
+    fi
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add "${HOME}/.ssh/id_github"
 }

@@ -124,7 +124,7 @@ set nojoinspaces
 :imap <Home> <Esc>^i
 
 " Map F12 to disable highlighting
-:map <F12> :noh<CR>
+:map <F11> :noh<CR>
 
 " Improve undo granularity
 " Create new undo point after return (CR), space, or tab key pressed in insert mode

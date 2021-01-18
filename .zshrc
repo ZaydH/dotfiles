@@ -103,6 +103,7 @@ fi
 # else
 #   export EDITOR='mvim'
 # fi
+export SUDO_EDITOR="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

@@ -463,3 +463,16 @@ function enable_ssh() {
     eval "$(ssh-agent -s)" > /dev/null
     ssh-add "${HOME}/.ssh/id_github"
 }
+
+function start_synergyc() {
+    printf "Starting Synergy client..."
+
+    # Kill any running synergy clients
+    /usr/bin/killall synergyc > /dev/null
+    while [ $(pgrep -x synergyc) ]; do sleep 0.1; done
+
+    MBP_IP=192.168.1.11
+    synergyc "${MBP_IP}"
+
+    printf "COMPLETED\n"
+}

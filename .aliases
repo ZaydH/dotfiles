@@ -37,6 +37,7 @@ alias dot="${REPOS_DIR}/dotfiles"
 alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
 alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
+alias repp="${REPOS_DIR}/uo/representer_poison/src"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"
@@ -98,5 +99,7 @@ alias tb="tensorboard --logdir"
 alias ssh='TERM=xterm-256color ssh'
 # Simplify ssh to talapas
 alias ssht="ssh talapas"
+# Simplify ssh to Pop!_OS box
+alias sshp="ssh popos"
 # Simplify ssh to home
 alias sshme="ssh home"

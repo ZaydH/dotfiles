@@ -99,6 +99,11 @@ install_file .jupyter/jupyter_notebook_config.py
 # Settings for latexmk Perl script
 install_file .latexmkrc
 
+if is_mac; then
+    # synergy configuration
+    install_file synergy.conf
+fi
+
 # Settings for tmux
 source install_tmux.sh
 install_file "${OH_MY_TMUX_REPO_NAME}/.tmux.conf" .tmux.conf

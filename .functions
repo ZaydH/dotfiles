@@ -394,9 +394,9 @@ if is_talapas; then
             TIME_LIMIT="14-00:00:00"  # 14 day
         fi
 
-        N_CPU=4
+        N_CPU=2
         if [[ ${PARTITION} == *"testgpu"* ]]; then
-            N_CPU=3
+            N_CPU=2
         fi
 
         SBATCH_TEXT=$(echo "#!/bin/bash" \
@@ -404,7 +404,7 @@ if is_talapas; then
                            "\n#SBATCH --account=uoml" \
                            "\n#SBATCH --partition=${PARTITION}" \
                            "\n#SBATCH --time=${TIME_LIMIT}" \
-                           "\n#SBATCH --mem-per-cpu=28G" \
+                           "\n#SBATCH --mem-per-cpu=24G" \
                            "\n#SBATCH --nodes=1"\
                            "\n#SBATCH --cpus-per-task=${N_CPU}" \
                            "\n#SBATCH --ntasks-per-node=1" \

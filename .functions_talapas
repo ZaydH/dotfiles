@@ -82,3 +82,78 @@ function kill_jobs_range {
 
     scancel "${jobs[@]}"
 }
+
+# Runs a command line function call automatically in a slurm job
+function run_cli_slurm() {
+    if [ $# -ne 3 ]; then
+        printf "Invalid argument count.\nExpected format: run_cli_slurm <JobName> <Partition> <CLI_COMMAND>\n"
+        return 0
+    fi
+    JOB_NAME=$1
+    PARTITION=$2
+    CLI_COMMAND=$3
+
+    OUT_DIR=/home/zhammoud/projects/.out
+    mkdir -p ${OUT_DIR}
+
+    DEFAULT_GPU_PARTITION="gpu"
+    TEST_PARTITION="test"
+    LONG_PARTITION="long"
+    SHORT_PARTITION="short"
+
+    if [[ ${PARTITION} = ${SHORT_PARTITION} || ${PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
+        TIME_LIMIT="1-00:00:00"  # 1 day
+    elif [[ ${PARTITION} == "${TEST_PARTITION}"* ]]; then
+        TIME_LIMIT="4:00:00"  # 4 hours
+    elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
+        TIME_LIMIT="14-00:00:00"  # 14 day
+    fi
+
+    N_CPU=2
+    if [[ ${PARTITION} == *"testgpu"* ]]; then
+        N_CPU=2
+    fi
+
+    SBATCH_TEXT=$(echo "#!/bin/bash" \
+                       "\n#SBATCH --job-name=${JOB_NAME}" \
+                       "\n#SBATCH --account=uoml" \
+                       "\n#SBATCH --partition=${PARTITION}" \
+                       "\n#SBATCH --time=${TIME_LIMIT}" \
+                       "\n#SBATCH --mem-per-cpu=24G" \
+                       "\n#SBATCH --nodes=1"\
+                       "\n#SBATCH --cpus-per-task=${N_CPU}" \
+                       "\n#SBATCH --ntasks-per-node=1" \
+                       "\n#SBATCH --mail-type=ALL" \
+                       "\n#SBATCH --mail-user=zhammoud@uoregon.edu" \
+                       "\n#SBATCH --output=${OUT_DIR}/${JOB_NAME}_%j.out"
+                 )
+
+    # Select to use GPU
+    if [[ ${PARTITION} == *"gpu"* ]]; then
+        SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"
+    fi
+
+    SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}"
+    echo ${SBATCH_TEXT} | sbatch /dev/stdin
+}
+
+function run_talapas_bash() {
+    if [[ $# -eq 0 ]]; then
+        PARTITION="testgpu"
+        printf "No partition specified. Using partition \"${PARTITION}\"\n"
+    elif [[ $# -eq 1 ]]; then
+        PARTITION=$1
+        printf "Specified partition: \"${PARTITION}\"\n"
+    else
+        printf "Invalid command input. Valid call \"run_talapas_bash [PARTITION]\"...\n"
+        return 1
+    fi
+    if [[ "${PARTITION}" == "testgpu" ]]; then
+        NUM_CPU=3
+    else
+        NUM_CPU=4
+    fi
+    printf "Number of CPUs Allocated: ${NUM_CPU}\n"
+
+    srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --cpus-per-task=${NUM_CPU} --pty bash
+}

@@ -127,12 +127,12 @@ PURE_CMD_MAX_EXEC_TIME=10 # s
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-CONDA_ROOT="${HOME}/anaconda3"
-if [ -d "${CONDA_ROOT}" ]; then
-    export PATH="${CONDA_ROOT}/bin:${PATH}"
-    # disable init of env "base"
-    conda config --set auto_activate_base false
-fi
+# CONDA_ROOT="${HOME}/anaconda3"
+# if [ -d "${CONDA_ROOT}" ]; then
+#     export PATH="${CONDA_ROOT}/bin:${PATH}"
+#     # disable init of env "base"
+#     conda config --set auto_activate_base false
+# fi
 
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"

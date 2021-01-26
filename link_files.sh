@@ -11,9 +11,9 @@ fi
 
 # Function for installing a file from then repository to the filesystem
 function install_file() {
-    if [ $# == 1 ]; then
+    if [ $# -eq 1 ]; then
         DEST_FILE=$1
-    elif [ $# == 2 ]; then
+    elif [ $# -eq 2 ]; then
         DEST_FILE=$2
     else
         printf "ERROR: Unsupported number of input arguments. Exiting...\n" >&2

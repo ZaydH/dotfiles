@@ -134,6 +134,8 @@ function install_all_packages() {
                                  python3-neovim  # Needed for neovim Debian python support
                                  xz-devel
                                 )
+    declare -a POPOS_ONLY_PKGS=(system76-driver-nvidia
+                               )
 
     install_package_array "${GENERAL_PKGS[@]}"
     if is_linux; then
@@ -147,6 +149,9 @@ function install_all_packages() {
     fi
     if is_fedora; then
         install_package_array "${FEDORA_ONLY_PKGS[@]}"
+    fi
+    if is_popos; then
+        install_package_array "${POPOS_ONLY_PKGS[@]}"
     fi
     if is_mac; then
         install_package_array "${MAC_ONLY_PKGS[@]}"

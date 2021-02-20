@@ -7,6 +7,8 @@ module load cmake/3.15.4
 
 spack load tmux
 spack load git@2.27.0%gcc@8.2.0
+spack load vim@8.2.1201
+spack load the-silver-searcher
 # test if the prompt var is not set
 if [ -z "$PS1" ]; then
     # prompt var is not set, so this is *not* an interactive shell

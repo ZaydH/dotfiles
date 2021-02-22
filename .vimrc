@@ -58,7 +58,8 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " P
 Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'vhdirk/vim-cmake'                     | " Integrate CMake
 Plug 'pboettch/vim-cmake-syntax'            | " Better highlighting of cmake files
-Plug 'kevinoid/vim-jsonc'                   | " Syntatx highlighting for jsonc -- JSON with comments
+Plug 'kevinoid/vim-jsonc'                   | " Syntax highlighting for jsonc -- JSON with comments
+Plug 'ekalinin/dockerfile.vim'              | " Dockerfile syntax highlighting
 " }}} Langauge Support
 
 " Color Schemes {{{

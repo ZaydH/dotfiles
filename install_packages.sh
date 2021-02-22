@@ -74,6 +74,7 @@ function install_all_packages() {
                              zsh tmux  # Shell packages
                              gcc g++ autoconf automake cmake bison doxygen flex cppcheck
                              vim neovim ctags exuberant-ctags  # vim specific packages
+                             docker docker.io  # Docker packages
                              htop  # Process manager
                              graphviz
                              gmp libgmp3-dev libgmp-dev

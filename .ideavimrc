@@ -12,8 +12,8 @@ nmap s <Plug>(easymotion-bd-f2)
 nmap <Leader>L <Plug>(easymotion-lineanywhere)
 nmap <Leader>w <Plug>(easymotion-bd-w)
 
-" Emulate vim nerdtree
-nnoremap nt :action ActivateProjectToolWindow<CR>
+" " Emulate vim nerdtree
+nnoremap nt :NERDTree<CR>
 
 " Enable ideajoin.
 " See: https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples

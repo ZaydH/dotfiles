@@ -19,7 +19,7 @@ Plug 'ervandew/supertab'
 " Plug 'w0rp/ale'
 
 " UI {{{
-Plug 'wellle/context.vim'                   | " Display context (e.g., class, function, if, loop, etc.)
+" Plug 'wellle/context.vim'                   | " Display context (e.g., class, function, if, loop, etc.)
 Plug 'Konfekt/FastFold'                     | " Fast Fold rather than automatic folding
 Plug 'scrooloose/nerdtree'                  | " File explorer
 Plug 'vim-airline/vim-airline'              | " Bottom bar

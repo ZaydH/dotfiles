@@ -113,6 +113,7 @@ function install_all_packages() {
                                 os-prober  # used in conjunction with grub
                                 gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP
                                 latexmk
+                                nvtop  # Shows GPU utilization like top/htop but for Nvidia GPUs (NVidia + top)
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim

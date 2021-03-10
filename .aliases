@@ -33,11 +33,13 @@ alias dot="${REPOS_DIR}/dotfiles"
 alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
 alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
-alias repp="${REPOS_DIR}/uo/representer_poison/src"
+alias repp="${REPOS_DIR}/uo/representer_poison/two_pass_pois"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"
     alias textbooks="${REPOS_DIR}/textbooks"
+
+    alias downloads="${HOME}/Downloads"
 fi
 
 # ToDo temporary only

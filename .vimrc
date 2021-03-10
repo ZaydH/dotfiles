@@ -84,6 +84,7 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/tagbar'                     | " View the tags in the program
 Plug 'romainl/vim-cool'                     | " Automatically disable highlighting after search
 Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
+Plug 'tpope/vim-repeat'                     | " Enable dot repeat commands for vim-surround and other plugins
 if v:version >= 800                         | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'

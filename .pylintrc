@@ -8,6 +8,11 @@ ignore=CVS,
     .vscode,
     .hg,
     .ropeproject,
+    .data,
+    .poison,
+    res,
+    plots,
+    logs,
 
 # Complete Example pylintrc file from the Python Code Quality Assurance group
 # https://github.com/PyCQA/pylint/blob/master/pylintrc

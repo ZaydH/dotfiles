@@ -13,9 +13,10 @@ alias gbh='git branch-sort' # Sorts branches by last commit
 alias gco!='gco $_'  # Adds the last parameter of the previous bash command.
 alias gcop='gco -p'
 alias gcop!='gcop $_'
+alias gpnb='$(git push |& tail -n 2)'      # Push new branch
+alias grgo='git config --get remote.origin.url'  # Get the origin path for git
 alias gwd='git wd'      # Performs word diff
 alias gwd!='gwd $_'     # Performs word diff
-alias gpnb='$(git push |& tail -n 2)'      # Push new branch
 
 # vim aliases
 if ! is_ix; then
@@ -34,6 +35,7 @@ alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
 alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
 alias repp="${REPOS_DIR}/uo/representer_poison/two_pass_pois"
+alias walp="${REPOS_DIR}/wallace-poisoning"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"

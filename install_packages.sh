@@ -98,7 +98,7 @@ function install_all_packages() {
                              mpich
                              opendetex  # Tool for removing tex tags from a document
                              clinfo  # OpenCL info tool
-                             nvidia-cuda-toolkit  # CUDA tools
+                             nvidia-cuda-toolkit nvidia-container-toolkit  # CUDA tools
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential

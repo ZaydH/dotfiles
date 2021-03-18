@@ -24,6 +24,7 @@ function _install_snap_app_list() {
                           signal-desktop
                           skype
                           slack
+                          zoom-client
                          )
     for app_name in "${SNAP_APPS[@]}"; do
         printf "Install Snap app \"${app_name}\"..."

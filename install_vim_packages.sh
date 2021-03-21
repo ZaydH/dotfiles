@@ -47,10 +47,10 @@ function install_system_packages_for_neovim() {
 function install_vim_package_manager() {
     install_system_packages_for_neovim
 
-    install_vundle
+    # install_vundle
     install_vim_plug
 
-    install_vim_coc_dependencies
+    # install_vim_coc_dependencies
 }
 
 function install_neovim_without_root() {

@@ -29,7 +29,7 @@ fi
 # Load the theme.
 # antigen theme robbyrussell
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+antigen bundle sindresorhus/pure --branch=main
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-autosuggestions

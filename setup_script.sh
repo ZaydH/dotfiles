@@ -41,6 +41,8 @@ source install_zsh.sh
 
 # install_jupyter_extensions
 
+# ./install_docker.sh
+
 if is_mac; then
     : # Noop to prevent error due to empty if
     # source setup_mac_only.sh

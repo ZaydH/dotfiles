@@ -35,6 +35,7 @@ alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
 alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
 alias repp="${REPOS_DIR}/uo/representer_poison/two_pass_pois"
+alias bd="${REPOS_DIR}/uo/representer_poison/backdoor"
 alias walp="${REPOS_DIR}/wallace-poisoning"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"

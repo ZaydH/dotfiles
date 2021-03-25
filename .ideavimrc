@@ -19,4 +19,5 @@ nnoremap nt :NERDTree<CR>
 " See: https://github.com/JetBrains/ideavim/wiki/%60ideajoin%60-examples
 set ideajoin
 
-set clipboard+=ideaput
+" set clipboard+=ideaput
+set clipboard+=unnamed

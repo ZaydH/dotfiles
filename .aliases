@@ -105,3 +105,9 @@ alias ssht="ssh talapas"
 alias sshp="ssh poplan"
 # Simplify ssh to home
 alias sshme="ssh home"
+
+####### Docker aliases
+
+# Clear dangling docker images
+alias drmid='docker rmi -f $(docker images --filter "dangling=true" -q)'
+alias dcp='docker container prune'

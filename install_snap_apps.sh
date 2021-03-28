@@ -17,6 +17,7 @@ function _install_snap() {
 
 function _install_snap_app_list() {
     declare -a SNAP_APPS=(
+                          atom
                           clion
                           code  # VSCode
                           flameshot  # Alternative to Lightshot

@@ -74,19 +74,20 @@ function install_all_packages() {
                              zsh tmux  # Shell packages
                              gcc g++ autoconf automake cmake bison doxygen flex cppcheck
                              vim neovim ctags exuberant-ctags  # vim specific packages
+                             the_silver_searcher silversearcher-ag  # Enables "ag" command for vim any-jump
                              docker docker.io  # Docker packages
                              htop  # Process manager
                              graphviz
-                             gmp libgmp3-dev libgmp-dev
+                             gmp libgmp3-dev libgmp-dev  # GNU's multiprecision library
                              mpfr libmpfr-dev
                              mpc libmpc-dev
                              libffi libffi-dev libffi-devel  # Installs _ctypes package needed by some Python versions
                              gzip bzip2 p7zip zlib1g-dev  # Compressed file tools
                              fzf
+                             protobuf   # Installs Google's protobuf compiler used by the caffetopytorch converter
                              dos2unix  # Easy tool to convert dos formatted text docs to unix format
-                             urlview  # Needed for tmux s urlview plugin
+                             urlview  # Needed for tmux's urlview plugin
                              zsh-syntax-highlighting  # Needed for zsh plugin
-                             the_silver_searcher silversearcher-ag  # Enables "ag" command for vim any-jump
                              fpp  # FaceBook path picker for tmux plugin
                              python python3 python-dev python3-dev python-devel ipython jupyter
                              pyenv-virtualenv  # Combines pyenv with virtualenv. May be brew specific
@@ -94,18 +95,18 @@ function install_all_packages() {
                              ruby gem ruby-dev ruby-devel
                              golang  # Installs Go.  Used by vim-hexokinase
                              coreutils moreutils
-                             libomp libomp-dev
+                             libomp libomp-dev  # OpenMP tools
                              mpich
                              opendetex  # Tool for removing tex tags from a document
-                             clinfo  # OpenCL info tool
                              nvidia-cuda-toolkit nvidia-container-toolkit  # CUDA tools
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential
-                             ocl-icd-opencl-dev
-                             ocl-icd-libopencl1
-                             opencl-headers
-                             clinfo
+                             ## OpenCL tools
+                             # ocl-icd-opencl-dev
+                             # ocl-icd-libopencl1
+                             # opencl-headers
+                             # clinfo  # OpenCL info tool
                             )
     declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
                                 notify-send  # Notification generator

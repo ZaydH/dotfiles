@@ -77,6 +77,7 @@ function install_python_packages() {
                          pytorch_influence_functions  # Implements implement function paper in torch
                          tensorflow tensorflow_probability
                          tensorboardX keras chainer  # Non-PyTorch neural net packages
+                         opencv-python  # OpenCV packages
                          comet_ml
                          pycm  # Confusion matrix package
                          cplex gurobi # Linear system solvers

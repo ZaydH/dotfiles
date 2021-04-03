@@ -125,7 +125,18 @@ function run_cli_slurm() {
                        "\n#SBATCH --ntasks-per-node=1" \
                        "\n#SBATCH --mail-type=ALL" \
                        "\n#SBATCH --mail-user=zhammoud@uoregon.edu" \
-                       "\n#SBATCH --output=${OUT_DIR}/${JOB_NAME}_%j.out"
+                       "\n#SBATCH --output=${OUT_DIR}/${JOB_NAME}_%j.out" \
+                       "\n" \
+                       "\nmodule load python3" \
+                       "\nmodule load racs-spack" \
+                       "\nmodule load cuda/10.2" \
+                       "\nmodule load cmake/3.15.4" \
+                       "\nmodule load singularity-3.6.1-gcc-8.2.0-tuypven" \
+                       "\nspack load tmux" \
+                       "\nspack load git@2.27.0%gcc@8.2.0" \
+                       "\nspack load vim@8.2.1201" \
+                       "\nspack load neovim@0.4.4" \
+                       "\nspack load the-silver-searcher" \
                  )
 
     # Select to use GPU

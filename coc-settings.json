@@ -1,6 +1,7 @@
 {
     "diagnostic.displayByAle": true,
     "diagnostic.refreshAfterSave": true,
+    "suggest.noselect": false,
     "suggest.enablePreview": true,
     "suggest.minTriggerInputLength": 3,
     "suggest.snippetIndicator": "[+] ",

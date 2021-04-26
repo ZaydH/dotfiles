@@ -402,3 +402,10 @@ function start_synergyc() {
 
     printf "COMPLETED\n"
 }
+
+if is_mac; then
+    # Combines multiple PDFs into one
+    cpdf () {
+      gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$1" "${@:2}"
+    }
+fi

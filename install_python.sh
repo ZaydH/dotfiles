@@ -44,7 +44,7 @@ function install_python_with_pyenv() {
 
     # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
-    declare -a versions=("3.6.5" "3.7.1")
+    declare -a versions=("3.7.1")
     for ver in "${versions[@]}"; do
         printf "Installing python version ${ver}..."
         pyenv install "${ver}" > /dev/null

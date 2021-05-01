@@ -37,14 +37,14 @@ function configure_git_for_gnome_keyring() {
     # CREDENTIAL_FILE="${GIT_KEYRING_DIR}/git-credential-gnome-keyring"
     # git config --global credential.helper "${CREDENTIAL_FILE}"
 
-    install_cli_package seahorse -y
-    install_cli_package git-credential-libsecret -y
-    git config — global credential.helper /usr/libexec/git-core/git-credential-libsecret
+    # install_cli_package seahorse -y
+    # install_cli_package git-credential-libsecret -y
+    # git config — global credential.helper /usr/libexec/git-core/git-credential-libsecret
 }
 
-function configure_libreoffice_packages() {
-    install_cli_package libreoffice-java-common
-}
+# function configure_libreoffice_packages() {
+#     install_cli_package libreoffice-java-common
+# }
 
 function configure_appmenu_packages() {
     install_cli_package appmenu-gtk3-module
@@ -62,11 +62,11 @@ function run_gnome_only_setup(){
 
     configure_gnome_terminal_colorscheme
 
-    configure_git_for_gnome_keyring
+    # configure_git_for_gnome_keyring
 
     configure_appmenu_packages
 
     set_gsettings_values
 
-    configure_libreoffice_packages
+    # configure_libreoffice_packages
 }

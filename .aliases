@@ -58,14 +58,14 @@ fi
 if is_talapas; then
     # Simplify checking my running jobs
     ##  Default format: "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R"
-    ##  Long Format:    "%.18i %.11P %.21j %.8u %.8T %.13M %.13l %.6D %R"
+    ##  Long Format:    "%.12i %.9P %.32j %.8u %.8T %.13M %.13l %.6D %R"
     ### For more info, see: https://slurm.schedmd.com/squeue.html
     ### Changes Versus Long: Widened job name (%j), time limit (%l), time used (%M), partition (%P)
     # Sorting jobs:
     ### Highest Priority: Partition
     ###                   Job State
     ### Lowest Priority:  Job Number
-    alias squeue='squeue --format="%.12i %.9P %.25j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
+    alias squeue='squeue --format="%.12i %.9P %.32j %.8u %.8T %.10M %.15l %.6D %R" --sort P,t,i'
     alias sq=squeue
     alias gpsq='sq | grep "gpu"'
     alias mysqueue='squeue -u $(whoami)'

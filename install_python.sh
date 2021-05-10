@@ -79,6 +79,7 @@ function install_python_packages() {
                          tensorboardX keras chainer  # Non-PyTorch neural net packages
                          opencv-python  # OpenCV packages
                          comet_ml
+                         statsmodels
                          pycm  # Confusion matrix package
                          cplex gurobi # Linear system solvers
                          tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages

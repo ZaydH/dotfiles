@@ -53,12 +53,12 @@ function install_python_with_pyenv() {
         install_python_packages
     done
 
-    if ! is_mac; then
-        SYSTEM_INTERPRETER="system"
-        printf "Processing ${SYSTEM_INTERPRETER} last...\n"
-        pyenv global "${SYSTEM_INTERPRETER}" > /dev/null
-        install_python_packages
-    fi
+    # if ! is_mac; then
+    #     SYSTEM_INTERPRETER="system"
+    #     printf "Processing ${SYSTEM_INTERPRETER} last...\n"
+    #     pyenv global "${SYSTEM_INTERPRETER}" > /dev/null
+    #     install_python_packages
+    # fi
 
     printf "Enabling latest installed python version..."
     pyenv global "${versions[-1]}" > /dev/null

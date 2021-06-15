@@ -21,4 +21,4 @@ $pdflatex = 'pdflatex --shell-escape -synctex=1 --interaction=nonstopmode -file-
 $pdf_previewer = 'open';
 
 # Also remove pdfsync files on clean
-$clean_ext = 'bbl dep dpth log md5 nav pdfsync snm synctex.gz synctex\(busy\) upa';
+$clean_ext = 'auxlock bbl dep dpth log md5 nav pdfsync snm synctex.gz synctex\(busy\) upa';

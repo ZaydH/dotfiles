@@ -5,6 +5,9 @@ alias sz="source ${HOME}/.zshrc"
 
 alias cd!='cd $_'
 
+# Alias to get the date and file
+alias dt="date '+%Y-%m-%d-%H:%M:%S'"
+
 # Helpful git Aliases
 alias ga!='ga $_'  # Adds the last parameter of the previous bash command.
 alias gap='ga -p'

@@ -21,6 +21,9 @@ alias grgo='git config --get remote.origin.url'  # Get the origin path for git
 alias gwd='git wd'      # Performs word diff
 alias gwd!='gwd $_'     # Performs word diff
 
+# Grep aliases
+alias texgrep='grep -nr --include="*.tex"'
+
 # vim aliases
 if ! is_ix; then
     alias nv='nvim'

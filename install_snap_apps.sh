@@ -22,9 +22,9 @@ function _install_snap_app_list() {
                           code  # VSCode
                           flameshot  # Alternative to Lightshot
                           pycharm-professional
-                          # signal-desktop
+                          signal-desktop
                           # skype
-                          # slack
+                          slack
                           # zoom-client
                          )
     for app_name in "${SNAP_APPS[@]}"; do

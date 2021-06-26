@@ -15,6 +15,9 @@ tags.lock
 ## VSCode files
 .vscode/
 
+## Weights & Biases files
+wandb/
+
 ## Python Files
 __pycache__/
 *.pyc

@@ -75,8 +75,8 @@ function install_python_packages() {
                          torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          pytorch_influence_functions  # Implements implement function paper in torch
-                         tensorflow tensorflow_probability
-                         tensorboardX keras chainer  # Non-PyTorch neural net packages
+                         tensorflow keras tensorflow_probability
+                         tensorboardX wandb
                          opencv-python  # OpenCV packages
                          comet_ml
                          statsmodels

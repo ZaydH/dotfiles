@@ -57,10 +57,12 @@ function set_gsettings_values() {
 
 
 # Encapsulates all the individual operations into a single function
-function run_gnome_only_setup(){
+function run_gnome_only_setup() {
     make_gnome_look_like_mac
 
     configure_gnome_terminal_colorscheme
+
+    setup_ssh_server
 
     # configure_git_for_gnome_keyring
 

@@ -60,6 +60,19 @@ function btex() {
     pdflatex -output-directory ${BUILD_DIR} "$@"
 }
 
+# Clears figures serialized by tikz in tex
+function clfigs() {
+    MAIN_FILE="ms"
+    if [[ $# == 1 ]] ; then
+        MAIN_FILE="${1}"
+    elif [[ $# -gt 1 ]] ; then
+        echo "Unexpected input argument count. Only up to 1 argument is supported."
+        exit 1
+    fi
+    # Delete the files
+    ls | grep -P "ms-figure[0-9]+\.(dep|dpth|log|md5|pdf)" | xargs -d"\n" rm
+}
+
 function charm() {
     # Parse the project path
     if [[ $# == 0 ]]; then

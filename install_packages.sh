@@ -108,19 +108,21 @@ function install_all_packages() {
                              # opencl-headers
                              # clinfo  # OpenCL info tool
                             )
-    declare -a LINUX_ONLY_PKGS=(plank  # Desktop bar
-                                notify-send  # Notification generator
-                                xsel   # Needed by tmux-yank package
-                                os-prober  # used in conjunction with grub
+    declare -a LINUX_ONLY_PKGS=(
                                 gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP
                                 latexmk
+                                notify-send  # Notification generator
                                 nvtop  # Shows GPU utilization like top/htop but for Nvidia GPUs (NVidia + top)
+                                os-prober  # used in conjunction with grub
+                                plank  # Desktop bar
+                                xsel   # Needed by tmux-yank package
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
                                   python-pynvim  # Needed for neovim python support
                                  )
-    declare -a DEBIAN_ONLY_PKGS=(python-pip
+    declare -a DEBIAN_ONLY_PKGS=(
+                                 python-pip
                                  python3-pip
                                  python3-neovim  # Needed for neovim Debian python support
                                  blueman
@@ -131,6 +133,7 @@ function install_all_packages() {
     declare -a MAC_ONLY_PKGS=(
                               findutils  # Optionally allow gxargs on Mac to get GNU-standard xargs
                               gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
+                              grep     # Optional allow ggrep on Mac to get GNU-standard grep
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                               xz

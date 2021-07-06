@@ -95,6 +95,7 @@ fi
 # Use GNU utilities which have more features than the BSD versions
 if is_mac; then
     alias cut="gcut"
+    alias grep="ggrep"
     alias sed="gsed"
     alias xargs="gxargs"
 fi

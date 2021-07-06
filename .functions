@@ -62,6 +62,10 @@ function btex() {
 
 # Clears figures serialized by tikz in tex
 function clfigs() {
+    if is_mac; then
+        alias xargs=gxargs
+        alias grep=ggrep
+    fi
     MAIN_FILE="ms"
     if [[ $# == 1 ]] ; then
         MAIN_FILE="${1}"

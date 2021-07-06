@@ -128,7 +128,9 @@ function install_all_packages() {
                                  liblzma-dev
                                  default-jdk
                                 )
-    declare -a MAC_ONLY_PKGS=(gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
+    declare -a MAC_ONLY_PKGS=(
+                              findutils  # Optionally allow gxargs on Mac to get GNU-standard xargs
+                              gnu-sed  # Optionally allow "gsed" on Mac to get GNU-standard sed
                               terminal-notifier  # MacOS only for setting notification
                               reattach-to-user-namespace  # Used by tmux on MacOS for copying to clipboard
                               xz

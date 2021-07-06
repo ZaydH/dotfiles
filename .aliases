@@ -96,6 +96,7 @@ fi
 if is_mac; then
     alias cut="gcut"
     alias sed="gsed"
+    alias xargs="gxargs"
 fi
 
 # Clear vim swp files

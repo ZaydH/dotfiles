@@ -62,10 +62,6 @@ function btex() {
 
 # Clears figures serialized by tikz in tex
 function clfigs() {
-    if is_mac; then
-        alias xargs=gxargs
-        alias grep=ggrep
-    fi
     MAIN_FILE="ms"
     if [[ $# == 1 ]] ; then
         MAIN_FILE="${1}"
@@ -74,7 +70,11 @@ function clfigs() {
         exit 1
     fi
     # Delete the files
-    ls | grep -P "ms-figure[0-9]+\.(dep|dpth|log|md5|pdf)" | xargs -d"\n" rm
+    if is_mac; then
+        ls | ggrep -P "ms-figure[0-9]+\.(dep|dpth|log|md5|pdf)" | gxargs -d"\n" rm
+    else
+        ls | grep -P "ms-figure[0-9]+\.(dep|dpth|log|md5|pdf)" | xargs -d"\n" rm
+    fi
 }
 
 function charm() {

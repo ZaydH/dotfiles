@@ -74,17 +74,18 @@ Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compat
 if $HOSTNAME !~ '\(talapas-ln[1-2]*\|n[0-9]\+\)'
     Plug 'szymonmaszke/vimpyter'            | " Jupyter Notebook support in vim
 endif
+Plug 'preservim/tagbar'                     | " View the tags in the program
 Plug 'tpope/vim-commentary'                 | " Commenting tools
+Plug 'romainl/vim-cool'                     | " Automatically disable highlighting after search
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
 Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region
 Plug 'RRethy/vim-illuminate'                | " Highlight other uses of the word
 Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
 Plug 'tpope/vim-speeddating'                | " Tools for working with dates
 Plug 'tpope/vim-surround'
-Plug 'preservim/tagbar'                     | " View the tags in the program
-Plug 'romainl/vim-cool'                     | " Automatically disable highlighting after search
-Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
 Plug 'tpope/vim-repeat'                     | " Enable dot repeat commands for vim-surround and other plugins
+Plug 'sakshamgupta05/vim-todo-highlight'    | " ToDo highlighting
+Plug 'tmux-plugins/vim-tmux'                | " Enables proper highlighting and documentation linking for .tmux.conf in vim
 if v:version >= 800                         | " Gutentags
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'skywind3000/gutentags_plus'

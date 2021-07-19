@@ -77,6 +77,7 @@ function install_all_packages() {
                              the_silver_searcher silversearcher-ag  # Enables "ag" command for vim any-jump
                              docker docker.io  # Docker packages
                              htop  # Process manager
+                             gparted
                              graphviz
                              gmp libgmp3-dev libgmp-dev  # GNU's multiprecision library
                              mpfr libmpfr-dev
@@ -94,6 +95,7 @@ function install_all_packages() {
                              node nodejs npm yarnpkg yarn  # Installs Node.js. Used by coc
                              ruby gem ruby-dev ruby-devel
                              golang  # Installs Go.  Used by vim-hexokinase
+                             rustc  # Rust compiler
                              coreutils moreutils
                              libomp libomp-dev  # OpenMP tools
                              mpich
@@ -102,11 +104,6 @@ function install_all_packages() {
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential
-                             ## OpenCL tools
-                             # ocl-icd-opencl-dev
-                             # ocl-icd-libopencl1
-                             # opencl-headers
-                             # clinfo  # OpenCL info tool
                             )
     declare -a LINUX_ONLY_PKGS=(
                                 gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP

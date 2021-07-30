@@ -25,6 +25,12 @@ function install_python_linters() {
     printf "COMPLETED: ${task_msg}"
 }
 
+
+function install_3090_torch() {
+    pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 \
+        -f https://download.pytorch.org/whl/torch_stable.html
+}
+
 function install_python_with_pyenv() {
     install_pyenv
 
@@ -63,6 +69,8 @@ function install_python_with_pyenv() {
     printf "Enabling latest installed python version..."
     pyenv global "${versions[-1]}" > /dev/null
     printf "COMPLETED\n"
+
+    install_3090_torch
 }
 
 # Standard function for install packages using pip
@@ -107,5 +115,5 @@ function install_python_packages() {
         printf "Installing python package \"${pkg}\"..."
         pip install --upgrade ${pkg} > /dev/null
         printf "COMPLETED\n"
-   done
+    done
 }

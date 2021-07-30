@@ -22,6 +22,7 @@ function _install_snap_app_list() {
                           code  # VSCode
                           flameshot  # Alternative to Lightshot
                           pycharm-professional
+                          node  # node.js
                           signal-desktop
                           # skype
                           slack

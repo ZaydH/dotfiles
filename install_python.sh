@@ -80,7 +80,7 @@ function install_python_packages() {
 
     declare -a pip_pkgs=(cython  # Speeds up the debugger
                          setuptools  # Some packages rely on setup tools so update early
-                         torch torchtext torchvision torchnet fastai allennlp  # Neural network packages
+                         torch torchtext torchvision torchnet fastai==1.00.57 allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          pytorch_influence_functions  # Implements implement function paper in torch
                          tensorflow keras tensorflow_probability

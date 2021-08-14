@@ -272,6 +272,8 @@ let g:pymode_rope_goto_definition_cmd = 'new'
 " Refactor a variable/function/class/method
 let g:pymode_rope_rename_bind = '<F6>'
 
+let g:pymode_folding = 1
+
 " rainbow ===============================================================
 
 let g:rainbow_active = 1 " set to 0 if you want to enable it later via :RainbowToggle

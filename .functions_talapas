@@ -152,7 +152,7 @@ function run_cli_slurm() {
     # Combine the user specified command at the end to ensure all modules
     # are successfully loaded.
     SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}"
-    echo ${SBATCH_TEXT} | sbatch /dev/stdin
+    echo -en "${SBATCH_TEXT}" | sbatch /dev/stdin
 }
 
 function run_talapas_bash() {

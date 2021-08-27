@@ -97,6 +97,7 @@ function install_all_packages() {
                              golang  # Installs Go.  Used by vim-hexokinase
                              rustc  # Rust compiler
                              coreutils moreutils
+                             rename  # Basic rename command
                              libomp libomp-dev  # OpenMP tools
                              mpich
                              opendetex  # Tool for removing tex tags from a document

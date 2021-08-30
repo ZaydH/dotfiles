@@ -44,6 +44,8 @@ alias repp="${REPOS_DIR}/uo/representer_poison/two_pass_pois"
 alias bd="${REPOS_DIR}/uo/representer_poison/backdoor"
 alias walp="${REPOS_DIR}/wallace-poisoning"
 alias nlpp="${REPOS_DIR}/uo/representer_poison/nlp"
+alias cvm="${REPOS_DIR}/uo/representer_poison/cifar_v_mnist"
+alias ifilt="${REPOS_DIR}/uo/representer_poison/inf_filt"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
     alias desktop="${HOME}/Desktop"

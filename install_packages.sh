@@ -96,7 +96,7 @@ function install_all_packages() {
                              ruby gem ruby-dev ruby-devel
                              golang  # Installs Go.  Used by vim-hexokinase
                              rustc  # Rust compiler
-                             coreutils moreutils
+                             coreutils moreutils dnsutils
                              rename  # Basic rename command
                              libomp libomp-dev  # OpenMP tools
                              mpich

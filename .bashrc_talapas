@@ -12,7 +12,7 @@ module load cuda/10.2
 module load cmake/3.15.4
 module load singularity-3.6.1-gcc-8.2.0-tuypven
 
-spack load tmux
+spack load tmux@3.1b%gcc@11.1.0
 spack load gcc@8.2.0
 spack load git@2.27.0%gcc@8.2.0
 spack load vim@8.2.1201

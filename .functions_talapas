@@ -48,39 +48,64 @@ function kill_jobs_larger {
 
 # Function that kills all jobs whose ID within the specified range (inclusive)
 function kill_jobs_range {
-    local -a jobs
-    if [ -z "$1" ]; then
-        printf "Minimum Job Number argument is required. Run as '$0 minjobnum maxjobnum'\n"
+    DRY_RUN=0
+    JOB_DESC="${0} [-d]"
+    unset minjobnum maxjobnum  # Ensure
+    while ! [ -z $1 ] ; do
+        case "$1" in
+            -d)  # Dry run
+                DRY_RUN=1
+                echo "Running in dry run mode"
+                ;;
+            *)
+                if [ -z "${minjobnum}" ] ; then
+                    minjobnum="$1"
+                elif [ -z "${maxjobnum}" ]; then
+                    maxjobnum="$1"
+                else
+                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum maxjobnum'"
+                    return 1
+                fi
+                ;;
+        esac
+        shift
+    done
+
+    # Error check
+    if [ -z "${minjobnum}" ]; then
+        printf "Minimum Job Number argument is required. Run as '${JOB_DESC} minjobnum maxjobnum'\n"
         return 1
-    elif ! $(is_number "$1"); then
+    elif ! $(is_number "$minjobnum"); then
         printf "Input argument 'minjobnum' is not an integer\n"
         return 1
-    elif [ -z "$2" ] ; then
-        printf "Maximum Job Number argument is required. Run as '$0 $1 maxjobnum'\n"
+    elif [ -z "${maxjobnum}" ] ; then
+        printf "Maximum Job Number argument is required. Run as '${JOB_DESC} $1 maxjobnum'\n"
         return 1
-    elif ! $(is_number "$2"); then
+    elif ! $(is_number "${maxjobnum}"); then
         printf "Input argument 'maxjobnum' is not an integer\n"
-        return 1
-    elif (( $# >= 3 )); then
-        printf "Too many input arguments. Run as '$0 minjobnum maxjobnum'\n"
         return 1
     fi
 
-    minjobnum="$1"
-    maxjobnum="$2"
-
     myself="$(id -u -n)"
 
+    local -a jobs  # Array of the jobnumbers to cancel
     for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
       j="$( cut -d ';' -f 1 <<< "$job_info" )"
       name="$( cut -d ';' -f 2 <<< "$job_info" )"
       if [ "$j" -ge "${minjobnum}" -a "$j" -le "${maxjobnum}" ] ; then
-        jobs+=($j)
-        printf "Canceling Job: $j (${name})\n"
+        if [ ${DRY_RUN} -eq 0 ]; then
+            jobs+=($j)
+            printf "Canceling Job: $j (${name})\n"
+        else
+            printf "Dry run cancel: $j (${name})\n"
+        fi
       fi
     done
 
-    scancel "${jobs[@]}"
+    # Only cancel if jobs list isn't empty
+    if [ ${#jobs[@]} -gt 0 ]; then
+        scancel "${jobs[@]}"
+    fi
 }
 
 # Runs a command line function call automatically in a slurm job

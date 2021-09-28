@@ -97,7 +97,7 @@ fi
 # Use GNU utilities which have more features than the BSD versions
 if is_mac; then
     alias cut="gcut"
-    alias grep="ggrep"
+    alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
     alias sed="gsed"
     alias xargs="gxargs"
 fi

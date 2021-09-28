@@ -2,9 +2,49 @@
 
 # Kills a slurm job
 function kill_job {
-    JOB_NUM=$1
-    # First command line argument is the job number (e.g., 184932)..
-    scancel ${JOB_NUM}
+    DRY_RUN=0
+    unset JOB_NUM  # Ensure
+    while ! [ -z $1 ] ; do
+        case "$1" in
+            -d)  # Dry run
+                DRY_RUN=1
+                echo "Running in dry run mode"
+                ;;
+            *)
+                if [ -z "${JOB_NUM}" ] ; then
+                    JOB_NUM="$1"
+                else
+                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum maxjobnum'"
+                    return 1
+                fi
+                ;;
+        esac
+        shift
+    done
+
+    if ! $(is_number "${JOB_NUM}"); then
+        echo "Specified job number \"${JOB_NUM}\" is not a number. Exiting..."
+        return 1
+    fi
+    # Based on: https://stackoverflow.com/questions/52263932/slurm-how-to-obtain-only-jobid-using-jobname-through-a-script
+    #          -n will suppress the header
+    #          -X will suppress the .batch part
+    JOB_NAME=$( squeue --noheader -u $(whoami) --format='%j'  -j "${JOB_NUM}" )
+    # for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
+    if [ -z "${JOB_NAME}" ]; then
+        echo "Job number ${JOB_NUM} does not appear to be an active job (or one you own). Check your job number and try again. Exiting..."
+        return 1
+    fi
+
+    if [ ${DRY_RUN} -eq 0 ]; then
+        echo "Canceling Job: ${JOB_NUM} (${JOB_NAME})"
+        scancel ${JOB_NUM}
+        if [ $? -ne 0 ] ; then
+            echo "Job cancel appears to have failed. Check the job status to be sure."
+        fi
+    else
+        echo "Dry run cancel: ${JOB_NUM} (${JOB_NAME})"
+    fi
 }
 
 # Returns true if the input argument is a (positive) integer

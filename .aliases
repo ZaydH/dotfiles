@@ -73,13 +73,15 @@ if is_talapas; then
     ### Highest Priority: Partition
     ###                   Job State
     ### Lowest Priority:  Job Number
-    alias squeue='squeue --format="%.11i %.8P %.70j %.8u %.8T %.10M %.12l %.5D %R" --sort P,t,i'
+    alias squeue='squeue --format="%.19i %.8P %.70j %.8u %.8T %.10M %.12l %.5D %R" --sort P,t,i'
     alias sq=squeue
     alias gpsq='sq | grep "gpu"'
     alias mysqueue='squeue -u $(whoami)'
     alias msq=mysqueue
 
     alias kj="kill_job"
+
+    alias ipython="python3 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 fi
 
 # MacOS print notification from the terminal to the notification pane

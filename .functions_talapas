@@ -165,12 +165,15 @@ function run_cli_slurm() {
     TEST_PARTITION="test"
     LONG_PARTITION="long"
     SHORT_PARTITION="short"
+    PREEMPT_PARTITION="preempt"
 
     if [[ ${PARTITION} = ${SHORT_PARTITION} || ${PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
         TIME_LIMIT="1-00:00:00"  # 1 day
     elif [[ ${PARTITION} == "${TEST_PARTITION}"* ]]; then
         TIME_LIMIT="4:00:00"  # 4 hours
     elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
+        TIME_LIMIT="14-00:00:00"  # 14 day
+    elif [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
     fi
 
@@ -194,7 +197,7 @@ function run_cli_slurm() {
                  )
 
     # Select to use GPU. Must be before package loading.
-    if [[ ${PARTITION} == *"gpu"* ]]; then
+    if [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"
     fi
 

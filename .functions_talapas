@@ -174,7 +174,7 @@ function run_cli_slurm() {
     elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
     elif [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
-        TIME_LIMIT="14-00:00:00"  # 14 day
+        TIME_LIMIT="07-00:00:00"  # 14 day
     fi
 
     N_CPU=3

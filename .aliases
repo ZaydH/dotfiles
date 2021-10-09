@@ -22,7 +22,7 @@ alias gwd='git wd'      # Performs word diff
 alias gwd!='gwd $_'     # Performs word diff
 
 # Grep aliases
-alias texgrep='grep -nr --include="*.tex"'
+alias texgrep='grep -nr --include="*.tex" --include="*.bib"'
 
 # vim aliases
 if ! is_ix; then
@@ -59,7 +59,7 @@ if is_mac || is_popos || is_talapas; then
     alias icml="${REPOS_DIR}/icml2020/tex"
     alias allin="${REPOS_DIR}/all_in_paper/workshop"
     # alias cs473="${REPOS_DIR}/cis473_w21"
-    alias cs315="${REPOS_DIR}/cis315_21S"
+    # alias cs315="${REPOS_DIR}/cis315_21S"
     alias leetcode="${REPOS_DIR}/leetcode"
 fi
 
@@ -100,6 +100,7 @@ fi
 if is_mac; then
     alias cut="gcut"
     alias grep="ggrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}"
+    alias mv="gmv"
     alias sed="gsed"
     alias xargs="gxargs"
 fi
@@ -113,13 +114,12 @@ alias tb="tensorboard --logdir"
 # Enable xterm in ssh
 # See: https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 alias ssh='TERM=xterm-256color ssh'
+# Simplify ssh to Pop!_OS box at home
+alias sshp="ssh poplan"
 # Simplify ssh to talapas
 alias ssht="ssh talapas"
-# Simplify ssh to Pop!_OS box
-# alias sshp="ssh popos"
-alias sshp="ssh poplan"
-# Simplify ssh to home
-alias sshme="ssh home"
+# Simplify ssh to the Cyberpower box
+alias sshu="ssh uocbp"
 
 ####### Docker aliases
 

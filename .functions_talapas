@@ -236,6 +236,8 @@ function run_talapas_bash() {
     fi
     if [[ "${PARTITION}" == "testgpu" ]]; then
         NUM_CPU=3
+    elif [[ "${PARTITION}" == "short" ]]; then
+        NUM_CPU=1
     else
         NUM_CPU=4
     fi

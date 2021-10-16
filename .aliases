@@ -31,6 +31,7 @@ if ! is_ix; then
     alias vim='nv'
 fi
 alias v!='vim $_'
+alias vimM='vim -M'
 
 # Go right to dotfiles folder
 REPOS_DIR="${HOME}/repos"

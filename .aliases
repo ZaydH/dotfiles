@@ -82,6 +82,9 @@ if is_talapas; then
 
     alias kj="kill_job"
 
+    # Job queue time
+    alias sqt="sacct -X -o Reserved -j"
+
     alias ipython="python3 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 fi
 

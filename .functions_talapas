@@ -178,8 +178,12 @@ function run_cli_slurm() {
     fi
 
     N_CPU=3
+    RAM_PER_CPU=16G
     if [[ ${PARTITION} == *"testgpu"* ]]; then
         N_CPU=2
+    elif [[ ${PARTITION} == "short" ]]; then
+        N_CPU=1
+        RAM_PER_CPU=40G
     fi
 
     SBATCH_TEXT=$(echo "#!/bin/bash" \

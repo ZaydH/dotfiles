@@ -187,7 +187,7 @@ function run_cli_slurm() {
                        "\n#SBATCH --account=uoml" \
                        "\n#SBATCH --partition=${PARTITION}" \
                        "\n#SBATCH --time=${TIME_LIMIT}" \
-                       "\n#SBATCH --mem-per-cpu=16G" \
+                       "\n#SBATCH --mem-per-cpu=${RAM_PER_CPU}" \
                        "\n#SBATCH --nodes=1"\
                        "\n#SBATCH --cpus-per-task=${N_CPU}" \
                        "\n#SBATCH --ntasks-per-node=1" \
@@ -238,6 +238,8 @@ function run_talapas_bash() {
         NUM_CPU=3
     elif [[ "${PARTITION}" == "short" ]]; then
         NUM_CPU=1
+        srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --cpus-per-task=${NUM_CPU} --pty bash
+        return
     else
         NUM_CPU=4
     fi

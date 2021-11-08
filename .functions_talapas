@@ -203,6 +203,8 @@ function run_cli_slurm() {
     # Select to use GPU. Must be before package loading.
     if [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"
+        # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
+        # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=volta"   # Forces to use V100
     fi
 
     SBATCH_TEXT=$(echo "${SBATCH_TEXT}" \

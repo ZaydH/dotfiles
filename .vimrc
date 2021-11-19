@@ -21,7 +21,9 @@ Plug 'ervandew/supertab'
 " UI {{{
 " Plug 'wellle/context.vim'                   | " Display context (e.g., class, function, if, loop, etc.)
 Plug 'Konfekt/FastFold'                     | " Fast Fold rather than automatic folding
-Plug 'scrooloose/nerdtree'                  | " File explorer
+" Plug 'scrooloose/nerdtree'                  | " File explorer
+" TODO remove after bug in ideavim fixed that allows pipe on plug line
+Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'              | " Bottom bar
 " }}} UI
 
@@ -53,32 +55,39 @@ Plug 'junegunn/fzf.vim'
 Plug 'reedes/vim-wordy'                     | " Wordy detects poor uses of language
 " }}} Tex
 
-" Langauge Support {{{
+" TODO remove after bug in ideavim does not misread package name
+" Langauge Support aug {{{
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
 Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'vhdirk/vim-cmake'                     | " Integrate CMake
 Plug 'pboettch/vim-cmake-syntax'            | " Better highlighting of cmake files
 Plug 'kevinoid/vim-jsonc'                   | " Syntax highlighting for jsonc -- JSON with comments
 Plug 'ekalinin/dockerfile.vim'              | " Dockerfile syntax highlighting
-" }}} Langauge Support
+" TODO remove after bug in ideavim does not misread package name
+" }}} Langauge Support aug
 
 " Color Schemes {{{
 Plug 'morhetz/gruvbox'                      | " GruvBox
 Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
+"aug END TODO remove after bug in ideavim does not misread package name
 " }}} Color Schemes
 
 " Tools {{{
 Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
 " Plug 'python-rope/ropevim'                  | " Pyrope for vim
-" if $HOSTNAME !~ "talapas-[a-z0-9]\*" && $HOSTNAME !~ "n[0-9]\+"
-if $HOSTNAME !~ '\(talapas-ln[1-2]*\|n[0-9]\+\)'
-    Plug 'szymonmaszke/vimpyter'            | " Jupyter Notebook support in vim
-endif
+" " if $HOSTNAME !~ "talapas-[a-z0-9]\*" && $HOSTNAME !~ "n[0-9]\+"
+" if $HOSTNAME !~ '\(talapas-ln[1-2]*\|n[0-9]\+\)'
+"     Plug 'szymonmaszke/vimpyter'            | " Jupyter Notebook support in vim
+" endif
 Plug 'preservim/tagbar'                     | " View the tags in the program
-Plug 'tpope/vim-commentary'                 | " Commenting tools
+" Plug 'tpope/vim-commentary'                 | " Commenting tools
+" TODO remove after bug in ideavim fixed that allows pipe on plug line
+Plug 'tpope/vim-commentary'
 Plug 'romainl/vim-cool'                     | " Automatically disable highlighting after search
 Plug 'tpope/vim-eunuch'                     | " Support basic Unix commands in vim
-Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region
+" TODO remove after bug in ideavim fixed that allows pipe on plug line
+" Plug 'machakann/vim-highlightedyank'        | " Highlight the yanked region
+Plug 'machakann/vim-highlightedyank'
 Plug 'RRethy/vim-illuminate'                | " Highlight other uses of the word
 Plug 'terryma/vim-multiple-cursors'         | " Multiple cursors tool
 Plug 'tpope/vim-speeddating'                | " Tools for working with dates

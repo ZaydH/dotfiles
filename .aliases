@@ -41,6 +41,7 @@ REPOS_DIR="${HOME}/repos"
 alias repos="${REPOS_DIR}"
 
 alias dot="${REPOS_DIR}/dotfiles"
+alias data="${REPOS_DIR}/data"
 alias uo="${REPOS_DIR}/uo"
 alias purpl="${REPOS_DIR}/uo/purpl/src"
 # alias bpu="${REPOS_DIR}/uo/bpu_mt/src"

@@ -23,7 +23,7 @@ antigen bundle python
 antigen bundle tmux
 antigen bundle z
 if is_mac; then
-    antigen bundle osx
+    antigen bundle macos
 fi
 
 # Load the theme.

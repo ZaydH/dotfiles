@@ -155,6 +155,11 @@ if is_talapas; then
     fi
 fi
 
+# Enable Git Keyring
+if is_popos ; then
+    eval `gnome-keyring-daemon --start`
+fi
+
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
 
@@ -180,7 +185,7 @@ export EDITOR=$( which vim )
 # is python and ruby.
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-# If  a  command is issued that can't be executed as a normal command,
+# If a command is issued that can't be executed as a normal command,
 # and the command is the name of a directory, perform the cd command
 # to that directory.
 setopt autocd

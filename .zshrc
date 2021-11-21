@@ -155,9 +155,10 @@ if is_talapas; then
     fi
 fi
 
-# Enable Git Keyring
+# Enable Gnome Keyring and start ssh
 if is_popos ; then
     eval `gnome-keyring-daemon --start`
+    eval `ssh-agent -s` > /dev/null
 fi
 
 # # The next line updates PATH for the Google Cloud SDK.

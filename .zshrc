@@ -155,11 +155,6 @@ if is_talapas; then
     fi
 fi
 
-# Enable Gnome Keyring and start ssh
-if is_popos ; then
-    eval `gnome-keyring-daemon --start`
-fi
-
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/google-cloud-sdk/path.zsh.inc"; fi
 
@@ -189,6 +184,11 @@ export EDITOR=$( which vim )
 # and the command is the name of a directory, perform the cd command
 # to that directory.
 setopt autocd
+
+# Enable Gnome Keyring and start ssh
+if is_popos ; then
+    eval `gnome-keyring-daemon --start`
+fi
 
 # File extensions to ignore when autocompleting in zsh
 ## With vim, ignore .(*******) files

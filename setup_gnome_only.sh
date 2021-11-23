@@ -30,6 +30,8 @@ function setup_ssh_server() {
 
 # Enables the gnome keyring to save the git credentials
 function configure_git_for_gnome_keyring() {
+    install_cli_package gnome-keyring
+    install_cli_package libsecret-tools
     # install_cli_package libgnome-keyring-dev
     # GIT_KEYRING_DIR="/usr/share/doc/git/contrib/credential/gnome-keyring"
     # sudo make --directory="${GIT_KEYRING_DIR}"
@@ -64,7 +66,7 @@ function run_gnome_only_setup() {
 
     setup_ssh_server
 
-    # configure_git_for_gnome_keyring
+    configure_git_for_gnome_keyring
 
     configure_appmenu_packages
 

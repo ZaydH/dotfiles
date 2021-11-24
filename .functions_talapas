@@ -204,6 +204,7 @@ function run_cli_slurm() {
     if [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"
         if [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
+            :  # Allows empty if blocks
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=volta"   # Forces to use V100
         fi

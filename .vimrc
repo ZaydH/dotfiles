@@ -134,6 +134,10 @@ set nojoinspaces
 " Remap home to go to the tabbed beginning of the line
 :map <Home> ^
 :imap <Home> <Esc>^i
+" Override the 0 key to go to the tabbed beginning of the line not the
+" absolute beginning
+:nmap 0 ^
+:vmap 0 ^
 
 " " Map F12 to disable highlighting
 " :map <F11> :noh<CR>

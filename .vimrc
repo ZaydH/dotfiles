@@ -136,8 +136,9 @@ set nojoinspaces
 :imap <Home> <Esc>^i
 " Override the 0 key to go to the tabbed beginning of the line not the
 " absolute beginning
-:nmap 0 ^
-:vmap 0 ^
+:nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+:xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+:onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'vnoremap 00 0
 
 " " Map F12 to disable highlighting
 " :map <F11> :noh<CR>

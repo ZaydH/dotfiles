@@ -78,7 +78,7 @@ function clfigs() {
         exit 1
     fi
     # Delete the files
-    FIGURE_NAME_REGEX="${MAIN_FILE}-figure[0-9]+\.(dep|dpth|log|md5|pdf)"
+    FIGURE_NAME_REGEX="${MAIN_FILE}-figure[0-9]+\.(aux|dep|dpth|log|md5|out|pdf)"
     if is_mac; then
         ls | ggrep -P "${FIGURE_NAME_REGEX}" | gxargs -d"\n" rm
     else

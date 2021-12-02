@@ -31,6 +31,9 @@ fi
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure --branch=main
 
+# Smarter completions not yet integrated into zsh
+antigen bundle zsh-users/zsh-completions
+
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle MichaelAquilina/zsh-you-should-use  # Reminds you of aliases you should be using

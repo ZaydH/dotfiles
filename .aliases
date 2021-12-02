@@ -4,6 +4,7 @@ source ${HOME}/.functions
 alias sz="source ${HOME}/.zshrc"
 
 alias cd!='cd $_'
+alias cddir!='cd $( dirname $_ )'
 
 # Alias to get the date and file
 alias dt="date '+%Y-%m-%d-%H:%M:%S'"

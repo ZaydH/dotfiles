@@ -114,6 +114,9 @@ function install_all_packages() {
                                 os-prober  # used in conjunction with grub
                                 plank  # Desktop bar
                                 xsel   # Needed by tmux-yank package
+                                lm-sensors  # Probes sensor temperatures
+                                hddtemp  # Probes hard drive temperatures
+                                nvme-cli  # Probes NVMe disk information including temperature
                                )
     declare -a MANJARO_ONLY_PKGS=(atom
                                   gvim  #  Needed to enable +clipboard for tmux/vim yank-paste.  See: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim

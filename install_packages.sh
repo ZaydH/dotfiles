@@ -105,6 +105,7 @@ function install_all_packages() {
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev
                              dkms build-essential
+                             bat  # better formatted printing
                             )
     declare -a LINUX_ONLY_PKGS=(
                                 gcc-offload-nvptx  # Enable gcc to offload to GPU using OMP

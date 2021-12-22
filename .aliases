@@ -36,6 +36,11 @@ alias vimM='vim -M'
 alias vmm=vimM
 
 alias cat!='cat $_'
+# Colorize cat and print line numbers
+alias ccat='pygmentize -g -O style=colorful,linenos=1'
+if is_popos; then
+    alias bat='batcat'
+fi
 
 # Go right to dotfiles folder
 REPOS_DIR="${HOME}/repos"

@@ -435,3 +435,11 @@ if is_mac; then
       gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$1" "${@:2}"
     }
 fi
+
+
+if ! is_talapas ; then
+    function scpout() {
+        FILENAME=$1
+        scp talapas:~/projects/.out/$1 .
+    }
+fi

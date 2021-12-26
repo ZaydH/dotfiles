@@ -73,7 +73,7 @@ function install_all_packages() {
                              curl wget
                              zsh tmux  # Shell packages
                              gcc g++ autoconf automake cmake bison doxygen flex cppcheck
-                             vim neovim ctags exuberant-ctags  # vim specific packages
+                             vim neovim ctags universal-ctags  # vim specific packages
                              the_silver_searcher silversearcher-ag  # Enables "ag" command for vim any-jump
                              docker docker.io  # Docker packages
                              htop  # Process manager

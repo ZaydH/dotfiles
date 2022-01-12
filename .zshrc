@@ -22,6 +22,7 @@ antigen bundle command-not-found
 antigen bundle python
 antigen bundle tmux
 antigen bundle z
+antigen bundle zsh-navigation-tools
 if is_mac; then
     antigen bundle macos
 fi
@@ -129,6 +130,18 @@ PURE_CMD_MAX_EXEC_TIME=10 # s
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 prompt pure
+
+# Add zsh-navigation-tools
+#     See: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools
+autoload znt-history-widget
+zle -N znt-history-widget
+# key bind ctrl+R to run zsh-navigation-tools
+bindkey "^R" znt-history-widget
+# key bring ctrl+B for the cd widget
+zle -N znt-cd-widget
+bindkey "^B" znt-cd-widget
+zle -N znt-kill-widget
+bindkey "^Y" znt-kill-widget
 
 # CONDA_ROOT="${HOME}/anaconda3"
 # if [ -d "${CONDA_ROOT}" ]; then

@@ -6,6 +6,11 @@ source ~/.vimrc
 :inoremap <Space> <Space>
 :inoremap <Tab> <Tab>
 
+" Remap the 0 key back to the default
+:nnoremap 0 ^
+:xnoremap 0 ^
+:onoremap 0 ^
+
 set easymotion
 " overwin not support in PyCharm so use non-overwin equivalent
 nmap <Leader>f <Plug>(easymotion-bd-f)

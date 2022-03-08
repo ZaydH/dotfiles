@@ -71,7 +71,7 @@ if is_mac || is_popos || is_talapas; then
     alias icml="${REPOS_DIR}/icml2020/tex"
     alias allin="${REPOS_DIR}/all_in_paper/workshop"
     # alias cs473="${REPOS_DIR}/cis473_w21"
-    # alias cs315="${REPOS_DIR}/cis315_21S"
+    alias cs315="${REPOS_DIR}/cis315_22s"
     alias leetcode="${REPOS_DIR}/leetcode"
 fi
 

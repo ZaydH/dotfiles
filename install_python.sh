@@ -89,7 +89,7 @@ function install_python_packages() {
                          comet_ml
                          statsmodels
                          pycm  # Confusion matrix package
-                         cplex gurobi # Linear system solvers
+                         cplex gurobipy # Linear system solvers
                          tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
                          tsnecuda MulticoreTSNE  # t-SNE packages
                          gensim nltk fuzzywuzzy  # NLP packages

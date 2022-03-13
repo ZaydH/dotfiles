@@ -30,10 +30,13 @@ function install_vim_plug() {
     printf "COMPLETED\n"
 }
 
-# function install_vim_coc_dependencies() {
-#     printf "Installing NodeJS for vim's coc package...\n"
-#     curl -sL install-node.now.sh/lts | bash
-# }
+function install_vim_coc_dependencies() {
+    printf "Installing NodeJS for vim's coc package...\n"
+    # curl -sL install-node.now.sh/lts | bash
+    install_cli_package nodejs
+    sudo npm install -g yarn
+    yarn install
+}
 
 function install_system_packages_for_neovim() {
     printf "Installing system packages for neovim..."
@@ -47,10 +50,9 @@ function install_system_packages_for_neovim() {
 function install_vim_package_manager() {
     install_system_packages_for_neovim
 
-    # install_vundle
     install_vim_plug
 
-    # install_vim_coc_dependencies
+    install_vim_coc_dependencies
 }
 
 function install_neovim_without_root() {

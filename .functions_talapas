@@ -63,27 +63,47 @@ function is_number {
 # Function that kills all jobs whose ID is greater than or equal to the specified parameter
 function kill_jobs_larger {
     local -a jobs
-    if [ -z "$1" ]; then
-        printf "Minimum Job Number argument is required. Run as '$0 minjobnum'\n"
-        return 1
-    elif ! $(is_number "$1"); then
-        printf "Input argument 'minjobnum' is not an integer\n"
-        return 1
-    fi
+    DRY_RUN=0
+    JOB_DESC="${0} [-d]"
+    unset minjobnum # Ensure
+    while ! [ -z $1 ] ; do
+        case "$1" in
+            -d)  # Dry run
+                DRY_RUN=1
+                echo "Running in dry run mode"
+                ;;
+            *)
+                if [ -z "${minjobnum}" ] ; then
+                    minjobnum="$1"
+                else
+                    echo "Too many input arguments. Run as '${JOB_DESC} [-d] minjobnum'"
+                    return 1
+                fi
+                ;;
+        esac
+        shift
+    done
 
-    minjobnum="$1"
     myself="$(id -u -n)"
 
+    local -a jobs  # Array of the jobnumbers to cancel
     for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
       j="$( cut -d ';' -f 1 <<< "$job_info" )"
       name="$( cut -d ';' -f 2 <<< "$job_info" )"
-      if [ "$j" -ge "$minjobnum" ] ; then
-        jobs+=($j)
-        printf "Canceling Job: $j (${name})\n"
+      if [ "$j" -ge "${minjobnum}" ] ; then
+        if [ ${DRY_RUN} -eq 0 ]; then
+            jobs+=($j)
+            printf "Canceling Job: $j (${name})\n"
+        else
+            printf "Dry run cancel: $j (${name})\n"
+        fi
       fi
     done
 
-    scancel "${jobs[@]}"
+    # Only cancel if jobs list isn't empty
+    if [ ${#jobs[@]} -gt 0 ]; then
+        scancel "${jobs[@]}"
+    fi
 }
 
 # Function that kills all jobs whose ID within the specified range (inclusive)
@@ -103,7 +123,7 @@ function kill_jobs_range {
                 elif [ -z "${maxjobnum}" ]; then
                     maxjobnum="$1"
                 else
-                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum maxjobnum'"
+                    echo "Too many input arguments. Run as '${JOB_DESC} [-d] minjobnum maxjobnum'"
                     return 1
                 fi
                 ;;

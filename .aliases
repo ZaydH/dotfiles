@@ -92,6 +92,7 @@ if is_talapas; then
     alias msq=mysqueue
 
     alias kj="kill_job"
+    alias kjr="kill_jobs_range"
 
     # Job queue time
     alias sqt="sacct -X -o Reserved -j"

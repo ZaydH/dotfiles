@@ -40,6 +40,14 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle MichaelAquilina/zsh-you-should-use  # Reminds you of aliases you should be using
 antigen bundle zsh-users/zsh-syntax-highlighting  # Must be the LAST plugin per github README
 
+# .gitignore Creation plugin
+#   gi TEMPLATE  -- Write to stdout
+#   gii TEMPLATE -- Write to local .gitignore
+#
+#   Example:
+#       gi vim eclipse symfony
+antigen bundle voronkovich/gitignore.plugin.zsh
+
 # Tell Antigen that you're done.
 antigen apply
 

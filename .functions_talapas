@@ -30,20 +30,24 @@ function kill_job {
     #          -n will suppress the header
     #          -X will suppress the .batch part
     JOB_NAME=$( squeue --noheader -u $(whoami) --format='%j'  -j "${JOB_NUM}" )
+    JOB_PARTITION=$( squeue --noheader -u $(whoami) --format='%P'  -j "${JOB_NUM}" )
+    JOB_STATUS=$( squeue --noheader -u $(whoami) --format='%T'  -j "${JOB_NUM}" )
     # for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
     if [ -z "${JOB_NAME}" ]; then
         echo "Job number ${JOB_NUM} does not appear to be an active job (or one you own). Check your job number and try again. Exiting..."
         return 1
     fi
 
+
+    job_desc="${JOB_NUM} (${JOB_NAME}) -- Partition: ${JOB_PARTITION}, Status: ${JOB_STATUS}"
     if [ ${DRY_RUN} -eq 0 ]; then
-        echo "Canceling Job: ${JOB_NUM} (${JOB_NAME})"
+        echo "Canceling Job: ${job_desc}"
         scancel ${JOB_NUM}
         if [ $? -ne 0 ] ; then
             echo "Job cancel appears to have failed. Check the job status to be sure."
         fi
     else
-        echo "Dry run cancel: ${JOB_NUM} (${JOB_NAME})"
+        echo "Dry run cancel: ${job_desc}"
     fi
 }
 
@@ -62,6 +66,11 @@ function is_number {
 
 # Function that kills all jobs whose ID is greater than or equal to the specified parameter
 function kill_jobs_larger {
+    if [ $# -lt 1 ]; then
+        echo "At least one argument required"
+        return
+    fi
+
     local -a jobs
     DRY_RUN=0
     JOB_DESC="${0} [-d]"
@@ -87,15 +96,19 @@ function kill_jobs_larger {
     myself="$(id -u -n)"
 
     local -a jobs  # Array of the jobnumbers to cancel
-    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
+    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j;%P;%T') ; do
       j="$( cut -d ';' -f 1 <<< "$job_info" )"
-      name="$( cut -d ';' -f 2 <<< "$job_info" )"
       if [ "$j" -ge "${minjobnum}" ] ; then
+        name="$( cut -d ';' -f 2 <<< "$job_info" )"
+        partition="$( cut -d ';' -f 3 <<< "$job_info" )"
+        job_status="$( cut -d ';' -f 4 <<< "$job_info" )"
+
+        job_desc="$j (${name}) -- Partition: ${partition}, Status: ${job_status}"
         if [ ${DRY_RUN} -eq 0 ]; then
             jobs+=($j)
-            printf "Canceling Job: $j (${name})\n"
+            printf "Canceling Job: ${job_desc}\n"
         else
-            printf "Dry run cancel: $j (${name})\n"
+            printf "Dry run cancel: ${job_desc}\n"
         fi
       fi
     done
@@ -108,6 +121,11 @@ function kill_jobs_larger {
 
 # Function that kills all jobs whose ID within the specified range (inclusive)
 function kill_jobs_range {
+    if [ $# -lt 2 ]; then
+        echo "At least two arguments required"
+        return
+    fi
+
     DRY_RUN=0
     JOB_DESC="${0} [-d]"
     unset minjobnum maxjobnum  # Ensure
@@ -149,15 +167,19 @@ function kill_jobs_range {
     myself="$(id -u -n)"
 
     local -a jobs  # Array of the jobnumbers to cancel
-    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j') ; do
+    for job_info in $(squeue --user="$myself" --noheader --format='%i;%j;%P;%T') ; do
       j="$( cut -d ';' -f 1 <<< "$job_info" )"
       name="$( cut -d ';' -f 2 <<< "$job_info" )"
+      partition="$( cut -d ';' -f 3 <<< "$job_info" )"
+      job_status="$( cut -d ';' -f 4 <<< "$job_info" )"
+
+      job_desc="$j (${name}) -- Partition: ${partition}, Status: ${job_status}"
       if [ "$j" -ge "${minjobnum}" -a "$j" -le "${maxjobnum}" ] ; then
         if [ ${DRY_RUN} -eq 0 ]; then
             jobs+=($j)
-            printf "Canceling Job: $j (${name})\n"
+            printf "Canceling Job: ${job_desc}\n"
         else
-            printf "Dry run cancel: $j (${name})\n"
+            printf "Dry run cancel: ${job_desc}\n"
         fi
       fi
     done

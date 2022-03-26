@@ -81,11 +81,11 @@ if is_talapas; then
     ##  Long Format:    "%.12i %.9P %.45j %.8u %.8T %.13M %.13l %.6D %R"
     ### For more info, see: https://slurm.schedmd.com/squeue.html
     ### Changes Versus Long: Widened job name (%j), time limit (%l), time used (%M), partition (%P)
+    ###                      memory used (%m)
     # Sorting jobs:
-    ### Highest Priority: Partition
-    ###                   Job State
+    ### Highest Priority: Job State
     ### Lowest Priority:  Job Number
-    alias squeue='squeue --format="%.15i %.8P %.70j %.8u %.8T %.10M %.12l %4C %R" --sort T,i'
+    alias squeue='squeue --format="%.20i %.8P %.70j %.8u %.8T %.10M %.12l %4C %6m %R" --sort T,i'
     alias sq=squeue
     alias gpsq='sq | grep "\(gpu\|preempt\)"'
     alias mysqueue='squeue -u $(whoami)'

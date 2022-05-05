@@ -110,6 +110,7 @@ function install_python_packages() {
                          pydot gmpy2  # Packages for WAPS
                          arxiv-collector # Used to prepare a tex document for Arxiv
                          mpi4py  # MPI package
+                         gdown  # Google drive interface
                          )
     for pkg in ${pip_pkgs[@]}; do
         printf "Installing python package \"${pkg}\"..."

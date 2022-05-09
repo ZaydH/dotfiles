@@ -90,7 +90,8 @@ function install_python_packages() {
                          statsmodels
                          pycm  # Confusion matrix package
                          cplex gurobipy # Linear system solvers
-                         tflearn scikit-learn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
+                         scikit-learn scikit-optimize
+                         tflearn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
                          tsnecuda MulticoreTSNE  # t-SNE packages
                          gensim nltk fuzzywuzzy  # NLP packages
                          pywsl  # Python for Weakly Supervised Learning

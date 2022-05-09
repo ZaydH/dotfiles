@@ -50,7 +50,7 @@ function install_python_with_pyenv() {
 
     # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
     # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
-    declare -a versions=("3.7.1")
+    declare -a versions=("3.7.13")
     for ver in "${versions[@]}"; do
         printf "Installing python version ${ver}..."
         pyenv install "${ver}" > /dev/null
@@ -80,9 +80,11 @@ function install_python_packages() {
 
     declare -a pip_pkgs=(cython  # Speeds up the debugger
                          setuptools  # Some packages rely on setup tools so update early
-                         torch torchtext torchvision torchnet fastai==1.00.57 allennlp  # Neural network packages
+                         # torch torchtext torchvision torchnet
+                         fastai==1.00.57 allennlp  # Neural network packages
                          pytorch-ignite  # NN package. May have a different name in conda
                          pytorch_influence_functions  # Implements implement function paper in torch
+                         pytorch_tabnet
                          tensorflow keras tensorflow_probability
                          tensorboardX wandb
                          opencv-python  # OpenCV packages

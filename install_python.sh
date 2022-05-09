@@ -90,6 +90,7 @@ function install_python_packages() {
                          opencv-python  # OpenCV packages
                          comet_ml
                          statsmodels
+                         xgboost lightgbm  # Tree packages
                          pycm  # Confusion matrix package
                          cplex gurobipy # Linear system solvers
                          scikit-learn scikit-optimize

@@ -4,7 +4,7 @@ if [ -z "$PS1" ]; then
     return
 fi
 
-module load python3
+# module load python3
 # module load racs-eb 2> /dev/null  # Hide deprecated warning
 module load racs-spack
 # module load git  # Upgrades git to 2.12.X

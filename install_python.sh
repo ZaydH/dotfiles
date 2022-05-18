@@ -90,11 +90,12 @@ function install_python_packages() {
                          opencv-python  # OpenCV packages
                          comet_ml
                          statsmodels
-                         xgboost lightgbm  # Tree packages
+                         xgboost lightgbm catboost  # Tree packages
                          pycm  # Confusion matrix package
                          cplex gurobipy # Linear system solvers
                          scikit-learn scikit-optimize
-                         tflearn numpy scipy pillow pandas lightgbm matplotlib  # Machine learning packages
+                         numpy scipy pillow pandas  # Machine learning packages
+                         matplotlib plotext  # plotting libraries
                          tsnecuda MulticoreTSNE  # t-SNE packages
                          gensim nltk fuzzywuzzy  # NLP packages
                          pywsl  # Python for Weakly Supervised Learning

@@ -109,7 +109,7 @@ function install_python_packages() {
                          pynvim  # Support for python and neovim
                          rope ropevim ropemode  # Rope for Python primarily
                          seaborn git-wrapper quilt dill lief tqdm futures
-                         grip  # Used by vim's markdown preview package
+                         grip  # Used by vims markdown preview package
                          fire  # Google Package for a simple command line interface
                          ruamel.yaml  # Improved yaml parser
                          pydot gmpy2  # Packages for WAPS

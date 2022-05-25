@@ -203,6 +203,8 @@ function run_cli_slurm() {
     OUT_DIR=/home/zhammoud/projects/.out
     mkdir -p ${OUT_DIR}
 
+    REQUEUE_SUFFIX="-rq"
+
     DEFAULT_GPU_PARTITION="gpu"
     TEST_PARTITION="test"
     LONG_PARTITION="long"
@@ -215,8 +217,14 @@ function run_cli_slurm() {
         TIME_LIMIT="4:00:00"  # 4 hours
     elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
-    elif [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
-        TIME_LIMIT="07-00:00:00"  # 14 day
+    elif [[ ${PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
+        TIME_LIMIT="07-00:00:00"  # 7 day
+    fi
+
+    REQUEUE=false
+    if [[ ${PARTITION} == *"${REQUEUE_SUFFIX}" ]] ; then
+        PARTITION="${PARTITION%$REQUEUE_SUFFIX}"
+        REQUEUE=true
     fi
 
     N_CPU=3
@@ -250,6 +258,11 @@ function run_cli_slurm() {
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=volta"   # Forces to use V100
         fi
+    fi
+
+    # Optionally requeue
+    if $REQUEUE ; then
+        SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --requeue"
     fi
 
     SBATCH_TEXT=$(echo "${SBATCH_TEXT}" \

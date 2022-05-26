@@ -210,6 +210,7 @@ function run_cli_slurm() {
     LONG_PARTITION="long"
     SHORT_PARTITION="short"
     PREEMPT_PARTITION="preempt"
+    GUROBI_PARTITION="racsepyc"
 
     if [[ ${PARTITION} = ${SHORT_PARTITION} || ${PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
         TIME_LIMIT="1-00:00:00"  # 1 day
@@ -218,6 +219,8 @@ function run_cli_slurm() {
     elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
     elif [[ ${PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
+        TIME_LIMIT="07-00:00:00"  # 7 day
+    elif [[ ${PARTITION} == "${GUROBI_PARTITION}"* ]]; then
         TIME_LIMIT="07-00:00:00"  # 7 day
     fi
 
@@ -234,6 +237,10 @@ function run_cli_slurm() {
     elif [[ ${PARTITION} == "short" ]]; then
         N_CPU=1
         RAM_PER_CPU=40G
+    elif [[ ${PARTITION} == "${GUROBI_PARTITION}" ]]; then
+        N_CPU=1
+        REQUEUE=true
+        RAM_PER_CPU=12G
     fi
 
     SBATCH_TEXT=$(echo "#!/bin/bash" \
@@ -281,6 +288,10 @@ function run_cli_slurm() {
                   "\n    eval \"$(pyenv init -)\"" \
                   "\nfi" \
                  )
+
+    if [[ ${PARTITION} == ${GUROBI_PARTITION} ]] ; then
+        SBATCH_TEXT="${SBATCH_TEXT}\nmodule load gurobi"
+    fi
 
     # Combine the user specified command at the end to ensure all modules
     # are successfully loaded.

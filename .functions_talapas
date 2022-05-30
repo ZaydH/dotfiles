@@ -277,7 +277,7 @@ function run_cli_slurm() {
                   "\nmodule load racs-spack" \
                   "\nmodule load cuda/11.1.0" \
                   "\nmodule load cmake/3.15.4" \
-                  "\nmodule load singularity-3.6.1-gcc-8.2.0-tuypven" \
+                  "\nmodule load gurobi" \
                   "\n" \
                   "\nspack load gcc@8.2.0" \
                   "\n" \
@@ -288,6 +288,7 @@ function run_cli_slurm() {
                   "\n    eval \"$(pyenv init -)\"" \
                   "\nfi" \
                  )
+                  # "\nmodule load singularity-3.6.1-gcc-8.2.0-tuypven" \
 
     if [[ ${PARTITION} == ${GUROBI_PARTITION} ]] ; then
         SBATCH_TEXT="${SBATCH_TEXT}\nmodule load gurobi"

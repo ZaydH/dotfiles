@@ -4,6 +4,7 @@
 function kill_job {
     DRY_RUN=0
     unset JOB_NUM  # Ensure
+    JOB_DESC="${0} [-d]"
     while ! [ -z $1 ] ; do
         case "$1" in
             -d)  # Dry run
@@ -14,7 +15,7 @@ function kill_job {
                 if [ -z "${JOB_NUM}" ] ; then
                     JOB_NUM="$1"
                 else
-                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum maxjobnum'"
+                    echo "Too many input arguments. Run as '${JOB_DESC} jobnum"
                     return 1
                 fi
                 ;;
@@ -85,7 +86,7 @@ function kill_jobs_larger {
                 if [ -z "${minjobnum}" ] ; then
                     minjobnum="$1"
                 else
-                    echo "Too many input arguments. Run as '${JOB_DESC} [-d] minjobnum'"
+                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum'"
                     return 1
                 fi
                 ;;
@@ -141,7 +142,7 @@ function kill_jobs_range {
                 elif [ -z "${maxjobnum}" ]; then
                     maxjobnum="$1"
                 else
-                    echo "Too many input arguments. Run as '${JOB_DESC} [-d] minjobnum maxjobnum'"
+                    echo "Too many input arguments. Run as '${JOB_DESC} minjobnum maxjobnum'"
                     return 1
                 fi
                 ;;

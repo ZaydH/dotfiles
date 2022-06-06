@@ -53,11 +53,11 @@ alias purpl="${REPOS_DIR}/uo/purpl/src"
 # alias bpu="${REPOS_DIR}/uo/bpu_mt/src"
 alias repp="${REPOS_DIR}/uo/representer_poison/two_pass_pois"
 alias bd="${REPOS_DIR}/uo/representer_poison/backdoor"
-alias walp="${REPOS_DIR}/wallace-poisoning"
+# alias walp="${REPOS_DIR}/wallace-poisoning"
 alias nlpp="${REPOS_DIR}/uo/representer_poison/nlp"
 alias cvm="${REPOS_DIR}/uo/representer_poison/cifar_v_mnist"
-alias ifilt="${REPOS_DIR}/uo/representer_poison/inf_filt"
-alias trinf="${REPOS_DIR}/uo/tree_inf/group"
+# alias ifilt="${REPOS_DIR}/uo/representer_poison/inf_filt"
+# alias trinf="${REPOS_DIR}/uo/tree_inf/group"
 alias bound="${REPOS_DIR}/uo/regression-bound/rotation/"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"
@@ -65,14 +65,14 @@ if is_mac || is_popos; then
     alias textbooks="${REPOS_DIR}/textbooks"
 
     alias downloads="${HOME}/Downloads"
-fi
 
-# ToDo temporary only
-if is_mac || is_popos || is_talapas; then
     alias icml="${REPOS_DIR}/icml2020/tex"
     alias allin="${REPOS_DIR}/all_in_paper/workshop"
+    alias ae="${REPOS_DIR}/area_exam/tex"
+
     # alias cs473="${REPOS_DIR}/cis473_w21"
     alias cs315="${REPOS_DIR}/cis315_22s"
+
     alias leetcode="${REPOS_DIR}/leetcode"
 fi
 

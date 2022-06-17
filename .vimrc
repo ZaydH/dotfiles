@@ -74,6 +74,7 @@ Plug 'danilo-augusto/vim-afterglow'         | " Afterglow
 
 " Tools {{{
 Plug 'luochen1990/rainbow'                  | " Rainbow parentheses - not compatible with vimtex
+Plug 'godlygeek/tabular'                    | " Tabular enables easy alignment of text
 " Plug 'python-rope/ropevim'                  | " Pyrope for vim
 " " if $HOSTNAME !~ "talapas-[a-z0-9]\*" && $HOSTNAME !~ "n[0-9]\+"
 " if $HOSTNAME !~ '\(talapas-ln[1-2]*\|n[0-9]\+\)'

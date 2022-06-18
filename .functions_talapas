@@ -205,13 +205,13 @@ function run_cli_slurm() {
     mkdir -p ${OUT_DIR}
 
     REQUEUE_SUFFIX="-rq"
+    CPU_SUFFIX="-cpu"
 
     DEFAULT_GPU_PARTITION="gpu"
     TEST_PARTITION="test"
     LONG_PARTITION="long"
     SHORT_PARTITION="short"
     PREEMPT_PARTITION="preempt"
-    GUROBI_PARTITION="racsepyc"
 
     if [[ ${PARTITION} = ${SHORT_PARTITION} || ${PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
         TIME_LIMIT="1-00:00:00"  # 1 day
@@ -220,8 +220,6 @@ function run_cli_slurm() {
     elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
     elif [[ ${PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
-        TIME_LIMIT="07-00:00:00"  # 7 day
-    elif [[ ${PARTITION} == "${GUROBI_PARTITION}"* ]]; then
         TIME_LIMIT="07-00:00:00"  # 7 day
     fi
 
@@ -232,16 +230,22 @@ function run_cli_slurm() {
     fi
 
     N_CPU=3
+    N_GPU=0
     RAM_PER_CPU=16G
     if [[ ${PARTITION} == *"testgpu"* ]]; then
         N_CPU=2
+        N_GPU=1
     elif [[ ${PARTITION} == "short" ]]; then
         N_CPU=1
+        N_GPU=0
         RAM_PER_CPU=40G
-    elif [[ ${PARTITION} == "${GUROBI_PARTITION}" ]]; then
+    elif [[ ${PARTITION} == *"${CPU_SUFFIX}" ]] ; then
         N_CPU=1
-        REQUEUE=true
+        N_GPU=0
+        PARTITION="${PARTITION%$CPU_SUFFIX}"  # Strip the suffix
         RAM_PER_CPU=12G
+    elif [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
+        N_GPU=1
     fi
 
     SBATCH_TEXT=$(echo "#!/bin/bash" \
@@ -259,8 +263,8 @@ function run_cli_slurm() {
                  )
 
     # Select to use GPU. Must be before package loading.
-    if [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
-        SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:1"
+    if [[ "${N_GPU}" -gt "0" ]] ; then
+        SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:${N_GPU}"
         if [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
             :  # Allows empty if blocks
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
@@ -269,7 +273,7 @@ function run_cli_slurm() {
     fi
 
     # Optionally requeue
-    if $REQUEUE ; then
+    if ${REQUEUE} ; then
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --requeue"
     fi
 
@@ -289,15 +293,10 @@ function run_cli_slurm() {
                   "\n    eval \"$(pyenv init -)\"" \
                   "\nfi" \
                  )
-                  # "\nmodule load singularity-3.6.1-gcc-8.2.0-tuypven" \
-
-    if [[ ${PARTITION} == ${GUROBI_PARTITION} ]] ; then
-        SBATCH_TEXT="${SBATCH_TEXT}\nmodule load gurobi"
-    fi
 
     # Combine the user specified command at the end to ensure all modules
     # are successfully loaded.
-    SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}"
+    SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}\n"
     echo -en "${SBATCH_TEXT}" | sbatch /dev/stdin
 }
 

@@ -198,7 +198,7 @@ function run_cli_slurm() {
         return 0
     fi
     JOB_NAME=$1
-    PARTITION=$2
+    TMP_PARTITION=$2  # Cannot name PARTITION as may have scope collision
     CLI_COMMAND=$3
 
     OUT_DIR=/home/zhammoud/projects/.out
@@ -213,45 +213,45 @@ function run_cli_slurm() {
     SHORT_PARTITION="short"
     PREEMPT_PARTITION="preempt"
 
-    if [[ ${PARTITION} = ${SHORT_PARTITION} || ${PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
+    if [[ ${TMP_PARTITION} = ${SHORT_PARTITION} || ${TMP_PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
         TIME_LIMIT="1-00:00:00"  # 1 day
-    elif [[ ${PARTITION} == "${TEST_PARTITION}"* ]]; then
+    elif [[ ${TMP_PARTITION} == "${TEST_PARTITION}"* ]]; then
         TIME_LIMIT="4:00:00"  # 4 hours
-    elif [[ ${PARTITION} == "${LONG_PARTITION}"* ]]; then
+    elif [[ ${TMP_PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
-    elif [[ ${PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
+    elif [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
         TIME_LIMIT="07-00:00:00"  # 7 day
     fi
 
     REQUEUE=false
-    if [[ ${PARTITION} == *"${REQUEUE_SUFFIX}" ]] ; then
-        PARTITION="${PARTITION%$REQUEUE_SUFFIX}"
+    if [[ ${TMP_PARTITION} == *"${REQUEUE_SUFFIX}" ]] ; then
+        TMP_PARTITION="${TMP_PARTITION%$REQUEUE_SUFFIX}"
         REQUEUE=true
     fi
 
     N_CPU=3
     N_GPU=0
     RAM_PER_CPU=16G
-    if [[ ${PARTITION} == *"testgpu"* ]]; then
+    if [[ ${TMP_PARTITION} == *"testgpu"* ]]; then
         N_CPU=2
         N_GPU=1
-    elif [[ ${PARTITION} == "short" ]]; then
+    elif [[ ${TMP_PARTITION} == "short" ]]; then
         N_CPU=1
         N_GPU=0
         RAM_PER_CPU=40G
-    elif [[ ${PARTITION} == *"${CPU_SUFFIX}" ]] ; then
+    elif [[ ${TMP_PARTITION} == *"${CPU_SUFFIX}" ]] ; then
         N_CPU=1
         N_GPU=0
-        PARTITION="${PARTITION%$CPU_SUFFIX}"  # Strip the suffix
+        TMP_PARTITION="${TMP_PARTITION%$CPU_SUFFIX}"  # Strip the suffix
         RAM_PER_CPU=12G
-    elif [[ ${PARTITION} == *"gpu"* ]] || [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
+    elif [[ ${TMP_PARTITION} == *"gpu"* ]] || [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}" ]]; then
         N_GPU=1
     fi
 
     SBATCH_TEXT=$(echo "#!/bin/bash" \
                        "\n#SBATCH --job-name=${JOB_NAME}" \
                        "\n#SBATCH --account=uoml" \
-                       "\n#SBATCH --partition=${PARTITION}" \
+                       "\n#SBATCH --partition=${TMP_PARTITION}" \
                        "\n#SBATCH --time=${TIME_LIMIT}" \
                        "\n#SBATCH --mem-per-cpu=${RAM_PER_CPU}" \
                        "\n#SBATCH --nodes=1"\
@@ -265,7 +265,7 @@ function run_cli_slurm() {
     # Select to use GPU. Must be before package loading.
     if [[ "${N_GPU}" -gt "0" ]] ; then
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:${N_GPU}"
-        if [[ ${PARTITION} == "${PREEMPT_PARTITION}" ]]; then
+        if [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}" ]]; then
             :  # Allows empty if blocks
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=volta"   # Forces to use V100

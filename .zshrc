@@ -9,7 +9,7 @@ function load_dotfile() {
 }
 load_dotfile .functions
 PRIV_FUNCTIONS=".functions_private"
-if [ -f "${PRIV_FUNCTIONS}" ] ; then
+if [ -f "${HOME}/${PRIV_FUNCTIONS}" ] ; then
     load_dotfile "${PRIV_FUNCTIONS}"
 fi
 if is_talapas; then

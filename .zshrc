@@ -8,6 +8,10 @@ function load_dotfile() {
     fi
 }
 load_dotfile .functions
+PRIV_FUNCTIONS=".functions_private"
+if [ -f "${PRIV_FUNCTIONS}" ] ; then
+    load_dotfile "${PRIV_FUNCTIONS}"
+fi
 if is_talapas; then
     load_dotfile .functions_talapas
 fi

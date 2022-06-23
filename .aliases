@@ -68,6 +68,7 @@ if is_mac || is_popos; then
 
     alias icml="${REPOS_DIR}/icml2020/tex"
     alias allin="${REPOS_DIR}/all_in_paper/workshop"
+    alias crp="${REPOS_DIR}/certified_regression_paper/tex"
     alias ae="${REPOS_DIR}/area_exam/tex"
 
     # alias cs473="${REPOS_DIR}/cis473_w21"

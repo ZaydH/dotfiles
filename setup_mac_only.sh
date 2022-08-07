@@ -8,7 +8,7 @@ function install_iterm2() {
 function install_mac_fonts() {
     # Install and Configure Fira Code Font
     brew tap homebrew/cask-fonts
-    brew cask install font-fira-code
+    brew install --cask  font-fira-code
 }
 
 function run_mac_only_setup(){

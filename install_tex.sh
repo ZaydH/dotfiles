@@ -4,7 +4,8 @@ source .functions
 function install_mactex() {
     printf "Installing mactex - this may take a while..."
     brew tap caskroom/cask > /dev/null
-    brew cask install mactex > /dev/null
+    # brew cask install mactex > /dev/null
+    brew install --cask  mactex > /dev/null
     printf "COMPLETED"
 }
 

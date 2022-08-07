@@ -32,8 +32,8 @@ if ! is_ix; then
     alias vim='nv'
 fi
 alias v!='vim $_'
-alias vimM='vim -M'
-alias vmm=vimM
+alias vmm='vim -M'
+alias vmm!='vmm $_'
 
 alias cat!='cat $_'
 # Colorize cat and print line numbers
@@ -87,7 +87,8 @@ if is_talapas; then
     # Sorting jobs:
     ### Highest Priority: Job State
     ### Lowest Priority:  Job Number
-    alias squeue='squeue --format="%.20i %.8P %.70j %.8u %.8T %.10M %.12l %4C %6m %11R %10b" --sort T,i'
+    alias squeue='squeue --format="%.15i %.8P %.88j %.8u %.8T %.10M %.12l %4C %6m %11R %10b" --sort T,i'
+    # alias squeue='squeue --format="%i %.8P %.70j %.8u %.8T %.10M %.12l %4C %6m %11R %10b" --sort T,i'
     alias sq=squeue
     alias gpsq='sq | grep "gres:gpu:[1-9]"'
     alias mysqueue='squeue -u $(whoami)'

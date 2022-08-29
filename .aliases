@@ -40,6 +40,7 @@ alias cat!='cat $_'
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
 if is_popos; then
     alias bat='batcat'
+    alias bat!='bat $_'
 fi
 
 # Go right to dotfiles folder

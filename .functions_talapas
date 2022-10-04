@@ -267,8 +267,8 @@ function run_cli_slurm() {
         SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --gres=gpu:${N_GPU}"
         if [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}" ]]; then
             :  # Allows empty if blocks
-            # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=ampere"  # Forces to use A100
-            # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=volta"   # Forces to use V100
+            # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"  # Forces to use A100
+            # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=v100"   # Forces to use V100
         fi
     fi
 
@@ -322,6 +322,20 @@ function run_talapas_bash() {
     fi
     printf "Number of CPUs Allocated: ${NUM_CPU}\n"
 
-    srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --cpus-per-task=${NUM_CPU} --pty bash
+    SRUN_PARAMS=(
+        "--account=uoml"
+        "--partition=${PARTITION}"
+        "--mem-per-cpu=28G"
+        "--cpus-per-task=${NUM_CPU}"
+        "--gres=gpu:1"
+    )
+    if [[ "${PARTITION}" == "preempt" ]]; then
+        :  # Allows empty if blocks
+        # SRUN_PARAMS+=("--constraint=a100")  # Forces to use A100
+        # SRUN_PARAMS+=("--constraint=v100")  # Forces to use V100
+    fi
+
+    echo "${SRUN_PARAMS[@]}"
+    srun "${SRUN_PARAMS[@]}" --pty bash
     # srun --constraint="ampere" --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --cpus-per-task=${NUM_CPU} --pty bash
 }

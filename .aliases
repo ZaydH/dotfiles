@@ -92,7 +92,9 @@ if is_talapas; then
     alias squeue='squeue --format="%.15i %.8P %.88j %.8u %.8T %.10M %.12l %4C %6m %11R %10b" --sort T,i'
     # alias squeue='squeue --format="%i %.8P %.70j %.8u %.8T %.10M %.12l %4C %6m %11R %10b" --sort T,i'
     alias sq=squeue
-    alias gpsq='sq | grep "gres:gpu:[1-9]"'
+    # alias gpsq='sq | grep "gres:gpu:[1-9]"'
+    # alias gpsq='sq | grep "\( longgpu \| gpu \| testgpu \| gres:gpu:[1-9]\)"'
+    alias gpsq='sq | grep "\(^ *[0-9_]\+ \+\(long\|test\|\)gpu \| gres:gpu:[1-9][0-9]* *\$\)"'
     alias mysqueue='squeue -u $(whoami)'
     alias msq=mysqueue
 

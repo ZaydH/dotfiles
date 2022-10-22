@@ -280,7 +280,7 @@ function run_cli_slurm() {
     SBATCH_TEXT=$(echo "${SBATCH_TEXT}" \
                   "\n" \
                   "\nmodule load racs-spack" \
-                  "\nmodule load cuda/11.1.0" \
+                  "\nmodule load cuda/11.5.1" \
                   "\nmodule load cmake/3.15.4" \
                   "\nmodule load gurobi" \
                   "\n" \

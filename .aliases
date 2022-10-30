@@ -60,6 +60,7 @@ alias cvm="${REPOS_DIR}/uo/representer_poison/cifar_v_mnist"
 # alias ifilt="${REPOS_DIR}/uo/representer_poison/inf_filt"
 # alias trinf="${REPOS_DIR}/uo/tree_inf/group"
 alias bound="${REPOS_DIR}/uo/regression-bound/rotation/"
+alias feats="${REPOS_DIR}/uo/feature-robustness"
 alias feld="${REPOS_DIR}/uo/neural_influence/feldman/"
 if is_mac || is_popos; then
     alias uo_docs="${REPOS_DIR}/uo_docs"

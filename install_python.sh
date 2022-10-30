@@ -85,6 +85,7 @@ function install_python_packages() {
                          pytorch-ignite  # NN package. May have a different name in conda
                          pytorch_influence_functions  # Implements implement function paper in torch
                          pytorch_tabnet
+                         albumentations  # implements extended CV transforms
                          tensorflow keras tensorflow_probability
                          tensorboardX wandb
                          opencv-python  # OpenCV packages

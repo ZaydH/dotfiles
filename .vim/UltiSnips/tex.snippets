@@ -182,7 +182,10 @@ snippet base "Base LaTeX Document"
 \usepackage[margin=1in]{geometry}
 \usepackage[shortcuts]{extdash}
 
-\usepackage[numbers]{natbib}
+\usepackage[citestyle=alphabetic, bibstyle=alphabetic, natbib=true, maxcitenames=2, maxbibnames=99, sorting=ynt]{biblatex}
+%% Ensures biblatex typesets quotes correctly
+\usepackage{csquotes}
+\addbibresource{${1:bib/ref.bib}}
 
 % Enable (uncolored) cross-reference hyperlinks
 % Should always be last package loaded.
@@ -291,9 +294,21 @@ snippet beamer "Beamer Presentation"
 \end{document}
 endsnippet
 
-snippet bibliography "Standard text document bibliography" b
-\bibliography{${1:bib/ref.bib}}
-\bibliographystyle{${2:unsrtnat}}
+snippet bibheader "Bibliography header using biblatex"
+% Imported using UltiSnips
+\usepackage[citestyle=alphabetic, bibstyle=alphabetic, natbib=true, maxcitenames=2, maxbibnames=99, sorting=ynt]{biblatex}
+%% Ensures biblatex typesets quotes correctly
+\usepackage{csquotes}
+\addbibresource{${1:bib/ref.bib}}
+endsnippet
+
+snippet printbib "Standard text document bibliography" b
+% Imported using UltiSnips
+\newrefcontext[sorting=nyt]
+% \renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\bibfont}{\small}
+\printbibliography%
+\newrefcontext[sorting=ynt]
 endsnippet
 
 snippet beamerbib "Bibliography for Beamer" b

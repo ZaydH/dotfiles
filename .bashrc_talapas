@@ -19,6 +19,10 @@ spack load vim@8.2.1201
 spack load neovim@0.4.4
 spack load the-silver-searcher
 
+# Specify the location of the locally installed perl files
+# Needed for running st without admin privileges
+export PERL5LIB=~/lib/perl5/lib/site_perl
+
 # module load racs-eb
 # module load cuDNN/7.0.5-CUDA-9.1.85
 /usr/bin/zsh

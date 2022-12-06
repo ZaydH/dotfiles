@@ -73,9 +73,10 @@ if is_mac || is_popos; then
     alias allin="${REPOS_DIR}/all_in_paper/workshop"
     alias crp="${REPOS_DIR}/certified_regression_paper/tex"
     alias ae="${REPOS_DIR}/area_exam/tex"
+    alias fpp="${REPOS_DIR}/feature_partition_paper/tex"
 
     # alias cs473="${REPOS_DIR}/cis473_w21"
-    alias cs315="${REPOS_DIR}/cis315_22s"
+    # alias cs315="${REPOS_DIR}/cis315_22s"
 
     alias leetcode="${REPOS_DIR}/leetcode"
 fi

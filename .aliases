@@ -73,6 +73,8 @@ if is_mac || is_popos; then
 
     alias dis="${REPOS_DIR}/dissertation/tex"
 
+    alias cram="${REPOS_DIR}/cramming"
+
     # alias cs315="${REPOS_DIR}/cis315_22s"
 
     alias leetcode="${REPOS_DIR}/leetcode"

@@ -88,6 +88,7 @@ function install_python_packages() {
                          albumentations  # implements extended CV transforms
                          transformers tokenizers datasets  # HuggingFace
                          hydra-core einops zstandard deepspeed flash-attention apache_beam
+                         ml_swissknife opt_einsum
                          allennlp  # Neural network packages
                          tensorflow keras tensorflow_probability
                          tensorboardX wandb

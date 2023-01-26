@@ -212,6 +212,7 @@ function run_cli_slurm() {
     LONG_PARTITION="long"
     SHORT_PARTITION="short"
     PREEMPT_PARTITION="preempt"
+    LOWD_PARTITION="lowd"
 
     if [[ ${TMP_PARTITION} = ${SHORT_PARTITION} || ${TMP_PARTITION} = ${DEFAULT_GPU_PARTITION} ]]; then
         TIME_LIMIT="1-00:00:00"  # 1 day
@@ -220,6 +221,8 @@ function run_cli_slurm() {
     elif [[ ${TMP_PARTITION} == "${LONG_PARTITION}"* ]]; then
         TIME_LIMIT="14-00:00:00"  # 14 day
     elif [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}"* ]]; then
+        TIME_LIMIT="07-00:00:00"  # 7 day
+    elif [[ ${TMP_PARTITION} == "${LOWD_PARTITION}"* ]]; then
         TIME_LIMIT="07-00:00:00"  # 7 day
     fi
 
@@ -269,6 +272,9 @@ function run_cli_slurm() {
             :  # Allows empty if blocks
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"  # Forces to use A100
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=v100"   # Forces to use V100
+        elif [[ ${TMP_PARTITION} == "${LOWD_PARTITION}" ]]; then
+            :  # Allows empty if blocks
+            SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"  # Forces to use A100
         fi
     fi
 
@@ -333,6 +339,8 @@ function run_talapas_bash() {
         :  # Allows empty if blocks
         # SRUN_PARAMS+=("--constraint=a100")  # Forces to use A100
         # SRUN_PARAMS+=("--constraint=v100")  # Forces to use V100
+    elif [[ "${PARTITION}" == "lowd" ]]; then
+        SRUN_PARAMS+=("--constraint=a100")  # Forces to use A100
     fi
 
     echo "${SRUN_PARAMS[@]}"

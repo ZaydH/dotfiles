@@ -17,7 +17,11 @@ alias gbh='git branch-sort' # Sorts branches by last commit
 alias gco!='gco $_'  # Adds the last parameter of the previous bash command.
 alias gcop='gco -p'
 alias gcop!='gcop $_'
-alias gpnb='$(git push |& tail -n 2)'      # Push new branch
+if is_mac ; then
+    alias gpnb='$(git push |& tail -n 5 |& head -n 1)'      # Push new branch
+else
+    alias gpnb='$(git push |& tail -n 2)'      # Push new branch
+fi
 alias grgo='git config --get remote.origin.url'  # Get the origin path for git
 alias gwd='git wd'      # Performs word diff
 alias gwd!='gwd $_'     # Performs word diff

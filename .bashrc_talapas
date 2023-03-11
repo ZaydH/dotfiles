@@ -14,8 +14,8 @@ module load cmake/3.15.4
 
 spack load tmux@3.1b%gcc@11.1.0
 spack load gcc@8.2.0
-spack load boost@1.74.0%gcc@8.2.0 arch=linux-rhel7-broadwell
-spack load openssl@1.1.1m%gcc@8.2.0 arch=linux-rhel7-broadwell
+# spack load boost@1.74.0%gcc@8.2.0 arch=linux-rhel7-broadwell
+# spack load openssl@1.1.1m%gcc@8.2.0 arch=linux-rhel7-broadwell
 spack load git@2.27.0%gcc@8.2.0
 spack load vim@8.2.1201
 spack load neovim@0.4.4
@@ -24,6 +24,9 @@ spack load the-silver-searcher
 # Specify the location of the locally installed perl files
 # Needed for running st without admin privileges
 export PERL5LIB=~/lib/perl5/lib/site_perl
+
+# Fix SSL library support
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/gpfs/packages/spack/spack/opt/spack/linux-rhel7-broadwell/gcc-8.2.0/openssl-1.1.1g-hs3wfqsnp2bxe77ttqvraai24z55mnay/lib"
 
 # module load racs-eb
 # module load cuDNN/7.0.5-CUDA-9.1.85

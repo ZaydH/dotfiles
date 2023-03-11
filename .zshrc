@@ -163,7 +163,11 @@ bindkey "^Y" znt-kill-widget
 # fi
 
 # Variables specifically for PyEnv
-export PYENV_ROOT="${HOME}/.pyenv"
+if is_talapas; then
+    export PYENV_ROOT="${HOME}/projects/.pyenv"
+else
+    export PYENV_ROOT="${HOME}/.pyenv"
+fi
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH="${PYENV_ROOT}/bin:${PATH}"
     if command -v pyenv 1>/dev/null 2>&1; then

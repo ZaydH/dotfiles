@@ -243,11 +243,12 @@ function run_cli_slurm() {
         N_GPU=0
         RAM_PER_CPU=40G
     elif [[ ${TMP_PARTITION} == *"${CPU_SUFFIX}" ]] ; then
-        N_CPU=1
+        N_CPU=6
         N_GPU=0
         TMP_PARTITION="${TMP_PARTITION%$CPU_SUFFIX}"  # Strip the suffix
-        RAM_PER_CPU=12G
-    elif [[ ${TMP_PARTITION} == *"gpu"* ]] || [[ ${TMP_PARTITION} == "${PREEMPT_PARTITION}" ]]; then
+        RAM_PER_CPU=16G
+    # elif [[ ${TMP_PARTITION} =~ "\(.*gpu\|${PREEMPT_PARTITION}.*\|${LOWD_PARTITION}\)" ]] ; then
+    elif [[ ${TMP_PARTITION} =~ "(.*gpu|${PREEMPT_PARTITION}.*|${LOWD_PARTITION})" ]] ; then
         N_GPU=1
     fi
 
@@ -303,6 +304,7 @@ function run_cli_slurm() {
     # Combine the user specified command at the end to ensure all modules
     # are successfully loaded.
     SBATCH_TEXT="${SBATCH_TEXT}\n\n${CLI_COMMAND}\n"
+    echo -en "${SBATCH_TEXT}" > cli.slurm
     echo -en "${SBATCH_TEXT}" | sbatch /dev/stdin
 }
 

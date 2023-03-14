@@ -18,7 +18,7 @@ spack load gcc@8.2.0
 # spack load openssl@1.1.1m%gcc@8.2.0 arch=linux-rhel7-broadwell
 spack load git@2.27.0%gcc@8.2.0
 spack load vim@8.2.1201
-spack load neovim@0.4.4
+spack load neovim@0.8.2
 spack load the-silver-searcher
 
 # Specify the location of the locally installed perl files

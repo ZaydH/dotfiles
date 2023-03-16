@@ -248,7 +248,7 @@ function run_cli_slurm() {
         TMP_PARTITION="${TMP_PARTITION%$CPU_SUFFIX}"  # Strip the suffix
         RAM_PER_CPU=16G
     # elif [[ ${TMP_PARTITION} =~ "\(.*gpu\|${PREEMPT_PARTITION}.*\|${LOWD_PARTITION}\)" ]] ; then
-    elif [[ ${TMP_PARTITION} =~ "(.*gpu|${PREEMPT_PARTITION}.*|${LOWD_PARTITION})" ]] ; then
+    elif [[ "${TMP_PARTITION}" =~ (.*gpu|${PREEMPT_PARTITION}.*|${LOWD_PARTITION}) ]] ; then
         N_GPU=1
     fi
 

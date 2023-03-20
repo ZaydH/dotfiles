@@ -349,3 +349,9 @@ function run_talapas_bash() {
     srun "${SRUN_PARAMS[@]}" --pty bash
     # srun --constraint="ampere" --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --gres=gpu:1 --cpus-per-task=${NUM_CPU} --pty bash
 }
+
+# Returns true if current host if Talapas node is a K80
+function is_k80() {
+    [[ $( nvidia-smi ) == *"Tesla K80"* ]]
+    # return implicit and not needed
+}

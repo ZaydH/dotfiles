@@ -301,7 +301,7 @@ function run_cli_slurm() {
                   "\nfi" \
                  )
     if [[ "${N_GPU}" -gt "0" ]] ; then
-        SBATCH_TEXT="${SBATCH_TEXT}\n\nif [[ \$(nvidia-smi) == *\"Tesla K80\"* ]] ; then\n echo \"PyEnv Local: 3.7.13\" \n pyenv local 3.7.13\nfi"
+        SBATCH_TEXT="${SBATCH_TEXT}\n\nif [[ \$(nvidia-smi) == *\"Tesla K80\"* ]] ; then\n echo \"PyEnv Local: 3.7.13\" \n pyenv shell 3.7.13\nfi"
     fi
 
     # Combine the user specified command at the end to ensure all modules

@@ -294,12 +294,15 @@ function run_cli_slurm() {
                   "\nspack load gcc@8.2.0" \
                   "\n" \
                   "\n# Variables specifically for PyEnv" \
-                  "\nexport PYENV_ROOT=\"${HOME}/.pyenv\"" \
-                  "\nif [ -d \"${PYENV_ROOT}\" ]; then" \
-                  "\n    export PATH=\"${PYENV_ROOT}/bin:${PATH}\"" \
-                  "\n    eval \"$(pyenv init -)\"" \
+                  "\nexport PYENV_ROOT=\"\${HOME}/.pyenv\"" \
+                  "\nif [ -d \"\${PYENV_ROOT}\" ]; then" \
+                  "\n    export PATH=\"\${PYENV_ROOT}/bin:\${PATH}\"" \
+                  "\n    eval \"\$(pyenv init -)\"" \
                   "\nfi" \
                  )
+    if [[ "${N_GPU}" -gt "0" ]] ; then
+        SBATCH_TEXT="${SBATCH_TEXT}\n\nif [[ \$(nvidia-smi) == *\"Tesla K80\"* ]] ; then\n echo \"PyEnv Local: 3.7.13\" \n pyenv local 3.7.13\nfi"
+    fi
 
     # Combine the user specified command at the end to ensure all modules
     # are successfully loaded.

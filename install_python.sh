@@ -10,6 +10,11 @@ function install_pyenv() {
         printf "Unknown OS for pyenv install..." >&2
         return 1
     fi
+
+    echo "Install Pyenv Suffix"
+    # git clone https://github.com/s1341/pyenv-alias.git $(pyenv root)/plugins/pyenv-alias
+    git clone https://github.com/AdrianDAlessandro/pyenv-suffix.git $(pyenv root)/plugins/pyenv-suffix
+
     source .zshrc > /dev/null
 }
 

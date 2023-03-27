@@ -173,7 +173,7 @@ if [ -d "${PYENV_ROOT}" ]; then
     fi
     eval "$(pyenv init -)"
 fi
-if is_k80 ; then
+if is_talapas && is_k80 ; then
     K80_PYTHON_VERSION="3.7.13"
     pyenv shell "${K80_PYTHON_VERSION}"
     echo "K80 Python Version: ${K80_PYTHON_VERSION}"

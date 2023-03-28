@@ -165,18 +165,20 @@ bindkey "^Y" znt-kill-widget
 # Variables specifically for PyEnv
 export PYENV_ROOT="${HOME}/.pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
-    export PATH="${PYENV_ROOT}/bin:${PATH}"
-    if command -v pyenv 1>/dev/null 2>&1; then
-        if ! is_mac; then
-            eval "$(pyenv init --path)"
-        fi
-    fi
+    # export PATH="${PYENV_ROOT}/bin:${PATH}"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    # if command -v pyenv 1>/dev/null 2>&1; then
+    #     if ! is_mac; then
+    #         eval "$(pyenv init --path)"
+    #     fi
+    # fi
     eval "$(pyenv init -)"
 fi
 if is_talapas && is_k80 ; then
     K80_PYTHON_VERSION="3.7.13"
-    pyenv shell "${K80_PYTHON_VERSION}"
     echo "K80 Python Version: ${K80_PYTHON_VERSION}"
+    pyenv shell "${K80_PYTHON_VERSION}"
+    echo "K80 Python Version: Successfully Loaded"
 fi
 
 # Variables for external nodejs

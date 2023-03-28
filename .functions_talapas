@@ -329,14 +329,14 @@ function run_talapas_bash() {
         srun --account=uoml --partition="${PARTITION}" --mem-per-cpu=28G --cpus-per-task=${NUM_CPU} --pty bash
         return
     else
-        NUM_CPU=4
+        NUM_CPU=3
     fi
     printf "Number of CPUs Allocated: ${NUM_CPU}\n"
 
     SRUN_PARAMS=(
         "--account=uoml"
         "--partition=${PARTITION}"
-        "--mem-per-cpu=28G"
+        "--mem-per-cpu=16G"
         "--cpus-per-task=${NUM_CPU}"
         "--gres=gpu:1"
     )

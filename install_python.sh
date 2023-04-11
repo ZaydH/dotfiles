@@ -53,9 +53,7 @@ function install_python_with_pyenv() {
         export PYTHON_CONFIGURE_OPTS=""
     fi
 
-    # declare -a versions=("2.7.15" "3.6.5" "3.7.2")
-    # declare -a versions=("3.6.5" "3.7.1" "3.8.1")
-    declare -a versions=("3.7.13")
+    declare -a versions=("3.7.13" "3.9.16" "3.10.10")
     for ver in "${versions[@]}"; do
         printf "Installing python version ${ver}..."
         pyenv install "${ver}" > /dev/null
@@ -72,7 +70,7 @@ function install_python_with_pyenv() {
     # fi
 
     printf "Enabling latest installed python version..."
-    pyenv global "${versions[-1]}" > /dev/null
+    pyenv global "${ver}" > /dev/null
     printf "COMPLETED\n"
 
     install_3090_torch
@@ -91,7 +89,7 @@ function install_python_packages() {
                          pytorch_influence_functions  # Implements implement function paper in torch
                          pytorch_tabnet
                          albumentations  # implements extended CV transforms
-                         transformers tokenizers datasets  # HuggingFace
+                         transformers tokenizers datasets evaluate  # HuggingFace
                          hydra-core einops zstandard deepspeed flash-attention apache_beam
                          ml_swissknife opt_einsum
                          allennlp  # Neural network packages

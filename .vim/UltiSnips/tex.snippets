@@ -103,7 +103,8 @@ snippet eqi "Create in inline equation" i
 endsnippet
 
 snippet eqn "Begin a numbered equation" b
-\begin{equation}\label{eq:$1}
+\begin{equation}%
+  \label{eq:$1}%
   $2
 \end{equation}
 endsnippet
@@ -118,6 +119,11 @@ snippet eqnnl "Begin a numbered equation but with no label (nl)" b
 \begin{equation}
   $1
 \end{equation}
+endsnippet
+
+
+snippet eqs "A small inline equation"
+\eqsmall{${$1}$}
 endsnippet
 
 snippet align "Begin an align block" b

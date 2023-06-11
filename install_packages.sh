@@ -101,7 +101,7 @@ function install_all_packages() {
                              libomp libomp-dev  # OpenMP tools
                              mpich
                              opendetex  # Tool for removing tex tags from a document
-                             bibuitls  # Tools for converting bibliography file formats
+                             bibutils  # Tools for converting bibliography file formats
                              nvidia-cuda-toolkit nvidia-container-toolkit  # CUDA tools
                              openssl libssl-dev readline readline-devel libreadline7
                              libreadline7-dev libreadline6-dev sqlite3 libsqlite3-dev

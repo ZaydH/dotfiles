@@ -56,13 +56,16 @@ Plug 'reedes/vim-wordy'                     | " Wordy detects poor uses of langu
 " }}} Tex
 
 " TODO remove after bug in ideavim does not misread package name
-" Langauge Support aug {{{
+" Language Support aug {{{
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }   | " Python mode
-Plug 'JamshedVesuna/vim-markdown-preview'   | " Markdown support, use command: Ctrl-p to run generate the preview
 Plug 'vhdirk/vim-cmake'                     | " Integrate CMake
 Plug 'pboettch/vim-cmake-syntax'            | " Better highlighting of cmake files
 Plug 'kevinoid/vim-jsonc'                   | " Syntax highlighting for jsonc -- JSON with comments
 Plug 'ekalinin/dockerfile.vim'              | " Dockerfile syntax highlighting
+" If you don't have nodejs and yarn
+" use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
+" see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " TODO remove after bug in ideavim does not misread package name
 " }}} Langauge Support aug
 
@@ -472,7 +475,7 @@ let g:vimtex_echo_verbose_input = 0
 
 " vim-markdown-preview ====================================================
 
-let vim_markdown_preview_github=1
+" let vim_markdown_preview_github=1
 
 " tagbar ==================================================================
 

@@ -187,10 +187,11 @@ snippet prob "Homework problem" b
 endsnippet
 
 snippet base "Base LaTeX Document"
-\documentclass[10pt]{article}
+\documentclass[10pt,dvipsnames]{article}
 
 \usepackage[margin=1in]{geometry}
 \usepackage[shortcuts]{extdash}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage[citestyle=alphabetic, bibstyle=alphabetic, natbib=true, maxcitenames=2, maxbibnames=99, sorting=ynt]{biblatex}
 %% Ensures biblatex typesets quotes correctly

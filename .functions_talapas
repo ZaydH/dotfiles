@@ -208,7 +208,7 @@ function run_cli_slurm() {
     CPU_SUFFIX="-cpu"
 
     DEFAULT_GPU_PARTITION="gpu"
-    A100_GPU_PARTITION="gpu2"
+    A100_GPU_PARTITION="a100gpu"
     TEST_PARTITION="test"
     LONG_PARTITION="long"
     SHORT_PARTITION="short"
@@ -225,6 +225,8 @@ function run_cli_slurm() {
         TIME_LIMIT="07-00:00:00"  # 7 day
     elif [[ ${TMP_PARTITION} == "${A100_GPU_PARTITION}"* ]]; then
         TIME_LIMIT="01-00:00:00"  # 1 day
+    elif [[ ${TMP_PARTITION} == "${LOWD_PARTITION}"* ]]; then
+        TIME_LIMIT="14-00:00:00"  # 1 day
     fi
 
     REQUEUE=false
@@ -249,7 +251,7 @@ function run_cli_slurm() {
         TMP_PARTITION="${TMP_PARTITION%$CPU_SUFFIX}"  # Strip the suffix
         RAM_PER_CPU=16G
     # elif [[ ${TMP_PARTITION} =~ "\(.*gpu\|${PREEMPT_PARTITION}.*\|${LOWD_PARTITION}\)" ]] ; then
-    elif [[ "${TMP_PARTITION}" =~ (.*gpu[0-9]?|${PREEMPT_PARTITION}.*|${LOWD_PARTITION}) ]] ; then
+    elif [[ "${TMP_PARTITION}" =~ (${A100_GPU_PARTITION}|${PREEMPT_PARTITION}.*|${LOWD_PARTITION}) ]] ; then
         N_GPU=1
     fi
 
@@ -275,7 +277,8 @@ function run_cli_slurm() {
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"  # Forces to use A100
             # SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=v100"   # Forces to use V100
         elif [[ "${PARTITION}" == "${A100_GPU_PARTITION}" ]]; then
-            SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=gpu-40gb"  # GPU2 only has A100s
+            SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"    # A100 partition only has A100s
+            SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=gpu-40gb"
         elif [[ ${TMP_PARTITION} == "${LOWD_PARTITION}" ]]; then
             SBATCH_TEXT="${SBATCH_TEXT}\n#SBATCH --constraint=a100"  # Forces to use A100
         fi
@@ -346,10 +349,12 @@ function run_talapas_bash() {
         :  # Allows empty if blocks
         # SRUN_PARAMS+=("--constraint=a100")  # Forces to use A100
         # SRUN_PARAMS+=("--constraint=v100")  # Forces to use V100
-    elif [[ "${PARTITION}" == "gpu2" ]]; then
-        SRUN_PARAMS+=("--constraint=gpu-40gb")  # GPU2 has A100s
+    elif [[ "${PARTITION}" == "a100gpu" ]]; then
+        SRUN_PARAMS+=("--constraint=a100")  # Partition only has A100s
+        SRUN_PARAMS+=("--constraint=gpu-40gb")
     elif [[ "${PARTITION}" == "lowd" ]]; then
         SRUN_PARAMS+=("--constraint=a100")  # Forces to use A100
+        SRUN_PARAMS+=("--constraint=gpu-80gb")
     fi
 
     echo "${SRUN_PARAMS[@]}"

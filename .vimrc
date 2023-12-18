@@ -39,14 +39,14 @@ Plug 'airblade/vim-gitgutter'               | " Show git status in right margin
 Plug 'rhysd/git-messenger.vim'              | " Show git message on line. Use either :GitMessenger or <Leader>gm
 " }}} Git
 
-" Auto-complete and Snippets {{{
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neoinclude.vim'
-Plug 'neoclide/coc-neco'
-Plug 'jsfaint/coc-neoinclude'
+" " Auto-complete and Snippets {{{
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'Shougo/neco-vim'
+" Plug 'Shougo/neoinclude.vim'
+" Plug 'neoclide/coc-neco'
+" Plug 'jsfaint/coc-neoinclude'
 Plug 'SirVer/ultisnips'
-" }}} Auto-complete and Snippets
+" " }}} Auto-complete and Snippets
 
 " Tex {{{
 Plug 'lervag/vimtex'

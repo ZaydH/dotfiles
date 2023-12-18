@@ -391,6 +391,11 @@ function is_talapas() {
     [[ $(hostname) == *"talapas"* || $(hostname) =~ "^n[0-9]{1,3}$" ]]
     # return implicit and not needed
 }
+# Returns true if the current host is an ec2 instance
+function is_ec2() {
+    [[ $(whoami) == *"ec2"* ]]
+    # return implicit and not needed
+}
 
 
 unalias ta &> /dev/null  # Ignore errors if no ta alias (yet)

@@ -1,0 +1,12 @@
+# test if the prompt var is not set
+if [ -z "$PS1" ]; then
+    # prompt var is not set, so this is *not* an interactive shell
+    return
+fi
+
+# module load racs-eb
+# module load cuDNN/7.0.5-CUDA-9.1.85
+zsh
+exit
+
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

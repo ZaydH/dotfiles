@@ -69,6 +69,10 @@ install_absolute ".oh-my-zsh/completions" "${MY_ZSH}/completions"
 if is_talapas; then
     install_file .bashrc_talapas .bashrc
 fi
+if is_ec2; then
+    install_file .bashrc_ec2 .bashrc
+    install_file .bashrc_ec2 .shrc
+fi
 
 # Vim related files
 install_file .vimrc

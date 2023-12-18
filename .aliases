@@ -33,7 +33,7 @@ alias texgrep='grep -nr --include="*.tex" --include="*.bib"'
 if ! is_ix; then
     alias nv='nvim'
     alias nv!='nv $_'
-    alias vim='nv'
+    # alias vim='nv'
 fi
 alias v!='vim $_'
 alias vmm='vim -M'
@@ -46,9 +46,12 @@ if is_popos; then
     alias bat='batcat'
     alias bat!='bat $_'
 fi
+# Add support for tig
+alias tig="${HOME}/bin/tig"
+alias bat="${HOME}/.cargo/bin/bat"
 
 # Go right to dotfiles folder
-REPOS_DIR="${HOME}/repos"
+REPOS_DIR="${HOME}/SageMaker"
 alias repos="${REPOS_DIR}"
 
 alias dot="${REPOS_DIR}/dotfiles"
@@ -121,7 +124,8 @@ alias terminal-notifier="terminal-notifier -message"
 
 # Sort top automatically by cpu usage
 if ! is_talapas; then
-    alias top="htop"
+    :
+    # alias top="htop"
 fi
 
 if is_linux ; then

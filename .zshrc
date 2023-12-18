@@ -31,11 +31,6 @@ if is_mac; then
     antigen bundle macos
 fi
 
-# Load the theme.
-# antigen theme robbyrussell
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure --branch=main
-
 # Smarter completions not yet integrated into zsh
 antigen bundle zsh-users/zsh-completions
 
@@ -51,6 +46,11 @@ antigen bundle zsh-users/zsh-syntax-highlighting  # Must be the LAST plugin per 
 #   Example:
 #       gi vim eclipse symfony
 antigen bundle voronkovich/gitignore.plugin.zsh
+
+# Load the theme.
+# antigen theme robbyrussell
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure --branch=main
 
 # Tell Antigen that you're done.
 antigen apply

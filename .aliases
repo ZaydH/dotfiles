@@ -28,6 +28,7 @@ alias gwd!='gwd $_'     # Performs word diff
 
 # Grep aliases
 alias texgrep='grep -nr --include="*.tex" --include="*.bib"'
+alias pygrep='grep -nr --include="*.py" --include="*.ipynb"'
 
 # vim aliases
 if ! is_ix; then

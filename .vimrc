@@ -66,6 +66,7 @@ Plug 'ekalinin/dockerfile.vim'              | " Dockerfile syntax highlighting
 " use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
 " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'hashivim/vim-terraform'               | " Terraform language
 " TODO remove after bug in ideavim does not misread package name
 " }}} Langauge Support aug
 

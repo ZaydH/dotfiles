@@ -25,3 +25,8 @@
     editor = "vim"
 [credential]
     helper = cache --timeout=7200
+[filter "nbstripout"]
+    clean = /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/python -m nbstripout
+    smudge = cat
+[diff "ipynb"]
+    textconv = /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/python -m nbstripout -t

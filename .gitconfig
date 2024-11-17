@@ -26,7 +26,7 @@
 [credential]
     helper = cache --timeout=7200
 [filter "nbstripout"]
-    clean = /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/python -m nbstripout
+    clean = /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/python -m nbstripout -t --keep-id --keep-metadata-keys="cell.metadata.scrolled"
     smudge = cat
 [diff "ipynb"]
     textconv = /home/ec2-user/anaconda3/envs/JupyterSystemEnv/bin/python -m nbstripout -t
